@@ -50,8 +50,11 @@ class _DashboardState extends State<Dashboard > {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: <Widget>[
+          SizedBox(
+            height: 30,
+          ),
           RadialProgress(),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 25.0),
 
           Row(
             children: <Widget>[
@@ -61,6 +64,10 @@ class _DashboardState extends State<Dashboard > {
                   children: <Widget>[
                     Container(
                       decoration: new BoxDecoration(
+                          boxShadow: [BoxShadow(
+                            color: Colors.blue,
+                            blurRadius: 10.0,
+                          ),],
                         color: Colors.blue,
 
                         borderRadius: new BorderRadius.only(
@@ -73,6 +80,7 @@ class _DashboardState extends State<Dashboard > {
                       height: 190,
 
                       child: GestureDetector(
+
                         child: FlatButton(
                           onPressed: (){},
                           child: Column(
@@ -96,14 +104,18 @@ class _DashboardState extends State<Dashboard > {
                                   color: Colors.white,
                                 ),
                               ),
-                              Padding(
+                              Column(
+                                  children:<Widget>[
 
-                                padding: const EdgeInsets.only(left: 16.0),
-                                child: Text(
-                                  'Steps',
-                                  style: whiteText,
-                                ),
-
+                                    Text(
+                                      'Steps',
+                                      style: whiteText,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(110, 80, 5, 0),
+                                      child: Icon(Icons.add_circle_outline),
+                                    ),
+                                  ]
                               )
 
                             ],
@@ -113,7 +125,11 @@ class _DashboardState extends State<Dashboard > {
                     ),
                     const SizedBox(height: 10.0),
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: new BoxDecoration(
+                          boxShadow: [BoxShadow(
+                            color: Colors.green,
+                            blurRadius: 10.0,
+                          ),],
                         color: Colors.green,
                         borderRadius: new BorderRadius.only(
                           topLeft: const Radius.circular(10.0),
@@ -148,11 +164,13 @@ class _DashboardState extends State<Dashboard > {
                                   color: Colors.white,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(120, 20, 5, 20) ,
-                                child: Icon(
-                                  Icons.add
-                                ),
+                              Column(
+                                  children:<Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(110, 20, 5, 0),
+                                      child: Icon(Icons.add_circle_outline),
+                                    ),
+                                  ]
                               )
                             ],
                           ),
@@ -168,7 +186,11 @@ class _DashboardState extends State<Dashboard > {
                   children: <Widget>[
                     Container(
 
-                      decoration: BoxDecoration(
+                      decoration: new BoxDecoration(
+                          boxShadow: [BoxShadow(
+                            color: Colors.red,
+                            blurRadius: 10.0,
+                          ),],
                         color: Colors.red,
                         borderRadius: new BorderRadius.only(
                           topLeft:const Radius.circular(10.0),
@@ -203,12 +225,18 @@ class _DashboardState extends State<Dashboard > {
                                   color: Colors.white,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16.0),
-                                child: Text(
+                              Column(
+                                children:<Widget>[
+
+                                  Text(
                                   'Calories Intake',
                                   style: whiteText,
                                 ),
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(110, 20, 5, 0),
+                                    child: Icon(Icons.add_circle_outline),
+                                  ),
+                                ]
                               )
                             ],
                           ),
@@ -218,7 +246,11 @@ class _DashboardState extends State<Dashboard > {
                     const SizedBox(height: 10.0),
                     Container(
 
-                      decoration: BoxDecoration(
+                      decoration: new BoxDecoration(
+                          boxShadow: [BoxShadow(
+                            color: Colors.yellow,
+                            blurRadius: 10.0,
+                          ),],
                         color: Colors.yellow,
                         borderRadius: BorderRadius.only(
                           topRight: const Radius.circular(10.0),
@@ -253,12 +285,19 @@ class _DashboardState extends State<Dashboard > {
                                   color: Colors.black,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16.0),
-                                child: Text(
-                                  'workout',
-                                ),
-                              ),
+                              Column(
+                                  children:<Widget>[
+
+                                    Text(
+                                      'Workout',
+                                      style: whiteText,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(110, 70, 5, 0),
+                                      child: Icon(Icons.add_circle_outline),
+                                    ),
+                                  ]
+                              )
                             ],
                           ),
                         ),
