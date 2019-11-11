@@ -68,14 +68,14 @@ class _DashboardState extends State<Dashboard > {
                             color: Colors.blue,
                             blurRadius: 10.0,
                           ),],
-                        color: Colors.blue,
+                          color: Colors.blue,
 
-                        borderRadius: new BorderRadius.only(
-                          topLeft: const Radius.circular(10.0),
-                          topRight: const Radius.circular(10.0),
-                          bottomLeft: const Radius.circular(10.0),
-                          bottomRight: const Radius.circular(10.0),
-                        )
+                          borderRadius: new BorderRadius.only(
+                            topLeft: const Radius.circular(10.0),
+                            topRight: const Radius.circular(10.0),
+                            bottomLeft: const Radius.circular(10.0),
+                            bottomRight: const Radius.circular(10.0),
+                          )
                       ),
                       height: 190,
 
@@ -130,13 +130,13 @@ class _DashboardState extends State<Dashboard > {
                             color: Colors.green,
                             blurRadius: 10.0,
                           ),],
-                        color: Colors.green,
-                        borderRadius: new BorderRadius.only(
-                          topLeft: const Radius.circular(10.0),
-                          topRight: const Radius.circular(10.0),
-                          bottomRight: const Radius.circular(10.0),
-                          bottomLeft: const Radius.circular(10.0)
-                        )                   
+                          color: Colors.green,
+                          borderRadius: new BorderRadius.only(
+                              topLeft: const Radius.circular(10.0),
+                              topRight: const Radius.circular(10.0),
+                              bottomRight: const Radius.circular(10.0),
+                              bottomLeft: const Radius.circular(10.0)
+                          )
                       ),
                       height: 120,
 
@@ -164,13 +164,6 @@ class _DashboardState extends State<Dashboard > {
                                   color: Colors.white,
                                 ),
                               ),
-<<<<<<< HEAD
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(110, 20, 5, 0) ,
-                                child: Icon(
-                                  Icons.add_circle_outline
-                                ),
-=======
                               Column(
                                   children:<Widget>[
                                     Padding(
@@ -178,7 +171,6 @@ class _DashboardState extends State<Dashboard > {
                                       child: Icon(Icons.add_circle_outline),
                                     ),
                                   ]
->>>>>>> ab99747e448ae90ca14e2c18135c2e516f3ceedd
                               )
                             ],
                           ),
@@ -199,13 +191,13 @@ class _DashboardState extends State<Dashboard > {
                             color: Colors.red,
                             blurRadius: 10.0,
                           ),],
-                        color: Colors.red,
-                        borderRadius: new BorderRadius.only(
-                          topLeft:const Radius.circular(10.0),
-                          topRight: const Radius.circular(10.0),
-                          bottomLeft: const Radius.circular(10.0),
-                          bottomRight: const Radius.circular(10.0)
-                        )
+                          color: Colors.red,
+                          borderRadius: new BorderRadius.only(
+                              topLeft:const Radius.circular(10.0),
+                              topRight: const Radius.circular(10.0),
+                              bottomLeft: const Radius.circular(10.0),
+                              bottomRight: const Radius.circular(10.0)
+                          )
                       ),
                       height: 120,
 
@@ -225,26 +217,29 @@ class _DashboardState extends State<Dashboard > {
                                       .display1
                                       .copyWith(
                                     color: Colors.white,
-                                    fontSize: 24.0,
+                                    fontSize: 20.0,
                                   ),
                                 ),
-                                trailing: Icon(
-                                  FontAwesomeIcons.fire,
-                                  color: Colors.white,
+                                trailing: Padding(
+                                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 30),
+                                  child: Icon(
+                                    FontAwesomeIcons.fire,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                               Column(
-                                children:<Widget>[
+                                  children:<Widget>[
 
-                                  Text(
-                                  'Calories Intake',
-                                  style: whiteText,
-                                ),
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(110, 20, 5, 0),
-                                    child: Icon(Icons.add_circle_outline),
-                                  ),
-                                ]
+                                    Text(
+                                      'Calories Intake',
+                                      style: whiteText,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(110, 10, 5, 0),
+                                      child: Icon(Icons.add_circle_outline),
+                                    ),
+                                  ]
                               )
                             ],
                           ),
@@ -259,15 +254,16 @@ class _DashboardState extends State<Dashboard > {
                             color: Colors.yellow,
                             blurRadius: 10.0,
                           ),],
-                        color: Colors.yellow,
-                        borderRadius: BorderRadius.only(
-                          topRight: const Radius.circular(10.0),
-                          topLeft: const Radius.circular(10.0),
-                          bottomRight: const Radius.circular(10.0),
-                          bottomLeft: const Radius.circular(10.0)
-                        )
+                          color: Colors.yellow,
+                          borderRadius: BorderRadius.only(
+                              topRight: const Radius.circular(10.0),
+                              topLeft: const Radius.circular(10.0),
+                              bottomRight: const Radius.circular(10.0),
+                              bottomLeft: const Radius.circular(10.0)
+                          )
                       ),
                       height: 190,
+
                       child: GestureDetector(
                         child: FlatButton(
                           onPressed: (){},
@@ -283,7 +279,7 @@ class _DashboardState extends State<Dashboard > {
                                       .textTheme
                                       .display1
                                       .copyWith(
-                                    fontSize: 20.0,
+                                    fontSize: 21.0,
                                     color: Colors.black,
                                   ),
                                 ),
@@ -292,14 +288,6 @@ class _DashboardState extends State<Dashboard > {
                                   color: Colors.black,
                                 ),
                               ),
-<<<<<<< HEAD
-                              Padding(
-                                padding: const EdgeInsets.only(left: 12.0),
-                                child: Text(
-                                  'workout',
-                                ),
-                              ),
-=======
                               Column(
                                   children:<Widget>[
 
@@ -308,12 +296,11 @@ class _DashboardState extends State<Dashboard > {
                                       style: whiteText,
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.fromLTRB(110, 70, 5, 0),
+                                      padding: const EdgeInsets.fromLTRB(110, 80, 5, 0),
                                       child: Icon(Icons.add_circle_outline),
                                     ),
                                   ]
                               )
->>>>>>> ab99747e448ae90ca14e2c18135c2e516f3ceedd
                             ],
                           ),
                         ),
@@ -332,6 +319,3 @@ class _DashboardState extends State<Dashboard > {
   }
 
 }
-
-//_____________________________________________________________________________________
-
