@@ -42,6 +42,7 @@ class _DashboardState extends State<Dashboard > {
       backgroundColor: Colors.white,
       body: _buildBody(context),
 
+
     );
   }
 
@@ -251,10 +252,10 @@ class _DashboardState extends State<Dashboard > {
 
                       decoration: new BoxDecoration(
                           boxShadow: [BoxShadow(
-                            color: Colors.yellow,
+                            color: Colors.pinkAccent,
                             blurRadius: 10.0,
                           ),],
-                          color: Colors.yellow,
+                          color: Colors.pinkAccent,
                           borderRadius: BorderRadius.only(
                               topRight: const Radius.circular(10.0),
                               topLeft: const Radius.circular(10.0),
