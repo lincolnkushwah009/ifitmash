@@ -3,7 +3,7 @@ import 'package:ifitmash/screens/bottomNavigationBar%20.dart';
 
 
 
-import 'signUp.dart';
+import 'screens/signUp.dart';
 
 
 
