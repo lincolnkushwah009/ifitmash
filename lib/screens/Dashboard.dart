@@ -10,6 +10,8 @@ class Dashboard  extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard > {
+
+
   void read() async {
     final results = await FitKit.read(
       DataType.HEART_RATE,
@@ -26,7 +28,6 @@ class _DashboardState extends State<Dashboard > {
           type,
           DateTime.now().subtract(Duration(days: 5)),
           DateTime.now(),
-
         );
         print(results);
       }
