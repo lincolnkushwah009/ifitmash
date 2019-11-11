@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:fit_kit/fit_kit.dart';
 
 
 class Dashboard  extends StatefulWidget {
@@ -10,6 +10,28 @@ class Dashboard  extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard > {
+  void read() async {
+    final results = await FitKit.read(
+      DataType.HEART_RATE,
+      DateTime.now().subtract(Duration(days: 5)),
+      DateTime.now(),
+    );
+    print(results);
+  }
+
+  void readAll() async {
+    if (await FitKit.requestPermissions(DataType.values)) {
+      for (DataType type in DataType.values) {
+        final results = await FitKit.read(
+          type,
+          DateTime.now().subtract(Duration(days: 5)),
+          DateTime.now(),
+
+        );
+        print(results);
+      }
+    }
+  }
   final TextStyle whiteText = TextStyle(color: Colors.white);
 
   @override
@@ -26,7 +48,6 @@ class _DashboardState extends State<Dashboard > {
       child: Column(
         children: <Widget>[
           _buildHeader(),
-
           const SizedBox(height: 50.0),
           Row(
             children: <Widget>[
@@ -34,72 +55,103 @@ class _DashboardState extends State<Dashboard > {
                 child: Column(
                   children: <Widget>[
                     Container(
+                      decoration: new BoxDecoration(
+                        color: Colors.blue,
+
+                        borderRadius: new BorderRadius.only(
+                          topLeft: const Radius.circular(10.0),
+                          topRight: const Radius.circular(10.0),
+                          bottomLeft: const Radius.circular(10.0),
+                          bottomRight: const Radius.circular(10.0),
+                        )
+                      ),
                       height: 190,
-                      color: Colors.blue,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          ListTile(
-                            title: Text(
-                              "9,850",
-                              style:
-                              Theme
-                                  .of(context)
-                                  .textTheme
-                                  .display1
-                                  .copyWith(
-                                color: Colors.white,
-                                fontSize: 24.0,
+
+                      child: GestureDetector(
+                        child: FlatButton(
+                          onPressed: (){},
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              ListTile(
+                                title: Text(
+                                  "9,850",
+                                  style:
+                                  Theme
+                                      .of(context)
+                                      .textTheme
+                                      .display1
+                                      .copyWith(
+                                    color: Colors.white,
+                                    fontSize: 24.0,
+                                  ),
+                                ),
+                                trailing: Icon(
+                                  FontAwesomeIcons.walking,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                            trailing: Icon(
-                              FontAwesomeIcons.walking,
-                              color: Colors.white,
-                            ),
+                              Padding(
+
+                                padding: const EdgeInsets.only(left: 16.0),
+                                child: Text(
+                                  'Steps',
+                                  style: whiteText,
+                                ),
+
+                              )
+
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 16.0),
-                            child: Text(
-                              'Steps',
-                              style: whiteText,
-                            ),
-                          )
-                        ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 10.0),
                     Container(
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: new BorderRadius.only(
+                          topLeft: const Radius.circular(10.0),
+                          topRight: const Radius.circular(10.0),
+                          bottomRight: const Radius.circular(10.0),
+                          bottomLeft: const Radius.circular(10.0)
+                        )                   
+                      ),
                       height: 120,
-                      color: Colors.green,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          ListTile(
-                            title: Text(
-                              "70 bpm",
-                              style:
-                              Theme
-                                  .of(context)
-                                  .textTheme
-                                  .display1
-                                  .copyWith(
-                                color: Colors.white,
-                                fontSize: 24.0,
+
+                      child: GestureDetector(
+                        child: FlatButton(
+                          onPressed: (){},
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              ListTile(
+                                title: Text(
+                                  "BMI",
+                                  style:
+                                  Theme
+                                      .of(context)
+                                      .textTheme
+                                      .display1
+                                      .copyWith(
+                                    color: Colors.white,
+                                    fontSize: 24.0,
+                                  ),
+                                ),
+                                trailing: Icon(
+                                  FontAwesomeIcons.heartbeat,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                            trailing: Icon(
-                              FontAwesomeIcons.heartbeat,
-                              color: Colors.white,
-                            ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(120, 20, 5, 20) ,
+                                child: Icon(
+                                  Icons.add
+                                ),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 16.0),
-                            child: Text(
-                              'Avg. Heart Rate',
-                              style: whiteText,
-                            ),
-                          )
-                        ],
+                        ),
                       ),
                     ),
                   ],
@@ -110,71 +162,101 @@ class _DashboardState extends State<Dashboard > {
                 child: Column(
                   children: <Widget>[
                     Container(
+
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: new BorderRadius.only(
+                          topLeft:const Radius.circular(10.0),
+                          topRight: const Radius.circular(10.0),
+                          bottomLeft: const Radius.circular(10.0),
+                          bottomRight: const Radius.circular(10.0)
+                        )
+                      ),
                       height: 120,
-                      color: Colors.red,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          ListTile(
-                            title: Text(
-                              "2,430",
-                              style:
-                              Theme
-                                  .of(context)
-                                  .textTheme
-                                  .display1
-                                  .copyWith(
-                                color: Colors.white,
-                                fontSize: 24.0,
+
+                      child: GestureDetector(
+                        child: FlatButton(
+                          onPressed: (){},
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              ListTile(
+                                title: Text(
+                                  "2,430",
+                                  style:
+                                  Theme
+                                      .of(context)
+                                      .textTheme
+                                      .display1
+                                      .copyWith(
+                                    color: Colors.white,
+                                    fontSize: 24.0,
+                                  ),
+                                ),
+                                trailing: Icon(
+                                  FontAwesomeIcons.fire,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                            trailing: Icon(
-                              FontAwesomeIcons.fire,
-                              color: Colors.white,
-                            ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 16.0),
+                                child: Text(
+                                  'Calories Intake',
+                                  style: whiteText,
+                                ),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 16.0),
-                            child: Text(
-                              'Calories Burned',
-                              style: whiteText,
-                            ),
-                          )
-                        ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 10.0),
                     Container(
+
+                      decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        borderRadius: BorderRadius.only(
+                          topRight: const Radius.circular(10.0),
+                          topLeft: const Radius.circular(10.0),
+                          bottomRight: const Radius.circular(10.0),
+                          bottomLeft: const Radius.circular(10.0)
+                        )
+                      ),
                       height: 190,
-                      color: Colors.yellow,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          ListTile(
-                            title: Text(
-                              "15 kms",
-                              style:
-                              Theme
-                                  .of(context)
-                                  .textTheme
-                                  .display1
-                                  .copyWith(
-                                fontSize: 24.0,
-                                color: Colors.black,
+
+                      child: GestureDetector(
+                        child: FlatButton(
+                          onPressed: (){},
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              ListTile(
+                                title: Text(
+                                  "Workout",
+                                  style:
+                                  Theme
+                                      .of(context)
+                                      .textTheme
+                                      .display1
+                                      .copyWith(
+                                    fontSize: 21.0,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                trailing: Icon(
+                                  FontAwesomeIcons.road,
+                                  color: Colors.black,
+                                ),
                               ),
-                            ),
-                            trailing: Icon(
-                              FontAwesomeIcons.road,
-                              color: Colors.black,
-                            ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 16.0),
+                                child: Text(
+                                  'workout',
+                                ),
+                              ),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 16.0),
-                            child: Text(
-                              'Distance',
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                   ],
