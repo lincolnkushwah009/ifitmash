@@ -148,9 +148,9 @@ class _DashboardState extends State<Dashboard > {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(120, 20, 5, 20) ,
+                                padding: const EdgeInsets.fromLTRB(110, 20, 5, 0) ,
                                 child: Icon(
-                                  Icons.add
+                                  Icons.add_circle_outline
                                 ),
                               )
                             ],
@@ -227,7 +227,6 @@ class _DashboardState extends State<Dashboard > {
                         )
                       ),
                       height: 190,
-
                       child: GestureDetector(
                         child: FlatButton(
                           onPressed: (){},
@@ -243,7 +242,7 @@ class _DashboardState extends State<Dashboard > {
                                       .textTheme
                                       .display1
                                       .copyWith(
-                                    fontSize: 21.0,
+                                    fontSize: 20.0,
                                     color: Colors.black,
                                   ),
                                 ),
@@ -253,7 +252,7 @@ class _DashboardState extends State<Dashboard > {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 16.0),
+                                padding: const EdgeInsets.only(left: 12.0),
                                 child: Text(
                                   'workout',
                                 ),
@@ -274,43 +273,6 @@ class _DashboardState extends State<Dashboard > {
 
     );
   }
-
-//  Widget _buildHeader() {
-//    return Row(
-//      children: <Widget>[
-//        Container(
-//          height: 100,
-//          width: 100,
-//          padding: const EdgeInsets.all(8.0),
-//          child: CircularProgressIndicator(
-//            value: 0.5,
-//            valueColor: AlwaysStoppedAnimation(Colors.blue),
-//            backgroundColor: Colors.grey.shade700,
-//          ),
-//        ),
-//        const SizedBox(width: 20.0),
-//        Expanded(
-//          child: Column(
-//            crossAxisAlignment: CrossAxisAlignment.start,
-//            children: <Widget>[
-//              Text(
-//                "Overall\nDaily Progress",
-//                style:TextStyle(
-//                  color: Colors.black,
-//                  fontSize: 20,
-//                ),
-//              ),
-//              const SizedBox(height: 20.0),
-//              Text(
-//                "45% to go",
-//                style: TextStyle(color: Colors.grey, fontSize: 16.0),
-//              ),
-//            ],
-//          ),
-//        )
-//      ],
-//    );
-//  }
 
 }
 

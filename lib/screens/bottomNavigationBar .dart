@@ -44,8 +44,8 @@ class _bottomNavigationBarState extends State<bottomNavigationBar > {
             title: Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
-            title: Text('Messages'),
+            icon: Icon(Icons.event_note),
+            title: Text('My Plans'),
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.person),
