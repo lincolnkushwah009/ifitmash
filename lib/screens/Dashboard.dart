@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fit_kit/fit_kit.dart';
+import 'package:ifitmash/components/radial_progress.dart';
 
 
 class Dashboard  extends StatefulWidget {
@@ -42,16 +43,19 @@ class _DashboardState extends State<Dashboard > {
 
     );
   }
+
   Widget _buildBody(BuildContext context) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: <Widget>[
-          _buildHeader(),
-          const SizedBox(height: 50.0),
+          RadialProgress(),
+          const SizedBox(height: 20.0),
+
           Row(
             children: <Widget>[
               Expanded(
+
                 child: Column(
                   children: <Widget>[
                     Container(
@@ -262,53 +266,53 @@ class _DashboardState extends State<Dashboard > {
                   ],
                 ),
               )
+
             ],
           )
         ],
       ),
 
     );
+  }
 
-  }
-  Widget _buildHeader() {
-    return Row(
-      children: <Widget>[
-        Container(
-          height: 100,
-          width: 100,
-          padding: const EdgeInsets.all(8.0),
-          child: CircularProgressIndicator(
-            value: 0.5,
-            valueColor: AlwaysStoppedAnimation(Colors.blue),
-            backgroundColor: Colors.grey.shade700,
-          ),
-        ),
-        const SizedBox(width: 20.0),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                "Overall\nDaily Progress",
-                style:TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                ),
-              ),
-              const SizedBox(height: 20.0),
-              Text(
-                "45% to go",
-                style: TextStyle(color: Colors.grey, fontSize: 16.0),
-              ),
-            ],
-          ),
-        )
-      ],
-    );
-  }
+//  Widget _buildHeader() {
+//    return Row(
+//      children: <Widget>[
+//        Container(
+//          height: 100,
+//          width: 100,
+//          padding: const EdgeInsets.all(8.0),
+//          child: CircularProgressIndicator(
+//            value: 0.5,
+//            valueColor: AlwaysStoppedAnimation(Colors.blue),
+//            backgroundColor: Colors.grey.shade700,
+//          ),
+//        ),
+//        const SizedBox(width: 20.0),
+//        Expanded(
+//          child: Column(
+//            crossAxisAlignment: CrossAxisAlignment.start,
+//            children: <Widget>[
+//              Text(
+//                "Overall\nDaily Progress",
+//                style:TextStyle(
+//                  color: Colors.black,
+//                  fontSize: 20,
+//                ),
+//              ),
+//              const SizedBox(height: 20.0),
+//              Text(
+//                "45% to go",
+//                style: TextStyle(color: Colors.grey, fontSize: 16.0),
+//              ),
+//            ],
+//          ),
+//        )
+//      ],
+//    );
+//  }
 
 }
-
 
 //_____________________________________________________________________________________
 
