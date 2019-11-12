@@ -1,134 +1,70 @@
 import 'package:flutter/material.dart';
-
-class SignupPage extends StatefulWidget {
+import '../components/rounded_button.dart';
+import 'package:ifitmash/constants.dart';
+class RegistrationScreen extends StatefulWidget {
+  static String id='registration-screen';
   @override
-  _SignupPageState createState() => _SignupPageState();
+  _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        resizeToAvoidBottomPadding: false,
-        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
-            Widget>[
-          Container(
-            child: Stack(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.fromLTRB(15.0, 110.0, 0.0, 0.0),
-                  child: Text(
-                    'Signup',
-                    style:
-                    TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(260.0, 125.0, 0.0, 0.0),
-                  child: Text(
-                    '.',
-                    style: TextStyle(
-                        fontSize: 80.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green),
-                  ),
-                )
-              ],
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Hero(
+              tag: 'logo',
+              child: Container(
+                height: 150.0,
+                child: Image.asset('assets/image/logo.png'),
+              ),
             ),
-          ),
-          Container(
-              padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
-              child: Column(
-                children: <Widget>[
-                  TextField(
-                    decoration: InputDecoration(
-                        labelText: 'NAME ',
-                        labelStyle: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.green))),
-                  ),
-                  SizedBox(height: 10.0),
-                  TextField(
-                    decoration: InputDecoration(
-                        labelText: 'EMAIL',
-                        labelStyle: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
-                        // hintText: 'EMAIL',
-                        // hintStyle: ,
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.green))),
-                  ),
-                  SizedBox(height: 10.0),
-                  TextField(
-                    decoration: InputDecoration(
-                        labelText: 'PASSWORD ',
-                        labelStyle: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.green))),
-                    obscureText: true,
-                  ),
-                  SizedBox(height: 40.0),
+            SizedBox(
+              height: 40.0,
+            ),
+            TextField(
+              onChanged: (value) {
+                //Do something with the user input.
+              },
+              decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your name'),
+            ),
+            SizedBox(
+              height: 8.0,
+            ),
+            TextField(
+              onChanged: (value) {
+                //Do something with the user input.
+              },
+              decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
+            ),
+            SizedBox(
+              height: 8.0,
+            ),
+            TextField(
+              onChanged: (value) {
+                //Do something with the user input.
+              },
+              decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your password'),
+            ),
+            SizedBox(
+              height: 24.0,
+            ),
+            RoundedButton(
+              color: Colors.blueAccent,
+              title: 'Register',
+              onpressed: (){
 
-                  Container(
-                      height: 40.0,
-                      child: Material(
-                        borderRadius: BorderRadius.circular(20.0),
-                        shadowColor: Colors.greenAccent,
-                        color: Colors.green,
-                        elevation: 7.0,
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Center(
-                            child: Text(
-                              'SIGNUP',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Montserrat'),
-                            ),
-                          ),
-                        ),
-                      )),
-                  SizedBox(height: 20.0),
-                  Container(
-                    height: 40.0,
-                    color: Colors.transparent,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Colors.black,
-                              style: BorderStyle.solid,
-                              width: 1.0),
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(20.0)),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                        },
-                        child:
-
-                        Center(
-                          child: Text('Go Back',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Montserrat')),
-                        ),
-
-
-                      ),
-                    ),
-                  ),
-                ],
-              )),
-
-        ]));
+              },
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
