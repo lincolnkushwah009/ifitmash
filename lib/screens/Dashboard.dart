@@ -11,7 +11,12 @@ class Dashboard  extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard > {
-
+  @override
+//  void initState() {
+//    // TODO: implement initState
+//    read();
+//    readAll();
+//  }
 
   void read() async {
     final results = await FitKit.read(
@@ -19,6 +24,7 @@ class _DashboardState extends State<Dashboard > {
       DateTime.now().subtract(Duration(days: 5)),
       DateTime.now(),
     );
+    print("jefbjefbjefj");
     print(results);
   }
 
@@ -34,7 +40,9 @@ class _DashboardState extends State<Dashboard > {
       }
     }
   }
+
   final TextStyle whiteText = TextStyle(color: Colors.white);
+
 
   @override
   Widget build(BuildContext context) {

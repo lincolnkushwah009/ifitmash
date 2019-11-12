@@ -39,7 +39,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Column(
+            Row(
               children: <Widget>[
                 Hero(
                   tag: 'logo',
@@ -52,7 +52,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                 TypewriterAnimatedTextKit(
                   text:['IFitMesh'],
                   textStyle: TextStyle(
-                    fontSize: 40.0,
+                    fontSize: 50.0,
                     fontWeight: FontWeight.w900,
                   ),
                 ),
