@@ -39,6 +39,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            SizedBox(height: 150),
             Row(
               children: <Widget>[
                 Hero(
@@ -48,7 +49,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                     height: 60,
                   ),
                 ),
-                SizedBox(height: 20),
                 TypewriterAnimatedTextKit(
                   text:['IFitMesh'],
                   textStyle: TextStyle(

@@ -120,10 +120,6 @@ class _DashboardState extends State<Dashboard > {
                                       'Steps',
                                       style: whiteText,
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(110, 80, 5, 0),
-                                      child: Icon(Icons.add_circle_outline),
-                                    ),
                                   ]
                               )
 
