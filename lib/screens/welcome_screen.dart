@@ -64,7 +64,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
             RoundedButton(title: 'Log In',
             color: Colors.lightBlueAccent,
             onpressed: (){
-              Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginScreen()));            },
+              Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginScreen())); },
             ),
             RoundedButton(
               title: 'Register',

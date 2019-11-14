@@ -1,58 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fit_kit/fit_kit.dart';
 import 'package:ifitmash/components/radial_progress.dart';
 
 
-
 class Dashboard  extends StatefulWidget {
-  var steps;
 
   @override
   _DashboardState createState() => _DashboardState();
 }
 
-
 class _DashboardState extends State<Dashboard > {
+
+  @override
+//  void initState() {
+//    // TODO: implement initState
+//    read();
+////    readAll();
+//  }
+
   void read() async {
     final results = await FitKit.read(
-      DataType.STEP_COUNT,
+      DataType.HEART_RATE,
       DateTime.now().subtract(Duration(days: 5)),
       DateTime.now(),
     );
-    print("jefbjefbjefj");
-    print(results);
+    // print("jefbjefbjefj");
+    // print(results);
   }
 
+  void testingFitKit() async {
+
+  }
 
   void readAll() async {
     if (await FitKit.requestPermissions(DataType.values)) {
       for (DataType type in DataType.values) {
         final results = await FitKit.read(
-          DataType.STEP_COUNT,
+          type,
           DateTime.now().subtract(Duration(days: 5)),
           DateTime.now(),
         );
-
-        print("jefbjefbjefj");
-        print(results);
+        // print(results);
       }
     }
   }
 
-  @override
-  @protected
-  @mustCallSuper
-  void initState() {
-    SchedulerBinding.instance.addPostFrameCallback((_) => loadData());
-  }
-  loadData() {
-    readAll();
-    read();
-  }
   final TextStyle whiteText = TextStyle(color: Colors.white);
+
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +122,7 @@ class _DashboardState extends State<Dashboard > {
                                   children:<Widget>[
 
                                     Text(
-                                      "step_count",
+                                      'Steps',
                                       style: whiteText,
                                     ),
                                   ]
