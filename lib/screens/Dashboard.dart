@@ -11,11 +11,12 @@ class Dashboard  extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard > {
+
   @override
 //  void initState() {
 //    // TODO: implement initState
 //    read();
-//    readAll();
+////    readAll();
 //  }
 
   void read() async {
@@ -24,8 +25,12 @@ class _DashboardState extends State<Dashboard > {
       DateTime.now().subtract(Duration(days: 5)),
       DateTime.now(),
     );
-    print("jefbjefbjefj");
-    print(results);
+    // print("jefbjefbjefj");
+    // print(results);
+  }
+
+  void testingFitKit() async {
+
   }
 
   void readAll() async {
@@ -36,7 +41,7 @@ class _DashboardState extends State<Dashboard > {
           DateTime.now().subtract(Duration(days: 5)),
           DateTime.now(),
         );
-        print(results);
+        // print(results);
       }
     }
   }
