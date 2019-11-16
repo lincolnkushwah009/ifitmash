@@ -44,8 +44,8 @@ class _RadialProgressState extends State<RadialProgress>
   Widget build(BuildContext context) {
     return CustomPaint(
       child: Container(
-        height: 200.0,
-        width: 200.0,
+        height: 159.0,
+        width: 159.0,
         padding: EdgeInsets.symmetric(vertical: 40.0),
         child: AnimatedOpacity(
           opacity: progressDegrees > 30 ? 1.0 : 0.0,
@@ -54,14 +54,14 @@ class _RadialProgressState extends State<RadialProgress>
             children: <Widget>[
               Text(
                 'RUNNING',
-                style: TextStyle(fontSize: 24.0, letterSpacing: 1.5),
+                style: TextStyle(fontSize: 18.0, letterSpacing: 1.5),
               ),
               SizedBox(
                 height: 4.0,
               ),
               Container(
                 height: 5.0,
-                width: 80.0,
+                width: 50.0,
                 decoration: BoxDecoration(
                     color: Colors.purple,
                     borderRadius: BorderRadius.all(Radius.circular(4.0))),
@@ -71,12 +71,12 @@ class _RadialProgressState extends State<RadialProgress>
               ),
               Text(
                 '1.225',
-                style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
               ),
               Text(
                 'CALORIES BURN',
                 style: TextStyle(
-                    fontSize: 14.0, color: Colors.blue, letterSpacing: 1.5),
+                    fontSize: 9.0, color: Colors.blue, letterSpacing: 0.9),
               ),
             ],
           ),

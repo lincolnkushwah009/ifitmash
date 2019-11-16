@@ -38,7 +38,7 @@ class _bottomNavigationBarState extends State<bottomNavigationBar > {
             title: Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.event_note),
+            icon: Icon(Icons.assignment),
             title: Text('My Plans'),
           ),
           BottomNavigationBarItem(
