@@ -339,6 +339,7 @@ class _DashboardState extends State<Dashboard > {
     );
   }
 
+<<<<<<< HEAD
 }
 //import 'package:flutter/material.dart';
 //import 'package:flutter/scheduler.dart';
@@ -684,3 +685,6 @@ class _DashboardState extends State<Dashboard > {
 //  }
 //
 //}
+=======
+}
+>>>>>>> 99dbb8692e048b5974cabad91872d1176ea9ea9e
