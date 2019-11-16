@@ -52,12 +52,13 @@ class _RadialProgressState extends State<RadialProgress>
           duration: fadeInDuration,
           child: Column(
             children: <Widget>[
+
               Text(
-                'RUNNING',
-                style: TextStyle(fontSize: 18.0, letterSpacing: 1.5),
+                'STEPS COUNTS ',
+                style: TextStyle(fontSize: 15.0, letterSpacing: 1.2),
               ),
               SizedBox(
-                height: 4.0,
+                height: 6.0,
               ),
               Container(
                 height: 5.0,
@@ -70,14 +71,10 @@ class _RadialProgressState extends State<RadialProgress>
                 height: 10.0,
               ),
               Text(
-                '1.225',
+                '1225',
                 style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
               ),
-              Text(
-                'CALORIES BURN',
-                style: TextStyle(
-                    fontSize: 9.0, color: Colors.blue, letterSpacing: 0.9),
-              ),
+
             ],
           ),
         ),
@@ -117,7 +114,15 @@ class RadialPainter extends CustomPainter {
         math.radians(progressInDegrees),
         false,
         progressPaint);
+
+//    canvas.drawArc(
+//        Rect.fromCircle(center: center, radius: size.width / 1.4),
+//        math.radians(-90),
+//        math.radians(progressInDegrees, 180),
+//        false,
+//        progressPaint);
   }
+
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
