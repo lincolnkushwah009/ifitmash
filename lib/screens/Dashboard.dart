@@ -49,26 +49,19 @@ class _DashboardState extends State<Dashboard> {
     return SingleChildScrollView(
 
       padding: const EdgeInsets.all(16.0),
+
+
       child: Column(
 
+
         children: <Widget>[
-          SizedBox(
-            height: 60,
-          ),
           Stack(children: <Widget>[
 
-            Align(
-              alignment: Alignment.topCenter,
-                child: RadialProgress(),
-            ),
+            RadialProgress(),
 
-             CalBurn()
+            CalBurn(),
 
           ],),
-
-
-
-
           const SizedBox(height: 80.0),
           Row(
             children: <Widget>[

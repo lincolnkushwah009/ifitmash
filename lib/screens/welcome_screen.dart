@@ -19,7 +19,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
     return Scaffold(
 
       body: Container(
+
         decoration: BoxDecoration(
+
+
 
           // Box decoration takes a gradient
             gradient: LinearGradient(
@@ -53,7 +56,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                     ),
                   ),
                   TypewriterAnimatedTextKit(
-                    text:['IFitMesh'],
+                    text:['IFitMash'],
                     textStyle: TextStyle(
                       fontSize: 50.0,
                       fontWeight: FontWeight.w900,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ifitmash/components/CalBurnCircle.dart';
 
 class Lunch extends StatelessWidget {
   // This widget is the root of your application.
@@ -27,7 +26,9 @@ class _MyHomePageState extends State<MyHomePage> {
   final duplicateItems = List<String>.generate(2, (i) => "Item $i");
 
 
-  var items = List<String>();
+  var items = List<String>(
+
+  );
 
   @override
   void initState() {

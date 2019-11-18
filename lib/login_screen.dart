@@ -313,7 +313,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Center(
                         child: Text('Login'.toUpperCase(),
                           style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold
                           ),
                         ),

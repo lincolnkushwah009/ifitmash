@@ -11,11 +11,10 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
 
 
-    return Container(
-      
-      color: Colors.white,
+    return SingleChildScrollView(
+
       child: Column(children: [
-        
+
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 30, 200, 0),
           child: Text(
@@ -29,7 +28,7 @@ class _ProfileState extends State<Profile> {
           child: Container(
             height: 70,
             child: Card(
-                color: Colors.white,
+                color: Colors.white10,
                 elevation: 0,
                 margin: EdgeInsets.only(top: 0),
                 child: ListTile(
