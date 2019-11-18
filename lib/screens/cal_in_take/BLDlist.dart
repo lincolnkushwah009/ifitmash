@@ -62,7 +62,6 @@ class BldList extends StatelessWidget {
             ),
           ),
           Card(
-
             child: InkWell(
               onTap: () {
                 Navigator.push(context,new MaterialPageRoute(builder: (context)=>EveningSnack()));

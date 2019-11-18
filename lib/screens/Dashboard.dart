@@ -50,24 +50,24 @@ class _DashboardState extends State<Dashboard> {
 
       padding: const EdgeInsets.all(16.0),
       child: Column(
-
         children: <Widget>[
+          Align(
+              alignment: Alignment.centerRight,
+              child: InkWell(child: Icon(Icons.info),onTap: (){
+              },
+              )
+          ),
           SizedBox(
             height: 60,
           ),
-          Stack(children: <Widget>[
 
-            Align(
-              alignment: Alignment.topCenter,
-                child: RadialProgress(),
-            ),
+          Center(
+            child: Stack(children: <Widget>[
+              Center(child: RadialProgress()),
+               Center(child: CalBurn())
 
-             CalBurn()
-
-          ],),
-
-
-
+            ],),
+          ),
 
           const SizedBox(height: 80.0),
           Row(
