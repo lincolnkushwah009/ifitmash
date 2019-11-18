@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'exerciseDetails.dart';
 
 class ListOfExercises extends StatelessWidget {
   // This widget is the root of your application.
@@ -9,15 +12,15 @@ class ListOfExercises extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(title: 'Exercises'),
+      home: new MyHomePage(),
     );
   }
 }
 
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
+//  MyHomePage({Key key, this.title}) : super(key: key);
+//  final String title;
 
   @override
   _MyHomePageState createState() => new _MyHomePageState();
@@ -26,20 +29,30 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController editingController = TextEditingController();
 
-  final duplicateItems = List<String>.generate(28, (i) => "Item $i");
+  final exercises = ['dumbles','cardio','leg press','crunches','low leg pull in','Crunch',
+    'Resisted Crunch','Inclined Crunch with Feet Attached',
+    'Crunch with Leg Curl',
+    'Sit-Up with Feet Attached',
+    'Sit-Up with Cable',
+    'Trunk Rotation',
+    'Jacknife Sit-Up',
+    'High Leg Pull-In',
+   'Low Leg Pull-In',
+    'Side Plank'
+  ];
 
 
   var items = List<String>();
 
   @override
   void initState() {
-    items.addAll(duplicateItems);
+    items.addAll(exercises);
     super.initState();
   }
 
   void filterSearchResults(String query) {
     List<String> dummySearchList = List<String>();
-    dummySearchList.addAll(duplicateItems);
+    dummySearchList.addAll(exercises);
     if(query.isNotEmpty) {
       List<String> dummyListData = List<String>();
       dummySearchList.forEach((item) {
@@ -55,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       setState(() {
         items.clear();
-        items.addAll(duplicateItems);
+        items.addAll(exercises);
       });
     }
 
@@ -65,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(widget.title),
+        title: new Text("Exercises"),
       ),
       body: Container(
         child: Column(
@@ -90,6 +103,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   return ListTile(
+                    onTap: (){
+                    Navigator.push(
+                        context,
+                        new MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                            new ExerciseDetail()));
+
+                    },
                     title: Text('${items[index]}'),
                   );
                 },

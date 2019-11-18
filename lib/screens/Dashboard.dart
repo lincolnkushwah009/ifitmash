@@ -52,6 +52,7 @@ class _DashboardState extends State<Dashboard> {
 
 
       child: Column(
+<<<<<<< HEAD
 
 
         children: <Widget>[
@@ -62,6 +63,27 @@ class _DashboardState extends State<Dashboard> {
             CalBurn(),
 
           ],),
+=======
+        children: <Widget>[
+          Align(
+              alignment: Alignment.centerRight,
+              child: InkWell(child: Icon(Icons.info),onTap: (){
+              },
+              )
+          ),
+          SizedBox(
+            height: 60,
+          ),
+
+          Center(
+            child: Stack(children: <Widget>[
+              Center(child: RadialProgress()),
+               Center(child: CalBurn())
+
+            ],),
+          ),
+
+>>>>>>> 1d8472b8fd8626c42d5b22675ff93f980a095374
           const SizedBox(height: 80.0),
           Row(
             children: <Widget>[
