@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' as math;
 
 class CalBurn extends StatefulWidget {
-  final double goalCompleted = 0.7;
+  final double goalCompleted = 0.4;
 
   @override
   _CalBurnState createState() => _CalBurnState();
@@ -13,7 +13,7 @@ class _CalBurnState extends State<CalBurn>
   AnimationController _radialProgressAnimationController;
   Animation<double> _progressAnimation;
   final Duration fadeInDuration = Duration(milliseconds: 500);
-  final Duration fillDuration = Duration(seconds: 2);
+  final Duration fillDuration = Duration(seconds: 3);
 
   double progressDegrees = 0;
   var count = 0;
@@ -44,8 +44,8 @@ class _CalBurnState extends State<CalBurn>
   Widget build(BuildContext context) {
     return CustomPaint(
       child: Container(
-        height: 189.0,
-        width: 189.0,
+        height: 200.0,
+        width: 200.0,
         padding: EdgeInsets.symmetric(vertical: 40.0),
         child: AnimatedOpacity(
           opacity: progressDegrees > 30 ? 1.0 : 0.0,

@@ -31,18 +31,6 @@ class _DashboardState extends State<Dashboard> {
 
   void testingFitKit() async {}
 
-//  void readAll() async {
-//    if (await FitKit.requestPermissions(DataType.values)) {
-//      for (DataType type in DataType.values) {
-//        final results = await FitKit.read(
-//          type,
-//          DateTime.now().subtract(Duration(days: 5)),
-//          DateTime.now(),
-//        );
-//        // print(results);
-//      }
-//    }
-//  }
 
   final TextStyle whiteText = TextStyle(color: Colors.white);
 
@@ -51,20 +39,35 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: _buildBody(context),
+
     );
   }
 
+
   Widget _buildBody(BuildContext context) {
+
     return SingleChildScrollView(
+
       padding: const EdgeInsets.all(16.0),
       child: Column(
+
         children: <Widget>[
           SizedBox(
             height: 60,
           ),
-          RadialProgress(),
+          Stack(children: <Widget>[
 
-          CalBurn(),
+            Align(
+              alignment: Alignment.topCenter,
+                child: RadialProgress(),
+            ),
+
+             CalBurn()
+
+          ],),
+
+
+
 
           const SizedBox(height: 80.0),
           Row(
@@ -77,7 +80,7 @@ class _DashboardState extends State<Dashboard> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.blue,
-                              blurRadius: 10.0,
+                              blurRadius: 5.0,
                             ),
                           ],
                           color: Colors.blue,
@@ -102,7 +105,7 @@ class _DashboardState extends State<Dashboard> {
                                       .display1
                                       .copyWith(
                                         color: Colors.white,
-                                        fontSize: 24.0,
+                                        fontSize: 22.0,
                                       ),
                                 ),
                                 trailing: Icon(
@@ -127,7 +130,7 @@ class _DashboardState extends State<Dashboard> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.green,
-                              blurRadius: 10.0,
+                              blurRadius: 5.0,
                             ),
                           ],
                           color: Colors.green,
@@ -183,7 +186,7 @@ class _DashboardState extends State<Dashboard> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.red,
-                              blurRadius: 10.0,
+                              blurRadius: 5.0,
                             ),
                           ],
                           color: Colors.red,
@@ -249,7 +252,7 @@ class _DashboardState extends State<Dashboard> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.pinkAccent,
-                              blurRadius: 10.0,
+                              blurRadius: 5.0,
                             ),
                           ],
                           color: Colors.pinkAccent,
@@ -277,8 +280,8 @@ class _DashboardState extends State<Dashboard> {
                                       .textTheme
                                       .display1
                                       .copyWith(
-                                        fontSize: 21.0,
-                                        color: Colors.black,
+                                        fontSize: 14.0,
+                                        color: Colors.white,
                                       ),
                                 ),
                                 trailing: Icon(
@@ -287,13 +290,13 @@ class _DashboardState extends State<Dashboard> {
                                 ),
                               ),
                               Column(children: <Widget>[
-                                Text(
-                                  'Workout',
-                                  style: whiteText,
-                                ),
+//                                Text(
+//                                  'Workout',
+//                                  style: whiteText,
+//                                ),
                                 Padding(
                                   padding:
-                                      const EdgeInsets.fromLTRB(110, 80, 5, 0),
+                                      const EdgeInsets.fromLTRB(110, 90, 5, 0),
                                   child: Icon(Icons.add_circle_outline),
                                 ),
                               ])
