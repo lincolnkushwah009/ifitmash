@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' as math;
 
 class CalBurn extends StatefulWidget {
-  final double goalCompleted = 0.4;
+  final double goalCompleted = 0.9;
 
   @override
   _CalBurnState createState() => _CalBurnState();
@@ -81,7 +81,7 @@ class RadialPainter extends CustomPainter {
 
     Paint progressPaint = Paint()
       ..shader = LinearGradient(
-          colors: [Colors.red, Colors.purple, Colors.purpleAccent])
+          colors: [Colors.red, Colors.deepOrange, Colors.yellow])
           .createShader(Rect.fromCircle(center: center, radius: size.width / 2))
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke

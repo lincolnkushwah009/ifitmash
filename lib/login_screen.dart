@@ -124,7 +124,7 @@ class LoginScreen extends StatelessWidget {
     return MaterialApp(
       title: 'Login Challenge',
       theme: ThemeData(
-          primarySwatch: Colors.blue
+          primarySwatch: Colors.amber
       ),
       home: LoginPage(),
     );

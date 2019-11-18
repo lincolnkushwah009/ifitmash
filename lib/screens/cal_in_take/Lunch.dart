@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:ifitmash/components/CalBurnCircle.dart';
 
 class Lunch extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Flutter Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: new MyHomePage(title: 'Lunch'),
+    return Scaffold(
+
+      body: new MyHomePage(),
     );
   }
 }
 
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
+//  MyHomePage({Key key, this.title}) : super(key: key);
+//  final String title;
 
   @override
   _MyHomePageState createState() => new _MyHomePageState();
@@ -63,14 +61,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(widget.title),
-      ),
+    return Scaffold(
+
       body: Container(
+
         child: Column(
+
           children: <Widget>[
+
             Padding(
+
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 onChanged: (value) {
@@ -79,9 +79,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 controller: editingController,
                 decoration: InputDecoration(
                     labelText: "Search",
-                    prefixIcon: Icon(Icons.search),
+
+
+                    prefixIcon: Icon(Icons.search,color: Colors.amber),
+
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(25.0)))),
+                        borderRadius: BorderRadius.all(Radius.circular(50.0)))),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey,
+                    blurRadius: 2,
+                  )
+                ]
+              ),
+              child: Divider(
+                color:Colors.grey,
+                height: 0.9,
               ),
             ),
             Expanded(

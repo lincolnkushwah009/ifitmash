@@ -83,7 +83,7 @@ class RegistrationScreen extends StatelessWidget {
     return MaterialApp(
       title: 'Register',
       theme: ThemeData(
-          primarySwatch: Colors.blue
+          primarySwatch: Colors.yellow
       ),
       home: LoginPage(),
     );
