@@ -33,8 +33,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
               stops: [0.1, 0.9],
               colors: [
                 // Colors are easy thanks to Flutter's Colors class.
-                Color(0xFFFFFF00),
-                Color(0xFFFFD600)
+                Color(0xFFEEEEEE),
+                Color(0xFF424242)
               ],
             ),
 

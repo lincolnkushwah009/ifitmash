@@ -7,7 +7,7 @@ class MorningSnack extends StatelessWidget {
     return new MaterialApp(
         title: 'Flutter Demo',
         theme: new ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.black,
        ),
       home: new MyHomePage(title: 'ListView with Search'),
     );

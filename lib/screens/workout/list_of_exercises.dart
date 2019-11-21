@@ -7,12 +7,8 @@ class ListOfExercises extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: new MyHomePage(),
+    return new Scaffold(
+      body: new MyHomePage(),
     );
   }
 }
@@ -76,27 +72,40 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Exercises"),
-      ),
+    return  Scaffold(
+//      appBar: AppBar(
+//        title:Text("Exercises"),
+//        backgroundColor: Colors.black,
+//      ),
       body: Container(
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                onChanged: (value) {
-                  filterSearchResults(value);
-                },
-                controller: editingController,
-                decoration: InputDecoration(
-                    labelText: "Search",
-                    prefixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(25.0)))),
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+                child: ClipRRect(
+                  borderRadius: new BorderRadius.circular(50.0),
+                  child: TextField(
+                    onChanged: (value) {
+                      filterSearchResults(value);
+                    },
+                    controller: editingController,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        filled: true,
+                        fillColor: Color.fromRGBO(222,222,222,100),
+                        contentPadding: EdgeInsets.only(left: 30, bottom: 0, top: 15, right: 0),
+
+                        hintText: "Search",
+                        prefixIcon: Icon(Icons.search),
+                    ),
+                  ),
+                ),
               ),
+
             ),
+            Divider(height:1),
+
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
@@ -109,9 +118,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         new MaterialPageRoute(
                             builder: (BuildContext context) =>
                             new ExerciseDetail()));
-
                     },
                     title: Text('${items[index]}'),
+                    trailing: Icon(Icons.add_circle_outline,color: Colors.black,),
+
                   );
                 },
               ),

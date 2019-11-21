@@ -122,9 +122,10 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Login Challenge',
       theme: ThemeData(
-          primarySwatch: Colors.amber
+          primarySwatch: Colors.blueGrey
       ),
       home: LoginPage(),
     );
@@ -167,8 +168,8 @@ class _LoginPageState extends State<LoginPage> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color(0xFFFFFF00),
-                      Color(0xFFFFD600)
+                      Color(0xFFEEEEEE),
+                      Color(0xFF424242)
                     ],
                   ),
                   borderRadius: BorderRadius.only(
@@ -302,8 +303,8 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              Color(0xFFFFFF00),
-                              Color(0xFFFFD600)
+                              Color(0xDD000000),
+                              Color(0xDD000000)
                             ],
                           ),
                           borderRadius: BorderRadius.all(
@@ -313,7 +314,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Center(
                         child: Text('Login'.toUpperCase(),
                           style: TextStyle(
-                              color: Colors.black,
+                              color: Colors.white,
                               fontWeight: FontWeight.bold
                           ),
                         ),

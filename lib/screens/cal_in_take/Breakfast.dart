@@ -7,7 +7,7 @@ class Breakfast extends StatelessWidget {
     return new MaterialApp(
 
       theme: new ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.black,
       ),
       home: new MyHomePage(title: 'Breakfast'),
     );

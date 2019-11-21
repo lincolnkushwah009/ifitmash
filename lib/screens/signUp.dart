@@ -81,9 +81,10 @@ class RegistrationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Register',
       theme: ThemeData(
-          primarySwatch: Colors.yellow
+          primarySwatch: Colors.black
       ),
       home: LoginPage(),
     );
@@ -123,8 +124,8 @@ class _LoginPageState extends State<LoginPage> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color(0xFFFFFF00),
-                      Color(0xFFFFD600)
+                      Color(0xDD000000),
+                      Color(0xDD000000)
                     ],
                   ),
                   borderRadius: BorderRadius.only(

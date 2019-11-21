@@ -17,8 +17,7 @@ class BldList extends StatelessWidget {
 
             child: InkWell(
               onTap: () {
-                Navigator.push(context,new MaterialPageRoute(builder: (context)=>Breakfast()));
-
+                Navigator.push(context,new MaterialPageRoute(builder: (context)=>Lunch()));
                 print('Breakfast');
               },
               child: ListTile(
@@ -32,7 +31,7 @@ class BldList extends StatelessWidget {
 
             child: InkWell(
               onTap: () {
-                Navigator.push(context,new MaterialPageRoute(builder: (context)=>MorningSnack()));
+                Navigator.push(context,new MaterialPageRoute(builder: (context)=>Lunch()));
 
                 print('Morning Snack');
               },
@@ -64,8 +63,7 @@ class BldList extends StatelessWidget {
           Card(
             child: InkWell(
               onTap: () {
-                Navigator.push(context,new MaterialPageRoute(builder: (context)=>EveningSnack()));
-
+                Navigator.push(context,new MaterialPageRoute(builder: (context)=>Lunch()));
                 print('Evening Snack');
               },
               child: ListTile(
@@ -79,8 +77,7 @@ class BldList extends StatelessWidget {
 
             child: InkWell(
               onTap: () {
-                Navigator.push(context,new MaterialPageRoute(builder: (context)=>Dinner()));
-
+                Navigator.push(context,new MaterialPageRoute(builder: (context)=>Lunch()));
                 print('Dinner');
               },
               child: ListTile(

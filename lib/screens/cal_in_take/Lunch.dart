@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'lunchdetails.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 
-=======
 import 'package:ifitmash/components/CalBurnCircle.dart';
-import 'package:http/http.dart' as http;
->>>>>>> 1d8472b8fd8626c42d5b22675ff93f980a095374
+
+
 class Lunch extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -92,8 +90,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 decoration: InputDecoration(
                     labelText: "Search",
 
-
-
                     prefixIcon: Icon(Icons.search,color: Colors.amber),
 
 
@@ -106,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey,
-                    blurRadius: 2,
+                    blurRadius: 1,
                   )
                 ]
               ),
@@ -115,9 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 0.9,
               ),
             ),
-            Align(
-                alignment: Alignment.centerRight,
-                child: Icon(Icons.add_circle_outline)),
+
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
@@ -130,9 +124,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           context,
                           new MaterialPageRoute(
                               builder: (BuildContext context) =>
-                              LunchDetails()));
-
-                    },
+                              LunchDetails()));},
+                    trailing: Icon(Icons.add_circle_outline,color: Colors.black,),
                   );
                 },
               ),

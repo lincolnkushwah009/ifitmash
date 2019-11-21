@@ -48,43 +48,30 @@ class _DashboardState extends State<Dashboard> {
 
     return SingleChildScrollView(
 
-      padding: const EdgeInsets.all(16.0),
-
-
+      padding: const EdgeInsets.all(20.0),
       child: Column(
-<<<<<<< HEAD
-
 
         children: <Widget>[
+
+          SizedBox(height: 40,),
           Stack(children: <Widget>[
 
-            RadialProgress(),
+            Container(
+              child: Center(
+                child: Stack(children: <Widget>[
+                  Container(padding: EdgeInsets.fromLTRB(0, 20, 0, 0),child: Center(child: RadialProgress())),
+                  Container(
+                      child: Center(child: CalBurn()))
 
-            CalBurn(),
+                ],),
+              ),
+            ),
 
           ],),
-=======
-        children: <Widget>[
-          Align(
-              alignment: Alignment.centerRight,
-              child: InkWell(child: Icon(Icons.info),onTap: (){
-              },
-              )
-          ),
-          SizedBox(
-            height: 60,
-          ),
 
-          Center(
-            child: Stack(children: <Widget>[
-              Center(child: RadialProgress()),
-               Center(child: CalBurn())
 
-            ],),
-          ),
 
->>>>>>> 1d8472b8fd8626c42d5b22675ff93f980a095374
-          const SizedBox(height: 80.0),
+          const SizedBox(height: 40.0),
           Row(
             children: <Widget>[
               Expanded(
@@ -104,7 +91,8 @@ class _DashboardState extends State<Dashboard> {
                             topRight: const Radius.circular(10.0),
                             bottomLeft: const Radius.circular(10.0),
                             bottomRight: const Radius.circular(10.0),
-                          )),
+                          )
+                      ),
                       height: 190,
                       child: GestureDetector(
                         child: FlatButton(
