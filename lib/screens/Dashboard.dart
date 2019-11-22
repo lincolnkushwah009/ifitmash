@@ -6,6 +6,7 @@ import 'package:ifitmash/screens/cal_in_take/BLDlist.dart';
 import 'package:ifitmash/screens/workout/list_of_exercises.dart';
 import 'package:ifitmash/components/CalBurnCircle.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
+import 'package:ifitmash/components/graph.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -314,29 +315,10 @@ class _DashboardState extends State<Dashboard> {
             height: 20,
           ),
 
-          ClipRRect(
-            borderRadius: new BorderRadius.circular(10.0),
-            child: Container(
-
-              height: 200,
-              width: 350,
-              child: Card(
-                elevation: 4,
-                color: Colors.white,
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: new Sparkline(
-                    data: data,
-
-                    fillMode: FillMode.below,
-                    lineColor: Color(0xffff6101),
-                    pointsMode: PointsMode.all,
-                    pointSize: 10.0,
-                  ),
-                ),
-              ),
-            ),
-          ),
+         Container(
+             height: 200,
+             width: 400,
+             child: Nutrition())
 
         ],
       ),
