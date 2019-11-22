@@ -52,28 +52,28 @@ class _RadialProgressState extends State<RadialProgress>
           duration: fadeInDuration,
           child: Column(
             children: <Widget>[
-
-              Text(
-                'STEPS COUNTS ',
-                style: TextStyle(fontSize: 15.0, letterSpacing: 1.2),
-              ),
-              SizedBox(
-                height: 6.0,
-              ),
-              Container(
-                height: 5.0,
-                width: 50.0,
-                decoration: BoxDecoration(
-                    color: Colors.purple,
-                    borderRadius: BorderRadius.all(Radius.circular(4.0))),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Text(
-                '1225',
-                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-              ),
+//
+//              Text(
+//                'STEPS COUNTS ',
+//                style: TextStyle(fontSize: 15.0, letterSpacing: 1.2),
+//              ),
+//              SizedBox(
+//                height: 6.0,
+//              ),
+//              Container(
+//                height: 5.0,
+//                width: 50.0,
+//                decoration: BoxDecoration(
+//                    color: Colors.purple,
+//                    borderRadius: BorderRadius.all(Radius.circular(4.0))),
+//              ),
+//              SizedBox(
+//                height: 10.0,
+//              ),
+//              Text(
+//                '1225',
+//                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+//              ),
 
             ],
           ),
@@ -95,7 +95,7 @@ class RadialPainter extends CustomPainter {
       ..color = Colors.black12
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 8.0;
+      ..strokeWidth = 10.0;
 
     Offset center = Offset(size.width / 2, size.height / 2);
     canvas.drawCircle(center, size.width / 2, paint);
@@ -106,7 +106,7 @@ class RadialPainter extends CustomPainter {
           .createShader(Rect.fromCircle(center: center, radius: size.width / 2))
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 8.0;
+      ..strokeWidth = 10.0;
 
     canvas.drawArc(
         Rect.fromCircle(center: center, radius: size.width / 2),
@@ -115,12 +115,6 @@ class RadialPainter extends CustomPainter {
         false,
         progressPaint);
 
-//    canvas.drawArc(
-//        Rect.fromCircle(center: center, radius: size.width / 1.4),
-//        math.radians(-90),
-//        math.radians(progressInDegrees, 180),
-//        false,
-//        progressPaint);
   }
 
 

@@ -6,6 +6,7 @@ import 'package:ifitmash/screens/cal_in_take/BLDlist.dart';
 import 'package:ifitmash/screens/workout/list_of_exercises.dart';
 import 'package:ifitmash/components/CalBurnCircle.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
+import 'package:ifitmash/screens/profile.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -13,12 +14,10 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  var data = [0.0, 1.0, 1.5, 2.0, 0.0, 0.0, -0.5, -1.0, -0.5, 0.0, ];
+  var data = [0.0, 1.0, 1.5, 2.0, 0.0, 0.0, -0.5, -1.0, -0.5, 0.0,];
 //  var data = [0.0,-2.0,3.5,-2.0,0.5,0.7,0.8,1.0,2.0,3.0,3.2];
 
   @override
-
-
   void read() async {
     final results = await FitKit.read(
       DataType.HEART_RATE,
@@ -29,7 +28,6 @@ class _DashboardState extends State<Dashboard> {
 
   void testingFitKit() async {}
 
-
   final TextStyle whiteText = TextStyle(color: Colors.white);
 
   @override
@@ -37,47 +35,72 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: _buildBody(context),
-
     );
   }
 
-
   Widget _buildBody(BuildContext context) {
-
     return SingleChildScrollView(
-
       padding: const EdgeInsets.all(20.0),
       child: Column(
-
         children: <Widget>[
-
-          SizedBox(height: 40,),
-
+          SizedBox(
+            height: 20,
+          ),
           Row(
             children: <Widget>[
-
-              Stack(children: <Widget>[
-                Container(padding: EdgeInsets.fromLTRB(20, 20, 0, 0),child: Center(child: RadialProgress())),
-                Container(child: Center(child: CalBurn())),
-
-              ],),
+              Stack(
+                children: <Widget>[
+                  Container(
+                      padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
+                      child: Center(child: RadialProgress())),
+                   Container(
+                     padding: EdgeInsets.fromLTRB(25, 25, 0, 0),
+                     child: GestureDetector(
+                       onTap: (){
+                         Navigator.push(
+                             context,
+                             new MaterialPageRoute(
+                                 builder: (context) => Profile()));
+                       },
+                       child: Container(
+                          width: 150.0,
+                          height: 150.0,
+                          decoration: new BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: new DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: new NetworkImage(
+                                      "https://i.pravatar.cc/100"),
+                              ),
+                          )),
+                     ),
+                   ),
+                  Container(
+                      child: Center(child: CalBurn())),
+                ],
+              ),
               SizedBox(width: 15),
               Column(
                 children: <Widget>[
                   Container(
-                    child: Text("Cal in Take "),
+                    width: 100,
+                    height: 50,
+                    child: Card(
+                        elevation: 8,
+                        child: Center
+                          (child: Text("Cal in Take "))),
                   ),
                   SizedBox(height: 20),
                   Container(
-                    child: Text("Cal Burn  "),
+                    width: 100,
+                    height: 50,
+                    child: Card(
+                        elevation: 8, child: Center(child: Text("Cal Burn"))),
                   ),
                 ],
               ),
             ],
           ),
-
-
-
           const SizedBox(height: 40.0),
           Row(
             children: <Widget>[
@@ -98,8 +121,7 @@ class _DashboardState extends State<Dashboard> {
                             topRight: const Radius.circular(10.0),
                             bottomLeft: const Radius.circular(10.0),
                             bottomRight: const Radius.circular(10.0),
-                          )
-                      ),
+                          )),
                       height: 190,
                       child: GestureDetector(
                         child: FlatButton(
@@ -114,9 +136,9 @@ class _DashboardState extends State<Dashboard> {
                                       .textTheme
                                       .display1
                                       .copyWith(
-                                    color: Colors.white,
-                                    fontSize: 22.0,
-                                  ),
+                                        color: Colors.white,
+                                        fontSize: 22.0,
+                                      ),
                                 ),
                                 trailing: Icon(
                                   FontAwesomeIcons.walking,
@@ -163,9 +185,9 @@ class _DashboardState extends State<Dashboard> {
                                       .textTheme
                                       .display1
                                       .copyWith(
-                                    color: Colors.white,
-                                    fontSize: 24.0,
-                                  ),
+                                        color: Colors.white,
+                                        fontSize: 24.0,
+                                      ),
                                 ),
                                 trailing: Icon(
                                   FontAwesomeIcons.heartbeat,
@@ -175,7 +197,7 @@ class _DashboardState extends State<Dashboard> {
                               Column(children: <Widget>[
                                 Padding(
                                   padding:
-                                  const EdgeInsets.fromLTRB(110, 20, 5, 0),
+                                      const EdgeInsets.fromLTRB(110, 20, 5, 0),
                                   child: Icon(Icons.add_circle_outline),
                                 ),
                               ])
@@ -209,8 +231,10 @@ class _DashboardState extends State<Dashboard> {
                       child: GestureDetector(
                         child: FlatButton(
                           onPressed: () {
-                            Navigator.push(context, new MaterialPageRoute
-                              (builder: (context) => BldList()));
+                            Navigator.push(
+                                context,
+                                new MaterialPageRoute(
+                                    builder: (context) => BldList()));
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,13 +246,13 @@ class _DashboardState extends State<Dashboard> {
                                       .textTheme
                                       .display1
                                       .copyWith(
-                                    color: Colors.white,
-                                    fontSize: 20.0,
-                                  ),
+                                        color: Colors.white,
+                                        fontSize: 20.0,
+                                      ),
                                 ),
                                 trailing: Padding(
                                   padding:
-                                  const EdgeInsets.fromLTRB(0, 10, 0, 30),
+                                      const EdgeInsets.fromLTRB(0, 10, 0, 30),
                                   child: Icon(
                                     FontAwesomeIcons.fire,
                                     color: Colors.white,
@@ -242,7 +266,7 @@ class _DashboardState extends State<Dashboard> {
                                 ),
                                 Padding(
                                   padding:
-                                  const EdgeInsets.fromLTRB(110, 10, 5, 0),
+                                      const EdgeInsets.fromLTRB(110, 10, 5, 0),
                                   child: Icon(Icons.add_circle_outline),
                                 ),
                               ])
@@ -270,22 +294,24 @@ class _DashboardState extends State<Dashboard> {
                       child: GestureDetector(
                         child: FlatButton(
                           onPressed: () {
-                            Navigator.push(context, new MaterialPageRoute(builder: (context) => ListOfExercises()));
+                            Navigator.push(
+                                context,
+                                new MaterialPageRoute(
+                                    builder: (context) => ListOfExercises()));
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               ListTile(
-
                                 title: Text(
                                   "Workout",
                                   style: Theme.of(context)
                                       .textTheme
                                       .display1
                                       .copyWith(
-                                    fontSize: 14.0,
-                                    color: Colors.white,
-                                  ),
+                                        fontSize: 14.0,
+                                        color: Colors.white,
+                                      ),
                                 ),
                                 trailing: Icon(
                                   FontAwesomeIcons.road,
@@ -293,10 +319,9 @@ class _DashboardState extends State<Dashboard> {
                                 ),
                               ),
                               Column(children: <Widget>[
-
                                 Padding(
                                   padding:
-                                  const EdgeInsets.fromLTRB(110, 90, 5, 0),
+                                      const EdgeInsets.fromLTRB(110, 90, 5, 0),
                                   child: Icon(Icons.add_circle_outline),
                                 ),
                               ])
@@ -313,11 +338,9 @@ class _DashboardState extends State<Dashboard> {
           SizedBox(
             height: 20,
           ),
-
           ClipRRect(
             borderRadius: new BorderRadius.circular(10.0),
             child: Container(
-
               height: 200,
               width: 350,
               child: Card(
@@ -327,7 +350,6 @@ class _DashboardState extends State<Dashboard> {
                   padding: EdgeInsets.all(8.0),
                   child: new Sparkline(
                     data: data,
-
                     fillMode: FillMode.below,
                     lineColor: Color(0xffff6101),
                     pointsMode: PointsMode.all,
@@ -337,7 +359,6 @@ class _DashboardState extends State<Dashboard> {
               ),
             ),
           ),
-
         ],
       ),
     );
