@@ -5,6 +5,7 @@ import 'package:ifitmash/components/StepCount.dart';
 import 'package:ifitmash/screens/cal_in_take/BLDlist.dart';
 import 'package:ifitmash/screens/workout/list_of_exercises.dart';
 import 'package:ifitmash/components/CalBurnCircle.dart';
+import 'package:flutter_sparkline/flutter_sparkline.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -12,12 +13,11 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  var data = [0.0, 1.0, 1.5, 2.0, 0.0, 0.0, -0.5, -1.0, -0.5, 0.0, ];
+//  var data = [0.0,-2.0,3.5,-2.0,0.5,0.7,0.8,1.0,2.0,3.0,3.2];
+
   @override
-//  void initState() {
-//    // TODO: implement initState
-//    read();
-////    readAll();
-//  }
+
 
   void read() async {
     final results = await FitKit.read(
@@ -25,8 +25,6 @@ class _DashboardState extends State<Dashboard> {
       DateTime.now().subtract(Duration(days: 5)),
       DateTime.now(),
     );
-    // print("jefbjefbjefj");
-    // print(results);
   }
 
   void testingFitKit() async {}
@@ -54,20 +52,29 @@ class _DashboardState extends State<Dashboard> {
         children: <Widget>[
 
           SizedBox(height: 40,),
-          Stack(children: <Widget>[
 
-            Container(
-              child: Center(
-                child: Stack(children: <Widget>[
-                  Container(padding: EdgeInsets.fromLTRB(0, 20, 0, 0),child: Center(child: RadialProgress())),
+          Row(
+            children: <Widget>[
+
+              Stack(children: <Widget>[
+                Container(padding: EdgeInsets.fromLTRB(20, 20, 0, 0),child: Center(child: RadialProgress())),
+                Container(child: Center(child: CalBurn())),
+
+              ],),
+              SizedBox(width: 15),
+              Column(
+                children: <Widget>[
                   Container(
-                      child: Center(child: CalBurn()))
-
-                ],),
+                    child: Text("Cal in Take "),
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    child: Text("Cal Burn  "),
+                  ),
+                ],
               ),
-            ),
-
-          ],),
+            ],
+          ),
 
 
 
@@ -82,7 +89,7 @@ class _DashboardState extends State<Dashboard> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.blue,
-                              blurRadius: 5.0,
+                              blurRadius: 2.0,
                             ),
                           ],
                           color: Colors.blue,
@@ -107,9 +114,9 @@ class _DashboardState extends State<Dashboard> {
                                       .textTheme
                                       .display1
                                       .copyWith(
-                                        color: Colors.white,
-                                        fontSize: 22.0,
-                                      ),
+                                    color: Colors.white,
+                                    fontSize: 22.0,
+                                  ),
                                 ),
                                 trailing: Icon(
                                   FontAwesomeIcons.walking,
@@ -133,7 +140,7 @@ class _DashboardState extends State<Dashboard> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.green,
-                              blurRadius: 5.0,
+                              blurRadius: 2.0,
                             ),
                           ],
                           color: Colors.green,
@@ -156,9 +163,9 @@ class _DashboardState extends State<Dashboard> {
                                       .textTheme
                                       .display1
                                       .copyWith(
-                                        color: Colors.white,
-                                        fontSize: 24.0,
-                                      ),
+                                    color: Colors.white,
+                                    fontSize: 24.0,
+                                  ),
                                 ),
                                 trailing: Icon(
                                   FontAwesomeIcons.heartbeat,
@@ -168,7 +175,7 @@ class _DashboardState extends State<Dashboard> {
                               Column(children: <Widget>[
                                 Padding(
                                   padding:
-                                      const EdgeInsets.fromLTRB(110, 20, 5, 0),
+                                  const EdgeInsets.fromLTRB(110, 20, 5, 0),
                                   child: Icon(Icons.add_circle_outline),
                                 ),
                               ])
@@ -189,7 +196,7 @@ class _DashboardState extends State<Dashboard> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.red,
-                              blurRadius: 5.0,
+                              blurRadius: 2.0,
                             ),
                           ],
                           color: Colors.red,
@@ -201,7 +208,10 @@ class _DashboardState extends State<Dashboard> {
                       height: 120,
                       child: GestureDetector(
                         child: FlatButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, new MaterialPageRoute
+                              (builder: (context) => BldList()));
+                          },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
@@ -212,13 +222,13 @@ class _DashboardState extends State<Dashboard> {
                                       .textTheme
                                       .display1
                                       .copyWith(
-                                        color: Colors.white,
-                                        fontSize: 20.0,
-                                      ),
+                                    color: Colors.white,
+                                    fontSize: 20.0,
+                                  ),
                                 ),
                                 trailing: Padding(
                                   padding:
-                                      const EdgeInsets.fromLTRB(0, 10, 0, 30),
+                                  const EdgeInsets.fromLTRB(0, 10, 0, 30),
                                   child: Icon(
                                     FontAwesomeIcons.fire,
                                     color: Colors.white,
@@ -232,16 +242,8 @@ class _DashboardState extends State<Dashboard> {
                                 ),
                                 Padding(
                                   padding:
-                                      const EdgeInsets.fromLTRB(110, 10, 5, 0),
-                                  child: InkWell(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            new MaterialPageRoute(
-                                                builder: (context) =>
-                                                    BldList()));
-                                      },
-                                      child: Icon(Icons.add_circle_outline)),
+                                  const EdgeInsets.fromLTRB(110, 10, 5, 0),
+                                  child: Icon(Icons.add_circle_outline),
                                 ),
                               ])
                             ],
@@ -255,7 +257,7 @@ class _DashboardState extends State<Dashboard> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.pinkAccent,
-                              blurRadius: 5.0,
+                              blurRadius: 2.0,
                             ),
                           ],
                           color: Colors.pinkAccent,
@@ -268,38 +270,33 @@ class _DashboardState extends State<Dashboard> {
                       child: GestureDetector(
                         child: FlatButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                new MaterialPageRoute(
-                                    builder: (context) => ListOfExercises()));
+                            Navigator.push(context, new MaterialPageRoute(builder: (context) => ListOfExercises()));
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               ListTile(
+
                                 title: Text(
                                   "Workout",
                                   style: Theme.of(context)
                                       .textTheme
                                       .display1
                                       .copyWith(
-                                        fontSize: 14.0,
-                                        color: Colors.white,
-                                      ),
+                                    fontSize: 14.0,
+                                    color: Colors.white,
+                                  ),
                                 ),
                                 trailing: Icon(
                                   FontAwesomeIcons.road,
-                                  color: Colors.black,
+                                  color: Colors.white,
                                 ),
                               ),
                               Column(children: <Widget>[
-//                                Text(
-//                                  'Workout',
-//                                  style: whiteText,
-//                                ),
+
                                 Padding(
                                   padding:
-                                      const EdgeInsets.fromLTRB(110, 90, 5, 0),
+                                  const EdgeInsets.fromLTRB(110, 90, 5, 0),
                                   child: Icon(Icons.add_circle_outline),
                                 ),
                               ])
@@ -312,7 +309,35 @@ class _DashboardState extends State<Dashboard> {
                 ),
               )
             ],
-          )
+          ),
+          SizedBox(
+            height: 20,
+          ),
+
+          ClipRRect(
+            borderRadius: new BorderRadius.circular(10.0),
+            child: Container(
+
+              height: 200,
+              width: 350,
+              child: Card(
+                elevation: 4,
+                color: Colors.white,
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: new Sparkline(
+                    data: data,
+
+                    fillMode: FillMode.below,
+                    lineColor: Color(0xffff6101),
+                    pointsMode: PointsMode.all,
+                    pointSize: 10.0,
+                  ),
+                ),
+              ),
+            ),
+          ),
+
         ],
       ),
     );

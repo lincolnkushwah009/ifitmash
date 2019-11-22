@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'Dashboard.dart';
-import 'landscape.dart';
+import 'Nutrition.dart';
 import 'profile.dart';
+import 'Workout.dart';
 
 class bottomNavigationBar  extends StatefulWidget {
   @override
@@ -14,7 +15,8 @@ class _bottomNavigationBarState extends State<bottomNavigationBar > {
   int _selectedPage = 0;
   final _pageOptions = [
     Dashboard(),
-    Landscape(),
+    Nutrition(),
+    Workout(),
     Profile()
 
   ];
@@ -38,8 +40,12 @@ class _bottomNavigationBarState extends State<bottomNavigationBar > {
             title: Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.assignment),
-            title: Text('My Plans'),
+            icon: Icon(Icons.fastfood),
+            title: Text('Nutrition'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.accessibility),
+            title: Text('Workout'),
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.person),
