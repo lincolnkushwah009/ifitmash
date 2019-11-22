@@ -81,36 +81,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
             Padding(
 
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                onChanged: (value) {
-                  filterSearchResults(value);
-                },
-                controller: editingController,
-                decoration: InputDecoration(
-                    labelText: "Search",
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+                child: ClipRRect(
+                  borderRadius: new BorderRadius.circular(50.0),
+                  child: TextField(
+                    onChanged: (value) {
+                      filterSearchResults(value);
+                    },
+                    controller: editingController,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      filled: true,
+                      fillColor: Color.fromRGBO(222,222,222,100),
+                      contentPadding: EdgeInsets.only(left: 30, bottom: 0, top: 15, right: 0),
 
-                    prefixIcon: Icon(Icons.search,color: Colors.amber),
-
-
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(50.0)))),
+                      hintText: "Search",
+                      prefixIcon: Icon(Icons.search),
+                    ),
+                  ),
+                ),
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    blurRadius: 1,
-                  )
-                ]
-              ),
-              child: Divider(
-                color:Colors.grey,
-                height: 0.9,
-              ),
-            ),
+            Divider(height:1),
 
             Expanded(
               child: ListView.builder(
