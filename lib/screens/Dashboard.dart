@@ -5,8 +5,8 @@ import 'package:ifitmash/components/StepCount.dart';
 import 'package:ifitmash/screens/cal_in_take/BLDlist.dart';
 import 'package:ifitmash/screens/workout/list_of_exercises.dart';
 import 'package:ifitmash/components/CalBurnCircle.dart';
-import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:ifitmash/screens/profile.dart';
+import 'package:ifitmash/components/graph.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -14,8 +14,6 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  var data = [0.0, 1.0, 1.5, 2.0, 0.0, 0.0, -0.5, -1.0, -0.5, 0.0,];
-//  var data = [0.0,-2.0,3.5,-2.0,0.5,0.7,0.8,1.0,2.0,3.0,3.2];
 
   @override
   void read() async {
@@ -338,27 +336,12 @@ class _DashboardState extends State<Dashboard> {
           SizedBox(
             height: 20,
           ),
-          ClipRRect(
-            borderRadius: new BorderRadius.circular(10.0),
-            child: Container(
-              height: 200,
-              width: 350,
-              child: Card(
-                elevation: 4,
-                color: Colors.white,
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: new Sparkline(
-                    data: data,
-                    fillMode: FillMode.below,
-                    lineColor: Color(0xffff6101),
-                    pointsMode: PointsMode.all,
-                    pointSize: 10.0,
-                  ),
-                ),
-              ),
-            ),
-          ),
+
+         Container(
+             height: 200,
+             width: 400,
+             child: Nutrition())
+
         ],
       ),
     );

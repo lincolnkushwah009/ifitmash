@@ -53,7 +53,7 @@ class _NutritionState extends State<Nutrition> {@override
 Widget build(BuildContext context) {
   return Scaffold(
       body: Container(
-        height: 200,
+          height: 200,
           width: 400,
           child: Card(
               child: SfCartesianChart(
@@ -64,23 +64,23 @@ Widget build(BuildContext context) {
                     LineSeries<SalesData, String>(
                       // Bind data source
                         dataSource:  <SalesData>[
-                          SalesData('Jan', 35),
-                          SalesData('Feb', 28),
+                          SalesData('Jan', 20),
+                          SalesData('Feb', 15),
                           SalesData('Mar', 34),
-                          SalesData('Apr', 32),
-                          SalesData('May', 40)
+                          SalesData('Apr', 25),
+                          SalesData('May', 65)
                         ],
                         xValueMapper: (SalesData sales, _) => sales.year,
                         yValueMapper: (SalesData sales, _) => sales.sales,
-                  dataLabelSettings: DataLabelSettings(isVisible: true)
+                        dataLabelSettings: DataLabelSettings(isVisible: true)
                     ),
                     LineSeries<SalesData,String>(
                         dataSource:  <SalesData>[
-                          SalesData('Jan', 40),
-                          SalesData('Feb', 55),
-                          SalesData('Mar', 65),
+                          SalesData('Jan', 0),
+                          SalesData('Feb', 40),
+                          SalesData('Mar', 38),
                           SalesData('Apr', 60),
-                          SalesData('May', 45)
+                          SalesData('May', 60)
                         ],
                         xValueMapper: (SalesData sales, _) => sales.year,
                         yValueMapper: (SalesData sales, _) => sales.sales,

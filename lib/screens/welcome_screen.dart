@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ifitmash/login_screen.dart';
-import 'signUp.dart';
+import 'package:ifitmash/login_with_email.dart';
+import 'Login_With_Number.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import '../components/rounded_button.dart';
+
 
 class WelcomeScreen extends StatefulWidget {
   static String id='welcome-screen';
@@ -67,16 +68,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
               SizedBox(
                 height: 48.0
               ),
-              RoundedButton(title: 'Log In',
+              RoundedButton(title: 'Login With Email',
               color: Colors.black,
               onpressed: (){
-                Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginScreen())); },
+                Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginWithEmail()));
+                },
               ),
               RoundedButton(
-                title: 'Register',
+                title: 'Login With Number',
                 color: Colors.black,
                 onpressed: (){
-                  Navigator.push(context,new MaterialPageRoute(builder: (context)=>RegistrationScreen()));
+                  Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginWithNumber()));
                 },
               )
             ],
