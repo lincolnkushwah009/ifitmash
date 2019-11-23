@@ -1,19 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:dropdown_formfield/dropdown_formfield.dart';
+import 'package:ifitmash/components/graph.dart';
 
-
-
-class ExerciseDetail extends StatelessWidget {
+class ExerciseDetail extends StatefulWidget {
   // Movie object to handle.
+  @override
+  _ExerciseDetailState createState() => _ExerciseDetailState();
+}
+class _ExerciseDetailState extends State<ExerciseDetail> {
+  String _myActivity;
+  String _myActivityResult;
+  final formKey = new GlobalKey<FormState>();
 
+  @override
+  void initState() {
+    super.initState();
+    _myActivity = '';
+    _myActivityResult = '';
+  }
+
+  _saveForm() {
+    var form = formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      setState(() {
+        _myActivityResult = _myActivity;
+      });
+    }
+  }
 
   // Constructor for the class.
-
+  var sets = [
+    "1",
+    "2",
+    "3",
+    "4"
+  ];
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
 
+
         appBar: new AppBar(
+
           iconTheme: IconThemeData(
             color: Colors.black, //change your color here
           ),
@@ -45,18 +75,66 @@ class ExerciseDetail extends StatelessWidget {
                           Container(
                             child: ClipRRect(
                               borderRadius: new BorderRadius.circular(10.0),
-                              child: Container(
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      contentPadding: EdgeInsets.only(left: 10, bottom: 15, top: 15, right: 15),
-                                      filled: true,
-                                      fillColor: Color.fromRGBO(222,222,222,100),
-                                      hintText: 'Slow'
-                                  ),
+                              child: Form(
+                                key: formKey,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      padding: EdgeInsets.all(16.0),
+                                      child: DropDownFormField(
+                                        titleText: 'My Sets',
+                                        hintText: 'Please choose one',
+                                        value: _myActivity,
+                                        onSaved: (value) {
+                                          setState(() {
+                                            _myActivity = value;
+                                          });
+                                        },
+                                        onChanged: (value) {
+                                          setState(() {
+                                            _myActivity = value;
+                                          });
+                                        },
+                                        dataSource: [
+                                          {
+                                            "display": "1",
+                                            "value": "Running",
+                                          },
+                                          {
+                                            "display": "2",
+                                            "value": "Climbing",
+                                          },
+                                          {
+                                            "display": "3",
+                                            "value": "Walking",
+                                          },
+                                          {
+                                            "display": "4",
+                                            "value": "Swimming",
+                                          },
 
+                                        ],
+                                        textField: 'display',
+                                        valueField: 'value',
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.all(8),
+                                      child: RaisedButton(
+                                        child: Text('Add'),
+                                        onPressed: (){
+                                          Navigator.push(context, new MaterialPageRoute(builder: (context) => Nutrition()));
+                                        },
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.all(16),
+                                      child: Text(_myActivityResult),
+                                    )
+                                  ],
                                 ),
-                              ),
+                              )
                             ),
                           ),
                         SizedBox(
@@ -168,7 +246,7 @@ class ExerciseDetail extends StatelessWidget {
                                   )
                               ),
                               child: Center(
-                                child: Text('Track'.toUpperCase(),
+                                child: Text('Add'.toUpperCase(),
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold
