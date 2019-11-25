@@ -35,8 +35,8 @@ class _ProfileState extends State<Profile> {
                 child: ListTile(
                   leading:ClipRRect(
                     borderRadius: BorderRadius.circular(50),
-                      child: Image.network(
-                        'https://i.pravatar.cc/100',
+                      child: Image.asset(
+                        "assets/image/elon.jpeg",
                       ),
                     ),
                   title: Text(

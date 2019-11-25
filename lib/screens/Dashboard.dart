@@ -7,6 +7,7 @@ import 'package:ifitmash/screens/workout/list_of_exercises.dart';
 import 'package:ifitmash/components/CalBurnCircle.dart';
 import 'package:ifitmash/screens/profile.dart';
 import 'package:ifitmash/components/graph.dart';
+import 'package:ifitmash/about.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -41,12 +42,24 @@ class _DashboardState extends State<Dashboard> {
       padding: const EdgeInsets.all(20.0),
       child: Column(
         children: <Widget>[
+          Padding(
+            padding: EdgeInsets.fromLTRB(350, 0, 0.0, 0),
+            child: InkWell(child: Icon(Icons.info,size: 30,),onTap: (){
+              Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => AboutApp()));
+            },),
+          ),
           SizedBox(
             height: 20,
           ),
           Row(
+
             children: <Widget>[
+
               Stack(
+
                 children: <Widget>[
                   Container(
                       padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
@@ -67,8 +80,7 @@ class _DashboardState extends State<Dashboard> {
                               shape: BoxShape.circle,
                               image: new DecorationImage(
                                   fit: BoxFit.fill,
-                                  image: new NetworkImage(
-                                      "https://i.pravatar.cc/100"),
+                                  image: new AssetImage("assets/image/elon.jpeg"),
                               ),
                           )),
                      ),

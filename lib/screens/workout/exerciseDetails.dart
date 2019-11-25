@@ -83,7 +83,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                                     Container(
                                       padding: EdgeInsets.all(16.0),
                                       child: DropDownFormField(
-                                        titleText: 'My Sets',
+                                        titleText: 'Enter no. of sets',
                                         hintText: 'Please choose one',
                                         value: _myActivity,
                                         onSaved: (value) {
@@ -122,7 +122,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                                     Container(
                                       padding: EdgeInsets.all(8),
                                       child: RaisedButton(
-                                        child: Text('Add'),
+                                        child: Text('GO'),
                                         onPressed: (){
                                           Navigator.push(context, new MaterialPageRoute(builder: (context) => Nutrition()));
                                         },
@@ -140,94 +140,6 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                         SizedBox(
                           height: 20,
                         ),
-                          Container(
-                            child: ClipRRect(
-                              borderRadius: new BorderRadius.circular(10.0),
-                              child: Container(
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      contentPadding: EdgeInsets.only(left: 10, bottom: 15, top: 15, right: 15),
-                                      filled: true,
-                                      fillColor: Color.fromRGBO(222,222,222,100),
-                                      hintText: 'Time',
-                                      suffixText: "Min",
-                                      suffixStyle: TextStyle(
-                                          color: Colors.black
-                                      )
-                                  ),
-
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            child: ClipRRect(
-                              borderRadius: new BorderRadius.circular(10.0),
-                              child: Container(
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      contentPadding: EdgeInsets.only(left: 10, bottom: 15, top: 15, right: 15),
-                                      filled: true,
-                                      fillColor: Color.fromRGBO(222,222,222,100),
-                                      hintText: 'Distance',
-                                      suffixText: "Km",
-                                      suffixStyle: TextStyle(
-                                          color: Colors.black
-                                      )
-                                  ),
-
-                                ),
-                              ),
-                            ),
-                          ),
-
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                                children: <Widget>[
-                                  Expanded(
-                                      child: Divider()
-                                  ),
-
-                                  Text("OR"),
-
-                                  Expanded(
-                                      child: Divider()
-                                  ),
-                                ]
-                            ),
-                          ),
-
-                          Container(
-                            child: ClipRRect(
-                              borderRadius: new BorderRadius.circular(10.0),
-                              child: Container(
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      contentPadding: EdgeInsets.only(left: 10, bottom: 15, top: 15, right: 15),
-                                      filled: true,
-                                      fillColor: Color.fromRGBO(222,222,222,100),
-                                      hintText: 'Enter calories burnt directly',
-                                      suffixText: "Cal",
-                                      suffixStyle: TextStyle(
-                                          color: Colors.black
-                                      )
-                                  ),
-
-                                ),
-                              ),
-                            ),
-                          ),
-
-                          SizedBox(
-                            height: 40,
-                          ),
 
                           InkWell(
                             onTap: (){
@@ -246,7 +158,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                                   )
                               ),
                               child: Center(
-                                child: Text('Add'.toUpperCase(),
+                                child: Text('GO'.toUpperCase(),
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold
@@ -255,7 +167,6 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                               ),
                             ),
                           ),
-
                         ],
                       ),
                     ),
