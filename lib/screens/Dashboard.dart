@@ -39,11 +39,11 @@ class _DashboardState extends State<Dashboard> {
 
   Widget _buildBody(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(10.0),
       child: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.fromLTRB(350, 0, 0.0, 0),
+            padding: EdgeInsets.fromLTRB(300, 0, 0.0, 0),
             child: InkWell(child: Icon(Icons.info,size: 30,),onTap: (){
               Navigator.push(
                   context,
@@ -351,9 +351,62 @@ class _DashboardState extends State<Dashboard> {
           ),
 
          Container(
+
              height: 200,
              width: 400,
-             child: Nutrition())
+             child: Nutrition()),
+
+
+          SizedBox(height: 30),
+
+          Container(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+
+                      child: Text("weight",
+                        style: TextStyle(
+                          fontSize: 20
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 230),
+                    Container(
+                      child: Text("C State"
+                      ),
+                    ),
+                  ],
+                ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+            child: Row(
+              children: <Widget>[
+
+                const Expanded(
+
+                  child: TextField(
+                    decoration: InputDecoration(
+
+                        labelText: 'Add Weight',
+                        border: OutlineInputBorder()),
+                    keyboardType: TextInputType.number,
+
+                  ),
+
+                ),
+                SizedBox(width: 10,),
+
+                RaisedButton(child: Text("Save"),
+                  onPressed: (){},
+                  color: Colors.black,
+                  textColor: Colors.white,
+                  splashColor: Colors.grey,
+                )
+              ],
+            ),
+          ),
+
 
         ],
       ),
