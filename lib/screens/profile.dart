@@ -171,10 +171,18 @@ class _ProfileState extends State<Profile> {
 
                 ),
 
-              )
+              ),
             ],
           ),
         ),
+
+        SizedBox(height: 20),
+        RaisedButton(child: Text("Save"),
+          onPressed: (){},
+          color: Colors.black,
+          textColor: Colors.white,
+          splashColor: Colors.grey,
+        )
 
 
       ]),

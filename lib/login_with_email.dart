@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ifitmash/screens/Dashboard.dart';
+import 'package:ifitmash/screens/bottomNavigationBar .dart';
 import 'package:ifitmash/screens/Login_With_Number.dart';
 
 
@@ -135,7 +135,7 @@ class _EmailLoginState extends State<EmailLogin> {
 
                     InkWell(
                       onTap: (){
-                        Navigator.push(context,new MaterialPageRoute(builder: (context)=>Dashboard()));
+                        Navigator.push(context,new MaterialPageRoute(builder: (context)=>bottomNavigationBar()));
                       },
                       child: Container(
                         height: 45,
