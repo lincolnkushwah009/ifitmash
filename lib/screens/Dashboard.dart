@@ -82,7 +82,8 @@ class _DashboardState extends State<Dashboard> {
                                   fit: BoxFit.fill,
                                   image: new AssetImage("assets/image/elon.jpeg"),
                               ),
-                          )),
+                          )
+                       ),
                      ),
                    ),
                   Container(
