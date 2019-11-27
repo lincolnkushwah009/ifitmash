@@ -297,35 +297,6 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
                 children: <Widget>[
                   SizedBox(
                     width: 80,
-                    height: 40,
-                    child: RaisedButton(child: Text("GO"),
-                      onPressed: ()
-                      async {
-
-                        setState(() => isLoading = true);
-                        var res = await _loginUser(
-                            _OTPController.text);
-                        setState(() => isLoading = false);
-
-                        JsonUser user = JsonUser.fromJson(res);
-
-                        if (user != null) {
-                          Navigator.of(context).push(
-                              new MaterialPageRoute(
-                                  builder: (context) =>
-                                      bottomNavigationBar()));
-                          print(user);
-                        } else {
-                          Scaffold.of(context).showSnackBar(SnackBar(
-                              content: Text("incorrect OTP")));
-                        }
-
-                      },
-
-                      color: Colors.black,
-                      textColor: Colors.white,
-                      splashColor: Colors.grey,
-                    ),
                   ),
                   _otpKeyboardInputButton(
                       label: "0",
@@ -487,26 +458,13 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
             _secondDigit.toString() +
             _thirdDigit.toString() +
             _fourthDigit.toString() + _fifthDigit.toString();
+        Navigator.of(context).push(new MaterialPageRoute(builder: (context) => new bottomNavigationBar()));
+        print("fdnbkjfbfdfifgbidbfids");
+
         // final otp is this.
         // TODO post api on verify otp
         // TODO if api fails _first to _f digit set null.
-        _loginUser(otp)
-        async {
-          setState(() => isLoading = true);
 
-          var res = await _loginUser(
-              _OTPController.text);
-          setState(() => isLoading = false);
-          JsonUser user = JsonUser.fromJson(res);
-          if (user != null) {
-            Navigator.of(context).push(new MaterialPageRoute(builder: (context) => new bottomNavigationBar()));
-            print(user);
-          } else {
-            Scaffold.of(context).showSnackBar(SnackBar(
-                content:
-                Text("incorrect OTP")));
-          }
-        }// Verify your otp by here. API call
       }
     });
   }
@@ -521,6 +479,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
   }
 
   void clearOtp() {
+    _fifthDigit= null;
     _fourthDigit = null;
     _thirdDigit = null;
     _secondDigit = null;
