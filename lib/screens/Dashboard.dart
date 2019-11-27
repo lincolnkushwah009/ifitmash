@@ -93,20 +93,46 @@ class _DashboardState extends State<Dashboard> {
                 children: <Widget>[
                   Container(
                     child: Text(
-                      "calorie Burned",
-                      style: TextStyle(fontSize: 20),
+                      "Calorie Burned",
+                      style: TextStyle(fontSize: 19,
+                      fontWeight: FontWeight.bold,
+                      ),
+
                     ),
                   ),
-
-//                  ListTile(
-//                    title: Text("Group Name"),
-//                  ),
-
-                  SizedBox(height: 30),
                   Container(
                     child: Text(
-                      "calorie In Take",
-                      style: TextStyle(fontSize: 20),
+                      "480",
+                      style: TextStyle(fontSize: 18,
+                          color: Colors.red,
+
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+
+                  Container(
+                    height: 2.0,
+                    width: 80.0,
+                    decoration: BoxDecoration(
+                        color: Colors.purple,
+                        borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    child: Text(
+                      "Calorie In Take",
+                      style: TextStyle(fontSize: 19,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    child: Text(
+                      "2,000 ",
+                      style: TextStyle(fontSize: 19
+                          ,color: Colors.purple
+                      ),
                     ),
                   ),
                 ],
