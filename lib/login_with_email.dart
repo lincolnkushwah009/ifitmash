@@ -108,7 +108,7 @@ class _EmailLoginState extends State<EmailLogin> {
                     end: Alignment.bottomCenter,
                     colors: [
                       Color(0xFFEEEEEE),
-                      Color(0xFF424242)
+                      Color(0xDD000000)
                     ],
                   ),
                   borderRadius: BorderRadius.only(
@@ -211,7 +211,7 @@ class _EmailLoginState extends State<EmailLogin> {
                               Navigator.of(context).push(
                                   new MaterialPageRoute(
                                       builder: (context) =>
-                                      new Otp()));
+                                      new BottomNavigationBar()));
                               print(user);
                             } else {
                               Scaffold.of(context).showSnackBar(SnackBar(

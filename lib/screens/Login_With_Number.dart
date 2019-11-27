@@ -104,7 +104,7 @@ class _NumberLoginState extends State<NumberLogin> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color(0xDD000000),
+                      Color(0xFFEEEEEE),
                       Color(0xDD000000)
                     ],
                   ),
@@ -175,7 +175,7 @@ class _NumberLoginState extends State<NumberLogin> {
                           ]
                       ),
                       child: TextFormField(
-                        keyboardType: TextInputType.emailAddress,
+                        keyboardType: TextInputType.number,
                         controller: _emailController,
                         decoration: InputDecoration(
                           border: InputBorder.none,

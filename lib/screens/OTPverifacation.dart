@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart' as prefix0;
 import 'package:ifitmash/components/JsonUser.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ifitmash/screens/bottomNavigationBar.dart';
-import 'package:sms_autofill/sms_autofill.dart';
+
 
 class Otp extends StatefulWidget {
   final String email;
@@ -294,8 +295,37 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  new SizedBox(
-                    width: 80.0,
+                  SizedBox(
+                    width: 80,
+                    height: 40,
+                    child: RaisedButton(child: Text("GO"),
+                      onPressed: ()
+                      async {
+
+                        setState(() => isLoading = true);
+                        var res = await _loginUser(
+                            _OTPController.text);
+                        setState(() => isLoading = false);
+
+                        JsonUser user = JsonUser.fromJson(res);
+
+                        if (user != null) {
+                          Navigator.of(context).push(
+                              new MaterialPageRoute(
+                                  builder: (context) =>
+                                      bottomNavigationBar()));
+                          print(user);
+                        } else {
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text("incorrect OTP")));
+                        }
+
+                      },
+
+                      color: Colors.black,
+                      textColor: Colors.white,
+                      splashColor: Colors.grey,
+                    ),
                   ),
                   _otpKeyboardInputButton(
                       label: "0",
@@ -463,8 +493,6 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
         _loginUser(otp)
         async {
           setState(() => isLoading = true);
-
-          await SmsAutoFill().listenForCode;
 
           var res = await _loginUser(
               _OTPController.text);
