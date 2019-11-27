@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:ifitmash/screens/bottomNavigationBar .dart';
 import 'package:ifitmash/screens/Login_With_Number.dart';
 import 'screens/bottomNavigationBar .dart';
-
+import 'package:email_validator/email_validator.dart';
 
 
 class LoginWithEmail extends StatelessWidget {
@@ -25,7 +25,7 @@ class EmailLogin extends StatefulWidget {
 }
 
 class _EmailLoginState extends State<EmailLogin> {
-
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -119,24 +119,42 @@ class _EmailLoginState extends State<EmailLogin> {
                             )
                           ]
                       ),
-                      child: TextField(
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          icon: Icon(Icons.email,
-                            color: Colors.grey,
+                      child: Form(
+                        key: _formKey,
+                        child: TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          validator: (val) => !EmailValidator.validate(val, true)
+                              ? 'please provide a valid email'
+                              : null,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            icon: Icon(Icons.email,
+
+                              color: Colors.grey,
+                            ),
+                            hintText: 'Email',
+
                           ),
-                          hintText: 'Email',
+
                         ),
                       ),
+
                     ),
-
-
                     Spacer(),
-
                     InkWell(
                       onTap: (){
-                        Navigator.push(context,new MaterialPageRoute(builder: (context)=>bottomNavigationBar()));
+                        if (_formKey.currentState.validate()) {
+
+                          if (_formKey != null) {
+                            Navigator.of(context).push(
+                                new MaterialPageRoute(
+                                    builder: (context) =>
+                                    new bottomNavigationBar()));
+                          } else {
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                                content: Text("incorrect email")));
+                          }
+                        }
                       },
                       child: Container(
                         height: 45,

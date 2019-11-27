@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ifitmash/login_with_email.dart';
 import 'package:ifitmash/screens/OTPverifacation.dart';
-
-
-
 class LoginWithNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,30 +12,24 @@ class LoginWithNumber extends StatelessWidget {
     );
   }
 }
-
 class NumberLogin extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _NumberLoginState();
   }
 }
-
 class _NumberLoginState extends State<NumberLogin> {
-
-
   @override
   void initState() {
     SystemChrome.setEnabledSystemUIOverlays([]);
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         child: Column(
           children: <Widget>[
-
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height/2.5,
@@ -67,7 +58,6 @@ class _NumberLoginState extends State<NumberLogin> {
                     ),
                   ),
                   Spacer(),
-
                   Align(
                     alignment: Alignment.bottomRight,
                     child: Padding(
@@ -91,8 +81,6 @@ class _NumberLoginState extends State<NumberLogin> {
                 ],
               ),
             ),
-
-
             Flexible(
               child: Container(
                 height: MediaQuery.of(context).size.height/2,
@@ -128,10 +116,7 @@ class _NumberLoginState extends State<NumberLogin> {
                         ),
                       ),
                     ),
-
-
                     Spacer(),
-
                     InkWell(
                       onTap: (){
                         Navigator.push(context,new MaterialPageRoute(builder: (context)=>Otp()));
@@ -164,7 +149,6 @@ class _NumberLoginState extends State<NumberLogin> {
                 ),
               ),
             )
-
           ],
         ),
       ),

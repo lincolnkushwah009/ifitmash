@@ -18,15 +18,13 @@ class SalesData {
 Widget build(BuildContext context) {
   return Scaffold(
       body: Center(
+
           child: Container(
               child: SfCartesianChart(
 
-                  primaryXAxis: CategoryAxis(),
-// Chart title
-                  title: ChartTitle(text: 'Half yearly sales analysis'),
-// Enable legend
-                  legend: Legend(isVisible: true),
-// Enable tooltip
+                  primaryXAxis: CategoryAxis(), // Chart title
+                  title: ChartTitle(text: 'Half yearly sales analysis'), // Enable legend
+                  legend: Legend(isVisible: true), // Enable tooltip
                   tooltipBehavior: TooltipBehavior(enable: true),
 
                   series: <LineSeries<SalesData, String>>[
