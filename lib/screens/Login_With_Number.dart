@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ifitmash/login_with_email.dart';
@@ -7,10 +6,7 @@ import 'package:ifitmash/screens/OTPverifacation.dart';
 import 'package:dio/dio.dart';
 import 'package:ifitmash/screens/bottomNavigationBar.dart';
 import 'package:ifitmash/components/JsonUser.dart';
-
-
-
-
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 class LoginWithNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,15 +17,21 @@ class LoginWithNumber extends StatelessWidget {
     );
   }
 }
-
 class NumberLogin extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _NumberLoginState();
   }
 }
-
 class _NumberLoginState extends State<NumberLogin> {
+  bool showSpinner=false;
+
+  @override
+  void initState() {
+    SystemChrome.setEnabledSystemUIOverlays([]);
+    super.initState();
+  }
+
 
   final formKey = GlobalKey<FormState>();
 
@@ -86,16 +88,13 @@ class _NumberLoginState extends State<NumberLogin> {
     }
   }
 
-
-  @override
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
         child: Column(
           children: <Widget>[
-
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height/2.5,
@@ -124,7 +123,6 @@ class _NumberLoginState extends State<NumberLogin> {
                     ),
                   ),
                   Spacer(),
-
                   Align(
                     alignment: Alignment.bottomRight,
                     child: Padding(
@@ -148,8 +146,6 @@ class _NumberLoginState extends State<NumberLogin> {
                 ],
               ),
             ),
-
-
             Flexible(
               child: Container(
                 height: MediaQuery.of(context).size.height/2,
@@ -186,17 +182,14 @@ class _NumberLoginState extends State<NumberLogin> {
                         ),
                       ),
                     ),
-
-
                     Spacer(),
-
                     InkWell(
                       onTap: () async {
 
-                        setState(() => isLoading = true);
+                        setState(() => showSpinner = true);
                         var res = await _loginUser(
                             _emailController.text);
-                        setState(() => isLoading = false);
+                        setState(() => showSpinner = false);
 
                         JsonUser user = JsonUser.fromJson(res);
 
@@ -239,7 +232,6 @@ class _NumberLoginState extends State<NumberLogin> {
                 ),
               ),
             )
-
           ],
         ),
       ),

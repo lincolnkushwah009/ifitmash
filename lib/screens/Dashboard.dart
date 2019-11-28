@@ -95,7 +95,7 @@ class _DashboardState extends State<Dashboard> {
                     child: Text(
                       "Calorie Burned",
                       style: TextStyle(fontSize: 19,
-                      fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.bold,
                       ),
 
                     ),
@@ -104,7 +104,7 @@ class _DashboardState extends State<Dashboard> {
                     child: Text(
                       "480",
                       style: TextStyle(fontSize: 18,
-                          color: Colors.red,
+                        color: Colors.red,
 
                       ),
                     ),
@@ -174,9 +174,9 @@ class _DashboardState extends State<Dashboard> {
                                       .textTheme
                                       .display1
                                       .copyWith(
-                                        color: Colors.white,
-                                        fontSize: 22.0,
-                                      ),
+                                    color: Colors.white,
+                                    fontSize: 22.0,
+                                  ),
                                 ),
                                 trailing: Icon(
                                   FontAwesomeIcons.walking,
@@ -335,20 +335,20 @@ class _DashboardState extends State<Dashboard> {
               color: Color.fromRGBO(222,222,222,100),
               child: ListTile(
 
-                  title: Text(
-                    "Today's Workout",
-                    style:
-                        TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                  trailing: Icon(Icons.add_circle_outline,
-                      color: Colors.black, size: 25.0),
-                  onTap: (){
-                    Navigator.push(
-                        context,
-                        new MaterialPageRoute(
-                            builder: (context) => ListOfExercises()));
-                  },
-            ),
+                title: Text(
+                  "Today's Workout",
+                  style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+                trailing: Icon(Icons.add_circle_outline,
+                    color: Colors.black, size: 25.0),
+                onTap: (){
+                  Navigator.push(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) => ListOfExercises()));
+                },
+              ),
             ),
           ),
           SizedBox(
@@ -359,7 +359,7 @@ class _DashboardState extends State<Dashboard> {
 
             child: Container(
 //              color: Color.fromRGBO(222,222,222,100),
-            color: Colors.black,
+              color: Colors.black,
 
               child: Container(
                 child: RaisedButton(

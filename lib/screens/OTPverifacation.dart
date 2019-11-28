@@ -31,7 +31,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
   final formKey = GlobalKey<FormState>();
 
   static var uri = "https://staging.ifitmash.club/api";
-  
+
   static BaseOptions options = BaseOptions(
       baseUrl: uri,
       responseType: ResponseType.plain,

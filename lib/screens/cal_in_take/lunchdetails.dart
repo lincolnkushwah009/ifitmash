@@ -12,7 +12,13 @@ class LunchDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Lunch"),
+          iconTheme: IconThemeData(
+            color: Colors.black, //change your color here
+          ),
+          title: new Text("Lunch",style: TextStyle(
+              color: Colors.black
+          ),),
+          backgroundColor: Colors.white,
         ),
         body: new ListView(
             children: <Widget>[

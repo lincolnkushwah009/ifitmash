@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,6 +33,7 @@ class EmailLogin extends StatefulWidget {
 }
 
 class _EmailLoginState extends State<EmailLogin> {
+  bool showSpinner=false;
 
   final formKey = GlobalKey<FormState>();
 
@@ -95,7 +96,8 @@ class _EmailLoginState extends State<EmailLogin> {
 
     return Scaffold(
       key: _scaffoldKey,
-      body: Container(
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
         child: Column(
           children: <Widget>[
 
@@ -178,7 +180,6 @@ class _EmailLoginState extends State<EmailLogin> {
                             ]
                         ),
                         child: TextFormField(
-
                           keyboardType: TextInputType.emailAddress,
                           controller: _emailController,
 //                          validator: (val) => !EmailValidator.validate(val, true)
@@ -200,6 +201,7 @@ class _EmailLoginState extends State<EmailLogin> {
                       GestureDetector(
                         onTap: () async {
 
+<<<<<<< HEAD
                             setState(() => isLoading = true);
                             var res = await _loginUser(
                                 _emailController.text);
@@ -216,7 +218,28 @@ class _EmailLoginState extends State<EmailLogin> {
                             } else {
                               Scaffold.of(context).showSnackBar(SnackBar(
                                   content: Text("incorrect email")));
+=======
+                          setState(() => showSpinner=true);
+                          var res = await _loginUser(
+                              _emailController.text);
+                          setState(() => showSpinner=false);
+
+                          JsonUser user = JsonUser.fromJson(res);
+
+                          if (user != null) {
+                            Navigator.of(context).push(
+                                new MaterialPageRoute(
+                                    builder: (context) =>
+                                    new Otp()));
+                            print(user);
+                          } else {
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                                content: Text("incorrect email")));
+>>>>>>> 852d23e2b2d2db55a7a4d038b9ef94396547e21b
                           }
+                          setState(() {
+                            showSpinner=false;
+                          });
                         },
                         child: Container(
                           height: 45,
