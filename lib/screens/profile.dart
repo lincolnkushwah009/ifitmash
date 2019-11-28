@@ -176,12 +176,22 @@ class _ProfileState extends State<Profile> {
           ),
         ),
 
-        SizedBox(height: 20),
-        RaisedButton(child: Text("Save"),
-          onPressed: (){},
-          color: Colors.black,
-          textColor: Colors.white,
-          splashColor: Colors.grey,
+            SizedBox(height:40),
+
+
+
+        ClipRRect(
+          borderRadius: new BorderRadius.circular(40.0),
+          child: SizedBox(
+            height: 50,
+            width: 300,
+            child: RaisedButton(child: Text("Save"),
+              onPressed: (){},
+              color: Colors.black,
+              textColor: Colors.white,
+              splashColor: Colors.grey,
+            ),
+          ),
         )
 
 

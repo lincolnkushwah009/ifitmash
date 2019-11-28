@@ -1,26 +1,81 @@
 import 'dart:async';
-
+import 'dart:convert';
+import 'package:dio/dio.dart';
+import 'package:ifitmash/components/JsonUser.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:ifitmash/screens/bottomNavigationBar.dart';
+
 
 class Otp extends StatefulWidget {
-  final String email;
-  final String newEmail;
-  final bool isGuestCheckOut;
-
-  const Otp({
-    Key key,
-    @required this.email,
-    this.newEmail = "",
-    this.isGuestCheckOut,
-  }) : super(key: key);
 
   @override
   _OtpState createState() => new _OtpState();
 }
 
 class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
+
+
+  final formKey = GlobalKey<FormState>();
+
+  static var uri = "https://staging.ifitmash.club/api";
+  
+  static BaseOptions options = BaseOptions(
+      baseUrl: uri,
+      responseType: ResponseType.plain,
+      connectTimeout: 30000,
+      receiveTimeout: 30000,
+      validateStatus: (code) {
+        if (code >= 200) {
+          return true;
+        }
+        return false;
+      });
+  static Dio dio = Dio(options);
+
+
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  TextEditingController _OTPController = TextEditingController();
+
+  bool isLoading = false;
+
+  Future<dynamic> _loginUser(String otp) async {
+    try {
+      Options options = Options(
+//        contentType: ContentType.parse('application/json'),
+      );
+
+      Response response = await dio.post('/verifyOtp',
+          data: {"otp":otp},
+          options: options);
+      print(response);
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var responseJson = json.decode(response.data);
+        return responseJson;
+      } else if (response.statusCode == 401) {
+        throw Exception("Incorrect Email/Password");
+      } else
+        throw Exception('Authentication Error');
+    } on DioError catch (exception) {
+      if (exception == null ||
+          exception.toString().contains('SocketException')) {
+        throw Exception("Network Error");
+      } else if (exception.type == DioErrorType.RECEIVE_TIMEOUT ||
+          exception.type == DioErrorType.CONNECT_TIMEOUT) {
+        throw Exception(
+            "Could'nt connect, please ensure you have a stable network.");
+      } else {
+        return null;
+      }
+    }
+  }
+
+
+
+
   // Constants
   final int time = 30;
   AnimationController _controller;
@@ -32,6 +87,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
   int _secondDigit;
   int _thirdDigit;
   int _fourthDigit;
+  int _fifthDigit;
 
   Timer timer;
   int totalTimeInSeconds;
@@ -73,7 +129,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
   // Return "Email" label
   get _getEmailLabel {
     return new Text(
-      "Please enter the OTP sent\non your registered Email ID.",
+      "Please enter the OTP sent\non your registered Email ID/Phone Number.",
       textAlign: TextAlign.center,
       style: new TextStyle(
           fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w600),
@@ -89,6 +145,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
         _otpTextField(_secondDigit),
         _otpTextField(_thirdDigit),
         _otpTextField(_fourthDigit),
+        _otpTextField(_fifthDigit),
       ],
     );
   }
@@ -242,9 +299,13 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
                       ),
                       onPressed: () {
                         setState(() {
-                          if (_fourthDigit != null) {
+                          if (_fifthDigit != null) {
+                            _fifthDigit = null;
+
+                          } else if (_fourthDigit != null) {
                             _fourthDigit = null;
-                          } else if (_thirdDigit != null) {
+                          }
+                          else if (_thirdDigit != null) {
                             _thirdDigit = null;
                           } else if (_secondDigit != null) {
                             _secondDigit = null;
@@ -379,13 +440,33 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
         _thirdDigit = _currentDigit;
       } else if (_fourthDigit == null) {
         _fourthDigit = _currentDigit;
+      } else if (_fifthDigit == null) {
+        _fifthDigit = _currentDigit;
 
         var otp = _firstDigit.toString() +
             _secondDigit.toString() +
             _thirdDigit.toString() +
-            _fourthDigit.toString();
+            _fourthDigit.toString() + _fifthDigit.toString();
+        // final otp is this.
+        // TODO post api on verify otp
+        // TODO if api fails _first to _f digit set null.
+        _loginUser(otp)
+        async {
+          setState(() => isLoading = true);
 
-        // Verify your otp by here. API call
+          var res = await _loginUser(
+              _OTPController.text);
+          setState(() => isLoading = false);
+          JsonUser user = JsonUser.fromJson(res);
+          if (user != null) {
+            Navigator.of(context).push(new MaterialPageRoute(builder: (context) => new bottomNavigationBar()));
+            print(user);
+          } else {
+            Scaffold.of(context).showSnackBar(SnackBar(
+                content:
+                Text("incorrect OTP")));
+          }
+        }// Verify your otp by here. API call
       }
     });
   }

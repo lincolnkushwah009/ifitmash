@@ -1,7 +1,18 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ifitmash/login_with_email.dart';
 import 'package:ifitmash/screens/OTPverifacation.dart';
+
+
+
+import 'package:dio/dio.dart';
+import 'package:ifitmash/screens/bottomNavigationBar.dart';
+import 'package:ifitmash/components/JsonUser.dart';
+
+
+
 class LoginWithNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,11 +30,69 @@ class NumberLogin extends StatefulWidget {
   }
 }
 class _NumberLoginState extends State<NumberLogin> {
+
   @override
   void initState() {
     SystemChrome.setEnabledSystemUIOverlays([]);
     super.initState();
   }
+
+
+  final formKey = GlobalKey<FormState>();
+
+  static var uri = "https://staging.ifitmash.club/api";
+
+  static BaseOptions options = BaseOptions(
+      baseUrl: uri,
+      responseType: ResponseType.plain,
+      connectTimeout: 30000,
+      receiveTimeout: 30000,
+      validateStatus: (code) {
+        if (code >= 200) {
+          return true;
+        }
+        return false;
+      });
+  static Dio dio = Dio(options);
+
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  TextEditingController _emailController = TextEditingController();
+
+  bool isLoading = false;
+
+  Future<dynamic> _loginUser(String input) async {
+    try {
+      Options options = Options(
+//        contentType: ContentType.parse('application/json'),
+      );
+
+      Response response = await dio.post('/user',
+          data: {"input": input},
+          options: options);
+      print(response);
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var responseJson = json.decode(response.data);
+        return responseJson;
+      } else if (response.statusCode == 401) {
+        throw Exception("Incorrect Email/Password");
+      } else
+        throw Exception('Authentication Error');
+    } on DioError catch (exception) {
+      if (exception == null ||
+          exception.toString().contains('SocketException')) {
+        throw Exception("Network Error");
+      } else if (exception.type == DioErrorType.RECEIVE_TIMEOUT ||
+          exception.type == DioErrorType.CONNECT_TIMEOUT) {
+        throw Exception(
+            "Could'nt connect, please ensure you have a stable network.");
+      } else {
+        return null;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,8 +174,9 @@ class _NumberLoginState extends State<NumberLogin> {
                             )
                           ]
                       ),
-                      child: TextField(
-                        keyboardType: TextInputType.number,
+                      child: TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        controller: _emailController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           icon: Icon(Icons.phone_android,
@@ -118,8 +188,25 @@ class _NumberLoginState extends State<NumberLogin> {
                     ),
                     Spacer(),
                     InkWell(
-                      onTap: (){
-                        Navigator.push(context,new MaterialPageRoute(builder: (context)=>Otp()));
+                      onTap: () async {
+
+                        setState(() => isLoading = true);
+                        var res = await _loginUser(
+                            _emailController.text);
+                        setState(() => isLoading = false);
+
+                        JsonUser user = JsonUser.fromJson(res);
+
+                        if (user != null) {
+                          Navigator.of(context).push(
+                              new MaterialPageRoute(
+                                  builder: (context) =>
+                                  Otp()));
+                          print(user);
+                        } else {
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text("incorrect email")));
+                        }
                       },
                       child: Container(
                         height: 45,
