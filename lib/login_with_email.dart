@@ -211,7 +211,7 @@ class _EmailLoginState extends State<EmailLogin> {
                               Navigator.of(context).push(
                                   new MaterialPageRoute(
                                       builder: (context) =>
-                                      new BottomNavigationBar()));
+                                      new Otp()));
                               print(user);
                             } else {
                               Scaffold.of(context).showSnackBar(SnackBar(
