@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:ifitmash/screens/OTPverifacation.dart';
 import 'package:ifitmash/screens/Login_With_Number.dart';
 import 'package:dio/dio.dart';
-import 'package:ifitmash/screens/bottomNavigationBar.dart';
+
 import 'components/JsonUser.dart';
 
 
@@ -34,10 +34,11 @@ class EmailLogin extends StatefulWidget {
   }
 }
 
+
 class _EmailLoginState extends State<EmailLogin> {
   bool showSpinner=false;
 
-  final formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   static var uri = "https://staging.ifitmash.club/api";
 
@@ -57,6 +58,7 @@ class _EmailLoginState extends State<EmailLogin> {
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   TextEditingController _emailController = TextEditingController();
+
 
   bool isLoading = false;
 
@@ -157,6 +159,7 @@ class _EmailLoginState extends State<EmailLogin> {
             ),
 
             Form(
+              key: _formKey,
               child: Flexible(
                 child: Container(
                   height: MediaQuery.of(context).size.height/2,
@@ -184,9 +187,9 @@ class _EmailLoginState extends State<EmailLogin> {
                         child: TextFormField(
                           keyboardType: TextInputType.emailAddress,
                           controller: _emailController,
-//                          validator: (val) => !EmailValidator.validate(val, true)
-//                              ? 'please provide a valid email'
-//                              : null,
+                          validator: (val) => !EmailValidator.validate(val, true)
+                              ? 'please provide a valid email'
+                              : null,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             icon: Icon(Icons.email,
@@ -203,7 +206,8 @@ class _EmailLoginState extends State<EmailLogin> {
                       GestureDetector(
                         onTap: () async {
 
-                          setState(() => showSpinner=true);
+                          if (_formKey.currentState.validate()){
+                            setState(() => showSpinner=true);
                           var res = await _loginUser(
                               _emailController.text);
                           setState(() => showSpinner=false);
@@ -216,14 +220,19 @@ class _EmailLoginState extends State<EmailLogin> {
                                     builder: (context) =>
                                     new Otp()));
                             print(user);
-                          } else {
+                          }
+
+
+
+                          else {
                             Scaffold.of(context).showSnackBar(SnackBar(
                                 content: Text("incorrect email")));
                           }
                           setState(() {
                             showSpinner=false;
                           });
-                        },
+                        }
+                          },
                         child: Container(
                           height: 45,
                           width: MediaQuery.of(context).size.width/1.2,

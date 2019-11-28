@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:ifitmash/login_with_email.dart';
 import 'package:ifitmash/screens/OTPverifacation.dart';
 import 'package:dio/dio.dart';
-import 'package:ifitmash/screens/bottomNavigationBar.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:ifitmash/components/JsonUser.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 class LoginWithNumber extends StatelessWidget {
@@ -33,7 +33,8 @@ class _NumberLoginState extends State<NumberLogin> {
   }
 
 
-  final formKey = GlobalKey<FormState>();
+
+  final _formKey = GlobalKey<FormState>();
 
   static var uri = "https://staging.ifitmash.club/api";
 
@@ -52,7 +53,7 @@ class _NumberLoginState extends State<NumberLogin> {
 
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  TextEditingController _emailController = TextEditingController();
+  TextEditingController _numberController = TextEditingController();
 
   bool isLoading = false;
 
@@ -91,6 +92,7 @@ class _NumberLoginState extends State<NumberLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Column(
@@ -146,89 +148,97 @@ class _NumberLoginState extends State<NumberLogin> {
                 ],
               ),
             ),
-            Flexible(
-              child: Container(
-                height: MediaQuery.of(context).size.height/2,
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.only(top: 62),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width/1.2,
-                      height: 45,
-                      padding: EdgeInsets.only(
-                          top: 4,left: 16, right: 16, bottom: 4),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(50)
-                          ),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black12,
-                                blurRadius: 5
-                            )
-                          ]
-                      ),
-                      child: TextFormField(
-                        keyboardType: TextInputType.number,
-                        controller: _emailController,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          icon: Icon(Icons.phone_android,
-                            color: Colors.grey,
-                          ),
-                          hintText: 'Phone Number',
-                        ),
-                      ),
-                    ),
-                    Spacer(),
-                    InkWell(
-                      onTap: () async {
-
-                        setState(() => showSpinner = true);
-                        var res = await _loginUser(
-                            _emailController.text);
-                        setState(() => showSpinner = false);
-
-                        JsonUser user = JsonUser.fromJson(res);
-
-                        if (user != null) {
-                          Navigator.of(context).push(
-                              new MaterialPageRoute(
-                                  builder: (context) =>
-                                  Otp()));
-                          print(user);
-                        } else {
-                          Scaffold.of(context).showSnackBar(SnackBar(
-                              content: Text("incorrect email")));
-                        }
-                      },
-                      child: Container(
-                        height: 45,
+            Form(
+              key: _formKey,
+              child: Flexible(
+                child: Container(
+                  height: MediaQuery.of(context).size.height/2,
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.only(top: 62),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
                         width: MediaQuery.of(context).size.width/1.2,
+                        height: 45,
+                        padding: EdgeInsets.only(
+                            top: 4,left: 16, right: 16, bottom: 4),
                         decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Color(0xDD000000),
-                                Color(0xDD000000)
-                              ],
-                            ),
                             borderRadius: BorderRadius.all(
                                 Radius.circular(50)
-                            )
+                            ),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 5
+                              )
+                            ]
                         ),
-                        child: Center(
-                          child: Text('Send OTP'.toUpperCase(),
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold
+                        child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          controller: _numberController,
+                          validator: (val) => val.length < 10 || val.length> 10 ? 'Check your phone number again' : null,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            icon: Icon(Icons.phone_android,
+                              color: Colors.grey,
+                            ),
+                            hintText: 'Phone Number',
+                          ),
+
+                        ),
+                      ),
+
+                      Spacer(),
+                      GestureDetector(
+                        onTap: () async {
+                          if (_formKey.currentState.validate()) {
+                            setState(() => showSpinner = true);
+                            var res = await _loginUser(
+                                _numberController.text);
+                            setState(() => showSpinner = false);
+
+                            JsonUser user = JsonUser.fromJson(res);
+
+                            if (user != null) {
+                              Navigator.of(context).push(
+                                  new MaterialPageRoute(
+                                      builder: (context) =>
+                                          Otp()));
+                              print(user);
+                            } else {
+                              Scaffold.of(context).showSnackBar(SnackBar(
+                                  content: Text("incorrect Number")));
+                            }
+                          }
+
+                        },
+                        child: Container(
+                          height: 45,
+                          width: MediaQuery.of(context).size.width/1.2,
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Color(0xDD000000),
+                                  Color(0xDD000000)
+                                ],
+                              ),
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(50)
+                              )
+                          ),
+                          child: Center(
+                            child: Text('Send OTP'.toUpperCase(),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             )
