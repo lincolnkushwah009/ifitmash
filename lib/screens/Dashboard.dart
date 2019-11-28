@@ -343,10 +343,7 @@ class _DashboardState extends State<Dashboard> {
                 trailing: Icon(Icons.add_circle_outline,
                     color: Colors.black, size: 25.0),
                 onTap: (){
-                  Navigator.push(
-                      context,
-                      new MaterialPageRoute(
-                          builder: (context) => ListOfExercises()));
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => ListOfExercises()));
                 },
               ),
             ),

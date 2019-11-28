@@ -1,3 +1,5 @@
+
+
 import 'dart:convert';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:email_validator/email_validator.dart';
@@ -139,7 +141,7 @@ class _EmailLoginState extends State<EmailLogin> {
                       ),
                       child: InkWell(
                         onTap: () {
-
+                          Navigator.push(context, new MaterialPageRoute(builder: (context) => LoginWithNumber()));
                         },
                         child: Text('Login With Number',
                           style: TextStyle(
@@ -201,24 +203,6 @@ class _EmailLoginState extends State<EmailLogin> {
                       GestureDetector(
                         onTap: () async {
 
-<<<<<<< HEAD
-                            setState(() => isLoading = true);
-                            var res = await _loginUser(
-                                _emailController.text);
-                            setState(() => isLoading = false);
-
-                            JsonUser user = JsonUser.fromJson(res);
-
-                            if (user != null) {
-                              Navigator.of(context).push(
-                                  new MaterialPageRoute(
-                                      builder: (context) =>
-                                      new Otp()));
-                              print(user);
-                            } else {
-                              Scaffold.of(context).showSnackBar(SnackBar(
-                                  content: Text("incorrect email")));
-=======
                           setState(() => showSpinner=true);
                           var res = await _loginUser(
                               _emailController.text);
@@ -235,7 +219,6 @@ class _EmailLoginState extends State<EmailLogin> {
                           } else {
                             Scaffold.of(context).showSnackBar(SnackBar(
                                 content: Text("incorrect email")));
->>>>>>> 852d23e2b2d2db55a7a4d038b9ef94396547e21b
                           }
                           setState(() {
                             showSpinner=false;
