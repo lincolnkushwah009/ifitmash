@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,6 +33,7 @@ class EmailLogin extends StatefulWidget {
 }
 
 class _EmailLoginState extends State<EmailLogin> {
+  bool showSpinner=false;
 
   final formKey = GlobalKey<FormState>();
 
@@ -95,7 +96,8 @@ class _EmailLoginState extends State<EmailLogin> {
 
     return Scaffold(
       key: _scaffoldKey,
-      body: Container(
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
         child: Column(
           children: <Widget>[
 
@@ -108,7 +110,7 @@ class _EmailLoginState extends State<EmailLogin> {
                     end: Alignment.bottomCenter,
                     colors: [
                       Color(0xFFEEEEEE),
-                      Color(0xFF424242)
+                      Color(0xDD000000)
                     ],
                   ),
                   borderRadius: BorderRadius.only(
@@ -178,7 +180,6 @@ class _EmailLoginState extends State<EmailLogin> {
                             ]
                         ),
                         child: TextFormField(
-
                           keyboardType: TextInputType.emailAddress,
                           controller: _emailController,
 //                          validator: (val) => !EmailValidator.validate(val, true)
@@ -200,10 +201,10 @@ class _EmailLoginState extends State<EmailLogin> {
                       GestureDetector(
                         onTap: () async {
 
-                          setState(() => isLoading = true);
+                          setState(() => showSpinner=true);
                           var res = await _loginUser(
                               _emailController.text);
-                          setState(() => isLoading = false);
+                          setState(() => showSpinner=false);
 
                           JsonUser user = JsonUser.fromJson(res);
 
@@ -217,6 +218,9 @@ class _EmailLoginState extends State<EmailLogin> {
                             Scaffold.of(context).showSnackBar(SnackBar(
                                 content: Text("incorrect email")));
                           }
+                          setState(() {
+                            showSpinner=false;
+                          });
                         },
                         child: Container(
                           height: 45,
@@ -247,6 +251,7 @@ class _EmailLoginState extends State<EmailLogin> {
                 ),
               ),
             )
+
           ],
         ),
       ),

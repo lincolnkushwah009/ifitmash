@@ -1,18 +1,12 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ifitmash/login_with_email.dart';
 import 'package:ifitmash/screens/OTPverifacation.dart';
-
-
-
 import 'package:dio/dio.dart';
 import 'package:ifitmash/screens/bottomNavigationBar.dart';
 import 'package:ifitmash/components/JsonUser.dart';
-
-
-
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 class LoginWithNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -30,6 +24,7 @@ class NumberLogin extends StatefulWidget {
   }
 }
 class _NumberLoginState extends State<NumberLogin> {
+  bool showSpinner=false;
 
   @override
   void initState() {
@@ -96,7 +91,8 @@ class _NumberLoginState extends State<NumberLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
         child: Column(
           children: <Widget>[
             Container(
@@ -107,7 +103,7 @@ class _NumberLoginState extends State<NumberLogin> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color(0xDD000000),
+                      Color(0xFFEEEEEE),
                       Color(0xDD000000)
                     ],
                   ),
@@ -175,7 +171,7 @@ class _NumberLoginState extends State<NumberLogin> {
                           ]
                       ),
                       child: TextFormField(
-                        keyboardType: TextInputType.emailAddress,
+                        keyboardType: TextInputType.number,
                         controller: _emailController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -190,10 +186,10 @@ class _NumberLoginState extends State<NumberLogin> {
                     InkWell(
                       onTap: () async {
 
-                        setState(() => isLoading = true);
+                        setState(() => showSpinner = true);
                         var res = await _loginUser(
                             _emailController.text);
-                        setState(() => isLoading = false);
+                        setState(() => showSpinner = false);
 
                         JsonUser user = JsonUser.fromJson(res);
 

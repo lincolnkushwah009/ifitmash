@@ -95,7 +95,7 @@ class _DashboardState extends State<Dashboard> {
                     child: Text(
                       "Calorie Burned",
                       style: TextStyle(fontSize: 19,
-                      fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.bold,
                       ),
 
                     ),
@@ -104,7 +104,7 @@ class _DashboardState extends State<Dashboard> {
                     child: Text(
                       "480",
                       style: TextStyle(fontSize: 18,
-                          color: Colors.red,
+                        color: Colors.red,
 
                       ),
                     ),
@@ -330,8 +330,8 @@ class _DashboardState extends State<Dashboard> {
 
           ClipRRect(
             borderRadius: new BorderRadius.circular(20.0),
-
             child: Container(
+              padding: EdgeInsets.fromLTRB(10, 0, 15, 0),
               color: Color.fromRGBO(222,222,222,100),
               child: ListTile(
 
@@ -360,24 +360,31 @@ class _DashboardState extends State<Dashboard> {
             child: Container(
 //              color: Color.fromRGBO(222,222,222,100),
               color: Colors.black,
-              child: ListTile(
 
-                title: Text(
-                  "Today's Nutrition",
-                  style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              child: Container(
+                child: RaisedButton(
+                  splashColor: Colors.grey,
+                  child: ListTile(
+
+                    title: Text(
+                      "Today's Nutrition",
+                      style:
+                      TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                    trailing: Icon(Icons.add_circle_outline,
+                        color: Colors.white, size: 25.0),
+                    onTap: (){
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => BldList()));
+                    },
+                  ),
                 ),
-                trailing: Icon(Icons.add_circle_outline,
-                    color: Colors.white, size: 25.0),
-                onTap: (){
-                  Navigator.push(
-                      context,
-                      new MaterialPageRoute(
-                          builder: (context) => BldList()));
-                },
               ),
             ),
           ),
+
 
           SizedBox(
             height: 20,
