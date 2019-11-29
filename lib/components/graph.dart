@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class Nutrition extends StatefulWidget {
+class Graph extends StatefulWidget {
   @override
-  _NutritionState createState() => _NutritionState();
+  _GraphState createState() => _GraphState();
 }
 
 class SalesData {
@@ -49,7 +49,7 @@ Widget build(BuildContext context) {
       )
   );
 }
-class _NutritionState extends State<Nutrition> {@override
+class _GraphState extends State<Graph> {@override
 Widget build(BuildContext context) {
   return Scaffold(
       body: Container(

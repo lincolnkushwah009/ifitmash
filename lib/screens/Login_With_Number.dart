@@ -33,7 +33,6 @@ class _NumberLoginState extends State<NumberLogin> {
   }
 
 
-
   final _formKey = GlobalKey<FormState>();
 
   static var uri = "https://staging.ifitmash.club/api";
@@ -91,9 +90,9 @@ class _NumberLoginState extends State<NumberLogin> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Container(
       key: _scaffoldKey,
-      body: ModalProgressHUD(
+      child: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Column(
           children: <Widget>[
@@ -156,7 +155,11 @@ class _NumberLoginState extends State<NumberLogin> {
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.only(top: 62),
                   child: Column(
+
+
                     children: <Widget>[
+
+
                       Container(
                         width: MediaQuery.of(context).size.width/1.2,
                         height: 45,
@@ -177,7 +180,7 @@ class _NumberLoginState extends State<NumberLogin> {
                         child: TextFormField(
                           keyboardType: TextInputType.number,
                           controller: _numberController,
-                          validator: (val) => val.length < 10 || val.length> 10 ? 'Check your phone number again' : null,
+                        validator: (val) => val.length < 10 || val.length> 10 ? 'Check your phone number again' : null,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             icon: Icon(Icons.phone_android,
@@ -188,6 +191,10 @@ class _NumberLoginState extends State<NumberLogin> {
 
                         ),
                       ),
+
+
+
+
 
                       Spacer(),
                       GestureDetector(
