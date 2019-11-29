@@ -7,6 +7,8 @@ import 'package:dio/dio.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:ifitmash/components/JsonUser.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 class LoginWithNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -57,6 +59,8 @@ class _NumberLoginState extends State<NumberLogin> {
   bool isLoading = false;
 
   Future<dynamic> _loginUser(String input) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('phone', input);
     try {
       Options options = Options(
 //        contentType: ContentType.parse('application/json'),
@@ -66,6 +70,9 @@ class _NumberLoginState extends State<NumberLogin> {
           data: {"input": input},
           options: options);
       print(response);
+      print(input);
+
+      print("djksdnbkfbdbvbsedbdbgbedgsg");
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         var responseJson = json.decode(response.data);
@@ -178,6 +185,7 @@ class _NumberLoginState extends State<NumberLogin> {
                             ]
                         ),
                         child: TextFormField(
+
                           keyboardType: TextInputType.number,
                           controller: _numberController,
                         validator: (val) => val.length < 10 || val.length> 10 ? 'Check your phone number again' : null,
@@ -199,6 +207,9 @@ class _NumberLoginState extends State<NumberLogin> {
                       Spacer(),
                       GestureDetector(
                         onTap: () async {
+
+
+
                           if (_formKey.currentState.validate()) {
                             setState(() => showSpinner = true);
                             var res = await _loginUser(
