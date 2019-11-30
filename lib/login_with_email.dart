@@ -222,8 +222,6 @@ class _EmailLoginState extends State<EmailLogin> {
                             print(user);
                           }
 
-
-
                           else {
                             Scaffold.of(context).showSnackBar(SnackBar(
                                 content: Text("incorrect email")));
