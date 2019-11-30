@@ -120,15 +120,6 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                                       ),
                                     ),
                                     Container(
-                                      padding: EdgeInsets.all(8),
-                                      child: RaisedButton(
-                                        child: Text('GO'),
-                                        onPressed: (){
-                                          Navigator.push(context, new MaterialPageRoute(builder: (context) => Nutrition()));
-                                        },
-                                      ),
-                                    ),
-                                    Container(
                                       padding: EdgeInsets.all(16),
                                       child: Text(_myActivityResult),
                                     )
@@ -143,6 +134,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
 
                           InkWell(
                             onTap: (){
+                              Navigator.push(context, new MaterialPageRoute(builder: (context) => Graph()));
                             },
                             child: Container(
                               height: 45,

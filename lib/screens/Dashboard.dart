@@ -15,6 +15,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+
   @override
   void read() async {
     final results = await FitKit.read(
@@ -183,12 +184,6 @@ class _DashboardState extends State<Dashboard> {
                                   color: Colors.white,
                                 ),
                               ),
-                              Column(children: <Widget>[
-//                                Text(
-//                                  'Steps',
-//                                  style: whiteText,
-//                                ),
-                              ])
                             ],
                           ),
                         ),
@@ -200,68 +195,7 @@ class _DashboardState extends State<Dashboard> {
                 ),
               ),
               const SizedBox(width: 10.0),
-//              Expanded(
-//                child: Column(
-//                  children: <Widget>[
-//                    Container(
-//                      decoration: new BoxDecoration(
-//                          boxShadow: [
-//                            BoxShadow(
-//                              color: Colors.red,
-//                              blurRadius: 2.0,
-//                            ),
-//                          ],
-//                          color: Colors.red,
-//                          borderRadius: new BorderRadius.only(
-//                              topLeft: const Radius.circular(10.0),
-//                              topRight: const Radius.circular(10.0),
-//                              bottomLeft: const Radius.circular(10.0),
-//                              bottomRight: const Radius.circular(10.0))),
-//                      height: 120,
-//                      child: GestureDetector(
-//                        child: FlatButton(
-//                          onPressed: () {
-//
-//                          },
-//                          child: Column(
-//                            crossAxisAlignment: CrossAxisAlignment.start,
-//                            children: <Widget>[
-//                              ListTile(
-//                                title: Text(
-//                                  "BMI",
-//                                  style: Theme.of(context)
-//                                      .textTheme
-//                                      .display1
-//                                      .copyWith(
-//                                        color: Colors.white,
-//                                        fontSize: 20.0,
-//                                      ),
-//                                ),
-//                                trailing: Padding(
-//                                  padding:
-//                                      const EdgeInsets.fromLTRB(0, 10, 0, 30),
-//                                  child: Icon(
-//                                    FontAwesomeIcons.fire,
-//                                    color: Colors.white,
-//                                  ),
-//                                ),
-//                              ),
-//                              Column(children: <Widget>[
-//                                Padding(
-//                                  padding:
-//                                      const EdgeInsets.fromLTRB(110, 25, 5, 0),
-//                                  child: Icon(Icons.add_circle_outline),
-//                                ),
-//                              ])
-//                            ],
-//                          ),
-//                        ),
-//                      ),
-//                    ),
-//
-//                  ],
-//                ),
-//              )
+
 
               Expanded(
                 child: Column(
@@ -304,12 +238,6 @@ class _DashboardState extends State<Dashboard> {
                                   color: Colors.white,
                                 ),
                               ),
-                              Column(children: <Widget>[
-//                                Text(
-//                                  'Steps',
-//                                  style: whiteText,
-//                                ),
-                              ])
                             ],
                           ),
                         ),
@@ -388,7 +316,7 @@ class _DashboardState extends State<Dashboard> {
           ),
 
 
-          Container(height: 200, width: 400, child: Nutrition()),
+          Container(height: 200, width: 400, child: Graph()),
           SizedBox(height: 30),
           Container(
             child: Row(

@@ -36,19 +36,19 @@ class _bottomNavigationBarState extends State<bottomNavigationBar > {
 
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home,color: Colors.black,),
-            title: Text('Home',style: TextStyle(color: Colors.black)),
+            icon: Image.asset("assets/Icons/Dashboard.png",height: 30,width: 30,),
+            title: Text('Dashboard',style: TextStyle(color: Colors.black)),
           ),
           BottomNavigationBarItem(
-            icon: Image.asset("assets/Icons/apple.png",height: 30,width: 30,color: Colors.black,),
+            icon: Image.asset("assets/Icons/apple.png",height: 30,width: 30),
             title: Text('Nutrition',style: TextStyle(color: Colors.black)),
           ),
           BottomNavigationBarItem(
-            icon: Image.asset("assets/Icons/gym.png",height: 30,width: 30,color: Colors.black,),
+            icon: Image.asset("assets/Icons/gym.png",height: 30,width: 30),
             title: Text('Workout',style: TextStyle(color: Colors.black)),
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person,color: Colors.black,),
+              icon: Image.asset("assets/Icons/user.png",height: 30,width: 30,),
               title: Text('Profile',style: TextStyle(color: Colors.black))
           )
         ],

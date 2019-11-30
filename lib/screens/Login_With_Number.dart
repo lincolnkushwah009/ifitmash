@@ -7,6 +7,8 @@ import 'package:dio/dio.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:ifitmash/components/JsonUser.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 class LoginWithNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,6 @@ class _NumberLoginState extends State<NumberLogin> {
   }
 
 
-
   final _formKey = GlobalKey<FormState>();
 
   static var uri = "https://staging.ifitmash.club/api";
@@ -58,6 +59,8 @@ class _NumberLoginState extends State<NumberLogin> {
   bool isLoading = false;
 
   Future<dynamic> _loginUser(String input) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('phone', input);
     try {
       Options options = Options(
 //        contentType: ContentType.parse('application/json'),
@@ -67,6 +70,9 @@ class _NumberLoginState extends State<NumberLogin> {
           data: {"input": input},
           options: options);
       print(response);
+      print(input);
+
+      print("djksdnbkfbdbvbsedbdbgbedgsg");
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         var responseJson = json.decode(response.data);
@@ -91,9 +97,9 @@ class _NumberLoginState extends State<NumberLogin> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Container(
       key: _scaffoldKey,
-      body: ModalProgressHUD(
+      child: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Column(
           children: <Widget>[
@@ -156,7 +162,11 @@ class _NumberLoginState extends State<NumberLogin> {
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.only(top: 62),
                   child: Column(
+
+
                     children: <Widget>[
+
+
                       Container(
                         width: MediaQuery.of(context).size.width/1.2,
                         height: 45,
@@ -175,9 +185,10 @@ class _NumberLoginState extends State<NumberLogin> {
                             ]
                         ),
                         child: TextFormField(
+
                           keyboardType: TextInputType.number,
                           controller: _numberController,
-                          validator: (val) => val.length < 10 || val.length> 10 ? 'Check your phone number again' : null,
+                        validator: (val) => val.length < 10 || val.length> 10 ? 'Check your phone number again' : null,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             icon: Icon(Icons.phone_android,
@@ -189,9 +200,16 @@ class _NumberLoginState extends State<NumberLogin> {
                         ),
                       ),
 
+
+
+
+
                       Spacer(),
                       GestureDetector(
                         onTap: () async {
+
+
+
                           if (_formKey.currentState.validate()) {
                             setState(() => showSpinner = true);
                             var res = await _loginUser(

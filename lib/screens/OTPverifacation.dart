@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart' as prefix0;
-import 'package:ifitmash/components/JsonUser.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:ifitmash/screens/bottomNavigationBar.dart';
+import 'package:ifitmash/components/JsonUser.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+
 
 
 class Otp extends StatefulWidget {
@@ -28,9 +30,9 @@ class Otp extends StatefulWidget {
 class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
 
 
-  final formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
-  static var uri = "https://staging.ifitmash.club/api";
+  static var uri = "https://staging.ifitmash.club/api/verifyOtp";
 
   static BaseOptions options = BaseOptions(
       baseUrl: uri,
@@ -148,16 +150,22 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
   }
 
   // Return "OTP" input field
+
   get _getInputField {
-    return new Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        _otpTextField(_firstDigit),
-        _otpTextField(_secondDigit),
-        _otpTextField(_thirdDigit),
-        _otpTextField(_fourthDigit),
-        _otpTextField(_fifthDigit),
-      ],
+    return Form(
+      key: _formKey,
+      child: Container(
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            _otpTextField(_firstDigit),
+            _otpTextField(_secondDigit),
+            _otpTextField(_thirdDigit),
+            _otpTextField(_fourthDigit),
+            _otpTextField(_fifthDigit),
+          ],
+        ),
+      ),
     );
   }
 
@@ -440,6 +448,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
   }
 
   // Current digit
+
   void _setCurrentDigit(int i) {
     setState(() {
       _currentDigit = i;
@@ -458,11 +467,35 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
             _secondDigit.toString() +
             _thirdDigit.toString() +
             _fourthDigit.toString() + _fifthDigit.toString();
-        Navigator.of(context).push(new MaterialPageRoute(builder: (context) => new bottomNavigationBar()));
-        print("fdnbkjfbfdfifgbidbfids");
+      //  Navigator.of(context).push(new MaterialPageRoute(builder: (context) => new bottomNavigationBar()));
+            () async {
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              
+              final phone = prefs.getInt('input') ?? 0;
 
+              print(phone);
+          if (_formKey.currentState.validate()) {
+
+            var res = await _loginUser(
+                _OTPController.text);
+            JsonUser user = JsonUser.fromJson(res);
+
+            if (user != null) {
+              Navigator.of(context).push(
+                  new MaterialPageRoute(
+                      builder: (context) =>
+                          bottomNavigationBar()));
+              print(user);
+            } else {
+              Scaffold.of(context).showSnackBar(SnackBar(
+                  content: Text("incorrect Number")));
+            }
+          }
+
+        };
         // final otp is this.
         // TODO post api on verify otp
+
         // TODO if api fails _first to _f digit set null.
 
       }

@@ -1,93 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
-class Nutrition extends StatefulWidget {
+class Nutrition extends StatelessWidget {
   @override
-  _NutritionState createState() => _NutritionState();
-}
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
 
-class SalesData {
-  SalesData(this.year, this.sales);
-  final String year;
-  final double sales;
-}
+      child:Center(
+
+        child: Column(
 
 
-@override
 
-Widget build(BuildContext context) {
-  return Scaffold(
-      body: Center(
+          children: <Widget>[
+            SizedBox(height: 20),
+            Container(child: Text("Assigned Nutrition"),),
 
-          child: Container(
-              child: SfCartesianChart(
+            SizedBox(height: 100),
+            Divider(color: Colors.grey),
 
-                  primaryXAxis: CategoryAxis(), // Chart title
-                  title: ChartTitle(text: 'Half yearly sales analysis'), // Enable legend
-                  legend: Legend(isVisible: true), // Enable tooltip
-                  tooltipBehavior: TooltipBehavior(enable: true),
+            Container(
+              child:  ClipRRect(
+                borderRadius: new BorderRadius.circular(40.0),
+                child: SizedBox(
+                  height: 50,
+                  width: 300,
+                  child: RaisedButton(child: Text("Add Nutrition"),
+                    onPressed: (){
 
-                  series: <LineSeries<SalesData, String>>[
-                    LineSeries<SalesData, String>(
-                        dataSource:  <SalesData>[
-                          SalesData('Jan', 35),
-                          SalesData('Feb', 28),
-                          SalesData('Mar', 34),
-                          SalesData('Apr', 32),
-                          SalesData('May', 40)
-                        ],
-                        xValueMapper: (SalesData sales, _) => sales.year,
-                        yValueMapper: (SalesData sales, _) => sales.sales,
-// Enable data label
-                        dataLabelSettings: DataLabelSettings(isVisible: true)
-                    )
-                  ]
+                    },
+                    color: Colors.black,
+                    textColor: Colors.white,
+                    splashColor: Colors.grey,
+                  ),
+                ),
               )
-          )
-      )
-  );
-}
-class _NutritionState extends State<Nutrition> {@override
-Widget build(BuildContext context) {
-  return Scaffold(
-      body: Container(
-        height: 200,
-          width: 400,
-          child: Card(
-              child: SfCartesianChart(
-                // Initialize category axis
-                  primaryXAxis: CategoryAxis(),
-
-                  series: <LineSeries<SalesData, String>>[
-                    LineSeries<SalesData, String>(
-                      // Bind data source
-                        dataSource:  <SalesData>[
-                          SalesData('Jan', 35),
-                          SalesData('Feb', 28),
-                          SalesData('Mar', 34),
-                          SalesData('Apr', 32),
-                          SalesData('May', 40)
-                        ],
-                        xValueMapper: (SalesData sales, _) => sales.year,
-                        yValueMapper: (SalesData sales, _) => sales.sales,
-                  dataLabelSettings: DataLabelSettings(isVisible: true)
-                    ),
-                    LineSeries<SalesData,String>(
-                        dataSource:  <SalesData>[
-                          SalesData('Jan', 40),
-                          SalesData('Feb', 55),
-                          SalesData('Mar', 65),
-                          SalesData('Apr', 60),
-                          SalesData('May', 45)
-                        ],
-                        xValueMapper: (SalesData sales, _) => sales.year,
-                        yValueMapper: (SalesData sales, _) => sales.sales,
-                        dataLabelSettings: DataLabelSettings(isVisible: true)
-                    ),
-                  ]
-              )
-          )
-      )
-  );
-}
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
