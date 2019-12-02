@@ -83,6 +83,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
 
                    ),
                  ),
+                 SizedBox(width: 5,height: 5),
                  Expanded(
                    child: TextField(
                      decoration: InputDecoration(
