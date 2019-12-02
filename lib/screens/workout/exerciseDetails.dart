@@ -29,7 +29,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
       });
     }
   }
-
+ var selectedCount=0;
   // Constructor for the class.
   var sets = [
     "1",
@@ -37,11 +37,72 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
     "3",
     "4"
   ];
+
+  List<Map<dynamic,dynamic>> list  = [
+    {
+      "display": "1",
+      "value": "Running",
+    },
+    {
+      "display": "2",
+      "value": "Climbing",
+    },
+    {
+      "display": "3",
+      "value": "Walking",
+    },
+    {
+      "display": "4",
+      "value": "Swimming",
+    },
+
+  ];
+
+  List<Widget> getList(){
+    List<Widget> wlist=[];
+
+    for(var i=0;i<list.length;i++){
+      if(list[i]['value'] ==_myActivity){
+        selectedCount = int.parse(list[i]['display']);
+      }
+    }
+
+      for(var i=1;i<=selectedCount;i++) {
+       wlist.add(
+
+           Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
+               children:<Widget>[
+
+                 Expanded(
+                   child: TextField(
+                     decoration: InputDecoration(
+
+                         labelText: 'Sets',
+                         border: OutlineInputBorder()),
+                     keyboardType: TextInputType.number,
+
+                   ),
+                 ),
+                 Expanded(
+                   child: TextField(
+                     decoration: InputDecoration(
+
+                         labelText: 'reps',
+                         border: OutlineInputBorder()),
+                     keyboardType: TextInputType.number,
+
+                   ),
+                 )
+               ]
+           )
+          );
+       }
+      return wlist;
+  }
   @override
   Widget build(BuildContext context) {
+
     return new Scaffold(
-
-
         appBar: new AppBar(
 
           iconTheme: IconThemeData(
@@ -49,17 +110,18 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
           ),
           title: new Text("Exercises",style: TextStyle(
             color: Colors.black
-          ),),
+          ),
+          ),
           backgroundColor: Colors.white,
         ),
         body: new ListView(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(20.0),
-
                 child: ClipRRect(
                     borderRadius: new BorderRadius.circular(10.0),
-                    child: new Image.asset("assets/image/gym.jpg")),
+                    child: new Image.asset("assets/image/gym.jpg")
+                ),
               ),
               new Container(
                 padding: const EdgeInsets.fromLTRB(20,0,20,0),
@@ -94,30 +156,16 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                                         onChanged: (value) {
                                           setState(() {
                                             _myActivity = value;
+                                            getList();
                                           });
                                         },
-                                        dataSource: [
-                                          {
-                                            "display": "1",
-                                            "value": "Running",
-                                          },
-                                          {
-                                            "display": "2",
-                                            "value": "Climbing",
-                                          },
-                                          {
-                                            "display": "3",
-                                            "value": "Walking",
-                                          },
-                                          {
-                                            "display": "4",
-                                            "value": "Swimming",
-                                          },
-
-                                        ],
+                                        dataSource: list,
                                         textField: 'display',
                                         valueField: 'value',
                                       ),
+                                    ),
+                                    Container(
+                                      child:Column(children:getList(),)
                                     ),
                                     Container(
                                       padding: EdgeInsets.all(16),
@@ -165,7 +213,6 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                   ],
                 ),
               ),
-
             ]
         )
     );

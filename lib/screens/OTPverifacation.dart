@@ -498,6 +498,31 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
                   builder: (context) =>
                       bottomNavigationBar()));
         }
+//            () async {
+//              SharedPreferences prefs = await SharedPreferences.getInstance();
+//
+//              final phone = prefs.getInt('input') ?? 0;
+//
+//              print(phone);
+//          if (_formKey.currentState.validate()) {
+//
+//            var res = await _loginUser(
+//                _OTPController.text);
+//            JsonUser user = JsonUser.fromJson(res);
+//
+//            if (user != null) {
+//              Navigator.of(context).push(
+//                  new MaterialPageRoute(
+//                      builder: (context) =>
+//                          bottomNavigationBar()));
+//              print(user);
+//            } else {
+//              Scaffold.of(context).showSnackBar(SnackBar(
+//                  content: Text("incorrect Number")));
+//            }
+//          }
+//
+//        };
         // final otp is this.
         // TODO post api on verify otp
 
