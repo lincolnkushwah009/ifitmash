@@ -29,7 +29,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
       });
     }
   }
-
+ var selectedCount=0;
   // Constructor for the class.
   var sets = [
     "1",
@@ -37,10 +37,58 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
     "3",
     "4"
   ];
+
+  List<Map<dynamic,dynamic>> list  = [
+    {
+      "display": "1",
+      "value": "Running",
+    },
+    {
+      "display": "2",
+      "value": "Climbing",
+    },
+    {
+      "display": "3",
+      "value": "Walking",
+    },
+    {
+      "display": "4",
+      "value": "Swimming",
+    },
+
+  ];
+
+
+
+  List<Widget> getList(){
+    List<Widget> wlist=[];
+
+    for(var i=0;i<list.length;i++){
+      if(list[i]['value'] ==_myActivity){
+        selectedCount = int.parse(list[i]['display']);
+      }
+    }
+
+      for(var i=1;i<=selectedCount;i++) {
+       wlist.add(
+
+           Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
+               children:<Widget>[
+                 Text('fsdf'),
+                 Text('fsdf'),
+               ])
+          );
+       }
+      return wlist;
+  }
+
+
+
+
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
 
+    return new Scaffold(
 
         appBar: new AppBar(
 
@@ -94,30 +142,16 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                                         onChanged: (value) {
                                           setState(() {
                                             _myActivity = value;
+                                            getList();
                                           });
                                         },
-                                        dataSource: [
-                                          {
-                                            "display": "1",
-                                            "value": "Running",
-                                          },
-                                          {
-                                            "display": "2",
-                                            "value": "Climbing",
-                                          },
-                                          {
-                                            "display": "3",
-                                            "value": "Walking",
-                                          },
-                                          {
-                                            "display": "4",
-                                            "value": "Swimming",
-                                          },
-
-                                        ],
+                                        dataSource: list,
                                         textField: 'display',
                                         valueField: 'value',
                                       ),
+                                    ),
+                                    Container(
+                                      child:Column(children:getList(),)
                                     ),
                                     Container(
                                       padding: EdgeInsets.all(16),

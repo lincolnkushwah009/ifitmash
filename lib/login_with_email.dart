@@ -186,10 +186,10 @@ class _EmailLoginState extends State<EmailLogin> {
                         ),
                         child: TextFormField(
                           keyboardType: TextInputType.emailAddress,
-//                          controller: _emailController,
-//                          validator: (val) => !EmailValidator.validate(val, true)
-//                              ? 'please provide a valid email'
-//                              : null,
+                          controller: _emailController,
+                          validator: (val) => !EmailValidator.validate(val, true)
+                              ? 'please provide a valid email'
+                              : null,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             icon: Icon(Icons.email,

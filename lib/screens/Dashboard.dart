@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fit_kit/fit_kit.dart';
 import 'package:ifitmash/components/StepCount.dart';
+import 'package:ifitmash/components/fadeRoute.dart';
+import 'package:ifitmash/screens/Nutrition.dart';
 import 'package:ifitmash/screens/cal_in_take/BLDlist.dart';
 import 'package:ifitmash/screens/workout/list_of_exercises.dart';
 import 'package:ifitmash/components/CalBurnCircle.dart';
@@ -271,7 +273,8 @@ class _DashboardState extends State<Dashboard> {
                 trailing: Icon(Icons.add_circle_outline,
                     color: Colors.black, size: 25.0),
                 onTap: (){
-                  Navigator.push(context, new MaterialPageRoute(builder: (context) => ListOfExercises()));
+//                  Navigator.push(context, new MaterialPageRoute(builder: (context) => ListOfExercises()));
+                  Navigator.of(context).push(ScaleRoute(page: ListOfExercises()));
                 },
               ),
             ),
@@ -299,10 +302,12 @@ class _DashboardState extends State<Dashboard> {
                     trailing: Icon(Icons.add_circle_outline,
                         color: Colors.white, size: 25.0),
                     onTap: (){
-                      Navigator.push(
-                          context,
-                          new MaterialPageRoute(
-                              builder: (context) => BldList()));
+//                      Navigator.push(
+//                          context,
+//                          new MaterialPageRoute(
+//                              builder: (context) => BldList()));
+                      Navigator.of(context).push(ScaleRoute(page: BldList()));
+
                     },
                   ),
                 ),
