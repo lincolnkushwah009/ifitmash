@@ -216,8 +216,6 @@ class _NumberLoginState extends State<NumberLogin> {
                       GestureDetector(
                         onTap: () async {
 
-
-
                           if (_formKey.currentState.validate()) {
                             setState(() => showSpinner = true);
                             var res = await _loginUser(
@@ -230,14 +228,13 @@ class _NumberLoginState extends State<NumberLogin> {
                               Navigator.of(context).push(
                                   new MaterialPageRoute(
                                       builder: (context) =>
-                                          Otp()));
+                                          Otp(email: user.input,)));
                               print(user);
                             } else {
                               Scaffold.of(context).showSnackBar(SnackBar(
                                   content: Text("incorrect Number")));
                             }
                           }
-
                         },
                         child: Container(
                           height: 45,
