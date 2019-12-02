@@ -467,8 +467,8 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
             _secondDigit.toString() +
             _thirdDigit.toString() +
             _fourthDigit.toString() + _fifthDigit.toString();
-      //  Navigator.of(context).push(new MaterialPageRoute(builder: (context) => new bottomNavigationBar()));
-            () async {
+        Navigator.of(context).push(new MaterialPageRoute(builder: (context) => new bottomNavigationBar()));
+            save() async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
               
               final phone = prefs.getInt('input') ?? 0;
@@ -491,8 +491,13 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
                   content: Text("incorrect Number")));
             }
           }
-
-        };
+        }
+        if(otp==save){
+          Navigator.of(context).push(
+              new MaterialPageRoute(
+                  builder: (context) =>
+                      bottomNavigationBar()));
+        }
         // final otp is this.
         // TODO post api on verify otp
 
