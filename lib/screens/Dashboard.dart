@@ -95,6 +95,7 @@ class _DashboardState extends State<Dashboard> {
               Column(
                 children: <Widget>[
                   Container(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 20.0),
                     child: Text(
                       "Calorie Burned",
                       style: TextStyle(fontSize: 19,
@@ -104,6 +105,7 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                   Container(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 20.0),
                     child: Text(
                       "480",
                       style: TextStyle(fontSize: 18,
@@ -112,7 +114,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 5),
 
                   Container(
                     height: 2.0,
@@ -123,7 +125,9 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   SizedBox(height: 10),
                   Container(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 20.0),
                     child: Text(
+
                       "Calorie In Take",
                       style: TextStyle(fontSize: 19,
                         fontWeight: FontWeight.bold,
@@ -131,6 +135,7 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                   Container(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 20.0),
                     child: Text(
                       "2,000 ",
                       style: TextStyle(fontSize: 19

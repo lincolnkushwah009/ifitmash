@@ -77,6 +77,7 @@ import 'package:flutter/widgets.dart';
 import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:ifitmash/components/graph.dart';
 import 'package:ifitmash/screens/Dashboard.dart';
+import 'package:ifitmash/screens/bottomNavigationBar.dart';
 
 class LunchDetails extends StatefulWidget {
   // Movie object to handle.
@@ -243,7 +244,7 @@ class _LunchDetailState extends State<LunchDetails> {
                           Navigator.push(
                               context,
                               new MaterialPageRoute(
-                                  builder: (context) => Dashboard()));
+                                  builder: (context) => bottomNavigationBar()));
                         },
                         child: Container(
                           height: 45,
