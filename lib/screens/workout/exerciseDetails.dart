@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:ifitmash/components/graph.dart';
+import 'package:ifitmash/screens/Dashboard.dart';
 
 class ExerciseDetail extends StatefulWidget {
   // Movie object to handle.
@@ -82,7 +83,8 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
               ),
             )
           ]
-      ));
+      )
+      );
     }
     return wlist;
   }
@@ -167,7 +169,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                           Navigator.push(
                               context,
                               new MaterialPageRoute(
-                                  builder: (context) => Graph()));
+                                  builder: (context) => Dashboard()));
                         },
                         child: Container(
                           height: 45,
