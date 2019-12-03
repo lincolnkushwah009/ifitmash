@@ -262,16 +262,16 @@ class _DashboardState extends State<Dashboard> {
             borderRadius: new BorderRadius.circular(20.0),
             child: Container(
               padding: EdgeInsets.fromLTRB(10, 0, 15, 0),
-              color: Color.fromRGBO(222,222,222,100),
+              color: Colors.black,
               child: ListTile(
 
                 title: Text(
                   "Today's Workout",
                   style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                 ),
                 trailing: Icon(Icons.add_circle_outline,
-                    color: Colors.black, size: 25.0),
+                    color: Colors.white, size: 25.0),
                 onTap: (){
 //                  Navigator.push(context, new MaterialPageRoute(builder: (context) => ListOfExercises()));
                   Navigator.of(context).push(ScaleRoute(page: ListOfExercises()));
@@ -287,33 +287,30 @@ class _DashboardState extends State<Dashboard> {
 
             child: Container(
 //              color: Color.fromRGBO(222,222,222,100),
-              color: Colors.black,
+              color: Color.fromRGBO(222,222,222,100),
 
               child: Container(
                 child: RaisedButton(
                   splashColor: Colors.grey,
+
                   child: ListTile(
 
                     title: Text(
                       "Today's Nutrition",
                       style:
-                      TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                      TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                     ),
                     trailing: Icon(Icons.add_circle_outline,
                         color: Colors.white, size: 25.0),
                     onTap: (){
-//                      Navigator.push(
-//                          context,
-//                          new MaterialPageRoute(
-//                              builder: (context) => BldList()));
                       Navigator.of(context).push(ScaleRoute(page: BldList()));
-
                     },
                   ),
                 ),
               ),
             ),
           ),
+
 
 
           SizedBox(
@@ -332,7 +329,7 @@ class _DashboardState extends State<Dashboard> {
                     style: TextStyle(fontSize: 20),
                   ),
                 ),
-                SizedBox(width: 230),
+                SizedBox(width: 200),
                 Container(
                   child: Text("C State"),
                 ),
