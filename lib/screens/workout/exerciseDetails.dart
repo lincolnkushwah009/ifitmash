@@ -64,6 +64,40 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
       }
     }
 
+<<<<<<< HEAD
+      for(var i=1;i<=selectedCount;i++) {
+       wlist.add(
+
+           Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
+               children:<Widget>[
+
+                 Expanded(
+                   child: TextField(
+                     decoration: InputDecoration(
+
+                         labelText: 'Sets',
+                         border: OutlineInputBorder()),
+                     keyboardType: TextInputType.number,
+
+                   ),
+                 ),
+                 SizedBox(width: 5,height: 5),
+                 Expanded(
+                   child: TextField(
+                     decoration: InputDecoration(
+
+                         labelText: 'reps',
+                         border: OutlineInputBorder()),
+                     keyboardType: TextInputType.number,
+
+                   ),
+                 )
+               ]
+           )
+          );
+       }
+      return wlist;
+=======
     for (var i = 1; i <= selectedCount; i++) {
       wlist.add(Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -87,6 +121,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
       );
     }
     return wlist;
+>>>>>>> 65fd882b69a8e1e0cfa3907c599eceb19a32056d
   }
   @override
   Widget build(BuildContext context) {

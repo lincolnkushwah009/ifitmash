@@ -13,7 +13,7 @@ class LoginWithNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomPadding: false,
 
       body: NumberLogin(),
     );
@@ -60,6 +60,7 @@ class _NumberLoginState extends State<NumberLogin> {
 
   Future<dynamic> _loginUser(String input) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
     prefs.setString('phone', input);
     try {
       Options options = Options(
@@ -72,6 +73,7 @@ class _NumberLoginState extends State<NumberLogin> {
       print(response);
       print(input);
 
+      print("djksdnbkfbdbvbsedbdbgbedgsg");
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         var responseJson = json.decode(response.data);
@@ -187,20 +189,7 @@ class _NumberLoginState extends State<NumberLogin> {
 
                           keyboardType: TextInputType.number,
                           controller: _numberController,
-                        validator: (val){
-                        if(val.length < 10 || val.length> 10){
-                          Scaffold.of(context).hideCurrentSnackBar();
-                          Scaffold.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('asdasdsd'),
-                              )
-                          );
-                          return null;
-                        }else{
-                          return null;
-                        }
-
-                        },
+                          validator: (val) => val.length < 10 || val.length> 10 ? 'Check your phone number again' : null,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             icon: Icon(Icons.phone_android,
@@ -211,6 +200,10 @@ class _NumberLoginState extends State<NumberLogin> {
 
                         ),
                       ),
+
+
+
+
 
                       Spacer(),
                       GestureDetector(
