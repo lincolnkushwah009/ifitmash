@@ -167,36 +167,31 @@ class _EmailLoginState extends State<EmailLogin> {
                   padding: EdgeInsets.fromLTRB(10, 30, 10, 0),
                   child: Column(
                     children: <Widget>[
-                      Container(
-                        width: MediaQuery.of(context).size.width/1.2,
-                        height: 45,
-                        padding: EdgeInsets.only(
-                            top: 4,left: 16, right: 16, bottom: 4),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(50)
-                            ),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black12,
-                                  blurRadius: 5
-                              )
-                            ]
-                        ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
                         child: TextFormField(
+                          style: TextStyle(color: Colors.black),
                           keyboardType: TextInputType.emailAddress,
                           controller: _emailController,
-                          validator: (val) => !EmailValidator.validate(val, true)
-                              ? 'please provide a valid email'
-                              : null,
                           decoration: InputDecoration(
-                            border: InputBorder.none,
-                            icon: Icon(Icons.email,
+                            prefixIcon: Icon(
+                              Icons.email,
                               color: Colors.grey,
                             ),
-                            hintText: 'Email',
+                            labelText: "Email",
+                            labelStyle: new TextStyle(color: Colors.black),
+                            enabledBorder: UnderlineInputBorder(
+                                borderSide: new BorderSide(color: Colors.grey)),
+                            hintStyle: new TextStyle(
+                              inherit: true,
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black)),
+
                           ),
+                          onSaved: (String val) {},
                         ),
                       ),
 

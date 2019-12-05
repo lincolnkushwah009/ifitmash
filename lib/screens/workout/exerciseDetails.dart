@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:dropdown_formfield/dropdown_formfield.dart';
-import 'package:ifitmash/screens/Dashboard.dart';
+import 'package:ifitmash/screens/bottomNavigationBar.dart';
 
 class ExerciseDetail extends StatefulWidget {
   // Movie object to handle.
@@ -69,29 +69,27 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
           Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
               children:<Widget>[
 
-                Container(
-                  child: Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                          labelText: 'Sets',
-                          border: OutlineInputBorder()),
-                      keyboardType: TextInputType.number,
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
 
-                    ),
-                  ),
-                ),
-                SizedBox(width:20),
-                Container(
-                  child: Expanded(
-                    child:  TextField(
-                      decoration: InputDecoration(
-                          labelText: 'reps',
-                          border: OutlineInputBorder()),
-                      keyboardType: TextInputType.number,
-                    ),
+                        labelText: 'Sets',
+                        border: OutlineInputBorder()),
+                    keyboardType: TextInputType.number,
 
                   ),
                 ),
+                SizedBox(width: 5,height: 5),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+
+                        labelText: 'reps',
+                        border: OutlineInputBorder()),
+                    keyboardType: TextInputType.number,
+
+                  ),
+                )
               ]
           )
       );
@@ -171,16 +169,18 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                               ),
                             )),
                       ),
-
+                      SizedBox(
+                        height: 20,
+                      ),
                       InkWell(
                         onTap: () {
                           Navigator.push(
                               context,
                               new MaterialPageRoute(
-                                  builder: (context) => Dashboard()));
+                                  builder: (context) => bottomNavigationBar()));
                         },
                         child: Container(
-                          height: 40,
+                          height: 45,
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 colors: [Color(0xDD000000), Color(0xDD000000)],
