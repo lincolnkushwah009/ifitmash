@@ -38,7 +38,6 @@ class _DashboardState extends State<Dashboard> {
       body: _buildBody(context),
     );
   }
-
   Widget _buildBody(BuildContext context) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(10.0),
@@ -85,7 +84,8 @@ class _DashboardState extends State<Dashboard> {
                               fit: BoxFit.fill,
                               image: new AssetImage("assets/image/elon.jpeg"),
                             ),
-                          )),
+                          )
+                      ),
                     ),
                   ),
                   Container(child: Center(child: CalBurn())),
@@ -101,7 +101,6 @@ class _DashboardState extends State<Dashboard> {
                       style: TextStyle(fontSize: 19,
                         fontWeight: FontWeight.bold,
                       ),
-
                     ),
                   ),
                   Container(
@@ -110,12 +109,10 @@ class _DashboardState extends State<Dashboard> {
                       "480",
                       style: TextStyle(fontSize: 18,
                         color: Colors.red,
-
                       ),
                     ),
                   ),
                   SizedBox(height: 5),
-
                   Container(
                     height: 2.0,
                     width: 80.0,
@@ -127,7 +124,6 @@ class _DashboardState extends State<Dashboard> {
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 0, 0, 20.0),
                     child: Text(
-
                       "Calorie In Take",
                       style: TextStyle(fontSize: 19,
                         fontWeight: FontWeight.bold,

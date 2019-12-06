@@ -99,6 +99,7 @@ class _EmailLoginState extends State<EmailLogin> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       key: _scaffoldKey,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
@@ -158,109 +159,95 @@ class _EmailLoginState extends State<EmailLogin> {
               ),
             ),
 
-            Form(
-              key: _formKey,
-              child: Flexible(
-                child: Container(
-                  height: MediaQuery.of(context).size.height/2,
-                  width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.fromLTRB(10, 30, 10, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        width: MediaQuery.of(context).size.width/1.2,
-                        height: 45,
-                        padding: EdgeInsets.only(
-                            top: 4,left: 16, right: 16, bottom: 4),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(50)
-                            ),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black12,
-                                  blurRadius: 5
-                              )
-                            ]
-                        ),
-                        child: TextFormField(
-                          keyboardType: TextInputType.emailAddress,
-                          controller: _emailController,
-                          validator: (val) => !EmailValidator.validate(val, true)
-                              ? 'please provide a valid email'
-                              : null,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            icon: Icon(Icons.email,
-                              color: Colors.grey,
-                            ),
-                            hintText: 'Email',
-                          ),
-                        ),
-                      ),
-
-
-
-
-
-                      Spacer(),
-
-                      GestureDetector(
-                        onTap: () async {
-
-                          if (_formKey.currentState.validate()){
-                            setState(() => showSpinner=true);
-                          var res = await _loginUser(
-                              _emailController.text);
-                          setState(() => showSpinner=false);
-
-                          JsonUser user = JsonUser.fromJson(res);
-
-                          if (user != null) {
-                            Navigator.of(context).push(
-                                new MaterialPageRoute(
-                                    builder: (context) =>
-                                    new Otp()));
-                            print(user);
-                          }
-
-                          else {
-                            Scaffold.of(context).showSnackBar(SnackBar(
-                                content: Text("incorrect email")));
-                          }
-                          setState(() {
-                            showSpinner=false;
-                          });
-                        }
-                          },
-                        child: Container(
-                          height: 45,
-                          width: MediaQuery.of(context).size.width/1.2,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  Color(0xDD000000),
-                                  Color(0xDD000000)
-                                ],
+            Flexible(
+              child: Form(
+                key: _formKey,
+                  child: Container(
+//                  height: MediaQuery.of(context).size.height/2,
+//                  width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.fromLTRB(10, 30, 10, 0),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: 10.0),
+                           TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            controller: _emailController,
+                            validator: (val) => !EmailValidator.validate(val, true)
+                                ? 'please provide a valid email'
+                                : null,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              icon: Icon(Icons.email,
+                                color: Colors.grey,
                               ),
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(50)
-                              )
+                              hintText: 'Email',
+                            ),
                           ),
-                          child: Center(
-                            child: Text('Send OTP'.toUpperCase(),
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold
+
+
+                        SizedBox(height: 10.0),
+                        SizedBox(height: 50.0),
+
+                        Container(
+                          height: 40.0,
+                            child: GestureDetector(
+                              onTap: () async {
+
+                                if (_formKey.currentState.validate()){
+                                  setState(() => showSpinner=true);
+                                var res = await _loginUser(
+                                    _emailController.text);
+                                setState(() => showSpinner=false);
+
+                                JsonUser user = JsonUser.fromJson(res);
+
+                                if (user != null) {
+                                  Navigator.of(context).push(
+                                      new MaterialPageRoute(
+                                          builder: (context) =>
+                                          new Otp()));
+                                  print(user);
+                                }
+
+                                else {
+                                  Scaffold.of(context).showSnackBar(SnackBar(
+                                      content: Text("incorrect email")));
+                                }
+                                setState(() {
+                                  showSpinner=false;
+                                });
+                              }
+                                },
+                              child: Container(
+                                height: 45,
+                                width: MediaQuery.of(context).size.width/1.2,
+                                decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color(0xDD000000),
+                                        Color(0xDD000000)
+                                      ],
+                                    ),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(50)
+                                    )
+                                ),
+                                child: Center(
+                                  child: Text('Send OTP'.toUpperCase(),
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
+
               ),
             )
 

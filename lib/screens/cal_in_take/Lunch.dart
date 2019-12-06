@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'lunchdetails.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 import 'package:ifitmash/components/CalBurnCircle.dart';
 
@@ -26,28 +27,39 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
+  List foodList;
+  Map data;
   TextEditingController editingController = TextEditingController();
-
-  final lunch = ['daal','paneer','gobhi','bhindi','chicken korma','mutton','veg biryani','chicken biryani'
-  'aloo','nutrie','paneer bhurji','kadhai paneer','matar paneer','mushroom','daal makhni','daal fry'
-  ];
-
-
-  var items = List<String>(
-
-  );
+  getFoodData() async {
+    http.Response response =
+    await http.get('https://staging.ifitmash.club/api/getFatsecretDetails');
+    data = json.decode(response.body);
+    setState(() {
+      foodList = data['data'];
+    });
+    debugPrint(response.body);
+  }
 
   @override
   void initState() {
-    items.addAll(lunch);
     super.initState();
+    getFoodData();
+//    items.addAll("${foodList[index]["foodname"]}");
   }
+
+
+//  final lunch = ['daal','paneer','gobhi','bhindi','chicken korma','mutton','veg biryani','chicken biryani'
+//  'aloo','nutrie','paneer bhurji','kadhai paneer','matar paneer','mushroom','daal makhni','daal fry'
+//  ];
+
+//
+//  var items = List<String>(
+//
+//  );
 
   void filterSearchResults(String query) {
     List<String> dummySearchList = List<String>();
-    dummySearchList.addAll(lunch);
+    dummySearchList.addAll(foodList[data["foodname"]]);
     if(query.isNotEmpty) {
       List<String> dummyListData = List<String>();
       dummySearchList.forEach((item) {
@@ -56,14 +68,14 @@ class _MyHomePageState extends State<MyHomePage> {
         }
       });
       setState(() {
-        items.clear();
-        items.addAll(dummyListData);
+        foodList.clear();
+        foodList.addAll(dummyListData);
       });
       return;
     } else {
       setState(() {
-        items.clear();
-        items.addAll(lunch);
+        foodList.clear();
+        foodList.addAll(data["foodname"]);
       });
     }
 
@@ -108,10 +120,12 @@ class _MyHomePageState extends State<MyHomePage> {
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: items.length,
-                itemBuilder: (context, index) {
+                itemCount: foodList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  print("food");
+                  print(foodList);
                   return ListTile(
-                    title: Text('${items[index]}'),
+                    title: Text("${foodList[index]["foodname"]}"),
                     onTap: (){
                       Navigator.push(
                           context,
