@@ -5,6 +5,7 @@ import 'package:ifitmash/components/StepCount.dart';
 import 'package:ifitmash/components/fadeRoute.dart';
 import 'package:ifitmash/screens/Nutrition.dart';
 import 'package:ifitmash/screens/cal_in_take/BLDlist.dart';
+import 'package:ifitmash/screens/cal_in_take/Lunch.dart';
 import 'package:ifitmash/screens/workout/list_of_exercises.dart';
 import 'package:ifitmash/components/CalBurnCircle.dart';
 import 'package:ifitmash/screens/profile.dart';
@@ -304,7 +305,7 @@ class _DashboardState extends State<Dashboard> {
                     trailing: Icon(Icons.add_circle_outline,
                         color: Colors.white, size: 25.0),
                     onTap: (){
-                      Navigator.of(context).push(ScaleRoute(page: BldList()));
+                      Navigator.of(context).push(ScaleRoute(page: Lunch()));
                     },
                   ),
                 ),

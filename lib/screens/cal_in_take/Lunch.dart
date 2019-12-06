@@ -38,11 +38,15 @@ class _MyHomePageState extends State<MyHomePage> {
     });
     debugPrint(response.body);
   }
+  final duplicateItems = List<String>.generate(10000, (i) => "Item $i");
+  var items = List<String>();
 
   @override
   void initState() {
     super.initState();
     getFoodData();
+//    items.addAll(data["data"]);
+
 //    items.addAll("${foodList[index]["foodname"]}");
   }
 
