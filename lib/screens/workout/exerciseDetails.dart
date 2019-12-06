@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:dropdown_formfield/dropdown_formfield.dart';
-import 'package:ifitmash/components/graph.dart';
-import 'package:ifitmash/screens/Dashboard.dart';
 import 'package:ifitmash/screens/bottomNavigationBar.dart';
 
 class ExerciseDetail extends StatefulWidget {
@@ -65,38 +63,38 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
       }
     }
 
-      for(var i=1;i<=selectedCount;i++) {
-       wlist.add(
+    for(var i=1;i<=selectedCount;i++) {
+      wlist.add(
 
-           Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
-               children:<Widget>[
+          Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children:<Widget>[
 
-                 Expanded(
-                   child: TextField(
-                     decoration: InputDecoration(
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
 
-                         labelText: 'Sets',
-                         border: OutlineInputBorder()),
-                     keyboardType: TextInputType.number,
+                        labelText: 'Sets',
+                        border: OutlineInputBorder()),
+                    keyboardType: TextInputType.number,
 
-                   ),
-                 ),
-                 SizedBox(width: 5,height: 5),
-                 Expanded(
-                   child: TextField(
-                     decoration: InputDecoration(
+                  ),
+                ),
+                SizedBox(width: 5,height: 5),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
 
-                         labelText: 'reps',
-                         border: OutlineInputBorder()),
-                     keyboardType: TextInputType.number,
+                        labelText: 'reps',
+                        border: OutlineInputBorder()),
+                    keyboardType: TextInputType.number,
 
-                   ),
-                 )
-               ]
-           )
-          );
-       }
-      return wlist;
+                  ),
+                )
+              ]
+          )
+      );
+    }
+    return wlist;
   }
   @override
   Widget build(BuildContext context) {
@@ -161,8 +159,8 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                                   ),
                                   Container(
                                       child: Column(
-                                    children: getList(),
-                                  )),
+                                        children: getList(),
+                                      )),
                                   Container(
                                     padding: EdgeInsets.all(16),
                                     child: Text(_myActivityResult),
@@ -188,7 +186,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                                 colors: [Color(0xDD000000), Color(0xDD000000)],
                               ),
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(50))),
+                              BorderRadius.all(Radius.circular(50))),
                           child: Center(
                             child: Text(
                               'GO'.toUpperCase(),

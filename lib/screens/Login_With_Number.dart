@@ -73,7 +73,7 @@ class _NumberLoginState extends State<NumberLogin> {
       print(response);
       print(input);
 
-      print("djksdnbkfbdbvbsedbdbgbedgsg");
+
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         var responseJson = json.decode(response.data);
@@ -167,43 +167,35 @@ class _NumberLoginState extends State<NumberLogin> {
 
                     children: <Widget>[
 
-
-                      Container(
-                        width: MediaQuery.of(context).size.width/1.2,
-                        height: 45,
-                        padding: EdgeInsets.only(
-                            top: 4,left: 16, right: 16, bottom: 4),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(50)
-                            ),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black12,
-                                  blurRadius: 5
-                              )
-                            ]
-                        ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
                         child: TextFormField(
-
+                          style: TextStyle(color: Colors.black),
                           keyboardType: TextInputType.number,
                           controller: _numberController,
                           validator: (val) => val.length < 10 || val.length> 10 ? 'Check your phone number again' : null,
                           decoration: InputDecoration(
-                            border: InputBorder.none,
-                            icon: Icon(Icons.phone_android,
-                              color: Colors.grey,
-                            ),
-                            hintText: 'Phone Number',
-                          ),
+                              prefixIcon: Icon(
+                                Icons.phone_iphone,
+                                color: Colors.grey,
+                              ),
+                              labelText: "Number",
+                              labelStyle: new TextStyle(color: Colors.black),
+                              enabledBorder: UnderlineInputBorder(
+                                  borderSide: new BorderSide(color: Colors.grey)),
+                              hintStyle: new TextStyle(
+                                inherit: true,
+                                fontSize: 14.0,
+                                color: Colors.grey,
+                              ),
+//                              hintText: 'Number',
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black)),
 
+                          ),
+                          onSaved: (String val) {},
                         ),
                       ),
-
-
-
-
 
                       Spacer(),
                       GestureDetector(
