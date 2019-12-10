@@ -32,7 +32,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
 
   final _formKey = GlobalKey<FormState>();
 
-  static var uri = "https://staging.ifitmash.club/api/verifyOtp";
+  static var uri = "https://staging.ifitmash.club/api";
 
   static BaseOptions options = BaseOptions(
       baseUrl: uri,
@@ -54,24 +54,26 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
 
   bool isLoading = false;
 
-  Future<dynamic> _loginUser(String otp) async {
+  Future<dynamic> _loginUser(String otp,String phone) async {
     try {
       Options options = Options(
 //        contentType: ContentType.parse('application/json'),
       );
 
       Response response = await dio.post('/verifyOtp',
-          data: {"otp":otp},
+          data: {"otp":otp,"input": phone},
           options: options);
-      print(response);
+//      print(response);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         var responseJson = json.decode(response.data);
         return responseJson;
       } else if (response.statusCode == 401) {
         throw Exception("Incorrect Email/Password");
-      } else
-        throw Exception('Authentication Error');
+      } else {
+          print(response.realUri);
+          throw Exception('Authentication Error');
+        }
     } on DioError catch (exception) {
       if (exception == null ||
           exception.toString().contains('SocketException')) {
@@ -467,37 +469,73 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
             _secondDigit.toString() +
             _thirdDigit.toString() +
             _fourthDigit.toString() + _fifthDigit.toString();
-        Navigator.of(context).push(new MaterialPageRoute(builder: (context) => new bottomNavigationBar()));
-            save() async {
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              
-              final phone = prefs.getInt('input') ?? 0;
 
-              print(phone);
-          if (_formKey.currentState.validate()) {
+        forOtpVerification() async {
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          final phone = prefs.getString('phone') ?? 0;
 
-            var res = await _loginUser(
-                _OTPController.text);
-            JsonUser user = JsonUser.fromJson(res);
+          print("phone is "+phone);
 
-            if (user != null) {
-              Navigator.of(context).push(
-                  new MaterialPageRoute(
-                      builder: (context) =>
-                          bottomNavigationBar()));
-              print(user);
-            } else {
-              Scaffold.of(context).showSnackBar(SnackBar(
-                  content: Text("incorrect Number")));
-            }
+          var res = await _loginUser(
+              _OTPController.text,phone);
+
+          print("data is");
+
+          print(res.toString());
+
+          // res ko print karana he
+
+          if (res != null && res['response'] != null &&  res['response']['message'] == "success" ) {
+            print("otp is verified");
+            print(" no is "+phone+ " otp is "+otp);
+            Navigator.of(context).push(
+                new MaterialPageRoute(
+                    builder: (context) =>
+                        bottomNavigationBar()));
+          } else {
+            Scaffold.of(context).showSnackBar(SnackBar(
+                content: Text("incorrect Number")));
           }
         }
-        if(otp==save){
-          Navigator.of(context).push(
-              new MaterialPageRoute(
-                  builder: (context) =>
-                      bottomNavigationBar()));
-        }
+
+        forOtpVerification();
+
+
+//        Navigator.of(context).push(new MaterialPageRoute(builder: (context) => new bottomNavigationBar()));
+
+//        save() async {
+//          SharedPreferences prefs = await SharedPreferences.getInstance();
+//
+//          final phone = prefs.getInt('input') ?? 0;
+//
+//          print(phone);
+//          if (_formKey.currentState.validate()) {
+//
+//            var res = await _loginUser(
+//                _OTPController.text);
+//            JsonUser user = JsonUser.fromJson(res);
+//
+//            if (user != null) {
+//              Navigator.of(context).push(
+//                  new MaterialPageRoute(
+//                      builder: (context) =>
+//                          bottomNavigationBar()));
+//              print(user);
+//            } else {
+//              Scaffold.of(context).showSnackBar(SnackBar(
+//                  content: Text("incorrect Number")));
+//            }
+//          }
+//        }
+
+//        if(otp==save){
+//          Navigator.of(context).push(
+//              new MaterialPageRoute(
+//                  builder: (context) =>
+//                      bottomNavigationBar()
+//              )
+//          );
+//        }
 //            () async {
 //              SharedPreferences prefs = await SharedPreferences.getInstance();
 //

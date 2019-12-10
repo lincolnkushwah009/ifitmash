@@ -3,8 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fit_kit/fit_kit.dart';
 import 'package:ifitmash/components/StepCount.dart';
 import 'package:ifitmash/components/fadeRoute.dart';
-import 'package:ifitmash/screens/Nutrition.dart';
-import 'package:ifitmash/screens/cal_in_take/BLDlist.dart';
 import 'package:ifitmash/screens/cal_in_take/Lunch.dart';
 import 'package:ifitmash/screens/workout/list_of_exercises.dart';
 import 'package:ifitmash/components/CalBurnCircle.dart';
@@ -83,7 +81,7 @@ class _DashboardState extends State<Dashboard> {
                             shape: BoxShape.circle,
                             image: new DecorationImage(
                               fit: BoxFit.fill,
-                              image: new AssetImage("assets/image/elon.jpeg"),
+                              image: new AssetImage("assets/image/elon.png"),
                             ),
                           )
                       ),
@@ -99,7 +97,7 @@ class _DashboardState extends State<Dashboard> {
                     padding: EdgeInsets.fromLTRB(0, 0, 0, 20.0),
                     child: Text(
                       "Calorie Burned",
-                      style: TextStyle(fontSize: 19,
+                      style: TextStyle(fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -108,12 +106,12 @@ class _DashboardState extends State<Dashboard> {
                     padding: EdgeInsets.fromLTRB(0, 0, 0, 20.0),
                     child: Text(
                       "480",
-                      style: TextStyle(fontSize: 18,
+                      style: TextStyle(fontSize: 25,
                         color: Colors.red,
                       ),
                     ),
                   ),
-                  SizedBox(height: 5),
+
                   Container(
                     height: 2.0,
                     width: 80.0,
@@ -135,7 +133,7 @@ class _DashboardState extends State<Dashboard> {
                     padding: EdgeInsets.fromLTRB(0, 0, 0, 20.0),
                     child: Text(
                       "2,000 ",
-                      style: TextStyle(fontSize: 19
+                      style: TextStyle(fontSize: 25
                           ,color: Colors.purple
                       ),
                     ),
@@ -322,7 +320,9 @@ class _DashboardState extends State<Dashboard> {
 
           Container(height: 200, width: 400, child: Graph()),
           SizedBox(height: 30),
+
           Container(
+
             child: Row(
               children: <Widget>[
                 Container(

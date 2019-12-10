@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:ifitmash/login_with_email.dart';
 import 'package:ifitmash/screens/OTPverifacation.dart';
 import 'package:dio/dio.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:ifitmash/components/JsonUser.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -180,13 +179,13 @@ class _NumberLoginState extends State<NumberLogin> {
                                 color: Colors.grey,
                               ),
                               labelText: "Number",
-                              labelStyle: new TextStyle(color: Colors.black),
+                              labelStyle: new TextStyle(color: Colors.grey),
                               enabledBorder: UnderlineInputBorder(
                                   borderSide: new BorderSide(color: Colors.grey)),
                               hintStyle: new TextStyle(
                                 inherit: true,
                                 fontSize: 14.0,
-                                color: Colors.grey,
+                                color: Colors.black,
                               ),
 //                              hintText: 'Number',
                               focusedBorder: UnderlineInputBorder(
