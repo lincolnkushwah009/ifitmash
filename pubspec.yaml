@@ -17,6 +17,9 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  flutter_staggered_animations: "^0.1.2"
+  shimmer: ^1.0.1
+
   flutter_cupertino_date_picker: ^1.0.12
   shared_preferences: ^0.5.4+6
   modal_progress_hud: ^0.1.3

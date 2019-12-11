@@ -4,8 +4,11 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ifitmash/screens/OTPverifacation.dart';
+import 'package:ifitmash/screens/bottomNavigationBar.dart';
+
 import 'package:ifitmash/screens/Login_With_Number.dart';
 import 'package:dio/dio.dart';
+
 
 import 'components/JsonUser.dart';
 
@@ -200,33 +203,40 @@ class _EmailLoginState extends State<EmailLogin> {
                       Spacer(),
 
                       GestureDetector(
-                        onTap: () async {
 
-                          if (_formKey.currentState.validate()){
-                            setState(() => showSpinner=true);
-                            var res = await _loginUser(
-                                _emailController.text);
-                            setState(() => showSpinner=false);
+                        onTap: (){
 
-                            JsonUser user = JsonUser.fromJson(res);
+                            Navigator.push(context, new MaterialPageRoute(builder: (context) => bottomNavigationBar()));
 
-                            if (user != null) {
-                              Navigator.of(context).push(
-                                  new MaterialPageRoute(
-                                      builder: (context) =>
-                                      new Otp()));
-                              print(user);
-                            }
-
-                            else {
-                              Scaffold.of(context).showSnackBar(SnackBar(
-                                  content: Text("incorrect email")));
-                            }
-                            setState(() {
-                              showSpinner=false;
-                            });
-                          }
                         },
+
+//                        onTap: () async {
+//
+//                          if (_formKey.currentState.validate()){
+//                            setState(() => showSpinner=true);
+//                            var res = await _loginUser(
+//                                _emailController.text);
+//                            setState(() => showSpinner=false);
+//
+//                            JsonUser user = JsonUser.fromJson(res);
+//
+//                            if (user != null) {
+//                              Navigator.of(context).push(
+//                                  new MaterialPageRoute(
+//                                      builder: (context) =>
+//                                      new Otp()));
+//                              print(user);
+//                            }
+//
+//                            else {
+//                              Scaffold.of(context).showSnackBar(SnackBar(
+//                                  content: Text("incorrect email")));
+//                            }
+//                            setState(() {
+//                              showSpinner=false;
+//                            });
+//                          }
+//                        },
                         child: Container(
                           height: 45,
                           width: MediaQuery.of(context).size.width/1.2,

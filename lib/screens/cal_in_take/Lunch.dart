@@ -128,7 +128,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   print("food");
                   print(foodList);
                   return ListTile(
-                    title: Text("${foodList[index]["foodname"]}"),
+
+                    title: Text("${foodList[index]["foodname" ]}"),
                     onTap: (){
                       Navigator.push(
                           context,

@@ -22,9 +22,6 @@ Widget build(BuildContext context) {
               child: SfCartesianChart(
 
                   primaryXAxis: CategoryAxis(),
-// Chart title
-                  title: ChartTitle(text: 'Half yearly sales analysis'),
-// Enable legend
                   legend: Legend(isVisible: true),
 // Enable tooltip
                   tooltipBehavior: TooltipBehavior(enable: true),
@@ -32,11 +29,12 @@ Widget build(BuildContext context) {
                   series: <LineSeries<SalesData, String>>[
                     LineSeries<SalesData, String>(
                         dataSource:  <SalesData>[
-                          SalesData('Jan', 35),
-                          SalesData('Feb', 28),
-                          SalesData('Mar', 34),
-                          SalesData('Apr', 32),
-                          SalesData('May', 40)
+                          SalesData('mon', 80),
+                          SalesData('tue', 28),
+                          SalesData('wed', 34),
+                          SalesData('thu', 32),
+                          SalesData('fri', 40),
+                          SalesData('sat', 40)
                         ],
                         xValueMapper: (SalesData sales, _) => sales.year,
                         yValueMapper: (SalesData sales, _) => sales.sales,
@@ -61,26 +59,13 @@ Widget build(BuildContext context) {
                   primaryXAxis: CategoryAxis(),
 
                   series: <LineSeries<SalesData, String>>[
-                    LineSeries<SalesData, String>(
-                      // Bind data source
-                        dataSource:  <SalesData>[
-                          SalesData('Jan', 20),
-                          SalesData('Feb', 15),
-                          SalesData('Mar', 34),
-                          SalesData('Apr', 25),
-                          SalesData('May', 65)
-                        ],
-                        xValueMapper: (SalesData sales, _) => sales.year,
-                        yValueMapper: (SalesData sales, _) => sales.sales,
-                        dataLabelSettings: DataLabelSettings(isVisible: true)
-                    ),
                     LineSeries<SalesData,String>(
                         dataSource:  <SalesData>[
-                          SalesData('Jan', 0),
-                          SalesData('Feb', 40),
-                          SalesData('Mar', 38),
-                          SalesData('Apr', 60),
-                          SalesData('May', 60)
+                          SalesData('Week 1', 0),
+                          SalesData('Week 2', 40),
+                          SalesData('Week 3', 38),
+                          SalesData('Week 4', 60),
+
                         ],
                         xValueMapper: (SalesData sales, _) => sales.year,
                         yValueMapper: (SalesData sales, _) => sales.sales,

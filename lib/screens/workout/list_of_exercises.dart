@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter/material.dart';
 import 'exerciseDetails.dart';
 
@@ -107,23 +107,37 @@ class _MyHomePageState extends State<MyHomePage> {
             Divider(height:1),
 
             Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    onTap: (){
-                    Navigator.push(
-                        context,
-                        new MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                            new ExerciseDetail()));
-                    },
-                    title: Text('${items[index]}'),
-                    trailing: Icon(Icons.add_circle_outline,color: Colors.black,),
+              child: AnimationLimiter(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: items.length,
+                  itemBuilder: (context, index) {
 
-                  );
-                },
+
+                    return AnimationConfiguration.staggeredList(
+                      position: index,
+                      duration: const Duration(milliseconds: 1000),
+                      child: SlideAnimation(
+                        verticalOffset: 50.0,
+                        child: FadeInAnimation(
+                          child: ListTile(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  new MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                      new ExerciseDetail()));
+                            },
+                            title: Text('${items[index]}'),
+                            trailing: Icon(Icons.add_circle_outline,color: Colors.black,),
+
+                          ),
+                        ),
+                      ),
+                    );
+
+                  },
+                ),
               ),
             ),
           ],
@@ -131,5 +145,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
 }
 
