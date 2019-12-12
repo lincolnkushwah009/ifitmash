@@ -13,9 +13,16 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:ifitmash/components/reusable_card.dart';
 import 'package:ifitmash/components/round_icon_button.dart';
 import 'package:ifitmash/constants.dart';
+import 'package:ifitmash/input_page/input_page.dart';
+
+
+
 
 
 class Dashboard extends StatefulWidget {
+
+
+
   @override
   _DashboardState createState() => _DashboardState();
 }
@@ -36,6 +43,7 @@ class _DashboardState extends State<Dashboard> {
   final TextStyle whiteText = TextStyle(color: Colors.white);
 
   int  weight = 70;
+
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +96,7 @@ class _DashboardState extends State<Dashboard> {
                               padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
                               child: Center(child: RadialProgress())),
                           Container(
-                            padding: EdgeInsets.fromLTRB(25, 25, 0, 0),
+                            padding: EdgeInsets.fromLTRB(40, 40, 0, 0),
                             child: GestureDetector(
                               onTap: () {
                                 Navigator.push(
@@ -97,8 +105,8 @@ class _DashboardState extends State<Dashboard> {
                                         builder: (context) => Profile()));
                               },
                               child: Container(
-                                  width: 150.0,
-                                  height: 150.0,
+                                  width: 120.0,
+                                  height: 120.0,
                                   decoration: new BoxDecoration(
                                     shape: BoxShape.circle,
                                     image: new DecorationImage(
@@ -213,6 +221,7 @@ class _DashboardState extends State<Dashboard> {
                                 ),
                               ),
                             ),
+
                             const SizedBox(height: 10.0),
 
                           ],
@@ -242,7 +251,9 @@ class _DashboardState extends State<Dashboard> {
                               height: 120,
                               child: GestureDetector(
                                 child: FlatButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).push(ScaleRoute(page: InputPage()));
+                                  },
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
@@ -267,7 +278,9 @@ class _DashboardState extends State<Dashboard> {
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 10.0),
+
+
+                    const SizedBox(height: 10.0),
 
                           ],
                         ),
@@ -428,5 +441,6 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
-
 }
+
+

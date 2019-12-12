@@ -18,6 +18,7 @@ class _RadialProgressState extends State<RadialProgress>
   double progressDegrees = 0;
   var count = 0;
 
+
   @override
   void initState() {
     super.initState();
@@ -52,28 +53,6 @@ class _RadialProgressState extends State<RadialProgress>
           duration: fadeInDuration,
           child: Column(
             children: <Widget>[
-//
-//              Text(
-//                'STEPS COUNTS ',
-//                style: TextStyle(fontSize: 15.0, letterSpacing: 1.2),
-//              ),
-//              SizedBox(
-//                height: 6.0,
-//              ),
-//              Container(
-//                height: 5.0,
-//                width: 50.0,
-//                decoration: BoxDecoration(
-//                    color: Colors.purple,
-//                    borderRadius: BorderRadius.all(Radius.circular(4.0))),
-//              ),
-//              SizedBox(
-//                height: 10.0,
-//              ),
-//              Text(
-//                '1225',
-//                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-//              ),
 
             ],
           ),
@@ -93,17 +72,18 @@ class RadialPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
       ..color = Colors.black12
-      ..strokeCap = StrokeCap.round
+      ..strokeCap = StrokeCap.square
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 10.0;
+      ..strokeWidth = 3.0;
 
     Offset center = Offset(size.width / 2, size.height / 2);
+
     canvas.drawCircle(center, size.width / 2, paint);
 
     Paint progressPaint = Paint()
       ..shader = LinearGradient(
               colors: [Colors.red, Colors.purple, Colors.purpleAccent])
-          .createShader(Rect.fromCircle(center: center, radius: size.width / 2))
+          .createShader(Rect.fromCircle(center: center, radius: size.width / 1.9))
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = 10.0;
