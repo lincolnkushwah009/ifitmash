@@ -72,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     return  Scaffold(
 //      appBar: AppBar(
 //        title:Text("Exercises"),
@@ -81,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.fromLTRB(12,30,10,10),
               child: Container(
                 child: ClipRRect(
                   borderRadius: new BorderRadius.circular(50.0),
@@ -94,8 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         border: InputBorder.none,
                         filled: true,
                         fillColor: Color.fromRGBO(222,222,222,100),
-                        contentPadding: EdgeInsets.only(left: 30, bottom: 0, top: 15, right: 0),
-
+//                        contentPadding: EdgeInsets.only(left: 30, bottom: 0, top: 15, right: 0),
                         hintText: "Search",
                         prefixIcon: Icon(Icons.search),
                     ),
