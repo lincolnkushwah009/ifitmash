@@ -10,52 +10,75 @@ class _PickerState extends State<Picker> {
   @override
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      child:  Container(
+    return Row(
+      children: <Widget>[
+        Container(
 
-        child: Row(
-          children: <Widget>[
-            CupertinoPicker(
-               backgroundColor: Colors.white,
-              itemExtent: 50,
-              onSelectedItemChanged: (int index){
-                print(index);
-              },
-              children: <Widget>[
-                Text("Item 0"),
-                Text("Item 1"),
-                Text("Item 2"),
-                Text("Item 3"),
-                Text("Item 4"),
-                Text("Item 5"),
-                Text("Item 6"),
-              ],
+          width: 175,
+          height: 200,
+          child: CupertinoPageScaffold(
+
+            child:  Container(
+              child: CupertinoPicker(
+                backgroundColor: Colors.white,
+
+                itemExtent: 50,
+                onSelectedItemChanged: (int index){
+                  print(index);
+                },
+                children: <Widget>[
+                  Text("Item 1"),
+                  Text("Item 2"),
+                  Text("Item 3"),
+                  Text("Item 4"),
+                  Text("Item 5"),
+                  Text("Item 6"),
+
+                ],
+              ),
             ),
-            SizedBox(width: 20),
-            CupertinoPicker(
-              backgroundColor: Colors.white,
-              itemExtent: 50,
-              onSelectedItemChanged: (int index){
-                print(index);
-              },
-              children: <Widget>[
-                Text("Item 0"),
-                Text("Item 1"),
-                Text("Item 2"),
-                Text("Item 3"),
-                Text("Item 4"),
-                Text("Item 5"),
-                Text("Item 6"),
-              ],
-            ),
-          ],
+
+          ),
+
         ),
-      ),
+        SizedBox(width: 10),
 
+        Container(
+          width: 175,
+          height: 200,
+          child: CupertinoPageScaffold(
+
+            child:  Container(
+              child: CupertinoPicker(
+
+
+                itemExtent: 50,
+                onSelectedItemChanged: (int index){
+                  print(index);
+                },
+                children: <Widget>[
+                  Text("Item 1"),
+                  Text("Item 2"),
+                  Text("Item 3"),
+                  Text("Item 4"),
+                  Text("Item 5"),
+                  Text("Item 6"),
+
+                ],
+              ),
+            ),
+
+          ),
+
+        ),
+
+      ],
     );
+
+
+
   }
 }
-
 
 
 

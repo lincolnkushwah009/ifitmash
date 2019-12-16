@@ -62,12 +62,30 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
 
       var dttosend = {"otp":otp,"input": phone, "input_type": 1,  "device_type": 0,"token": "asasasasasasasasa"};
 
-      Response response = await  dio.post('/verifyOtp',
+      Response response  = await  dio.post('/verifyOtp',
+
+
           data:dttosend,
           options: options);
 
+
+
       if (response.statusCode == 200 || response.statusCode == 201) {
         var responseJson = json.decode(response.data);
+
+
+
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+
+        prefs.setString('email', responseJson.email);
+        prefs.setString('height', responseJson.height);
+        prefs.setString('gender', responseJson.gender);
+        prefs.setString('weight', responseJson.weight);
+        prefs.setString('dob', responseJson.dob);
+
+
+
+
         return responseJson;
       } else if (response.statusCode == 401) {
         throw Exception("Incorrect Email/Password");

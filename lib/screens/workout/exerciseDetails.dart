@@ -268,12 +268,9 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
            height: 200,
            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
              Container(
+               padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                height: 50,
-               child: SingleChildScrollView(
-                 child: Column(children: <Widget>[
-                   Text('asdsad123'),
-                 ],),
-               ),
+               child: Picker(),
              ),
              Container(
                child: SingleChildScrollView(

@@ -4,6 +4,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:ifitmash/screens/welcome_screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 
@@ -16,6 +17,35 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+
+
+
+  String  email;
+  String gender;
+
+
+  Future<Null> getSharedPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    email = prefs.getString("name");
+    setState(() {
+      email;
+      gender;
+
+      print(email+"djsnflkndknfsndklfdlnlfndsfnsd");
+      print(gender+"dfdnmdfmmmmmmmmmmmmmmmmm...................");
+
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    email = "";
+
+    getSharedPrefs();
+  }
+
 
 //  @override
 //
@@ -167,7 +197,14 @@ class _ProfileState extends State<Profile> {
 //
 //  }
 
+
+
+
   Widget build(BuildContext context) {
+
+
+
+
     return Scaffold(
       body: SingleChildScrollView(
         child: AnimationLimiter(
@@ -211,6 +248,7 @@ class _ProfileState extends State<Profile> {
 
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 0, 200, 0),
+
           child: Text(
             "Profle",
             style: TextStyle(fontSize: 40),

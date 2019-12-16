@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "688530821146",
+    "firebase_url": "https://ifitmash-2b6f4.firebaseio.com",
+    "project_id": "ifitmash-2b6f4",
+    "storage_bucket": "ifitmash-2b6f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688530821146:android:b4ce87e2f1bef65da181a3",
+        "android_client_info": {
+          "package_name": "ifitmash.ifitmash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688530821146-juoaeg7gss3vj7j16jfauerc6dnl1na1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa4_4w9SPFYg272of_UJ4fjnLDTIlpDuE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688530821146-juoaeg7gss3vj7j16jfauerc6dnl1na1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
