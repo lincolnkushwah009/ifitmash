@@ -32,7 +32,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
 
   final _formKey = GlobalKey<FormState>();
 
-  static var uri = "https://staging.ifitmash.club/api";
+  static var uri = "https://ifitmash.club/api/";
 
   static BaseOptions options = BaseOptions(
       baseUrl: uri,
@@ -60,10 +60,11 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
 //        contentType: ContentType.parse('application/json'),
       );
 
-      Response response = await dio.post('/verifyOtp',
-          data: {"otp":otp,"input": phone},
+      var dttosend = {"otp":otp,"input": phone, "input_type": 1,  "device_type": 0,"token": "asasasasasasasasa"};
+
+      Response response = await  dio.post('/verifyOtp',
+          data:dttosend,
           options: options);
-//      print(response);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         var responseJson = json.decode(response.data);
@@ -471,101 +472,117 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
             _fourthDigit.toString() + _fifthDigit.toString();
 
         forOtpVerification() async {
-          SharedPreferences prefs = await SharedPreferences.getInstance();
+          SharedPreferences prefs = await
+
+          SharedPreferences.getInstance();
           final phone = prefs.getString('phone') ?? 0;
 
           print("phone is "+phone);
 
-          var res = await _loginUser(
-              _OTPController.text,phone);
+          var res = await  _loginUser(
+              otp,phone);
 
-          print("data is");
-
+          print('out response from api is');
           print(res.toString());
 
-          // res ko print karana he
+          print(res['status']);
 
-          if (res != null && res['response'] != null &&  res['response']['message'] == "success" ) {
-            print("otp is verified");
-            print(" no is "+phone+ " otp is "+otp);
+          if (res != null && res['response'] != null && res['status'] == 1 ) {
             Navigator.of(context).push(
                 new MaterialPageRoute(
                     builder: (context) =>
                         bottomNavigationBar()));
           } else {
-            Scaffold.of(context).showSnackBar(SnackBar(
-                content: Text("incorrect Number")));
+             // set all digits null here or .. do anything else
+            setState(() {
+              if (_fifthDigit != null) {
+                _fifthDigit = null;
+
+              } else if (_fourthDigit != null) {
+                _fourthDigit = null;
+              }
+              else if (_thirdDigit != null) {
+                _thirdDigit = null;
+              } else if (_secondDigit != null) {
+                _secondDigit = null;
+              } else if (_firstDigit != null) {
+                _firstDigit = null;
+              }
+            });setState(() {
+              if (_fifthDigit != null) {
+                _fifthDigit = null;
+
+              } else if (_fourthDigit != null) {
+                _fourthDigit = null;
+              }
+              else if (_thirdDigit != null) {
+                _thirdDigit = null;
+              } else if (_secondDigit != null) {
+                _secondDigit = null;
+              } else if (_firstDigit != null) {
+                _firstDigit = null;
+              }
+            });setState(() {
+              if (_fifthDigit != null) {
+                _fifthDigit = null;
+
+              } else if (_fourthDigit != null) {
+                _fourthDigit = null;
+              }
+              else if (_thirdDigit != null) {
+                _thirdDigit = null;
+              } else if (_secondDigit != null) {
+                _secondDigit = null;
+              } else if (_firstDigit != null) {
+                _firstDigit = null;
+              }
+            });setState(() {
+              if (_fifthDigit != null) {
+                _fifthDigit = null;
+
+              } else if (_fourthDigit != null) {
+                _fourthDigit = null;
+              }
+              else if (_thirdDigit != null) {
+                _thirdDigit = null;
+              } else if (_secondDigit != null) {
+                _secondDigit = null;
+              } else if (_firstDigit != null) {
+                _firstDigit = null;
+              }
+            });setState(() {
+              if (_fifthDigit != null) {
+                _fifthDigit = null;
+
+              } else if (_fourthDigit != null) {
+                _fourthDigit = null;
+              }
+              else if (_thirdDigit != null) {
+                _thirdDigit = null;
+              } else if (_secondDigit != null) {
+                _secondDigit = null;
+              } else if (_firstDigit != null) {
+                _firstDigit = null;
+              }
+            });setState(() {
+              if (_fifthDigit != null) {
+                _fifthDigit = null;
+
+              } else if (_fourthDigit != null) {
+                _fourthDigit = null;
+              }
+              else if (_thirdDigit != null) {
+                _thirdDigit = null;
+              } else if (_secondDigit != null) {
+                _secondDigit = null;
+              } else if (_firstDigit != null) {
+                _firstDigit = null;
+              }
+            });
           }
         }
 
         forOtpVerification();
-
-
-//        Navigator.of(context).push(new MaterialPageRoute(builder: (context) => new bottomNavigationBar()));
-
-//        save() async {
-//          SharedPreferences prefs = await SharedPreferences.getInstance();
-//
-//          final phone = prefs.getInt('input') ?? 0;
-//
-//          print(phone);
-//          if (_formKey.currentState.validate()) {
-//
-//            var res = await _loginUser(
-//                _OTPController.text);
-//            JsonUser user = JsonUser.fromJson(res);
-//
-//            if (user != null) {
-//              Navigator.of(context).push(
-//                  new MaterialPageRoute(
-//                      builder: (context) =>
-//                          bottomNavigationBar()));
-//              print(user);
-//            } else {
-//              Scaffold.of(context).showSnackBar(SnackBar(
-//                  content: Text("incorrect Number")));
-//            }
-//          }
-//        }
-
-//        if(otp==save){
-//          Navigator.of(context).push(
-//              new MaterialPageRoute(
-//                  builder: (context) =>
-//                      bottomNavigationBar()
-//              )
-//          );
-//        }
-//            () async {
-//              SharedPreferences prefs = await SharedPreferences.getInstance();
-//
-//              final phone = prefs.getInt('input') ?? 0;
-//
-//              print(phone);
-//          if (_formKey.currentState.validate()) {
-//
-//            var res = await _loginUser(
-//                _OTPController.text);
-//            JsonUser user = JsonUser.fromJson(res);
-//
-//            if (user != null) {
-//              Navigator.of(context).push(
-//                  new MaterialPageRoute(
-//                      builder: (context) =>
-//                          bottomNavigationBar()));
-//              print(user);
-//            } else {
-//              Scaffold.of(context).showSnackBar(SnackBar(
-//                  content: Text("incorrect Number")));
-//            }
-//          }
-//
-//        };
-        // final otp is this.
-        // TODO post api on verify otp
-
-        // TODO if api fails _first to _f digit set null.
-
       }
     });
   }

@@ -223,7 +223,6 @@ class ExerciseDetail extends StatefulWidget {
 
 class _ExerciseDetailState extends State<ExerciseDetail> {
   @override
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: NestedScrollView(
@@ -258,15 +257,44 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
           ];
         },
         body: Column( children: <Widget>[
-
-
           Container(
-            child: Text("mmmm"),
+            height: 50,
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
+              Text('Pick the Quantity of food!'),
+              Text('Icon')
+            ],),
+          ),
+         Container(
+           height: 200,
+           child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
+             Container(
+               height: 50,
+               child: SingleChildScrollView(
+                 child: Column(children: <Widget>[
+                   Text('asdsad123'),
+                 ],),
+               ),
+             ),
+             Container(
+               child: SingleChildScrollView(
+                 child: Text('asdsad'),
+               ),
+             )
+           ],),
+         ),
+          Container(
+            height: 100,
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
 
-
+              Text("Item"),
+              Text("Item"),
+              Text("Item"),
+              Text("Item")
+            ],),
           )
 
         ],
+
 
         ),
       ),

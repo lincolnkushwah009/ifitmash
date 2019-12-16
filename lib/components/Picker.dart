@@ -13,28 +13,51 @@ class _PickerState extends State<Picker> {
     return CupertinoPageScaffold(
       child:  Container(
 
-        child: CupertinoPicker(
-           backgroundColor: Colors.white,
-          itemExtent: 50,
-          onSelectedItemChanged: (int index){
-            print(index);
-          },
+        child: Row(
           children: <Widget>[
-            Text("Item 0"),
-            Text("Item 1"),
-            Text("Item 2"),
-            Text("Item 3"),
-            Text("Item 4"),
-            Text("Item 5"),
-            Text("Item 6"),
+            CupertinoPicker(
+               backgroundColor: Colors.white,
+              itemExtent: 50,
+              onSelectedItemChanged: (int index){
+                print(index);
+              },
+              children: <Widget>[
+                Text("Item 0"),
+                Text("Item 1"),
+                Text("Item 2"),
+                Text("Item 3"),
+                Text("Item 4"),
+                Text("Item 5"),
+                Text("Item 6"),
+              ],
+            ),
+            SizedBox(width: 20),
+            CupertinoPicker(
+              backgroundColor: Colors.white,
+              itemExtent: 50,
+              onSelectedItemChanged: (int index){
+                print(index);
+              },
+              children: <Widget>[
+                Text("Item 0"),
+                Text("Item 1"),
+                Text("Item 2"),
+                Text("Item 3"),
+                Text("Item 4"),
+                Text("Item 5"),
+                Text("Item 6"),
+              ],
+            ),
           ],
         ),
       ),
 
-
     );
   }
 }
+
+
+
 
 //import 'package:flutter/cupertino.dart';
 //import 'package:flutter/material.dart';
@@ -178,7 +201,8 @@ class _PickerState extends State<Picker> {
 //                                ],
 //                              ),
 //                            );
-//                          });
+//                          }
+//                          );
 //                    }),
 //                Text(
 //                  '${_selectedHour+1}:${_selectedMinute+1}',

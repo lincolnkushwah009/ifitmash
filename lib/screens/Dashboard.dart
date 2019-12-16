@@ -34,7 +34,7 @@ class _DashboardState extends State<Dashboard> {
 
   final TextStyle whiteText = TextStyle(color: Colors.white);
 
-  int weight = 70;
+  double weight = 70;
 
   @override
   Widget build(BuildContext context) {
@@ -363,7 +363,7 @@ class _DashboardState extends State<Dashboard> {
                                           icon: Icons.remove,
                                           onPressed: () {
                                             setState(() {
-                                              if (weight > 1) weight--;
+                                              if (weight > 1) weight=weight-.5;
                                             });
                                           },
                                         ),
@@ -371,7 +371,7 @@ class _DashboardState extends State<Dashboard> {
                                           icon: Icons.add,
                                           onPressed: () {
                                             setState(() {
-                                              weight++;
+                                              weight=weight+0.5;
                                             });
                                           },
                                         ),
