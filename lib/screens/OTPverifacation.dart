@@ -74,16 +74,20 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
         var responseJson = json.decode(response.data);
 
 
-
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-
-        prefs.setString('email', responseJson.email);
-        prefs.setString('height', responseJson.height);
-        prefs.setString('gender', responseJson.gender);
-        prefs.setString('weight', responseJson.weight);
-        prefs.setString('dob', responseJson.dob);
-
-
+//
+//        SharedPreferences prefs = await SharedPreferences.getInstance();
+//
+////        prefs.setString('email', responseJson.email);
+//        prefs.setString('height', responseJson.height);
+//        prefs.setString('gender', responseJson.gender);
+//        prefs.setString('weight', responseJson.weight);
+//        prefs.setString('dob', responseJson.dob);
+//
+//        print(responseJson);
+//
+//        print("fkgbfdgbdkngdskjnfdn/////////////////////////////////////");
+//
+//
 
 
         return responseJson;

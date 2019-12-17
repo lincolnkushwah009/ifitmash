@@ -50,7 +50,7 @@ class _DashboardState extends State<Dashboard> {
       body: SingleChildScrollView(
         child: AnimationLimiter(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(10,30,10,10),
+            padding: const EdgeInsets.fromLTRB(10,5,10,10),
             child: Column(
               children: AnimationConfiguration.toStaggeredList(
                 duration: const Duration(milliseconds: 375),
@@ -62,6 +62,7 @@ class _DashboardState extends State<Dashboard> {
                 ),
                 children: <Widget>[
                   Container(
+                    padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                     alignment: Alignment.topRight,
                     child: InkWell(
                       child: Icon(
@@ -75,6 +76,10 @@ class _DashboardState extends State<Dashboard> {
                                 builder: (context) => AboutApp()));
                       },
                     ),
+                  ),
+                  Container(
+                      alignment: Alignment.topLeft,
+                      child: Text("Welcome Vipin",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24 ))
                   ),
                   SizedBox(
                     height: 20,
