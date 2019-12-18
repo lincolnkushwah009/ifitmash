@@ -12,6 +12,13 @@ class Workout extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.black,
+            title: Padding(
+              padding: const EdgeInsets.fromLTRB(15,0,0,0),
+              child: Text("Welcome Vipin", style: TextStyle(fontSize: 25,
+//                decoration: TextDecoration.underline,
+//                decorationStyle: TextDecorationStyle.wavy,
+              )),
+            ),
             bottom: TabBar(
               tabs: [
                 Tab(text: 'Find Workout Plan',),
@@ -44,37 +51,35 @@ class FirstScreen extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(8, 20, 8, 0),
                   child: Column(
                     children: <Widget>[
-                      SizedBox(height: 20),
+
+                      SizedBox(height: 10),
                       Container(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "Welcome Vipin",
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
-                          )),
-                      SizedBox(height: 20),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 0, 80, 0),
+                          padding: EdgeInsets.fromLTRB(20, 0, 80, 0),
                           child: Text(
                               " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla enim purus, finibus a commodo fermentum, semper non eros. Mauris a turpis dolor. Aenean facilisis purus mi, et consectetur urna condimentum vel.")),
 
                       SizedBox(height: 20),
-                      ClipRRect(
-                          borderRadius: new BorderRadius.circular(10.0),
-                          child: Container(
-                            decoration:
-                            BoxDecoration(border: Border.all(color: Colors.black)),
-                            child: SizedBox(
-                              height: 50,
-                              width: 350,
-                              child: RaisedButton(
-                                child: Text("Create my own workout plan"),
-                                onPressed: () {},
-                                color: Colors.white,
-                                textColor: Colors.black,
-                                splashColor: Colors.grey,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(15,0,15,0),
+                        child: ClipRRect(
+
+                            borderRadius: new BorderRadius.circular(10.0),
+                            child: Container(
+                              decoration:
+                              BoxDecoration(border: Border.all(color: Colors.black)),
+                              child: SizedBox(
+                                height: 50,
+                                width: 350,
+                                child: RaisedButton(
+                                  child: Text("Create my own workout plan"),
+                                  onPressed: () {},
+                                  color: Colors.white,
+                                  textColor: Colors.black,
+                                  splashColor: Colors.grey,
+                                ),
                               ),
-                            ),
-                          )),
+                            )),
+                      ),
                       ListTile(
                         leading: Text("Recommended for you"),
                         trailing: Text('View More'),

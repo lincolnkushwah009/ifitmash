@@ -1,3 +1,6 @@
+import 'package:shared_preferences/shared_preferences.dart';
+
+
 //import 'package:flutter/material.dart';
 //import 'package:flutter/widgets.dart';
 //import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -367,7 +370,28 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
 
 
-  Widget build(BuildContext context) {
+  @override
+  void initState() {
+    super.initState();
+    getValuesForProfile();
+  }
+
+  void getValuesForProfile(){
+    getValues() async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final phone = prefs.getString('phone') ?? "";
+      final email = prefs.getString('email') ?? "";
+
+      print(phone);
+      print(email);
+
+    }
+
+    getValues();
+    }
+
+
+    Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: AnimationLimiter(

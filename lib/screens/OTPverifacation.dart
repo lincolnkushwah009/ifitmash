@@ -494,9 +494,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
             _fourthDigit.toString() + _fifthDigit.toString();
 
         forOtpVerification() async {
-          SharedPreferences prefs = await
-
-          SharedPreferences.getInstance();
+          SharedPreferences prefs = await SharedPreferences.getInstance();
           final phone = prefs.getString('phone') ?? 0;
 
           print("phone is "+phone);
@@ -504,12 +502,14 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
           var res = await  _loginUser(
               otp,phone);
 
-          print('out response from api is');
-          print(res.toString());
 
-          print(res['status']);
 
           if (res != null && res['response'] != null && res['status'] == 1 ) {
+
+            prefs.setString('email', res['response']['email']);
+            prefs.setString('user_name', res['response']['user_name']);
+
+
             Navigator.of(context).push(
                 new MaterialPageRoute(
                     builder: (context) =>
