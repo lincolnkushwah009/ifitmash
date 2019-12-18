@@ -59,36 +59,106 @@ class ResultCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(16.0),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 24.0),
-        child: Container(
-          width: double.infinity,
-          child: Column(children: [
-            Text(
-              '🔥',
-              style: TextStyle(fontSize: 80.0),
-            ),
-            Text(
-              bmi.toStringAsFixed(1),
-              style: TextStyle(fontSize: 140.0, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              'BMI = ${bmi.toStringAsFixed(2)} kg/m²',
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Text(
-                'Normal BMI weight range for the height:\n${minWeight.round()}kg - ${maxWeight.round()}kg',
-                style: TextStyle(fontSize: 14.0, color: Colors.grey),
-                textAlign: TextAlign.center,
+    return SingleChildScrollView(
+      child: Card(
+        margin: EdgeInsets.all(15.0),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 22.0),
+          child: Container(
+            width: double.infinity,
+            child: Column(children: [
+              Text(
+                '🔥',
+                style: TextStyle(fontSize: 40.0),
               ),
-            ),
-          ]),
+              Text(
+                bmi.toStringAsFixed(1),
+                style: TextStyle(fontSize: 120.0, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                'BMI = ${bmi.toStringAsFixed(2)} kg/m²',
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 14.0),
+                child: Text(
+                  'Normal BMI weight range for the height:\n${minWeight.round()}kg - ${maxWeight.round()}kg',
+                  style: TextStyle(fontSize: 14.0, color: Colors.grey),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+
+              Divider(height: 40),
+
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10,0,10,0),
+                  child: Table(
+                      columnWidths: {0:FractionColumnWidth(.5)},
+                      children: [
+                        TableRow(
+                            children: [
+                              Text("Category", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
+                              Text("BMI range - kg/m2",textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16)),
+
+                            ]
+                        ),
+                        TableRow(
+                            children: [
+                              Text("Severe Thinness",),
+                              Text('< 16',textAlign: TextAlign.center,),
+
+                            ]
+                        ),
+
+
+                        TableRow(
+                            children: [
+                              Text('Moderate Thinness	',),
+                              Text('16 - 17',textAlign: TextAlign.center,),
+                             ]),
+
+                        TableRow(
+                            children: [
+                              Text('Mild Thinness'),
+                              Text('17 - 18.5',textAlign: TextAlign.center,),]
+                        ),
+                        TableRow(
+                            children: [
+                              Text('Normal'),
+                              Text('18.5 - 25',textAlign: TextAlign.center,),]
+                        ),
+                        TableRow(
+                            children: [
+                              Text('Overweight'),
+                              Text('25 - 30',textAlign: TextAlign.center,),]
+                        ),
+                        TableRow(
+                            children: [
+                              Text('Obese Class I'),
+                              Text('30 - 35',textAlign: TextAlign.center,),]
+                        ),
+
+                        TableRow(
+                            children: [
+                              Text('Obese Class II'),
+                              Text('35 - 40',textAlign: TextAlign.center,),]
+                        ),
+
+                        TableRow(
+                            children: [
+                              Text('Obese Class III'),
+                              Text('	> 40',textAlign: TextAlign.center,),]
+                        ),
+                      ]
+                  ),
+                ),
+              )
+            ]),
+          ),
         ),
       ),
     );
+
   }
 }
