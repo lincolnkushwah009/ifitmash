@@ -63,17 +63,10 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
       var dttosend = {"otp":otp,"input": phone, "input_type": 1,  "device_type": 0,"token": "asasasasasasasasa"};
 
       Response response  = await  dio.post('/verifyOtp',
-
-
           data:dttosend,
           options: options);
-
-
-
       if (response.statusCode == 200 || response.statusCode == 201) {
         var responseJson = json.decode(response.data);
-
-
 //
 //        SharedPreferences prefs = await SharedPreferences.getInstance();
 //
@@ -87,9 +80,6 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
 //
 //        print("fkgbfdgbdkngdskjnfdn/////////////////////////////////////");
 //
-//
-
-
         return responseJson;
       } else if (response.statusCode == 401) {
         throw Exception("Incorrect Email/Password");
@@ -111,9 +101,6 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
     }
   }
 
-
-
-
   // Constants
   final int time = 30;
   AnimationController _controller;
@@ -130,7 +117,6 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
   Timer timer;
   int totalTimeInSeconds;
   bool _hideResendButton;
-
   String userName = "";
   bool didReadNotifications = false;
   int unReadNotificationsCount = 0;
@@ -508,6 +494,11 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
 
             prefs.setString('email', res['response']['email']);
             prefs.setString('user_name', res['response']['user_name']);
+            prefs.setString('dob', res['response']['dob']);
+            prefs.setString('height', res['response']['height']);
+            prefs.setString('weight', res['response']['weight']);
+            prefs.setString('gender', res['response']['gender']);
+            print(res['response']);
 
 
             Navigator.of(context).push(

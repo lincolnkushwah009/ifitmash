@@ -1,9 +1,43 @@
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ifitmash/components/fadeRoute.dart';
+import 'package:ifitmash/screens/workout/list_of_exercises.dart';
 
+class Workout extends StatefulWidget {
+  @override
+  _WorkoutState createState() => _WorkoutState();
+}
+const String spKey = 'myBool';
+class _WorkoutState extends State<Workout> {
+  SharedPreferences sharedPreferences;
+  String userData;
+  String email;
+  @override
+  void initState() {
+    super.initState();
 
+    SharedPreferences.getInstance().then((SharedPreferences sp) {
+      sharedPreferences = sp;
+      userData = sharedPreferences.getString('user_name');
+      email = sharedPreferences.getString('email');
+      print(userData);
+      // will be null if never previously saved
+      if (userData == null) {
+        userData = "";
+        persist(userData); // set an initial value
+      }
+      setState(() {});
+    });
+  }
 
-class Workout extends StatelessWidget {
+  void persist(String value) {
+    setState(() {
+      userData = value;
+    });
+    sharedPreferences?.setString(spKey, value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,7 +48,7 @@ class Workout extends StatelessWidget {
             backgroundColor: Colors.black,
             title: Padding(
               padding: const EdgeInsets.fromLTRB(15,0,0,0),
-              child: Text("Welcome Vipin", style: TextStyle(fontSize: 25,
+              child: Text("Welcome "+'${userData}', style: TextStyle(fontSize: 25,
 //                decoration: TextDecoration.underline,
 //                decorationStyle: TextDecorationStyle.wavy,
               )),
@@ -72,7 +106,10 @@ class FirstScreen extends StatelessWidget {
                                 width: 350,
                                 child: RaisedButton(
                                   child: Text("Create my own workout plan"),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .push(ScaleRoute(page: ListOfExercises()));
+                                  },
                                   color: Colors.white,
                                   textColor: Colors.black,
                                   splashColor: Colors.grey,
@@ -277,8 +314,41 @@ class FirstScreen extends StatelessWidget {
   }
 }
 
-class SecondScreen extends StatelessWidget {
+class SecondScreen extends StatefulWidget {
+
   @override
+  @override
+  _SecondScreenState createState() => _SecondScreenState();
+}
+const String sKey = 'myBool';
+class _SecondScreenState extends State<SecondScreen> {
+  SharedPreferences sharedPreferences;
+  String userData;
+  String email;
+  @override
+  void initState() {
+    super.initState();
+
+    SharedPreferences.getInstance().then((SharedPreferences sp) {
+      sharedPreferences = sp;
+      userData = sharedPreferences.getString('user_name');
+      email = sharedPreferences.getString('email');
+      print(userData);
+      // will be null if never previously saved
+      if (userData == null) {
+        userData = "";
+        persist(userData); // set an initial value
+      }
+      setState(() {});
+    });
+  }
+
+  void persist(String value) {
+    setState(() {
+      userData = value;
+    });
+    sharedPreferences?.setString(spKey, value);
+  }
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -293,7 +363,7 @@ class SecondScreen extends StatelessWidget {
                       Container(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            "Welcome Vipin",
+                            "Welcome "+'${userData}',
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
                           )),
                       SizedBox(height: 20),
@@ -313,7 +383,10 @@ class SecondScreen extends StatelessWidget {
                               width: 350,
                               child: RaisedButton(
                                 child: Text("Create my own workout plan"),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .push(ScaleRoute(page: ListOfExercises()));
+                                },
                                 color: Colors.white,
                                 textColor: Colors.black,
                                 splashColor: Colors.grey,

@@ -3,13 +3,47 @@ import 'package:ifitmash/screens/bottomNavigationBar.dart';
 import 'package:ifitmash/widget_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class BmiAppBar extends StatelessWidget {
-  final bool isInputPage;
+class BmiAppBar extends StatefulWidget {
+  @override
+  @override
+  _BmiAppBarState createState() => _BmiAppBarState();
+}
+const String sKey = 'myBool';
+class _BmiAppBarState extends State<BmiAppBar> {
+  SharedPreferences sharedPreferences;
+  String userData;
+  String email;
+  @override
+  void initState() {
+    super.initState();
+
+    SharedPreferences.getInstance().then((SharedPreferences sp) {
+      sharedPreferences = sp;
+      userData = sharedPreferences.getString('user_name');
+      email = sharedPreferences.getString('email');
+      print(userData);
+      // will be null if never previously saved
+      if (userData == null) {
+        userData = "";
+        persist(userData); // set an initial value
+      }
+      setState(() {});
+    });
+  }
+
+  void persist(String value) {
+    setState(() {
+      userData = value;
+    });
+    sharedPreferences?.setString(sKey, value);
+  }
+//  final bool isInputPage;
   static const String wavingHandEmoji = "\uD83D\uDC4B";
   static const String whiteSkinTone = "\uD83C\uDFFB";
 
-  const BmiAppBar({Key key, this.isInputPage = true}) : super(key: key);
+//   const BmiAppBar({Key key, this.isInputPage = true}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,10 +93,10 @@ class BmiAppBar extends StatelessWidget {
         style: DefaultTextStyle.of(context).style.copyWith(fontSize: 34.0),
         children: [
           TextSpan(
-            text: isInputPage ? "Hi Vipin " : "Your BMI",
+            text: "Hi "+'${userData }'  " Your BMI",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          TextSpan(text: isInputPage ? getEmoji(context) : ""),
+//          TextSpan(text: isInputPage ? getEmoji(context) : ""),
         ],
       ),
     );

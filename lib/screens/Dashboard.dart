@@ -14,6 +14,7 @@ import 'package:ifitmash/components/reusable_card.dart';
 import 'package:ifitmash/components/round_icon_button.dart';
 import 'package:ifitmash/constants.dart';
 import 'package:ifitmash/input_page/input_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -21,6 +22,9 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  SharedPreferences sharedPreferences;
+  String userData;
+  String email;
   @override
   void read() async {
     final results = await FitKit.read(
@@ -35,6 +39,31 @@ class _DashboardState extends State<Dashboard> {
   final TextStyle whiteText = TextStyle(color: Colors.white);
 
   double weight = 70;
+
+  @override
+  void initState() {
+    super.initState();
+
+    SharedPreferences.getInstance().then((SharedPreferences sp) {
+      sharedPreferences = sp;
+      userData = sharedPreferences.getString('user_name');
+      email = sharedPreferences.getString('email');
+      print(userData);
+      // will be null if never previously saved
+      if (userData == null) {
+        userData = "";
+        persist(userData); // set an initial value
+      }
+      setState(() {});
+    });
+  }
+
+  void persist(String value) {
+    setState(() {
+      userData = value;
+    });
+    sharedPreferences?.setString(spKey, value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +108,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   Container(
                       alignment: Alignment.topLeft,
-                      child: Text("Welcome Vipin",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24 ))
+                      child: Text("Welcome "+'${userData}',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24 ))
                   ),
                   SizedBox(
                     height: 20,

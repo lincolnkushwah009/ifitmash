@@ -21,7 +21,7 @@ class _ResultPageState extends State<ResultPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        child: BmiAppBar(isInputPage: false),
+        child: BmiAppBar(),
         preferredSize: Size.fromHeight(appBarHeight(context)),
       ),
       body: Column(
