@@ -3,11 +3,18 @@ import 'package:ifitmash/input_page/height/height_styles.dart';
 import 'screens/welcome_screen.dart';
 import 'package:ifitmash/components/splashScreen.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import './screens/bottomNavigationBar.dart';
 
+//
+//Future<void> main() async {
+//  SharedPreferences prefs = await SharedPreferences.getInstance();
+//  var email = prefs.getString('email');
+//  print(email);
+//  runApp(MaterialApp(home: email == null ? Login() : Home()));
+//}
+void main() async{
 
-
-
-void main() {
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarColor: Colors.white, //top bar color
@@ -16,9 +23,12 @@ void main() {
         systemNavigationBarIconBrightness: Brightness.dark, //bottom bar icons
       )
   );
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var email = prefs.getString('email');
+  print(email);
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
-      .then((_) => runApp(new MyApp()));
+      .then((_) => runApp(MaterialApp(home: email==null?MyApp():bottomNavigationBar())));
 }
 
 class MyApp extends StatelessWidget {

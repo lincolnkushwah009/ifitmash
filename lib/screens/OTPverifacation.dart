@@ -489,7 +489,6 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
               otp,phone);
 
 
-
           if (res != null && res['response'] != null && res['status'] == 1 ) {
 
             prefs.setString('email', res['response']['email']);
