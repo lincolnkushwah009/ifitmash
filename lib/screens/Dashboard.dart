@@ -8,6 +8,7 @@ import 'package:ifitmash/screens/workout/list_of_exercises.dart';
 import 'package:ifitmash/components/CalBurnCircle.dart';
 import 'package:ifitmash/screens/profile.dart';
 import 'package:ifitmash/components/graph.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ifitmash/about.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:ifitmash/components/reusable_card.dart';
@@ -420,7 +421,16 @@ class _DashboardState extends State<Dashboard> {
                                         width: 200,
                                         child: RaisedButton(
                                           child: Text("Save"),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Fluttertoast.showToast(msg: 'You successfully submitted your weight',
+                                                toastLength: Toast.LENGTH_SHORT,
+                                                gravity: ToastGravity.CENTER,
+                                                timeInSecForIos: 1,
+                                                backgroundColor: Colors.green,
+                                                textColor: Colors.white,
+                                                fontSize: 16.0
+                                            );
+                                          },
                                           color: Colors.black,
                                           textColor: Colors.white,
                                           splashColor: Colors.grey,

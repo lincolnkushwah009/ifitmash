@@ -13,6 +13,7 @@ class ExerciseDetail extends StatefulWidget {
 }
 
 class _ExerciseDetailState extends State<ExerciseDetail> {
+  bool a = false;
   String _myActivity;
   String _myActivityResult;
   final formKey = new GlobalKey<FormState>();
@@ -36,7 +37,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
 
   var selectedCount = 0;
   // Constructor for the class.
-  var sets = ["1 Set", "2 Sets", "3 Sets", "4 Sets","5 Sets"];
+  var sets = ["1 Set", "2 Sets", "3 Sets", "4 Sets","5 Sets","6 Sets"];
 
   List<Map<dynamic, dynamic>> list = [
     {
@@ -59,6 +60,10 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
       "display": "5",
       "value": "moving",
     },
+    {
+      "display": "6",
+      "value": "playing",
+    },
   ];
 
   List<Widget> getList() {
@@ -73,7 +78,9 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
     for(var i=1;i<=selectedCount;i++) {
       wlist.add(
 
+
           Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
+
               children:<Widget>[
 
                 Expanded(
@@ -82,8 +89,8 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                     height: 100.0,
                     alignment: Alignment.center,
                     padding:EdgeInsets.only(bottom: 30.0),
-                    color: Colors.white,
                     child: CupertinoPicker(
+                      backgroundColor: Colors.white,
                       itemExtent: 32.0,
                       onSelectedItemChanged: (selectedIndex){
                         print(selectedIndex);
@@ -102,8 +109,8 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                     height: 100.0,
                     alignment: Alignment.center,
                     padding:EdgeInsets.only(bottom: 30.0),
-                    color: Colors.white,
                     child: CupertinoPicker(
+                      backgroundColor: Colors.white,
                       itemExtent: 32.0,
                       onSelectedItemChanged: (selectedIndex){
                         print(selectedIndex);
@@ -140,8 +147,8 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                     height: 100.0,
                     alignment: Alignment.center,
                     padding:EdgeInsets.only(bottom: 30.0),
-                    color: Colors.white,
                     child: CupertinoPicker(
+                      backgroundColor: Colors.white,
                       itemExtent: 32.0,
                       onSelectedItemChanged: (selectedIndex){
                         print(selectedIndex);
@@ -152,7 +159,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                       Text('15'),
                       Text('20'),
                       Text('25'),
-                        Text('30'),
+                      Text('30'),
                       Text('40'),
                       Text('45'),
                       Text('50'),
@@ -168,10 +175,13 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                       Text('100')
                     ],
                     ),
+
                   ),
-                )
+
+                ),
               ]
           )
+
       );
     }
     return wlist;
@@ -179,6 +189,9 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        backgroundColor: Colors.white,
+
+
         appBar: new AppBar(
           iconTheme: IconThemeData(
             color: Colors.black, //change your color here
@@ -217,35 +230,54 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
-                                  Container(
-                                    padding: EdgeInsets.all(16.0),
-                                    child: DropDownFormField(
 
-                                      hintText: 'Enter no. of sets',
-                                      value: _myActivity,
-                                      onSaved: (value) {
-                                        setState(() {
-                                          _myActivity = value;
-                                        });
-                                      },
-                                      onChanged: (value) {
-                                        setState(() {
-                                          _myActivity = value;
-                                          getList();
-                                        });
-                                      },
-                                      dataSource: list,
-                                      textField: 'display',
-                                      valueField: 'value',
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(0,0,0,20),
+                                    child: Container(
+                                      child: DropDownFormField(
+                                        titleText: null,
+                                        hintText: 'Enter Numbers of sets',
+                                        value: _myActivity,
+                                        onSaved: (value) {
+                                          setState(() {
+                                            _myActivity = value;
+                                          });
+                                        },
+                                        onChanged: (value) {
+                                          setState(() {
+                                            a=true;
+                                            _myActivity = value;
+                                            getList();
+                                          });
+                                        },
+                                        dataSource: list,
+                                        textField: 'display',
+                                        valueField: 'value',
+                                      ),
+
                                     ),
-
                                   ),
+                                 true? Visibility(
+
+                                    visible: a,
+                                    child: Container(
+                                      child: Row(children: <Widget>[
+                                        SizedBox(width: 20),
+                                        Text("INTENSITY",style: TextStyle(fontWeight: FontWeight.bold)),
+                                        SizedBox(width: 60),
+                                        Text("REPS",style: TextStyle(fontWeight: FontWeight.bold)),
+                                        SizedBox(width: 60),
+                                        Text("WEIGHT",style: TextStyle(fontWeight: FontWeight.bold)),
+                                      ],),
+                                    ),
+                                  ):Container(),
+                                  SizedBox(height: 20),
                                   Container(
                                       child: Column(
                                         children: getList(),
                                       )),
                                   Container(
-                                    padding: EdgeInsets.all(16),
+                                    padding: EdgeInsets.all(10),
                                     child: Text(_myActivityResult),
                                   )
                                 ],
@@ -289,90 +321,3 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
         ]));
   }
 }
-
-//class ExerciseDetail extends StatefulWidget {
-//
-//  @override
-//  _ExerciseDetailState createState() => _ExerciseDetailState();
-//}
-//
-//class _ExerciseDetailState extends State<ExerciseDetail> {
-//  @override
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//      body: NestedScrollView(
-//        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-//          return <Widget>[
-//            SliverAppBar(
-//              backgroundColor: Colors.black,
-//              expandedHeight: 200.0,
-//              floating: false,
-//              pinned: true,
-//              flexibleSpace: FlexibleSpaceBar(
-//                  centerTitle: true,
-//                  title: InkWell(
-//                    onTap: (){
-//                      Navigator.push(
-//                          context,
-//                          new MaterialPageRoute(
-//                              builder: (context) => Picker()));
-//                    },
-//                    child: Text("Exercise",
-//                        style: TextStyle(
-//                          color: Colors.white,
-//                          fontSize: 16.0,
-//                        )),
-//                  ),
-//                  background: Image.asset(
-//                    "assets/image/gym.jpg",
-//                    fit: BoxFit.cover,
-//                  )
-//              ),
-//            ),
-//          ];
-//        },
-//        body: Column( children: <Widget>[
-//          Container(
-//            height: 50,
-//            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
-//              Text('Pick the Quantity of food!'),
-//              Text('Icon')
-//            ],),
-//          ),
-//         Container(
-//           height: 200,
-//           child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
-//             Container(
-//               padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-//               height: 50,
-//               child: Picker(),
-//             ),
-//             Container(
-//               child: SingleChildScrollView(
-//                 child: Text('asdsad'),
-//               ),
-//             )
-//           ],),
-//         ),
-//          Container(
-//            height: 100,
-//            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
-//
-//              Text("Item"),
-//              Text("Item"),
-//              Text("Item"),
-//              Text("Item")
-//            ],),
-//          )
-//
-//        ],
-//
-//
-//        ),
-//      ),
-//    );
-//  }
-//
-//}
-//
-

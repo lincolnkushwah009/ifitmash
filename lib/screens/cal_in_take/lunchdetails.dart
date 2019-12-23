@@ -76,6 +76,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:ifitmash/components/graph.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:ifitmash/screens/Dashboard.dart';
 import 'package:ifitmash/screens/bottomNavigationBar.dart';
 
@@ -166,111 +167,124 @@ class _LunchDetailState extends State<LunchDetails> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          iconTheme: IconThemeData(
-            color: Colors.black, //change your color here
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              backgroundColor: Colors.black,
+              expandedHeight: 200.0,
+              floating: false,
+              pinned: true,
+              flexibleSpace: FlexibleSpaceBar(
+                  centerTitle: true,
+                  title: InkWell(
+                    onTap: (){
+
+                    },
+                    child: Text("Lunch",
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 16.0,
+                        )),
+                  ),
+                  background: Image.asset(
+                    "assets/image/images.jpeg",
+                    fit: BoxFit.cover,
+                  )
+              ),
+            ),
+          ];
+        },
+        body: Column( children: <Widget>[
+          Container(
+            height: 60,
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
+              Text('Pick the Quantity of food!'),
+              Icon(Icons.share)
+            ],),
           ),
-          title: new Text(
-            "Lunch",
-            style: TextStyle(color: Colors.black),
-          ),
-          backgroundColor: Colors.white,
-        ),
-        body: new ListView(children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: ClipRRect(
-                borderRadius: new BorderRadius.circular(10.0),
-                child: new Image.asset("assets/image/lunch.jpg")),
-          ),
-          new Container(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-            child: new Row(
-              children: [
-                // First child in the Row for the name and the
-                // Release date information.
-                new Expanded(
-                  // Name and Release date are in the same column
-                  child: new Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        child: ClipRRect(
-                            borderRadius: new BorderRadius.circular(10.0),
-                            child: Form(
-                              key: formKey,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  Container(
-                                    padding: EdgeInsets.all(16.0),
-                                    child: DropDownFormField(
-                                      titleText: 'how many bowls',
-                                      hintText: 'Please choose one',
-                                      value: _myActivity,
-                                      onSaved: (value) {
-                                        setState(() {
-                                          _myActivity = value;
-                                        });
-                                      },
-                                      onChanged: (value) {
-                                        setState(() {
-                                          _myActivity = value;
-                                          getList();
-                                        });
-                                      },
-                                      dataSource: list,
-                                      textField: 'display',
-                                      valueField: 'value',
-                                    ),
-                                  ),
-                                  Container(
-                                      child: Column(
-                                        children: getList(),
-                                      )),
-                                  Container(
-                                    padding: EdgeInsets.all(16),
-                                    child: Text(_myActivityResult),
-                                  )
-                                ],
-                              ),
-                            )),
+          Container(
+            height: 200,
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
+              Container(
+                padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                height: 50,
+              ),
+              Expanded(
+                child: Container(
+                  child: Center(
+                    child: Container(
+                      height: 100.0,
+                      alignment: Alignment.center,
+                      padding:EdgeInsets.only(bottom: 30.0),
+                      child: CupertinoPicker(
+                        backgroundColor: Colors.white,
+                        itemExtent: 32.0,
+                        onSelectedItemChanged: (selectedIndex){
+                          print(selectedIndex);
+                        },children: [
+                        Text('0.75'),
+                        Text('1.0)'),
+                        Text('1.5'),
+                        Text('2.0'),
+                        Text('2.5)'),
+                        Text('3'),
+                        Text('3.5'),
+                        Text('4.0)'),
+                        Text('4.5'),
+                        Text('5.0'),
+                        Text('5.5)'),
+                        Text('6.0'),
+
+                      ],
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              new MaterialPageRoute(
-                                  builder: (context) => bottomNavigationBar()));
-                        },
-                        child: Container(
-                          height: 45,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [Color(0xDD000000), Color(0xDD000000)],
-                              ),
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(50))),
-                          child: Center(
-                            child: Text(
-                              'GO'.toUpperCase(),
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
-              ],
-            ),
+              ),
+              SizedBox(width: 15,height: 5),
+              Expanded(
+                child: Container(
+                  child: Center(
+                    child: Container(
+                      height: 100.0,
+                      alignment: Alignment.center,
+                      padding:EdgeInsets.only(bottom: 30.0),
+                      child: CupertinoPicker(
+                        backgroundColor: Colors.white,
+                        itemExtent: 32.0,
+                        onSelectedItemChanged: (selectedIndex){
+                          print(selectedIndex);
+                        },children: [
+                        Text('samosa(regular)'),
+                        Text('samosa(mini)'),
+                        Text('grams')
+                      ],
+                      ),
+                    ),
+                  ),
+                ),
+
+              )
+            ],),
           ),
-        ]));
+          Container(
+            height: 100,
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
+
+            Image.asset("assets/image/lunch.jpg"),
+              Text("Carbs"),
+              Text("Fat"),
+              Text("Fibre")
+            ],),
+          )
+
+        ],
+
+
+        ),
+      ),
+    );
   }
 }
 
