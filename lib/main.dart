@@ -38,7 +38,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       theme: ThemeData(
-        primaryColor: mainBlue,
+        primaryColor:
+        mainBlue,
         fontFamily: 'SF Pro Display',
       ),
       home: new SplashScreen(),

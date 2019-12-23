@@ -90,13 +90,15 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ),
                 children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                    alignment: Alignment.topRight,
-                    child: InkWell(
+
+                  ListTile(
+                    title:Text("Welcome "+'${userData}',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24 )),
+
+                    trailing:InkWell(
                       child: Icon(
                         Icons.info,
                         size: 30,
+                        color: Colors.black,
                       ),
                       onTap: () {
                         Navigator.push(
@@ -106,10 +108,7 @@ class _DashboardState extends State<Dashboard> {
                       },
                     ),
                   ),
-                  Container(
-                      alignment: Alignment.topLeft,
-                      child: Text("Welcome "+'${userData}',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24 ))
-                  ),
+
                   SizedBox(
                     height: 20,
                   ),
@@ -367,8 +366,25 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: 20,
                   ),
-                  Container(height: 200, width: 400, child: Graph()),
-                  SizedBox(height: 30),
+                  
+                  
+                  Column(
+                    children: <Widget>[
+
+                      Container(
+                        height: 40,
+                        width: 150,
+                        color: Colors.grey,
+                        child: Center(child: Text("Weight Chart",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
+
+                      ),
+                      Container(
+                          height: 200, width: 400, child: Graph()),
+                    ],
+                  ),
+                  
+                  
+                  SizedBox(height: 20),
                   Container(
                     child: Column(
                       children: <Widget>[
