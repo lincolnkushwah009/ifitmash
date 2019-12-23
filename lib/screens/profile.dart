@@ -92,8 +92,7 @@ class _ProfileState extends State<Profile> {
                     padding: const EdgeInsets.fromLTRB(0,20,10,0),
                     child: GestureDetector(
                       onTap: (){
-                        Navigator.push(context,
-                            new MaterialPageRoute(builder: (context) => WelcomeScreen()));
+                        Navigator.of(context).pushReplacementNamed('/Login');
                       },
                       child: Container(
                         alignment: Alignment.topRight,

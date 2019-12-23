@@ -3,14 +3,12 @@ import 'Dashboard.dart';
 import 'Nutrition.dart';
 import 'profile.dart';
 import 'Workout.dart';
-
 class bottomNavigationBar  extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _bottomNavigationBarState();
   }
 }
-
 class _bottomNavigationBarState extends State<bottomNavigationBar > {
   int _selectedPage = 0;
   final _pageOptions = [
@@ -18,9 +16,7 @@ class _bottomNavigationBarState extends State<bottomNavigationBar > {
     Nutrition(),
     Workout(),
     Profile()
-
   ];
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -56,7 +52,6 @@ class _bottomNavigationBarState extends State<bottomNavigationBar > {
       ),
     );
   }
-
   void onTabTapped(int index) {
     setState(() {
       _selectedPage = index;

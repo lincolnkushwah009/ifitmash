@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:ifitmash/screens/bottomNavigationBar.dart';
 
 
 class LunchDetails extends StatefulWidget {
@@ -105,14 +106,14 @@ class _LunchDetailState extends State<LunchDetails> {
                     onTap: (){
 
                     },
-                    child: Text("Lunch",
+                    child: Text("Samosa",
                         style: TextStyle(
-                          color: Colors.black54,
+                          color: Colors.white,
                           fontSize: 16.0,
                         )),
                   ),
                   background: Image.asset(
-                    "assets/image/images.jpeg",
+                    "assets/image/Samosa.jpg",
                     fit: BoxFit.cover,
                   )
               ),
@@ -135,10 +136,10 @@ class _LunchDetailState extends State<LunchDetails> {
 
                 Expanded(
                   child: Container(
-
                     child: Center(
                       child: Container(
-                        height: 100.0,
+                        height: 130.0,
+
                         alignment: Alignment.center,
                         padding:EdgeInsets.only(bottom: 30.0),
                         child: CupertinoPicker(
@@ -171,7 +172,8 @@ class _LunchDetailState extends State<LunchDetails> {
                   child: Container(
                     child: Center(
                       child: Container(
-                        height: 100.0,
+                        height: 130.0,
+
                         alignment: Alignment.center,
                         padding:EdgeInsets.only(bottom: 30.0),
                         child: CupertinoPicker(
@@ -180,7 +182,7 @@ class _LunchDetailState extends State<LunchDetails> {
                           onSelectedItemChanged: (selectedIndex){
                             print(selectedIndex);
                           },children: [
-                          Text('samosa(regular)',style: TextStyle(fontWeight: FontWeight.w100),),
+                          Text('samosa(regul)',style: TextStyle(fontWeight: FontWeight.w100),),
                           Text('samosa(mini)',style: TextStyle(fontWeight: FontWeight.w100)),
                           Text('grams',style: TextStyle(fontWeight: FontWeight.w100))
                         ],
@@ -194,32 +196,76 @@ class _LunchDetailState extends State<LunchDetails> {
             ),
           ),
 
-
-          Container(
-
-              child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
-
-                Text("8.1 g"),
-                Text("60.3 g"),
-                Text("30.6 g"),
-                Text("3.6 g"),
-
-
-              ],),
-            ),
-
-          SizedBox(height: 10),
+          SizedBox(height:20),
           Container(
 
             child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
 
-              Image.asset("images/foodicons/protein.png",height: 60),
-              Image.asset("images/foodicons/Carbs.png",height: 60),
-              Image.asset("images/foodicons/Fat.png",height: 60),
-              Image.asset("images/foodicons/fiber.png",height: 60,),
+              Column(
+                children: <Widget>[
+                  Text("8.1 g"),
+                  SizedBox(height: 10),
+                  Image.asset("images/foodicons/protein.png",height: 60),
+                  Text("Protein")
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("60.3 g"),
+                  SizedBox(height: 10),
+                  Image.asset("images/foodicons/Carbs.png",height: 60),
+                  Text("Carbs"),
+
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("30.6 g"),
+                  SizedBox(height: 10),
+                  Image.asset("images/foodicons/Fat.png",height: 60),
+                  Text("Fat"),
+
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("3.6 g"),
+                  SizedBox(height: 10),
+                  Image.asset("images/foodicons/fiber.png",height: 60,),
+                  Text("Fiber"),
+                ],
+              ),
 
             ],),
-          )
+          ),
+          SizedBox(height: 50),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => bottomNavigationBar()));
+            },
+            child: Container(
+              width: 300,
+              height: 45,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Color(0xDD000000), Color(0xDD000000)],
+                  ),
+                  borderRadius:
+                  BorderRadius.all(Radius.circular(50))),
+              child: Center(
+                child: Text(
+                  'GO'.toUpperCase(),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ),
+
 
         ],
 
@@ -229,4 +275,3 @@ class _LunchDetailState extends State<LunchDetails> {
     );
   }
 }
-

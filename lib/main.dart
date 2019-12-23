@@ -30,7 +30,6 @@ void main() async{
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
       .then((_) => runApp(MaterialApp(home: email==null?MyApp():bottomNavigationBar())));
 }
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
