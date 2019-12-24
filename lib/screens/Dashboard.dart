@@ -58,14 +58,12 @@ class _DashboardState extends State<Dashboard> {
       setState(() {});
     });
   }
-
   void persist(String value) {
     setState(() {
       userData = value;
     });
     sharedPreferences?.setString(spKey, value);
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +71,6 @@ class _DashboardState extends State<Dashboard> {
       body: _buildBody(context),
     );
   }
-
   @override
   Widget _buildBody(BuildContext context) {
     return Scaffold(
