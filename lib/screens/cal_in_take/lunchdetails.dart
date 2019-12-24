@@ -1,84 +1,8 @@
-//import 'package:flutter/material.dart';
-//import 'package:flutter/widgets.dart';
-//
-//
-//class LunchDetails extends StatelessWidget {
-//  // Movie object to handle.
-//
-//
-//  // Constructor for the class.
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return new Scaffold(
-//        appBar: new AppBar(
-//          iconTheme: IconThemeData(
-//            color: Colors.black, //change your color here
-//          ),
-//          title: new Text("Lunch",style: TextStyle(
-//              color: Colors.black
-//          ),),
-//          backgroundColor: Colors.white,
-//        ),
-//        body: new ListView(
-//            children: <Widget>[
-//              new Image.asset("assets/image/lunch.jpg"),
-//              new Container(
-//                padding: const EdgeInsets.all(32.0),
-//                child: new Row(
-//                  children: [
-//                    // First child in the Row for the name and the
-//                    // Release date information.
-//                    new Expanded(
-//                      // Name and Release date are in the same column
-//                      child: new Column(
-//                        crossAxisAlignment: CrossAxisAlignment.start,
-//                        children: [
-//                          // Code to create the view for name.
-//                          new Container(
-//                            padding: const EdgeInsets.only(bottom: 8.0),
-//                            child: new Text(
-//                              "Lunch item",
-//                              style: new TextStyle(
-//                                fontWeight: FontWeight.bold,
-//                              ),
-//                            ),
-//                          ),
-//                          // Code to create the view for release date.
-//                          new Text(
-//                            "Tasty food",
-//                            style: new TextStyle(
-//                              color: Colors.grey[500],
-//                            ),
-//                          ),
-//                        ],
-//                      ),
-//                    ),
-//
-//                  ],
-//                ),
-//              ),
-//              new Container(
-//                  padding: const EdgeInsets.all(10.0),
-//                  child: new Text("good quality food with delicious taste good quality food with delicious taste good quality food with delicious taste good quality food with delicious taste",
-//                    softWrap: true,
-//                  )
-//              )
-//
-//            ]
-//
-//        )
-//
-//    );
-//  }
-//}
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:dropdown_formfield/dropdown_formfield.dart';
-import 'package:ifitmash/components/graph.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:ifitmash/screens/Dashboard.dart';
 import 'package:ifitmash/screens/bottomNavigationBar.dart';
+
 
 class LunchDetails extends StatefulWidget {
   // Movie object to handle.
@@ -167,6 +91,7 @@ class _LunchDetailState extends State<LunchDetails> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.white,
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
@@ -181,14 +106,14 @@ class _LunchDetailState extends State<LunchDetails> {
                     onTap: (){
 
                     },
-                    child: Text("Lunch",
+                    child: Text("Samosa",
                         style: TextStyle(
-                          color: Colors.black54,
+                          color: Colors.white,
                           fontSize: 16.0,
                         )),
                   ),
                   background: Image.asset(
-                    "assets/image/images.jpeg",
+                    "assets/image/Samosa.jpg",
                     fit: BoxFit.cover,
                   )
               ),
@@ -203,81 +128,144 @@ class _LunchDetailState extends State<LunchDetails> {
               Icon(Icons.share)
             ],),
           ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10,0,10,0),
+            child: Container(
+              height: 200,
+              child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
+
+                Expanded(
+                  child: Container(
+                    child: Center(
+                      child: Container(
+                        height: 130.0,
+
+                        alignment: Alignment.center,
+                        padding:EdgeInsets.only(bottom: 30.0),
+                        child: CupertinoPicker(
+                          backgroundColor: Colors.white,
+                          itemExtent: 32.0,
+                          onSelectedItemChanged: (selectedIndex){
+                            print(selectedIndex);
+                          },children: [
+                          Text('0.75',style: TextStyle(fontWeight: FontWeight.w100)),
+                          Text('1.0',style: TextStyle(fontWeight: FontWeight.w100)),
+                          Text('1.5',style: TextStyle(fontWeight: FontWeight.w100)),
+                          Text('2.0',style: TextStyle(fontWeight: FontWeight.w100)),
+                          Text('2.5',style: TextStyle(fontWeight: FontWeight.w100)),
+                          Text('3',style: TextStyle(fontWeight: FontWeight.w100)),
+                          Text('3.5',style: TextStyle(fontWeight: FontWeight.w100)),
+                          Text('4.0',style: TextStyle(fontWeight: FontWeight.w100)),
+                          Text('4.5',style: TextStyle(fontWeight: FontWeight.w100)),
+                          Text('5.0',style: TextStyle(fontWeight: FontWeight.w100)),
+                          Text('5.5',style: TextStyle(fontWeight: FontWeight.w100)),
+                          Text('6.0',style: TextStyle(fontWeight: FontWeight.w100)),
+
+                        ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 5,width: 5,),
+                Expanded(
+                  child: Container(
+                    child: Center(
+                      child: Container(
+                        height: 130.0,
+
+                        alignment: Alignment.center,
+                        padding:EdgeInsets.only(bottom: 30.0),
+                        child: CupertinoPicker(
+                          backgroundColor: Colors.white,
+                          itemExtent: 32.0,
+                          onSelectedItemChanged: (selectedIndex){
+                            print(selectedIndex);
+                          },children: [
+                          Text('samosa(regul)',style: TextStyle(fontWeight: FontWeight.w100),),
+                          Text('samosa(mini)',style: TextStyle(fontWeight: FontWeight.w100)),
+                          Text('grams',style: TextStyle(fontWeight: FontWeight.w100))
+                        ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                )
+              ],),
+            ),
+          ),
+
+          SizedBox(height:20),
           Container(
-            height: 200,
+
             child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
-              Container(
-                padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                height: 50,
-              ),
-              Expanded(
-                child: Container(
-                  child: Center(
-                    child: Container(
-                      height: 100.0,
-                      alignment: Alignment.center,
-                      padding:EdgeInsets.only(bottom: 30.0),
-                      child: CupertinoPicker(
-                        backgroundColor: Colors.white,
-                        itemExtent: 32.0,
-                        onSelectedItemChanged: (selectedIndex){
-                          print(selectedIndex);
-                        },children: [
-                        Text('0.75'),
-                        Text('1.0)'),
-                        Text('1.5'),
-                        Text('2.0'),
-                        Text('2.5)'),
-                        Text('3'),
-                        Text('3.5'),
-                        Text('4.0)'),
-                        Text('4.5'),
-                        Text('5.0'),
-                        Text('5.5)'),
-                        Text('6.0'),
 
-                      ],
-                      ),
-                    ),
-                  ),
-                ),
+              Column(
+                children: <Widget>[
+                  Text("8.1 g"),
+                  SizedBox(height: 10),
+                  Image.asset("images/foodicons/protein.png",height: 60),
+                  Text("Protein")
+                ],
               ),
-              SizedBox(width: 15,height: 5),
-              Expanded(
-                child: Container(
-                  child: Center(
-                    child: Container(
-                      height: 100.0,
-                      alignment: Alignment.center,
-                      padding:EdgeInsets.only(bottom: 30.0),
-                      child: CupertinoPicker(
-                        backgroundColor: Colors.white,
-                        itemExtent: 32.0,
-                        onSelectedItemChanged: (selectedIndex){
-                          print(selectedIndex);
-                        },children: [
-                        Text('samosa(regular)'),
-                        Text('samosa(mini)'),
-                        Text('grams')
-                      ],
-                      ),
-                    ),
-                  ),
-                ),
+              Column(
+                children: <Widget>[
+                  Text("60.3 g"),
+                  SizedBox(height: 10),
+                  Image.asset("images/foodicons/Carbs.png",height: 60),
+                  Text("Carbs"),
 
-              )
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("30.6 g"),
+                  SizedBox(height: 10),
+                  Image.asset("images/foodicons/Fat.png",height: 60),
+                  Text("Fat"),
+
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("3.6 g"),
+                  SizedBox(height: 10),
+                  Image.asset("images/foodicons/fiber.png",height: 60,),
+                  Text("Fiber"),
+                ],
+              ),
+
             ],),
           ),
-          Container(
-            height: 100,
-            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
+          SizedBox(height: 50),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => bottomNavigationBar()));
+            },
+            child: Container(
+              width: 300,
+              height: 45,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Color(0xDD000000), Color(0xDD000000)],
+                  ),
+                  borderRadius:
+                  BorderRadius.all(Radius.circular(50))),
+              child: Center(
+                child: Text(
+                  'GO'.toUpperCase(),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ),
 
-            Image.asset("assets/image/lunch.jpg"),
-              Text("Carbs"),
-              Text("Fat"),
-              Text("Fibre")
-            ],),
-          )
 
         ],
 
@@ -287,5 +275,3 @@ class _LunchDetailState extends State<LunchDetails> {
     );
   }
 }
-
-

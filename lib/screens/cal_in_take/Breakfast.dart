@@ -4,12 +4,9 @@ class Breakfast extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return Scaffold(
 
-      theme: new ThemeData(
-        primarySwatch: Colors.black,
-      ),
-      home: new MyHomePage(title: 'Breakfast'),
+      body: new MyHomePage(title: 'Breakfast'),
     );
   }
 }

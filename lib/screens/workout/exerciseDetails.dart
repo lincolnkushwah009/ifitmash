@@ -257,7 +257,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
 
                                     ),
                                   ),
-                                 true? Visibility(
+                                  true? Visibility(
 
                                     visible: a,
                                     child: Container(
@@ -321,3 +321,5 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
         ]));
   }
 }
+
+
