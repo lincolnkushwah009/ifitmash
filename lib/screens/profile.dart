@@ -88,28 +88,28 @@ class _ProfileState extends State<Profile> {
                 ),
                 children: [
 
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0,20,10,0),
-                    child: GestureDetector(
-                      onTap: (){
-                        Navigator.of(context).pushReplacementNamed('/Login');
-                      },
-                      child: Container(
-                        alignment: Alignment.topRight,
-                        height: 30,
-                        child:Image.asset("assets/Icons/shutdown.png"),
-                      ),
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0,0,5,0),
-                    child: Container(
-                      alignment: Alignment.topRight,
-                      height: 30,
-                      child:Text("Logout"),
-                    ),
-                  ),
+//                  Padding(
+//                    padding: const EdgeInsets.fromLTRB(0,20,10,0),
+//                    child: GestureDetector(
+//                      onTap: (){
+//                        Navigator.of(context).pushReplacementNamed('/Login');
+//                      },
+//                      child: Container(
+//                        alignment: Alignment.topRight,
+//                        height: 30,
+//                        child:Image.asset("assets/Icons/shutdown.png"),
+//                      ),
+//                    ),
+//                  ),
+//
+//                  Padding(
+//                    padding: const EdgeInsets.fromLTRB(0,0,5,0),
+//                    child: Container(
+//                      alignment: Alignment.topRight,
+//                      height: 30,
+//                      child:Text("Logout"),
+//                    ),
+//                  ),
 
 
                   Padding(

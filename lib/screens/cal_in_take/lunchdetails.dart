@@ -100,8 +100,9 @@ class _LunchDetailState extends State<LunchDetails> {
               expandedHeight: 200.0,
               floating: false,
               pinned: true,
+
               flexibleSpace: FlexibleSpaceBar(
-                  centerTitle: true,
+
                   title: InkWell(
                     onTap: (){
 
@@ -116,7 +117,9 @@ class _LunchDetailState extends State<LunchDetails> {
                     "assets/image/Samosa.jpg",
                     fit: BoxFit.cover,
                   )
+
               ),
+
             ),
           ];
         },
