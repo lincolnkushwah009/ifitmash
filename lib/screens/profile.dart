@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-
+import 'updateProfile.dart';
 import 'package:ifitmash/screens/welcome_screen.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -88,28 +88,28 @@ class _ProfileState extends State<Profile> {
                 ),
                 children: [
 
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0,20,10,0),
-                    child: GestureDetector(
-                      onTap: (){
-                        Navigator.of(context).pushReplacementNamed('/Login');
-                      },
-                      child: Container(
-                        alignment: Alignment.topRight,
-                        height: 30,
-                        child:Image.asset("assets/Icons/shutdown.png"),
-                      ),
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0,0,5,0),
-                    child: Container(
-                      alignment: Alignment.topRight,
-                      height: 30,
-                      child:Text("Logout"),
-                    ),
-                  ),
+//                  Padding(
+//                    padding: const EdgeInsets.fromLTRB(0,20,10,0),
+//                    child: GestureDetector(
+//                      onTap: (){
+//                        Navigator.of(context).pushReplacementNamed('/Login');
+//                      },
+//                      child: Container(
+//                        alignment: Alignment.topRight,
+//                        height: 30,
+//                        child:Image.asset("assets/Icons/shutdown.png"),
+//                      ),
+//                    ),
+//                  ),
+//
+//                  Padding(
+//                    padding: const EdgeInsets.fromLTRB(0,0,5,0),
+//                    child: Container(
+//                      alignment: Alignment.topRight,
+//                      height: 30,
+//                      child:Text("Logout"),
+//                    ),
+//                  ),
 
 
                   Padding(
@@ -220,8 +220,10 @@ class _ProfileState extends State<Profile> {
                       height: 50,
                       width: 300,
                       child: RaisedButton(
-                        child: Text("Save"),
-                        onPressed: () {},
+                        child: Text("Edit Profile"),
+                        onPressed: () {
+                          Navigator.push(context,new MaterialPageRoute(builder: (context)=>updateProfile()));
+                        },
                         color: Colors.black,
                         textColor: Colors.white,
                         splashColor: Colors.grey,

@@ -1,4 +1,4 @@
-package ifitmash.ifitmash
+package com.plebiscite.ifitmash;
 
 import android.os.Bundle
 
