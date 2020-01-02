@@ -72,19 +72,21 @@ class RadialPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
       ..color = Colors.black12
-      ..strokeCap = StrokeCap.square
+      ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3.0;
 
+
     Offset center = Offset(size.width / 2, size.height / 2);
     canvas.drawCircle(center, size.width / 2, paint);
+
+
 
     Paint progressPaint = Paint()
       ..shader = LinearGradient(
           colors: [Colors.red, Colors.deepOrange, Colors.yellow])
           .createShader(Rect.fromCircle(center: center, radius: size.width / 2))
       ..strokeCap = StrokeCap.round
-
       ..style = PaintingStyle.stroke
       ..strokeWidth = 8.0;
 
@@ -94,6 +96,8 @@ class RadialPainter extends CustomPainter {
         math.radians(progressInDegrees),
         false,
         progressPaint);
+
+
 
   }
 
