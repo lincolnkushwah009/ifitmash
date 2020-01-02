@@ -22,7 +22,6 @@ class _ProfileState extends State<Profile> {
   String weight;
   String gender;
 
-
 //  @override
 //  void initState() {
 //    super.initState();

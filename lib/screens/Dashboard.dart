@@ -527,8 +527,8 @@ class _DashboardState extends State<Dashboard> {
 
   void read() async {
     stepData = await FitKit.read(
-      DataType.STEP_COUNT,
-      DateTime.now().subtract(Duration(days: 365)),
+      DataType.WEIGHT,
+      DateTime.now().subtract(Duration(days: 5)),
       DateTime.now(),
     );
      print("jefbjefbjefj");
@@ -539,12 +539,12 @@ class _DashboardState extends State<Dashboard> {
   void readAll() async {
     if (await FitKit.requestPermissions(DataType.values)) {
       for (DataType type in DataType.values) {
-        final results = await FitKit.read(
+        stepData = await FitKit.read(
           type,
-          DateTime.now().subtract(Duration(days: 365)),
+          DateTime.now().subtract(Duration(days: 5)),
           DateTime.now(),
         );
-         print(results);
+         print(stepData);
       }
     }
   }
