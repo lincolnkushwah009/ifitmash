@@ -547,7 +547,37 @@ class _DashboardState extends State<Dashboard> {
          print(stepData);
       }
     }
+   // SchedulerBinding.instance.addPostFrameCallback((_) => loadData());
   }
+//  loadData() {
+//    read();
+//    readAll();
+//  }
+//
+//  void read() async {
+//    stepData = await FitKit.read(
+//      DataType.STEP_COUNT,
+//      DateTime.now().subtract(Duration(days: 365)),
+//      DateTime.now(),
+//    );
+//     print("jefbjefbjefj");
+//     print(stepData);
+//  }
+//
+//  void testingFitKit() async {}
+//
+//  void readAll() async {
+//    if (await FitKit.requestPermissions(DataType.values)) {
+//      for (DataType type in DataType.values) {
+//        final results = await FitKit.read(
+//          type,
+//          DateTime.now().subtract(Duration(days: 365)),
+//          DateTime.now(),
+//        );
+//         print(results);
+//      }
+//    }
+//  }
     void persist(String value) {
     setState(() {
       userData = value;
@@ -719,7 +749,7 @@ class _DashboardState extends State<Dashboard> {
                                     children: <Widget>[
                                       ListTile(
                                         title: Text(
-                                          stepData.toString(),
+                                          '${stepData.toString()}',
                                           style: Theme.of(context)
                                               .textTheme
                                               .display1
@@ -846,7 +876,7 @@ class _DashboardState extends State<Dashboard> {
                                 color: Colors.white, size: 25.0),
                             onTap: () {
                               Navigator.of(context)
-                                  .push(ScaleRoute(page: Lunch()));
+                                  .push(ScaleRoute(page: BldList()));
                             },
                           ),
                         ),
