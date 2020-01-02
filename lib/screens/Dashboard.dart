@@ -524,7 +524,6 @@ class _DashboardState extends State<Dashboard> {
     read();
     readAll();
   }
-
   void read() async {
     stepData = await FitKit.read(
       DataType.WEIGHT,
@@ -535,7 +534,6 @@ class _DashboardState extends State<Dashboard> {
      print(stepData);
   }
   void testingFitKit() async {}
-
   void readAll() async {
     if (await FitKit.requestPermissions(DataType.values)) {
       for (DataType type in DataType.values) {
