@@ -55,8 +55,8 @@ class _WorkoutState extends State<Workout> {
             ),
             bottom: TabBar(
               tabs: [
-                Tab(text: 'Find Workout Plan',),
-                Tab(text: 'Traning',),
+                Tab(text: 'Find Workout Plan'),
+                Tab(text: 'Traning'),
               ],
             ),
           ),
