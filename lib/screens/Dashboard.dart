@@ -862,13 +862,6 @@ class _DashboardState extends State<Dashboard> {
                     children: <Widget>[
 
                       Container(
-                        height: 40,
-                        width: 150,
-                        color: Colors.grey,
-                        child: Center(child: Text("Weight Chart",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
-
-                      ),
-                      Container(
                           height: 200, width: 400, child: Graph()),
                     ],
                   ),
