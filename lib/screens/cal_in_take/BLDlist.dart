@@ -88,9 +88,9 @@ class BldList extends StatelessWidget {
 
               child: ListTile(
                 leading: Icon(Icons.add_circle,color: Colors.black),
-                title: Text('Breakfast'),
-                trailing: Text("0")
-              ),
+                title: Text('Breakfast'),enabled: true,
+                trailing: Text("0"),subtitle: Text('No food have yet been added'),
+              )
             ),
           ),
           Card(
@@ -103,7 +103,7 @@ class BldList extends StatelessWidget {
               },
               child: ListTile(
                 leading: Icon(Icons.add_circle,color: Colors.black),
-                title: Text('Morning Snack'),
+                title: Text('Morning Snack'),subtitle: Text('No food have yet been added'),
                 trailing: Text("0")
               ),
             ),
@@ -117,7 +117,7 @@ class BldList extends StatelessWidget {
               },
               child: ListTile(
                 leading: Icon(Icons.add_circle,color: Colors.black),
-                title: Text('Lunch'),
+                title: Text('Lunch'),subtitle: Text('No food have yet been added'),
                 trailing:  Text('0'),
               ),
             ),
@@ -132,7 +132,7 @@ class BldList extends StatelessWidget {
               },
               child: ListTile(
                 leading: Icon(Icons.add_circle,color: Colors.black),
-                title: Text('Dinner'),
+                title: Text('Dinner'),subtitle: Text('No food have yet been added'),
                 trailing: Text("0"),
               ),
             ),
@@ -145,7 +145,7 @@ class BldList extends StatelessWidget {
               },
               child: ListTile(
                 leading: Icon(Icons.add_circle,color: Colors.black),
-                title: Text('Snack/Others'),
+                title: Text('Snack/Others'),subtitle: Text('No food have yet been added'),
                 trailing: Text("0"),
               ),
             ),

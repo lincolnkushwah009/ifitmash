@@ -518,6 +518,35 @@ class _DashboardState extends State<Dashboard> {
       }
       setState(() {});
     });
+    SchedulerBinding.instance.addPostFrameCallback((_) => loadData());
+  }
+  loadData() {
+    read();
+    readAll();
+  }
+
+  void read() async {
+    stepData = await FitKit.read(
+      DataType.WEIGHT,
+      DateTime.now().subtract(Duration(days: 5)),
+      DateTime.now(),
+    );
+     print("jefbjefbjefj");
+     print(stepData);
+  }
+  void testingFitKit() async {}
+
+  void readAll() async {
+    if (await FitKit.requestPermissions(DataType.values)) {
+      for (DataType type in DataType.values) {
+        stepData = await FitKit.read(
+          type,
+          DateTime.now().subtract(Duration(days: 5)),
+          DateTime.now(),
+        );
+         print(stepData);
+      }
+    }
    // SchedulerBinding.instance.addPostFrameCallback((_) => loadData());
   }
 //  loadData() {
@@ -720,7 +749,7 @@ class _DashboardState extends State<Dashboard> {
                                     children: <Widget>[
                                       ListTile(
                                         title: Text(
-                                          stepData.toString(),
+                                          '${stepData.toString()}',
                                           style: Theme.of(context)
                                               .textTheme
                                               .display1
