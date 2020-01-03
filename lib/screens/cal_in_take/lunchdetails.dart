@@ -260,7 +260,7 @@ class _LunchDetailState extends State<LunchDetails> {
                   BorderRadius.all(Radius.circular(50))),
               child: Center(
                 child: Text(
-                  'GO'.toUpperCase(),
+                  'Save'.toUpperCase(),
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold),

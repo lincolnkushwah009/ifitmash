@@ -476,6 +476,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fit_kit/fit_kit.dart';
 import 'package:ifitmash/components/StepCount.dart';
+import 'package:ifitmash/screens/Workout.dart' as prefix0;
 import 'package:ifitmash/screens/cal_in_take/BLDlist.dart';
 import 'package:ifitmash/screens/workout/list_of_exercises.dart';
 import 'package:ifitmash/components/CalBurnCircle.dart';
@@ -846,7 +847,7 @@ class _DashboardState extends State<Dashboard> {
                         onTap: () {
 //                  Navigator.push(context, new MaterialPageRoute(builder: (context) => ListOfExercises()));
                           Navigator.of(context)
-                              .push(ScaleRoute(page: ListOfExercises()));
+                              .push(ScaleRoute(page: prefix0.Workout()));
                         },
                       ),
                     ),

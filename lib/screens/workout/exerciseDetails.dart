@@ -28,7 +28,10 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
   String _myActivity;
   String _myActivityResult;
   final formKey = new GlobalKey<FormState>();
-
+  int newSULength = 3;
+  var selectedUnit = [0, 0, 0];
+  var selectedGrade = [0, 0, 0];
+  var _course = '';
   @override
   void initState() {
     super.initState();
@@ -134,6 +137,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
 
               ],
             ),
+
             Text("X", textAlign: TextAlign.center,),
             SizedBox(height: 40),
             Column(
@@ -284,6 +288,16 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        floatingActionButton: new FloatingActionButton(backgroundColor: Colors.black,
+          onPressed: () {
+            setState(() {
+              newSULength++;
+              selectedUnit.add(0);
+              selectedGrade.add(0);
+            });
+          },
+          child: new Icon(Icons.add),
+        ),
         backgroundColor: Colors.white,
         appBar: new AppBar(
           iconTheme: IconThemeData(
@@ -405,7 +419,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                               BorderRadius.all(Radius.circular(50))),
                           child: Center(
                             child: Text(
-                              'GO'.toUpperCase(),
+                              'Save'.toUpperCase(),
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold),
