@@ -252,149 +252,152 @@ class _LunchDetailState extends State<LunchDetails> {
               ),
               SizedBox(height: 10),
 
-              Container(
-                decoration: new BoxDecoration(
-                  borderRadius: new BorderRadius.circular(10.0),
-                  color: Colors.grey,
-                ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: new BoxDecoration(
+                    borderRadius: new BorderRadius.circular(10.0),
+                    color: Colors.grey[300],
+                  ),
 
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text("Serving Size",style: TextStyle(fontWeight: FontWeight.bold,)),
-                          Text("100g",style: TextStyle(fontWeight: FontWeight.bold,))
-                        ],
-                      ),
+                          children: <Widget>[
+                            Text("Serving Size",style: TextStyle(fontWeight: FontWeight.bold,)),
+                            Text("100g",style: TextStyle(fontWeight: FontWeight.bold,))
+                          ],
+                        ),
 
-                      Divider(height: 30,thickness: 15,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Divider(height: 30,thickness: 15,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text(""),
-                          Text("Per serve",style: TextStyle(fontWeight: FontWeight.bold,))
-                        ],
-                      ),
-                      Divider(height: 30,thickness: 10,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(""),
+                            Text("Per serve",style: TextStyle(fontWeight: FontWeight.bold,))
+                          ],
+                        ),
+                        Divider(height: 30,thickness: 10,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text("Energy"),
-                          Text("402 KJ",style: TextStyle(fontWeight: FontWeight.bold,)),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("Energy"),
+                            Text("402 KJ",style: TextStyle(fontWeight: FontWeight.bold,)),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text(""),
-                          Text("96 Kcal"),
-                        ],
-                      ),
-                      Divider(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(""),
+                            Text("96 Kcal"),
+                          ],
+                        ),
+                        Divider(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text("Fat",style: TextStyle(fontWeight: FontWeight.bold,)),
-                          Text("2.89g",style: TextStyle(fontWeight: FontWeight.bold,)),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("Fat",style: TextStyle(fontWeight: FontWeight.bold,)),
+                            Text("2.89g",style: TextStyle(fontWeight: FontWeight.bold,)),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text("Saturated Fat"),
-                          Text("0.308g"),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("Saturated Fat"),
+                            Text("0.308g"),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text("Monounsaturated Fat"),
-                          Text("1.53g"),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("Monounsaturated Fat"),
+                            Text("1.53g"),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text("Polyunsaturated Fat"),
-                          Text("0.747g"),
-                        ],
-                      ),
-                      Divider(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("Polyunsaturated Fat"),
+                            Text("0.747g"),
+                          ],
+                        ),
+                        Divider(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text("Carbohydrates",style: TextStyle(fontWeight: FontWeight.bold,)),
-                          Text("17.52g",style: TextStyle(fontWeight: FontWeight.bold,)),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("Carbohydrates",style: TextStyle(fontWeight: FontWeight.bold,)),
+                            Text("17.52g",style: TextStyle(fontWeight: FontWeight.bold,)),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text("Sugar"),
-                          Text("1.28g"),
-                        ],
-                      ),
-                      Divider(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("Sugar"),
+                            Text("1.28g"),
+                          ],
+                        ),
+                        Divider(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text("Fiber"),
-                          Text("3.6g"),
-                        ],
-                      ),
-                      Divider(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("Fiber"),
+                            Text("3.6g"),
+                          ],
+                        ),
+                        Divider(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text("Protein",style: TextStyle(fontWeight: FontWeight.bold,)),
-                          Text("2.34g",style: TextStyle(fontWeight: FontWeight.bold,)),
-                        ],
-                      ),
-                      Divider(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("Protein",style: TextStyle(fontWeight: FontWeight.bold,)),
+                            Text("2.34g",style: TextStyle(fontWeight: FontWeight.bold,)),
+                          ],
+                        ),
+                        Divider(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text("Sodium"),
-                          Text("440mg"),
-                        ],
-                      ),
-                      Divider(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("Sodium"),
+                            Text("440mg"),
+                          ],
+                        ),
+                        Divider(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text("Cholesterol"),
-                          Text("0mg"),
-                        ],
-                      ),
-                      Divider(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("Cholesterol"),
+                            Text("0mg"),
+                          ],
+                        ),
+                        Divider(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: <Widget>[
-                          Text("Potassium"),
-                          Text("424mg"),
-                        ],
-                      ),
-                      Divider(height: 20,thickness: 10,),
+                          children: <Widget>[
+                            Text("Potassium"),
+                            Text("424mg"),
+                          ],
+                        ),
+                        Divider(height: 20,thickness: 10,),
 
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -409,7 +412,7 @@ class _LunchDetailState extends State<LunchDetails> {
                           builder: (context) => bottomNavigationBar()));
                 },
                 child: Container(
-                  width: 300,
+                  width: 700,
                   height: 45,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(

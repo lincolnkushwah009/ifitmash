@@ -103,30 +103,6 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                           ),
                         ),
                         Container(
-                          child: InkWell(
-                            onTap: (){
-                              Navigator.push(
-                                  context,
-                                  new MaterialPageRoute(
-                                      builder: (context) => bottomNavigationBar()));
-                            },child: Container(
-                            height: 50,width: 50.0,
-                            decoration: BoxDecoration(
-                                gradient:LinearGradient(
-                                  colors: [Color(0xDD000000), Color(0xDD000000)],
-                                ),borderRadius: BorderRadius.all(Radius.circular(50))
-                            ),child: Center(
-                            child: Text(
-                              'Save'.toUpperCase(),
-                              style: TextStyle(
-                                  color: Colors.white,fontWeight: FontWeight.bold
-                              ),
-                            ),
-                          ),
-                          ),
-                          ),
-                        ),
-                        Container(
                           child: FloatingActionButton(
                             backgroundColor: Colors.black,
                             heroTag: "btn2",
@@ -144,6 +120,34 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                       ],
                     ),
                   ),
+
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => bottomNavigationBar()));
+                    },
+                    child: Container(
+                      width: 700,
+                      height: 45,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Color(0xDD000000), Color(0xDD000000)],
+                          ),
+                          borderRadius:
+                          BorderRadius.all(Radius.circular(50))),
+                      child: Center(
+                        child: Text(
+                          'Save'.toUpperCase(),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+
                 ],
               ),
             ),

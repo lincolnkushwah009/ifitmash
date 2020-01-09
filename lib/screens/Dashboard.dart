@@ -485,6 +485,7 @@ import 'package:ifitmash/screens/cal_in_take/Lunch.dart';
 import 'package:ifitmash/screens/profile.dart';
 import 'package:ifitmash/components/graph.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:ifitmash/about.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:ifitmash/components/reusable_card.dart';
@@ -492,17 +493,22 @@ import 'package:ifitmash/components/round_icon_button.dart';
 import 'package:ifitmash/constants.dart';
 import 'package:ifitmash/input_page/input_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+final DBRef=FirebaseDatabase.instance.reference();
+DateTime _now = DateTime.now();
 class Dashboard extends StatefulWidget {
+
   @override
   _DashboardState createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> {
+
     SharedPreferences sharedPreferences;
   String userData;
     List<dynamic> stepData = new List();
   String email;
   double weight = 70;
+    List<dynamic> currentWeight = new List();
   @override
   @protected
   @mustCallSuper
@@ -524,6 +530,7 @@ class _DashboardState extends State<Dashboard> {
   loadData() {
     read();
     readAll();
+    readData();
   }
   void read() async {
     stepData = await FitKit.read(
@@ -829,7 +836,7 @@ class _DashboardState extends State<Dashboard> {
                     ],
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   ClipRRect(
                     borderRadius: new BorderRadius.circular(20.0),
@@ -890,86 +897,107 @@ class _DashboardState extends State<Dashboard> {
                     children: <Widget>[
 
                       Container(
-                          height: 200, width: 400, child: Graph()),
+                        alignment: Alignment.center,
+                          height: 240, width: 500, child: Graph()),
+
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: ReusableCard(
+                              color: kActiveCardColor,
+                              cardChild: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  SizedBox(height: 20),
+                                  Text('$currentWeight'),
+                                  Text(
+                                    'ADD YOUR WEIGHT',
+                                    style: kLabelStyle,
+                                  ),
+
+                                  Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                    children: <Widget>[
+                                      RoundIconButton(
+                                        icon: Icons.remove,
+                                        onPressed: () {
+                                          setState(() {
+                                            if (weight > 1) weight=weight-.5;
+                                          });
+                                        },
+                                      ),
+                                      SizedBox(
+                                        height: 40,
+                                        width: 80,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(15.0)),
+                                              border: Border.all(
+                                                color: Colors.black,
+                                                width: 1,
+                                              )),
+
+                                          child: Center(
+                                            child: Text('$weight', style: kNumberStyle ,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+
+                                      RoundIconButton(
+                                        icon: Icons.add,
+                                        onPressed: () {
+                                          setState(() {
+                                            weight=weight+0.5;
+                                          });
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 20),
+                                  ClipRRect(
+                                    borderRadius:
+                                    new BorderRadius.circular(40.0),
+                                    child: SizedBox(
+                                      height: 50,
+                                      width: 200,
+                                      child: RaisedButton(
+                                        child: Text("Save"),
+                                        onPressed: () {
+                                          readData();
+                                          writeData();
+                                          Fluttertoast.showToast(msg: 'You successfully submitted your weight',
+                                              toastLength: Toast.LENGTH_SHORT,
+                                              gravity: ToastGravity.CENTER,
+                                              timeInSecForIos: 1,
+                                              backgroundColor: Colors.green,
+                                              textColor: Colors.white,
+                                              fontSize: 16.0
+                                          );
+                                        },
+                                        color: Colors.black,
+                                        textColor: Colors.white,
+                                        splashColor: Colors.grey,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 20)
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
 
 
-                  SizedBox(height: 20),
                   Container(
                     child: Column(
                       children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: ReusableCard(
-                                color: kActiveCardColor,
-                                cardChild: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    SizedBox(height: 20),
-                                    Text(
-                                      'ADD YOUR WEIGHT',
-                                      style: kLabelStyle,
-                                    ),
-                                    Text(
-                                      '$weight',
-                                      style: kNumberStyle,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: <Widget>[
-                                        RoundIconButton(
-                                          icon: Icons.remove,
-                                          onPressed: () {
-                                            setState(() {
-                                              if (weight > 1) weight=weight-.5;
-                                            });
-                                          },
-                                        ),
-                                        RoundIconButton(
-                                          icon: Icons.add,
-                                          onPressed: () {
-                                            setState(() {
-                                              weight=weight+0.5;
-                                            });
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 20),
-                                    ClipRRect(
-                                      borderRadius:
-                                          new BorderRadius.circular(40.0),
-                                      child: SizedBox(
-                                        height: 50,
-                                        width: 200,
-                                        child: RaisedButton(
-                                          child: Text("Save"),
-                                          onPressed: () {
-                                            Fluttertoast.showToast(msg: 'You successfully submitted your weight',
-                                                toastLength: Toast.LENGTH_SHORT,
-                                                gravity: ToastGravity.CENTER,
-                                                timeInSecForIos: 1,
-                                                backgroundColor: Colors.green,
-                                                textColor: Colors.white,
-                                                fontSize: 16.0
-                                            );
-                                          },
-                                          color: Colors.black,
-                                          textColor: Colors.white,
-                                          splashColor: Colors.grey,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(height: 20)
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+
                       ],
                     ),
                   ),
@@ -980,5 +1008,24 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
     );
+  }
+  void writeData(){
+    setState(() {
+      DBRef.child("1").set({
+        'user':email,
+        'weight':weight
+//        'date':DateTime.now();
+      });
+    });
+  }
+  void readData(){
+    DBRef.once().then((DataSnapshot dataSnapshot){
+      setState(() {
+        currentWeight=dataSnapshot.value;
+      });
+      print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+      print(currentWeight);
+
+    });
   }
 }

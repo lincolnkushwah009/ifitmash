@@ -1,49 +1,49 @@
-import 'package:flutter/material.dart';
-
-class Nutrition extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-
-      body: SingleChildScrollView(
-
-        child:Center(
-
-          child: Column(
-
-
-
-            children: <Widget>[
-              SizedBox(height: 20),
-              Container(child: Text("Assigned Nutrition"),),
-
-              SizedBox(height: 100),
-              Divider(color: Colors.grey),
-
-              Container(
-                  child:  ClipRRect(
-                    borderRadius: new BorderRadius.circular(40.0),
-                    child: SizedBox(
-                      height: 50,
-                      width: 300,
-                      child: RaisedButton(child: Text("Add Nutrition"),
-                        onPressed: (){
-
-                        },
-                        color: Colors.black,
-                        textColor: Colors.white,
-                        splashColor: Colors.grey,
-                      ),
-                    ),
-                  )
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+//import 'package:flutter/material.dart';
+//
+//class Nutrition extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context) {
+//    return Scaffold(
+//
+//      body: SingleChildScrollView(
+//
+//        child:Center(
+//
+//          child: Column(
+//
+//
+//
+//            children: <Widget>[
+//              SizedBox(height: 20),
+//              Container(child: Text("Assigned Nutrition"),),
+//
+//              SizedBox(height: 100),
+//              Divider(color: Colors.grey),
+//
+//              Container(
+//                  child:  ClipRRect(
+//                    borderRadius: new BorderRadius.circular(40.0),
+//                    child: SizedBox(
+//                      height: 50,
+//                      width: 300,
+//                      child: RaisedButton(child: Text("Add Nutrition"),
+//                        onPressed: (){
+//
+//                        },
+//                        color: Colors.black,
+//                        textColor: Colors.white,
+//                        splashColor: Colors.grey,
+//                      ),
+//                    ),
+//                  )
+//              ),
+//            ],
+//          ),
+//        ),
+//      ),
+//    );
+//  }
+//}
 //import 'package:flutter/material.dart';
 //
 //import 'package:firebase_database/firebase_database.dart';
@@ -204,3 +204,32 @@ class Nutrition extends StatelessWidget {
 //    };
 //  }
 //}
+import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
+class NewApp extends StatelessWidget{
+  final DBRef=FirebaseDatabase.instance.reference();
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+   return MaterialApp(
+      home: Scaffold(
+        body: Row(
+          children: <Widget>[SizedBox(width: 100,height: 500,),
+            RaisedButton(
+              child: Text('1'),
+              onPressed: (){
+                writeData();
+              },
+            )
+          ],
+        ),
+      ),
+    );
+  }
+  void writeData(){
+    DBRef.child("1").set({
+      'id':'vsfdddgdg',
+      'name':'apple'
+    });
+  }
+}
