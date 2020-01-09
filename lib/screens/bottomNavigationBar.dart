@@ -3,6 +3,7 @@ import 'Dashboard.dart';
 import 'Nutrition.dart';
 import 'Workout.dart';
 import 'profile.dart';
+import 'package:ifitmash/screens/cal_in_take/BLDlist.dart';
 
 class bottomNavigationBar  extends StatefulWidget {
   @override
@@ -14,9 +15,9 @@ class _bottomNavigationBarState extends State<bottomNavigationBar > {
   int _selectedPage = 0;
   final _pageOptions = [
     Dashboard(),
-    MyHomePage(),
+    BldList(),
     Workout(),
-//    Profile()
+    Profile()
   ];
   @override
   Widget build(BuildContext context) {

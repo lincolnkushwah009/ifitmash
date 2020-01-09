@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "688530821146",
-    "firebase_url": "https://ifitmash-2b6f4.firebaseio.com",
-    "project_id": "ifitmash-2b6f4",
-    "storage_bucket": "ifitmash-2b6f4.appspot.com"
+    "project_number": "778953465489",
+    "firebase_url": "https://ifitmash-club.firebaseio.com",
+    "project_id": "ifitmash-club",
+    "storage_bucket": "ifitmash-club.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:688530821146:android:b4ce87e2f1bef65da181a3",
+        "mobilesdk_app_id": "1:778953465489:android:e8a07bf2f22a6fc5caa930",
         "android_client_info": {
           "package_name": "com.plebiscite.ifitmash"
         }
       },
       "oauth_client": [
         {
-          "client_id": "688530821146-juoaeg7gss3vj7j16jfauerc6dnl1na1.apps.googleusercontent.com",
+          "client_id": "778953465489-k4qmg727n79li0nphudk7u3n93lkilpa.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAa4_4w9SPFYg272of_UJ4fjnLDTIlpDuE"
+          "current_key": "AIzaSyA6_TDwwXlFIQAEo0ce3ezbaxpnKz6et94"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "688530821146-juoaeg7gss3vj7j16jfauerc6dnl1na1.apps.googleusercontent.com",
+              "client_id": "778953465489-k4qmg727n79li0nphudk7u3n93lkilpa.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
