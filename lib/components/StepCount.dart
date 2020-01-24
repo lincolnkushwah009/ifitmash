@@ -45,8 +45,8 @@ class _RadialProgressState extends State<RadialProgress>
   Widget build(BuildContext context) {
     return CustomPaint(
       child: Container(
-        height: 140.0,
-        width: 140.0,
+        height: 130.0,
+        width: 130.0,
         padding: EdgeInsets.symmetric(vertical: 40.0),
         child: AnimatedOpacity(
           opacity: progressDegrees > 30 ? 1.0 : 0.0,

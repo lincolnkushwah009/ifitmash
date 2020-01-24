@@ -46,8 +46,8 @@ class _CalBurnState extends State<CalBurn>
   Widget build(BuildContext context) {
     return CustomPaint(
       child: Container(
-        height: 180.0,
-        width: 180.0,
+        height: 170.0,
+        width: 170.0,
         padding: EdgeInsets.symmetric(vertical: 40.0),
         child: AnimatedOpacity(
           opacity: progressDegrees > 30 ? 1.0 : 0.0,

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -134,11 +136,27 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget _buildBody(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 2,
+        title:Center(child: Text("Welcome "+'${userData}',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black ))),
+
+        actions: <Widget>[
+          InkWell(
+            child: Icon(
+                Icons.info,
+                size: 25,
+                color: Colors.black), onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => AboutApp()));},),
+        ],
+
+      ),
+
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: AnimationLimiter(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(10,5,10,10),
+              padding: const EdgeInsets.fromLTRB(5,20,5,10),
               child: Column(
                 children: AnimationConfiguration.toStaggeredList(
                   duration: const Duration(milliseconds: 375),
@@ -150,116 +168,110 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   children: <Widget>[
 
-                    ListTile(
-                      title:Center(child: Text("Welcome "+'${userData}',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20 ))),
-                      trailing:InkWell(
-                        child: Icon(
-                          Icons.info,
-                          size: 25,
-                          color: Colors.black,
-                        ),
-                        onTap: () {
-                          Navigator.push(context, new MaterialPageRoute(builder: (context) => AboutApp()));
+                    Card(
 
-                        },
+                      elevation: 2,
+
+                      child: Container(
+
+                        child: Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10,10,0,10),
+                              child: Stack(
+                                children: <Widget>[
+                                  Container(
+
+                                      padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
+                                      child: Center(child: RadialProgress())),
+                                  Container(
+                                    padding: EdgeInsets.fromLTRB(35, 35, 0, 0),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            new MaterialPageRoute(
+                                                builder: (context) => Profile()));
+                                      },
+                                      child: Container(
+                                          width: 100.0,
+                                          height: 100.0,
+                                          decoration: new BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            image: new DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: new AssetImage(
+                                                  "assets/image/elon.png"),
+                                            ),
+                                          )),
+                                    ),
+                                  ),
+                                  Container(child: Center(child: CalBurn())),
+                                ],
+                              ),
+                            ),
+                            VerticalDivider(
+                            ),
+                            Container(color: Colors.black12, height: 150, width: 1,),
+
+
+                            SizedBox(width: 10),
+                            Column(
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0.0),
+                                  child: Text(
+                                    "Calorie Burned",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0.0),
+                                  child: Text(
+                                    "480",
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+
+                                Container(
+                                  height: 2.0,
+                                  width: 80.0,
+                                  decoration: BoxDecoration(
+                                      color: Colors.purple,
+                                      borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0))),
+                                ),
+                                SizedBox(height: 10),
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0.0),
+                                  child: Text(
+                                    "Calorie In Take",
+                                    style: TextStyle(
+                                      fontSize: 19,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0.0),
+                                  child: Text(
+                                    "2,000 ",
+                                    style:
+                                    TextStyle(fontSize: 25, color: Colors.blue),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Stack(
-                          children: <Widget>[
-                            Container(
-                                padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
-                                child: Center(child: RadialProgress())),
-                            Container(
-                              padding: EdgeInsets.fromLTRB(40, 40, 0, 0),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      new MaterialPageRoute(
-                                          builder: (context) => Profile()));
-                                },
-                                child: Container(
-                                    width: 100.0,
-                                    height: 100.0,
-                                    decoration: new BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: new DecorationImage(
-                                        fit: BoxFit.fill,
-                                        image: new AssetImage(
-                                            "assets/image/elon.png"),
-                                      ),
-                                    )),
-                              ),
-                            ),
-                            Container(child: Center(child: CalBurn())),
-                          ],
-                        ),
-                        VerticalDivider(
-                        ),
-                        Container(color: Colors.black12, height: 180, width: 1,),
-
-
-                        SizedBox(width: 10),
-                        Column(
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.fromLTRB(0, 0, 0, 0.0),
-                              child: Text(
-                                "Calorie Burned",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.fromLTRB(0, 0, 0, 0.0),
-                              child: Text(
-                                "480",
-                                style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-
-                            Container(
-                              height: 2.0,
-                              width: 80.0,
-                              decoration: BoxDecoration(
-                                  color: Colors.purple,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0))),
-                            ),
-                            SizedBox(height: 10),
-                            Container(
-                              padding: EdgeInsets.fromLTRB(0, 0, 0, 0.0),
-                              child: Text(
-                                "Calorie In Take",
-                                style: TextStyle(
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.fromLTRB(0, 0, 0, 0.0),
-                              child: Text(
-                                "2,000 ",
-                                style:
-                                TextStyle(fontSize: 25, color: Colors.blue),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
                     ),
                     const SizedBox(height: 40.0),
                     Row(
@@ -267,6 +279,8 @@ class _DashboardState extends State<Dashboard> {
                         Expanded(
                           child: Column(
                             children: <Widget>[
+
+
                               Container(
                                 decoration: new BoxDecoration(
                                     boxShadow: [
@@ -292,22 +306,45 @@ class _DashboardState extends State<Dashboard> {
                                       children: <Widget>[
 
 
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-                                          children: <Widget>[
-                                            Container(
-                                               child: Text("Steps",style: TextStyle(fontSize: 25,color: Colors.white)),
-                                            ),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(0,10,0,0),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-                                              Icon(
-                                                FontAwesomeIcons.running,
-                                                color: Colors.white,
-                                                size: 30,
+                                            children: <Widget>[
+                                              Container(
+                                                 child: Text("Steps",style: TextStyle(fontSize: 25,color: Colors.white)),
                                               ),
 
-                                          ],
+                                                Icon(
+                                                  FontAwesomeIcons.running,
+                                                  color: Colors.white,
+                                                  size: 30,
+                                                ),
+
+                                            ],
+                                          ),
                                         ),
+                                        Center(
+                                          child: Container(
+                                            child: Text("7,254",style: TextStyle(
+                                              color:Colors.white,
+                                              fontSize: 40,
+                                            ),),
+                                          ),
+                                        ),
+                                        Center(
+                                          child: Container(
+                                            child: Text("3.2 Km",style: TextStyle(
+                                              color:Colors.white70,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w100
+                                            ),),
+                                          ),
+                                        )
+
+
 
 
                                       ],
@@ -361,7 +398,7 @@ class _DashboardState extends State<Dashboard> {
                                             ),
                                           ),
                                           trailing: Icon(
-                                            FontAwesomeIcons.heartbeat,
+                                            FontAwesomeIcons.weight,
                                             color: Colors.white,
                                           ),
                                         ),
