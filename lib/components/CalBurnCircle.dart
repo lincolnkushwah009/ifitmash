@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' as math;
+import 'package:path_drawing/path_drawing.dart';
+
 
 class CalBurn extends StatefulWidget {
   final double goalCompleted = 0.5;
@@ -44,15 +46,14 @@ class _CalBurnState extends State<CalBurn>
   Widget build(BuildContext context) {
     return CustomPaint(
       child: Container(
-        height: 200.0,
-        width: 200.0,
+        height: 180.0,
+        width: 180.0,
         padding: EdgeInsets.symmetric(vertical: 40.0),
         child: AnimatedOpacity(
           opacity: progressDegrees > 30 ? 1.0 : 0.0,
           duration: fadeInDuration,
           child: Column(
             children: <Widget>[
-
 
             ],
           ),
@@ -70,6 +71,9 @@ class RadialPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+
+
+
     Paint paint = Paint()
       ..color = Colors.black12
       ..strokeCap = StrokeCap.round
@@ -81,10 +85,9 @@ class RadialPainter extends CustomPainter {
     canvas.drawCircle(center, size.width / 2, paint);
 
 
-
     Paint progressPaint = Paint()
       ..shader = LinearGradient(
-          colors: [Colors.red, Colors.deepOrange, Colors.yellow])
+          colors: [Colors.red, Colors.red, Colors.red])
           .createShader(Rect.fromCircle(center: center, radius: size.width / 2))
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke

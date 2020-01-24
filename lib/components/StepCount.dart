@@ -45,8 +45,8 @@ class _RadialProgressState extends State<RadialProgress>
   Widget build(BuildContext context) {
     return CustomPaint(
       child: Container(
-        height: 159.0,
-        width: 159.0,
+        height: 140.0,
+        width: 140.0,
         padding: EdgeInsets.symmetric(vertical: 40.0),
         child: AnimatedOpacity(
           opacity: progressDegrees > 30 ? 1.0 : 0.0,
@@ -82,7 +82,7 @@ class RadialPainter extends CustomPainter {
 
     Paint progressPaint = Paint()
       ..shader = LinearGradient(
-              colors: [Colors.red, Colors.purple, Colors.purpleAccent])
+              colors: [Colors.blue, Colors.blue, Colors.blue])
           .createShader(Rect.fromCircle(center: center, radius: size.width / 1.9))
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke

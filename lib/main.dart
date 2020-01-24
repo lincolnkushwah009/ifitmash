@@ -15,6 +15,7 @@ import './screens/bottomNavigationBar.dart';
 //  runApp(MaterialApp(home: email == null ? Login() : Home()));
 //}
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
