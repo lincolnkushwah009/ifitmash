@@ -34,7 +34,11 @@ class _GraphState extends State<Graph> {
                 borderRadius: const BorderRadius.all(
                   Radius.circular(18),
                 ),
-                color: const Color(0xff232d37)),
+                color:Colors.grey[300]
+
+                //const Color(0xff232d37)
+
+            ),
             child: Padding(
               padding: const EdgeInsets.only(
                   right: 18.0, left: 12.0, top: 24, bottom: 12),
@@ -62,9 +66,9 @@ class _GraphState extends State<Graph> {
             ),
           ),
         ),
-        Container(
-            alignment: Alignment.topCenter,
-            child: Text("Weight chart",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),)),
+//        Container(
+//            alignment: Alignment.topCenter,
+//            child: Text("Weight chart",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold),)),
 
 //        Container(
 //          alignment: Alignment.bottomCenter,

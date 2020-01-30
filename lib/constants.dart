@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kActiveCardColor = Colors.grey;
+const kActiveCardColor = Color.fromRGBO(238, 238, 238,100);
 //
 const kBottomContainerHeight = 80.0;
 

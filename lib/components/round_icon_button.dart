@@ -9,17 +9,26 @@ class RoundIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RawMaterialButton(
-      elevation: 0.0,
-      child: Icon(icon),
-      onPressed: onPressed,
-      constraints: BoxConstraints.tightFor(
-        height: 56.0,
-        width: 56.0,
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.black),
+        borderRadius: BorderRadius.circular(1000.0),
       ),
-      shape: CircleBorder(),
-      fillColor: Color(0xff4c4f5e),
+       //
 
+      child: RawMaterialButton(
+
+        elevation: 0.0,
+        child: Icon(icon),
+        onPressed: onPressed,
+        constraints: BoxConstraints.tightFor(
+          height: 56.0,
+          width: 56.0,
+        ),
+        shape: CircleBorder(),
+        fillColor: Colors.white,
+
+      ),
     );
   }
 }

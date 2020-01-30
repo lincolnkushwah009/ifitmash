@@ -212,7 +212,6 @@ class _DashboardState extends State<Dashboard> {
                             ),
                             VerticalDivider(
                             ),
-                            Container(color: Colors.black12, height: 150, width: 1,),
 
 
                             SizedBox(width: 10),
@@ -314,7 +313,7 @@ class _DashboardState extends State<Dashboard> {
 
                                             children: <Widget>[
                                               Container(
-                                                 child: Text("Steps",style: TextStyle(fontSize: 25,color: Colors.white)),
+                                                 child: Text("STEPS",style: TextStyle(fontSize: 20,color: Colors.white)),
                                               ),
 
                                                 Icon(
@@ -413,15 +412,22 @@ class _DashboardState extends State<Dashboard> {
                         ),
                       ],
                     ),
+                    Container(
+                      child: Text("TODAY'S ACTIVITIES",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
+                    ),
                     SizedBox(
                       height: 10,
                     ),
                     ClipRRect(
                       borderRadius: new BorderRadius.circular(20.0),
                       child: Container(
-                        padding: EdgeInsets.fromLTRB(10, 0, 15, 0),
+                        padding: EdgeInsets.fromLTRB(0, 0, 15, 0),
                         color: Colors.black,
                         child: ListTile(
+                         leading: Icon(
+                           FontAwesomeIcons.dumbbell,
+                           color: Colors.white,
+                         ),
                           title: Text(
                             "Today's Workout",
                             style: TextStyle(
@@ -443,27 +449,27 @@ class _DashboardState extends State<Dashboard> {
                     ClipRRect(
                       borderRadius: new BorderRadius.circular(20.0),
                       child: Container(
-//              color: Color.fromRGBO(222,222,222,100),
-                        color: Color.fromRGBO(222, 222, 222, 100),
+                        padding: EdgeInsets.fromLTRB(0, 0, 15, 0),
 
-                        child: Container(
-                          child: RaisedButton(
-                            splashColor: Colors.grey,
-                            child: ListTile(
-                              title: Text(
-                                "Today's Nutrition",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              trailing: Icon(Icons.add_circle_outline,
-                                  color: Colors.white, size: 25.0),
-                              onTap: () {
-                                Navigator.of(context)
-                                    .push(ScaleRoute(page: BldList()));
-                              },
-                            ),
+                        color: Colors.black,
+
+                        child: ListTile(
+                          leading: Icon(
+                            FontAwesomeIcons.nutritionix,
+                            color: Colors.white,
                           ),
+                          title: Text(
+                            "Today's Nutrition",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          trailing: Icon(Icons.add_circle_outline,
+                              color: Colors.white, size: 25.0),
+                          onTap: () {
+                            Navigator.of(context)
+                                .push(ScaleRoute(page: BldList()));
+                          },
                         ),
                       ),
                     ),
@@ -475,98 +481,107 @@ class _DashboardState extends State<Dashboard> {
                       children: <Widget>[
 
                         Container(
+                          child: Text("WEIGHT CHART",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
+                        ),
+
+                        Container(
                             alignment: Alignment.center,
                             height: 240, width: 500, child: Graph()),
 
-                        Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: ReusableCard(
-                                color: kActiveCardColor,
-                                cardChild: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    SizedBox(height: 20),
-                                    Text('$currentWeight'),
-                                    Text(
-                                      'ADD YOUR WEIGHT',
-                                      style: kLabelStyle,
+                        Container(
+
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: ReusableCard(
+                                  color: kActiveCardColor,
+                                  cardChild: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+//                                      Text('$currentWeight'),
+                                    SizedBox(
+                                      height: 10,
                                     ),
+                                      Text(
+                                        'ADD YOUR WEIGHT',
+                                        style: kLabelStyle,
+                                      ),
 
-                                    Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                      children: <Widget>[
-                                        RoundIconButton(
-                                          icon: Icons.remove,
-                                          onPressed: () {
-                                            setState(() {
-                                              if (weight > 1) weight=weight-.5;
-                                            });
-                                          },
-                                        ),
-                                        SizedBox(
-                                          height: 40,
-                                          width: 80,
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(15.0)),
-                                                border: Border.all(
-                                                  color: Colors.black,
-                                                  width: 1,
-                                                )),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                        children: <Widget>[
+                                          RoundIconButton(
+                                            icon: Icons.remove,
+                                            onPressed: () {
+                                              setState(() {
+                                                if (weight > 1) weight=weight-.5;
+                                              });
+                                            },
+                                          ),
+                                          SizedBox(
+                                            height: 40,
+                                            width: 150,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.all(
+                                                      Radius.circular(15.0)),
+                                                  border: Border.all(
+                                                    color: Colors.black,
+                                                    width: 1,
+                                                  )),
 
-                                            child: Center(
-                                              child: Text('$weight', style: kNumberStyle ,
+                                              child: Center(
+                                                child: Text('$weight', style: kNumberStyle ,
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
 
-                                        RoundIconButton(
-                                          icon: Icons.add,
-                                          onPressed: () {
-                                            setState(() {
-                                              weight=weight+0.5;
-                                            });
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 20),
-                                    ClipRRect(
-                                      borderRadius:
-                                      new BorderRadius.circular(40.0),
-                                      child: SizedBox(
-                                        height: 50,
-                                        width: 200,
-                                        child: RaisedButton(
-                                          child: Text("Save"),
-                                          onPressed: () {
-                                            readData();
-                                            writeData();
-                                            Fluttertoast.showToast(msg: 'You successfully submitted your weight',
-                                                toastLength: Toast.LENGTH_SHORT,
-                                                gravity: ToastGravity.CENTER,
-                                                timeInSecForIos: 1,
-                                                backgroundColor: Colors.green,
-                                                textColor: Colors.white,
-                                                fontSize: 16.0
-                                            );
-                                          },
-                                          color: Colors.black,
-                                          textColor: Colors.white,
-                                          splashColor: Colors.grey,
+                                          RoundIconButton(
+                                            icon: Icons.add,
+                                            onPressed: () {
+                                              setState(() {
+                                                weight=weight+0.5;
+                                              });
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 20),
+                                      ClipRRect(
+                                        borderRadius:
+                                        new BorderRadius.circular(15.0),
+                                        child: SizedBox(
+                                          height: 50,
+                                          width: 200,
+                                          child: RaisedButton(
+                                            child: Text("Save"),
+                                            onPressed: () {
+                                              readData();
+                                              writeData();
+                                              Fluttertoast.showToast(msg: 'You successfully submitted your weight',
+                                                  toastLength: Toast.LENGTH_SHORT,
+                                                  gravity: ToastGravity.CENTER,
+                                                  timeInSecForIos: 1,
+                                                  backgroundColor: Colors.green,
+                                                  textColor: Colors.white,
+                                                  fontSize: 16.0
+                                              );
+                                            },
+                                            color: Colors.black,
+                                            textColor: Colors.white,
+                                            splashColor: Colors.grey,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(height: 20)
-                                  ],
+                                      SizedBox(height: 20)
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ],
                     ),
