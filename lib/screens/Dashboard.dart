@@ -1,9 +1,11 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fit_kit/fit_kit.dart';
+import 'package:ifitmash/calculator.dart';
 import 'package:ifitmash/components/StepCount.dart';
 import 'package:ifitmash/screens/Workout.dart' as prefix0;
 import 'package:ifitmash/screens/cal_in_take/BLDlist.dart';
@@ -23,6 +25,9 @@ import 'package:ifitmash/components/round_icon_button.dart';
 import 'package:ifitmash/constants.dart';
 import 'package:ifitmash/input_page/input_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+
+
 
 
 
@@ -168,9 +173,12 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   children: <Widget>[
 
+
+
+
                     Card(
 
-                      elevation: 2,
+                      elevation: 8,
 
                       child: Container(
 
@@ -180,6 +188,7 @@ class _DashboardState extends State<Dashboard> {
                               padding: const EdgeInsets.fromLTRB(10,10,0,10),
                               child: Stack(
                                 children: <Widget>[
+
                                   Container(
 
                                       padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
@@ -211,24 +220,27 @@ class _DashboardState extends State<Dashboard> {
                               ),
                             ),
                             VerticalDivider(
+                              width: 9,
+                              thickness: 1,
+                              color: Colors.red,
                             ),
 
-
-                            SizedBox(width: 10),
                             Column(
                               children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0.0),
+
+                                RaisedButton(
+                                  onPressed: displayDialog,
+
                                   child: Text(
                                     "Calorie Burned",
                                     style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 17,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
+
                                 Container(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0.0),
                                   child: Text(
                                     "480",
                                     style: TextStyle(
@@ -237,7 +249,7 @@ class _DashboardState extends State<Dashboard> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 10),
+                                SizedBox(height: 5),
 
                                 Container(
                                   height: 2.0,
@@ -248,16 +260,21 @@ class _DashboardState extends State<Dashboard> {
                                       BorderRadius.all(Radius.circular(10.0))),
                                 ),
                                 SizedBox(height: 10),
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0.0),
+
+
+                                RaisedButton(
+
+                                  onPressed: null,
+
                                   child: Text(
                                     "Calorie In Take",
                                     style: TextStyle(
-                                      fontSize: 19,
+                                      fontSize: 17,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
+
                                 Container(
                                   padding: EdgeInsets.fromLTRB(0, 0, 0, 0.0),
                                   child: Text(
@@ -376,31 +393,49 @@ class _DashboardState extends State<Dashboard> {
                                     )),
                                 height: 120,
                                 child: GestureDetector(
-                                  child: FlatButton(
-                                    onPressed: () {
-                                      Navigator.of(context)
-                                          .push(ScaleRoute(page: InputPage()));
-                                    },
+                                  child: FlatButton(onPressed: () {Navigator.of(context).push(ScaleRoute(page: InputPage()));},
                                     child: Column(
                                       crossAxisAlignment:
                                       CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        ListTile(
-                                          title: Text(
-                                            "BMI ",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .display1
-                                                .copyWith(
-                                              color: Colors.white,
-                                              fontSize: 22.0,
-                                            ),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(0,10,0,0),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+                                            children: <Widget>[
+                                              Container(
+                                                child: Text("BMI",style: TextStyle(fontSize: 20,color: Colors.white)),
+                                              ),
+
+                                              Icon(
+                                                FontAwesomeIcons.fire,
+                                                color: Colors.white,
+                                                size: 30,
+                                              ),
+
+                                            ],
+
                                           ),
-                                          trailing: Icon(
-                                            FontAwesomeIcons.weight,
-                                            color: Colors.white,
+
+                                        ),
+                                        Center(
+                                          child: Container(
+                                            child: Text("22.4",style: TextStyle(
+                                              color:Colors.white,
+                                              fontSize: 40,
+                                            ),),
                                           ),
                                         ),
+                                        Center(
+                                          child: Container(
+                                            child: Text("Healthy",style: TextStyle(
+                                                color:Colors.white70,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w100
+                                            ),),
+                                          ),
+                                        )
                                       ],
                                     ),
                                   ),
@@ -590,6 +625,11 @@ class _DashboardState extends State<Dashboard> {
                     Container(
                       child: Column(
                         children: <Widget>[
+//
+//                         FloatingActionButton(
+//                            onPressed: displayDialog() ,
+//                            child: new Icon(Icons.add),
+//                          ),
 
                         ],
                       ),
@@ -602,6 +642,11 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
     );
+
+
+
+
+
   }
   void writeData(){
     setState(() {
@@ -621,4 +666,32 @@ class _DashboardState extends State<Dashboard> {
       print(currentWeight.elementAt(1));
     });
   }
+
+
+  void displayDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => new CupertinoAlertDialog(
+        title: new Text("Message"),
+        content: new Text("Calculator Calories Burned"),
+        actions: [
+         CupertinoDialogAction(child: Text("Manual"),onPressed: () {Navigator.of(context).push(ScaleRoute(page: ExerciseDetail()));}, ),
+
+
+
+          CupertinoDialogAction(child: Text("Average"))
+
+        ],
+      ),
+    );
+  }
+
+
+
+
 }
+
+
+
+
+

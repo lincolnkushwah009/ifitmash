@@ -12,7 +12,7 @@ class Lunch extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      body: new MyHomePage(),
+      body: SafeArea(child: new MyHomePage()),
     );
   }
 }
@@ -130,6 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   return ListTile(
 
                     title: Text("${foodList[index]["foodname" ]}"),
+                    subtitle: Text("Protien ${foodList[index]["protien" ]}"),
                     onTap: (){
                       Navigator.push(
                           context,

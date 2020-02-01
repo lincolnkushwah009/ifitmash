@@ -48,106 +48,25 @@ class _GraphState extends State<Graph> {
             ),
           ),
         ),
-        SizedBox(
-          width: 60,
-          height: 34,
-          child: FlatButton(
-            onPressed: () {
-              setState(() {
-                showAvg = !showAvg;
-              });
-            },
-            child: Text(
-              'avg',
-              style: TextStyle(
-                  fontSize: 12,
-                  color:
-                  showAvg ? Colors.white.withOpacity(0.5) : Colors.white),
-            ),
-          ),
-        ),
-//        Container(
-//            alignment: Alignment.topCenter,
-//            child: Text("Weight chart",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold),)),
-
-//        Container(
-//          alignment: Alignment.bottomCenter,
-//          child: Column(
-//            children: <Widget>[
-//              Row(
-//                children: <Widget>[
-//                  Expanded(
-//                    child: ReusableCard(
-//                      color: kActiveCardColor,
-//                      cardChild: Column(
-//                        mainAxisAlignment: MainAxisAlignment.center,
-//                        children: <Widget>[
-//                          SizedBox(height: 20),
-//                          Text(
-//                            'ADD YOUR WEIGHT',
-//                            style: kLabelStyle,
-//                          ),
-//                          Text(
-//                            '$weight',
-//                            style: kNumberStyle,
-//                          ),
-//                          Row(
-//                            mainAxisAlignment:
-//                            MainAxisAlignment.spaceAround,
-//                            children: <Widget>[
-//                              RoundIconButton(
-//                                icon: Icons.remove,
-//                                onPressed: () {
-//                                  setState(() {
-//                                    if (weight > 1) weight=weight-.5;
-//                                  });
-//                                },
-//                              ),
-//                              RoundIconButton(
-//                                icon: Icons.add,
-//                                onPressed: () {
-//                                  setState(() {
-//                                    weight=weight+0.5;
-//                                  });
-//                                },
-//                              ),
-//                            ],
-//                          ),
-//                          SizedBox(height: 20),
-//                          ClipRRect(
-//                            borderRadius:
-//                            new BorderRadius.circular(40.0),
-//                            child: SizedBox(
-//                              height: 50,
-//                              width: 200,
-//                              child: RaisedButton(
-//                                child: Text("Save"),
-//                                onPressed: () {
-//                                  Fluttertoast.showToast(msg: 'You successfully submitted your weight',
-//                                      toastLength: Toast.LENGTH_SHORT,
-//                                      gravity: ToastGravity.CENTER,
-//                                      timeInSecForIos: 1,
-//                                      backgroundColor: Colors.green,
-//                                      textColor: Colors.white,
-//                                      fontSize: 16.0
-//                                  );
-//                                },
-//                                color: Colors.black,
-//                                textColor: Colors.white,
-//                                splashColor: Colors.grey,
-//                              ),
-//                            ),
-//                          ),
-//
-//                        ],
-//                      ),
-//                    ),
-//                  ),
-//                ],
-//              ),
-//            ],
+//        SizedBox(
+//          width: 60,
+//          height: 34,
+//          child: FlatButton(
+//            onPressed: () {
+//              setState(() {
+//                showAvg = !showAvg;
+//              });
+//            },
+//            child: Text(
+//              'avg',
+//              style: TextStyle(
+//                  fontSize: 12,
+//                  color:
+//                  showAvg ? Colors.white.withOpacity(0.5) : Colors.white),
+//            ),
 //          ),
 //        ),
+
 
       ],
     );
@@ -268,50 +187,6 @@ class _GraphState extends State<Graph> {
             strokeWidth: 1,
           );
         },
-      ),
-      titlesData: FlTitlesData(
-        show: true,
-        bottomTitles: SideTitles(
-          showTitles: true,
-          reservedSize: 22,
-          textStyle: TextStyle(
-              color: const Color(0xff68737d),
-              fontWeight: FontWeight.bold,
-              fontSize: 16),
-          getTitles: (value) {
-            switch (value.toInt()) {
-              case 2:
-                return 'MAR';
-              case 5:
-                return 'JUN';
-              case 8:
-                return 'SEP';
-            }
-            return '';
-          },
-          margin: 8,
-        ),
-        leftTitles: SideTitles(
-          showTitles: true,
-          textStyle: TextStyle(
-            color: const Color(0xff67727d),
-            fontWeight: FontWeight.bold,
-            fontSize: 15,
-          ),
-          getTitles: (value) {
-            switch (value.toInt()) {
-              case 1:
-                return '80kg';
-              case 3:
-                return '90kg';
-              case 5:
-                return '120kg';
-            }
-            return '';
-          },
-          reservedSize: 28,
-          margin: 12,
-        ),
       ),
       borderData: FlBorderData(
           show: true,

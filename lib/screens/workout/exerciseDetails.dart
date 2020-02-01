@@ -25,7 +25,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
   String _myActivity;
   String _myActivityResult;
   final _formKey = GlobalKey<FormState>();
-  int newSULength = 1;
+  int newSULength = 3;
   var selectedUnit = [0, 0, 0];
   var selectedGrade = [0, 0, 0];
   var selectedGrade2 = [0, 0, 0];
@@ -34,6 +34,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+
         body: CustomScrollView(slivers: <Widget>[
           SliverAppBar(
             backgroundColor: Colors.black,
@@ -51,11 +52,15 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
 
             child: Container(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+
                 children: <Widget>[
+
                   Padding(
                     padding: const EdgeInsets.all(10.0),
+
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         Text("Reps",style: TextStyle(fontWeight:
                         FontWeight.bold,fontSize: 20.0),),
@@ -68,7 +73,8 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                   ),
 
 
-                  Expanded(
+                  Container(
+                    height: 300,
                     child: Form(
                       key: _formKey,
                       child: new ListView.builder(
@@ -80,26 +86,25 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                       ),
                     ),
                   ),
-                  Container(
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0,0,0,100),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            child: FloatingActionButton(
-                              backgroundColor: Colors.black,
-                              heroTag: "btn1",
-                              onPressed: () {
-                                setState(() {
-                                  newSULength--;
-                                  selectedUnit.add(0);
-                                  selectedGrade.add(0);
-                                  selectedGrade2.add(0);
-                                });
-                              },
-                              child: new Icon(Icons.remove),
-                            ),
+                        Container(
+                          child: FloatingActionButton(
+                            backgroundColor: Colors.black,
+                            heroTag: "btn1",
+                            onPressed: () {
+                              setState(() {
+                                newSULength--;
+                                selectedUnit.add(0);
+                                selectedGrade.add(0);
+                                selectedGrade2.add(0);
+                              });
+                            },
+                            child: new Icon(Icons.remove),
                           ),
                         ),
                         Container(
@@ -129,7 +134,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                               builder: (context) => bottomNavigationBar()));
                     },
                     child: Container(
-                      width: 700,
+                      width: 250,
                       height: 45,
                       decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -147,6 +152,10 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                       ),
                     ),
                   ),
+
+                  Container(
+                    child: Text("hllllllee"),
+                  )
 
                 ],
               ),
@@ -226,6 +235,11 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
               ),
             ),
           ),
+
+
+
+
+
           new Container(
             child: new GestureDetector(
               onTap: () {
@@ -264,6 +278,11 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
               ),
             ),
           ),
+
+
+
+
+
           new Container(
             child: new GestureDetector(
               onTap: () {

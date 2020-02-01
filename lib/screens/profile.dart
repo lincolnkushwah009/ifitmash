@@ -74,18 +74,19 @@ class _ProfileState extends State<Profile> {
 
     Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: AnimationLimiter(
-          child: Column(
-            children: AnimationConfiguration.toStaggeredList(
-                duration: const Duration(milliseconds: 600),
-                childAnimationBuilder: (widget) => SlideAnimation(
-                  horizontalOffset: 50.0,
-                  child: FlipAnimation(
-                    child: widget,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: AnimationLimiter(
+            child: Column(
+              children: AnimationConfiguration.toStaggeredList(
+                  duration: const Duration(milliseconds: 600),
+                  childAnimationBuilder: (widget) => SlideAnimation(
+                    horizontalOffset: 50.0,
+                    child: FlipAnimation(
+                      child: widget,
+                    ),
                   ),
-                ),
-                children: [
+                  children: [
 
 //                  Padding(
 //                    padding: const EdgeInsets.fromLTRB(0,20,10,0),
@@ -111,125 +112,126 @@ class _ProfileState extends State<Profile> {
 //                  ),
 
 
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 200, 0),
-                    child: Text(
-                      "Profle",
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 5, right: 5, top: 0),
-                    child: Container(
-                      height: 70,
-                      child: Card(
-                          color: Colors.white10,
-                          elevation: 0,
-                          margin: EdgeInsets.only(top: 0),
-                          child: ListTile(
-                            leading: ClipRRect(
-                              borderRadius: BorderRadius.circular(50),
-                              child: Image.asset(
-                                "assets/image/elon.png",
-                              ),
-                            ),
-                            title: Text(
-                              '${userData}',
-                              style: TextStyle(color: Colors.black),
-                            ),
-                            subtitle: Text(
-                              "${email}",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                          )),
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 30, 230, 0),
-                    child: Container(
-                      child: Text("About You"),
-                    ),
-                  ),
-                  Divider(height: 40),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey)),
-                          height: 55,
-                          width: 165,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(10,15,0,0),
-                            child: Text('${gender}',style: TextStyle(fontSize:18,color: Colors.grey),),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey)),
-                          height: 55,
-                          width: 165,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(10,15,0,0),
-                            child: Text('${dob}',style: TextStyle(fontSize:18,color: Colors.grey),),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey)),
-                          height: 55,
-                          width: 165,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(10,15,0,0),
-                            child: Text('${height}',style: TextStyle(fontSize:18,color: Colors.grey),),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey)),
-                          height: 55,
-                          width: 165,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(10,15,0,0),
-                            child: Text('${weight}',style: TextStyle(fontSize:18,color: Colors.grey),),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40),
-                  ClipRRect(
-                    borderRadius: new BorderRadius.circular(40.0),
-                    child: SizedBox(
-                      height: 50,
-                      width: 300,
-                      child: RaisedButton(
-                        child: Text("Edit Profile"),
-                        onPressed: () {
-                          Navigator.push(context,new MaterialPageRoute(builder: (context)=>updateProfile()));
-                        },
-                        color: Colors.black,
-                        textColor: Colors.white,
-                        splashColor: Colors.grey,
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 200, 0),
+                      child: Text(
+                        "Profle",
+                        style: TextStyle(fontSize: 40),
                       ),
                     ),
-                  ),
-                ]),
+                    Padding(
+                      padding: EdgeInsets.only(left: 5, right: 5, top: 0),
+                      child: Container(
+                        height: 70,
+                        child: Card(
+                            color: Colors.white10,
+                            elevation: 0,
+                            margin: EdgeInsets.only(top: 0),
+                            child: ListTile(
+                              leading: ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: Image.asset(
+                                  "assets/image/elon.png",
+                                ),
+                              ),
+                              title: Text(
+                                '${userData}',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              subtitle: Text(
+                                "${email}",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            )),
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 30, 230, 0),
+                      child: Container(
+                        child: Text("About You"),
+                      ),
+                    ),
+                    Divider(height: 40),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey)),
+                            height: 55,
+                            width: 165,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10,15,0,0),
+                              child: Text('${gender}',style: TextStyle(fontSize:18,color: Colors.grey),),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey)),
+                            height: 55,
+                            width: 165,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10,15,0,0),
+                              child: Text('${dob}',style: TextStyle(fontSize:18,color: Colors.grey),),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey)),
+                            height: 55,
+                            width: 165,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10,15,0,0),
+                              child: Text('${height}',style: TextStyle(fontSize:18,color: Colors.grey),),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey)),
+                            height: 55,
+                            width: 165,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10,15,0,0),
+                              child: Text('${weight}',style: TextStyle(fontSize:18,color: Colors.grey),),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 40),
+                    ClipRRect(
+                      borderRadius: new BorderRadius.circular(40.0),
+                      child: SizedBox(
+                        height: 50,
+                        width: 300,
+                        child: RaisedButton(
+                          child: Text("Edit Profile"),
+                          onPressed: () {
+                            Navigator.push(context,new MaterialPageRoute(builder: (context)=>updateProfile()));
+                          },
+                          color: Colors.black,
+                          textColor: Colors.white,
+                          splashColor: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ]),
+            ),
           ),
         ),
       ),

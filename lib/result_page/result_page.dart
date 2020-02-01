@@ -3,8 +3,11 @@ import 'package:ifitmash/calculator.dart' as calculator;
 import 'package:ifitmash/input_page/input_page_styles.dart';
 import 'package:ifitmash/model/gender.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class ResultPage extends StatefulWidget {
+
   final int height;
   final int weight;
   final Gender gender;
@@ -53,12 +56,30 @@ class ResultCard extends StatelessWidget {
   final double bmi;
   final double minWeight;
   final double maxWeight;
-
+  SharedPreferences sharedPreferences;
+  constructor () {
+    // prefs =  await SharedPreferences.getInstance();
+  }
   ResultCard({Key key, this.bmi, this.minWeight, this.maxWeight})
       : super(key: key);
 
+
+  @override
+  void initState() {
+
+    SharedPreferences.getInstance().then((SharedPreferences sp) {
+      var bmi =  this.sharedPreferences.getString("bmi");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    // Setting BMI under prefs in key bmi
+//    sharedPreferences.setString('bmi',bmi.toStringAsFixed(1));
+//
+//    print(bmi);
+
     return SingleChildScrollView(
       child: Card(
         margin: EdgeInsets.all(15.0),
