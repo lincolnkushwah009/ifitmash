@@ -17,7 +17,12 @@ class ResultPage extends StatefulWidget {
 
   @override
   _ResultPageState createState() => _ResultPageState();
+
+
+
 }
+
+
 
 class _ResultPageState extends State<ResultPage> {
   @override
@@ -56,29 +61,22 @@ class ResultCard extends StatelessWidget {
   final double bmi;
   final double minWeight;
   final double maxWeight;
-  SharedPreferences sharedPreferences;
-  constructor () {
-    // prefs =  await SharedPreferences.getInstance();
-  }
+
   ResultCard({Key key, this.bmi, this.minWeight, this.maxWeight})
       : super(key: key);
 
 
-  @override
-  void initState() {
+  void setValues() async{
+    SharedPreferences sharedPrefs = await SharedPreferences.getInstance();
 
-    SharedPreferences.getInstance().then((SharedPreferences sp) {
-      var bmi =  this.sharedPreferences.getString("bmi");
-    });
+    sharedPrefs.getInt(bmi.toStringAsFixed(1));
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
-
-    // Setting BMI under prefs in key bmi
-//    sharedPreferences.setString('bmi',bmi.toStringAsFixed(1));
-//
-//    print(bmi);
 
     return SingleChildScrollView(
       child: Card(

@@ -56,14 +56,47 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+
+
+  int _counter = 0;
+
+
+
+  bool _buttonPressed = false;
+  bool _loopActive = false;
+
+  void _increaseCounterWhilePressed() async {
+    // make sure that only one loop is active
+    if (_loopActive) return;
+
+    _loopActive = true;
+
+    while (_buttonPressed) {
+      // do your thing
+      setState(() {
+        _counter++;
+      });
+
+      // wait a bit
+      await Future.delayed(Duration(milliseconds: 200));
+    }
+
+    _loopActive = false;
+  }
+
+
+
+
   int selectedDrawerIndex;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   SharedPreferences sharedPreferences;
   String userData;
-  List<dynamic> stepData = new List();
   String email;
+
+
+  List<dynamic> stepData = new List();
   double weight = 70;
   List<dynamic> currentWeight = new List();
   @override
@@ -112,9 +145,15 @@ class _DashboardState extends State<Dashboard> {
 //    }
 //  }
 
+
+//  void getValues()async{
+//    SharedPreferences sharedPrefs = await sharedPreferences.getInstance();
+//  }
+
   void persist(String value) {
     setState(() {
       userData = value;
+
     });
     sharedPreferences?.setString(spKey, value);
   }
@@ -413,11 +452,8 @@ class _DashboardState extends State<Dashboard> {
                                                 color: Colors.white,
                                                 size: 30,
                                               ),
-
                                             ],
-
                                           ),
-
                                         ),
                                         Center(
                                           child: Container(
@@ -548,12 +584,16 @@ class _DashboardState extends State<Dashboard> {
                                         children: <Widget>[
                                           RoundIconButton(
                                             icon: Icons.remove,
-                                            onPressed: () {
-                                              setState(() {
+                                            onPressed: () { _increaseCounterWhilePressed();
+
+                                            setState(() {
                                                 if (weight > 1) weight=weight-.5;
                                               });
                                             },
                                           ),
+
+
+
                                           SizedBox(
                                             height: 40,
                                             width: 150,

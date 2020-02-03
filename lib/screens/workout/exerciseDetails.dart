@@ -2,8 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ifitmash/screens/bottomNavigationBar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-const List<String> intensity = const <String>['Low', 'Medium', 'High'];
+
+
+//List<int> _selectedNumber = new List<int>.generate(100, (i) => 0);
+
 
 class ExerciseDetail extends StatefulWidget {
   ExerciseDetail({Key key, this.title}) : super(key: key);
@@ -16,10 +20,10 @@ class ExerciseDetail extends StatefulWidget {
 
 class _ExerciseDetailState extends State<ExerciseDetail> {
   List<int> _selectedNumber = new List<int>.generate(100, (i) => 0);
-  List<int> _selectedHour = new List<int>.generate(100, (i) => 0);
-  List<int> _selectedMinute = new List<int>.generate(100, (i) => 0);
-  List<int> _selectedIndex = new List<int>.generate(100, (i) => 0);
   List<int> _changedNumber = new List<int>.generate(100, (i) => 0);
+  List<int> _heartRate = new List<int>.generate(200, (i) => 0);
+ List<int> _weight = new List<int>.generate(200, (i) => 0);
+
 
   bool a = false;
   String _myActivity;
@@ -31,8 +35,12 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
   var selectedGrade2 = [0, 0, 0];
   var _course = '';
 
+
+
   @override
   Widget build(BuildContext context) {
+
+
     return new Scaffold(
 
         body: CustomScrollView(slivers: <Widget>[
@@ -64,67 +72,69 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                       children: <Widget>[
                         Text("Reps",style: TextStyle(fontWeight:
                         FontWeight.bold,fontSize: 20.0),),
-                        Text("Intensity",style: TextStyle(fontWeight:
-                        FontWeight.bold,fontSize: 20.0),),
                         Text("Weight",style: TextStyle(fontWeight:
                         FontWeight.bold,fontSize: 20.0),),
+                        Text("Heart Rate",style: TextStyle(fontWeight:
+                        FontWeight.bold,fontSize: 20.0),),
+
                       ],
                     ),
                   ),
 
 
-                  Container(
-                    height: 300,
-                    child: Form(
-                      key: _formKey,
-                      child: new ListView.builder(
-                        itemBuilder: (BuildContext context, int index) {
-                          return buildfields(index);
-                        },
-                        itemCount: newSULength,
-                        scrollDirection: Axis.vertical,
-                      ),
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0,0,0,100),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        Container(
-                          child: FloatingActionButton(
-                            backgroundColor: Colors.black,
-                            heroTag: "btn1",
-                            onPressed: () {
-                              setState(() {
-                                newSULength--;
-                                selectedUnit.add(0);
-                                selectedGrade.add(0);
-                                selectedGrade2.add(0);
-                              });
+                  Column(
+                    children: <Widget>[
+                      Container(
+                        height: 300,
+                        child: Form(
+                          key: _formKey,
+                          child: new ListView.builder(
+                            itemBuilder: (BuildContext context, int index) {
+                              return buildfields(index);
                             },
-                            child: new Icon(Icons.remove),
+                            itemCount: newSULength,
+                            scrollDirection: Axis.vertical,
                           ),
                         ),
-                        Container(
-                          child: FloatingActionButton(
-                            backgroundColor: Colors.black,
-                            heroTag: "btn2",
-                            onPressed: () {
-                              setState(() {
-                                newSULength++;
-                                selectedUnit.add(0);
-                                selectedGrade.add(0);
-                                selectedGrade2.add(0);
-                              });
-                            },
-                            child: new Icon(Icons.add),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Container(
+                            child: FloatingActionButton(
+                              backgroundColor: Colors.black,
+                              heroTag: "btn1",
+                              onPressed: () {
+                                setState(() {
+                                  newSULength--;
+                                  selectedUnit.add(0);
+                                  selectedGrade.add(0);
+                                  selectedGrade2.add(0);
+                                });
+                              },
+                              child: new Icon(Icons.remove),
+                            ),
                           ),
-                        )
-                      ],
-                    ),
+                          Container(
+                            child: FloatingActionButton(
+                              backgroundColor: Colors.black,
+                              heroTag: "btn2",
+                              onPressed: () {
+                                setState(() {
+                                  newSULength++;
+                                  selectedUnit.add(0);
+                                  selectedGrade.add(0);
+                                  selectedGrade2.add(0);
+                                });
+                              },
+                              child: new Icon(Icons.add),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
                   ),
+
 
                   InkWell(
                     onTap: () {
@@ -153,10 +163,6 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                     ),
                   ),
 
-                  Container(
-                    child: Text("hllllllee"),
-                  )
-
                 ],
               ),
             ),
@@ -169,7 +175,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
       alignment: Alignment.center,
       margin: EdgeInsets.only(bottom: 10.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Container(
             width: 110.0,
@@ -201,7 +207,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                                   onSelectedItemChanged: (int index1) {
                                     _changedNumber[index] = index1;
                                   },
-                                  children: new List<Widget>.generate(100,
+                                  children: new List<Widget>.generate(200,
                                           (int index) {
                                         return new Center(
                                           child: new Text('${index + 1}'),
@@ -239,7 +245,6 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
 
 
 
-
           new Container(
             child: new GestureDetector(
               onTap: () {
@@ -253,15 +258,15 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                             itemExtent: 32.0,
                             onSelectedItemChanged: (int index1) {
                               setState(() {
-                                _selectedIndex[index] = index1;
+                                _weight[index] = index1;
                               });
                             },
-                            children: new List<Widget>.generate(
-                                intensity.length, (int index) {
-                              return new Center(
-                                child: new Text(intensity[index]),
-                              );
-                            })),
+                            children:List<Widget>.generate(200,
+                                    (int index) {
+                                  return new Center(
+                                    child: new Text('${index + 1}'),
+                                  );
+                                })),
                       );
                     });
               },
@@ -270,17 +275,13 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                 BoxDecoration(border: Border.all(color: Colors.grey)),
                 height: 30,
                 width: 80,
-                child: Text(
-                  intensity[_selectedIndex[index]],
+                child: Text('${_weight[index] + 1}',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 18.0),
                 ),
               ),
             ),
           ),
-
-
-
 
 
           new Container(
@@ -291,52 +292,24 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                     builder: (BuildContext context) {
                       return Container(
                         height: 200.0,
-                        color: Colors.white,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Expanded(
-                              child: CupertinoPicker(
-                                  scrollController:
-                                  new FixedExtentScrollController(
-                                    initialItem: _selectedHour[index],
-                                  ),
-                                  itemExtent: 32.0,
-                                  backgroundColor: Colors.white,
-                                  onSelectedItemChanged: (int index1) {
-                                    setState(() {
-                                      _selectedHour[index] = index1;
-                                    });
-                                  },
-                                  children: new List<Widget>.generate(100,
-                                          (int index) {
-                                        return new Center(
-                                          child: new Text('${index + 1}'),
-                                        );
-                                      })),
-                            ),
-                            Expanded(
-                              child: CupertinoPicker(
-                                  scrollController:
-                                  new FixedExtentScrollController(
-                                    initialItem: _selectedMinute[index],
-                                  ),
-                                  itemExtent: 32.0,
-                                  backgroundColor: Colors.white,
-                                  onSelectedItemChanged: (int index1) {
-                                    setState(() {
-                                      _selectedMinute[index] = index1;
-                                    });
-                                  },
-                                  children: new List<Widget>.generate(60,
-                                          (int index) {
-                                        return new Center(
-                                          child: new Text('${index + 1}'),
-                                        );
-                                      })),
-                            ),
-                          ],
-                        ),
+                        child: CupertinoPicker(
+
+                            backgroundColor: Colors.white,
+                            itemExtent: 32.0,
+                            onSelectedItemChanged: (int index1) {
+                              setState(() {
+                                _heartRate[index] = index1;
+                              });
+                            },
+                            children:List<Widget>.generate(200,
+                                    (int index) {
+                              Container(
+                                child: Text("Heart Rate"),
+                              );
+                                  return new Center(
+                                    child: new Text('${index + 1}'),
+                                  );
+                                })),
                       );
                     });
               },
@@ -345,14 +318,18 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                 BoxDecoration(border: Border.all(color: Colors.grey)),
                 height: 30,
                 width: 80,
-                child: Text(
-                  '${_selectedHour[index] + 1}:${_selectedMinute[index] + 1}',
+                child: Text('${_heartRate[index] + 1}',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 18.0),
                 ),
               ),
             ),
           ),
+
+
+
+
+
         ].where((value) => value != null).toList(),
       ),
     );
