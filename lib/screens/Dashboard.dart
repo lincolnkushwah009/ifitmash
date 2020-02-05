@@ -94,6 +94,7 @@ class _DashboardState extends State<Dashboard> {
   SharedPreferences sharedPreferences;
   String userData;
   String email;
+  String bmi;
 
 
   List<dynamic> stepData = new List();
@@ -107,6 +108,8 @@ class _DashboardState extends State<Dashboard> {
       sharedPreferences = sp;
       userData = sharedPreferences.getString('user_name');
       email = sharedPreferences.getString('email');
+      bmi=sharedPreferences.getString("bmi");
+      //sharedPreferences.remove('doubleValue');
       print(userData);
       // will be null if never previously saved
       if (userData == null) {
@@ -457,7 +460,7 @@ class _DashboardState extends State<Dashboard> {
                                         ),
                                         Center(
                                           child: Container(
-                                            child: Text("22.4",style: TextStyle(
+                                            child: Text(bmi.toString(),style: TextStyle(
                                               color:Colors.white,
                                               fontSize: 40,
                                             ),),

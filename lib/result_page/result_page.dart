@@ -18,8 +18,6 @@ class ResultPage extends StatefulWidget {
   @override
   _ResultPageState createState() => _ResultPageState();
 
-
-
 }
 
 
@@ -66,17 +64,23 @@ class ResultCard extends StatelessWidget {
       : super(key: key);
 
 
-  void setValues() async{
+  /*void setValues() async{
     SharedPreferences sharedPrefs = await SharedPreferences.getInstance();
 
     sharedPrefs.getInt(bmi.toStringAsFixed(1));
-  }
+  }*/
 
+
+  /*addDoubleToSF() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setDouble('doubleValue', 115.0);
+  }*/
 
 
 
   @override
   Widget build(BuildContext context) {
+    addDoubleToSF();
 
     return SingleChildScrollView(
       child: Card(
@@ -180,4 +184,12 @@ class ResultCard extends StatelessWidget {
     );
 
   }
+
+addDoubleToSF() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.remove("bmi");
+    sharedPreferences.setString("bmi", bmi.toStringAsFixed(1));
+    sharedPreferences.commit();
+  }
+
 }
