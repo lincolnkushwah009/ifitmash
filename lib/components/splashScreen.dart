@@ -8,7 +8,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   startTime() async {
-    var _duration = new Duration(seconds: 5);
+    var _duration = new Duration(seconds: 2);
     return new Timer(_duration, navigationPage);
   }
 
@@ -25,11 +25,15 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: new Center(
-        child: new Image.asset('assets/tenor.gif', fit: BoxFit.cover,
-          height: double.infinity,
-          width: double.infinity,
-          alignment: Alignment.center,),
+      backgroundColor: Colors.black,
+      body: SafeArea(
+        child: new Center(
+
+          child: new Image.asset('assets/image/logo.png', fit: BoxFit.cover,
+            height: 200,
+            width: 200,
+            alignment: Alignment.center,),
+        ),
       ),
     );
   }

@@ -99,116 +99,118 @@ class _EmailLoginState extends State<EmailLogin> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      key: _scaffoldKey,
-      body: ModalProgressHUD(
-        inAsyncCall: showSpinner,
-        child: Column(
-          children: <Widget>[
+    return SafeArea(
+      child: Scaffold(
+        key: _scaffoldKey,
+        body: ModalProgressHUD(
+          inAsyncCall: showSpinner,
+          child: Column(
+            children: <Widget>[
 
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height/2.5,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xFFEEEEEE),
-                      Color(0xDD000000)
-                    ],
-                  ),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(90)
-                  )
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Spacer(),
-                  Hero(
-                    tag: 'logo',
-                    child: Container(
-                      height: 200.0,
-                      child: Image.asset('assets/image/logo.png'),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height/2.5,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+//                        Color(0xFFEEEEEE),
+                        Color(0xDD000000),
+                        Color(0xDD000000)
+                      ],
                     ),
-                  ),
-                  Spacer(),
-
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          bottom: 32,
-                          right: 32
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(90)
+                    )
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Spacer(),
+                    Hero(
+                      tag: 'logo',
+                      child: Container(
+                        height: 200.0,
+                        child: Image.asset('assets/image/logo.png'),
                       ),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(context, new MaterialPageRoute(builder: (context) => LoginWithNumber()));
-                        },
-                        child: Text('Login With Number',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18
+                    ),
+                    Spacer(),
+
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            bottom: 32,
+                            right: 32
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(context, new MaterialPageRoute(builder: (context) => LoginWithNumber()));
+                          },
+                          child: Text('Login With Number',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
 
-            Form(
-              key: _formKey,
-              child: Flexible(
-                child: Container(
-                  height: MediaQuery.of(context).size.height/2,
-                  width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.fromLTRB(10, 30, 10, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                        child: TextFormField(
-                          style: TextStyle(color: Colors.black),
-                          keyboardType: TextInputType.emailAddress,
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(
-                              Icons.email,
-                              color: Colors.grey,
-                            ),
-                            labelText: "Email",
-                            labelStyle: new TextStyle(color: Colors.black),
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide: new BorderSide(color: Colors.grey)),
-                            hintStyle: new TextStyle(
-                              inherit: true,
-                              fontSize: 14.0,
-                              color: Colors.grey,
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black)),
+              Form(
+                key: _formKey,
+                child: Flexible(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height/2,
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.fromLTRB(10, 30, 10, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                          child: TextFormField(
+                            style: TextStyle(color: Colors.black),
+                            keyboardType: TextInputType.emailAddress,
+                            controller: _emailController,
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                Icons.email,
+                                color: Colors.grey,
+                              ),
+                              labelText: "Email",
+                              labelStyle: new TextStyle(color: Colors.black),
+                              enabledBorder: UnderlineInputBorder(
+                                  borderSide: new BorderSide(color: Colors.grey)),
+                              hintStyle: new TextStyle(
+                                inherit: true,
+                                fontSize: 14.0,
+                                color: Colors.grey,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black)),
 
+                            ),
+                            onSaved: (String val) {},
                           ),
-                          onSaved: (String val) {},
                         ),
-                      ),
 
 
 
 
 
-                      Spacer(),
+                        Spacer(),
 
-                      GestureDetector(
+                        GestureDetector(
 
-                        onTap: (){
+                          onTap: (){
 
-                            Navigator.push(context, new MaterialPageRoute(builder: (context) => bottomNavigationBar()));
+                              Navigator.push(context, new MaterialPageRoute(builder: (context) => bottomNavigationBar()));
 
-                        },
+                          },
 
 //                        onTap: () async {
 //
@@ -237,37 +239,38 @@ class _EmailLoginState extends State<EmailLogin> {
 //                            });
 //                          }
 //                        },
-                        child: Container(
-                          height: 45,
-                          width: MediaQuery.of(context).size.width/1.2,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  Color(0xDD000000),
-                                  Color(0xDD000000)
-                                ],
-                              ),
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(50)
-                              )
-                          ),
-                          child: Center(
-                            child: Text('Send OTP'.toUpperCase(),
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold
+                          child: Container(
+                            height: 45,
+                            width: MediaQuery.of(context).size.width/1.2,
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color(0xDD000000),
+                                    Color(0xDD000000)
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(50)
+                                )
+                            ),
+                            child: Center(
+                              child: Text('Send OTP'.toUpperCase(),
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            )
+              )
 
-          ],
+            ],
+          ),
         ),
       ),
     );
