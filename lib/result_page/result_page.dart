@@ -55,7 +55,8 @@ class _ResultPageState extends State<ResultPage> {
   }
 }
 
-class ResultCard extends StatelessWidget {
+class ResultCard extends StatefulWidget {
+
   final double bmi;
   final double minWeight;
   final double maxWeight;
@@ -63,21 +64,19 @@ class ResultCard extends StatelessWidget {
   ResultCard({Key key, this.bmi, this.minWeight, this.maxWeight})
       : super(key: key);
 
+  @override
+  _ResultCardState createState() => _ResultCardState();
+}
 
-  /*void setValues() async{
-    SharedPreferences sharedPrefs = await SharedPreferences.getInstance();
-
-    sharedPrefs.getInt(bmi.toStringAsFixed(1));
-  }*/
-
-
-  /*addDoubleToSF() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setDouble('doubleValue', 115.0);
-  }*/
-
-
-
+class _ResultCardState extends State<ResultCard> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    addDoubleToSF();
+    setState(() {
+      addDoubleToSF();
+    });
+  }
   @override
   Widget build(BuildContext context) {
     addDoubleToSF();
@@ -95,17 +94,17 @@ class ResultCard extends StatelessWidget {
                 style: TextStyle(fontSize: 40.0),
               ),
               Text(
-                bmi.toStringAsFixed(1),
+                widget.bmi.toStringAsFixed(1),
                 style: TextStyle(fontSize: 120.0, fontWeight: FontWeight.bold),
               ),
               Text(
-                'BMI = ${bmi.toStringAsFixed(2)} kg/m²',
+                'BMI = ${widget.bmi.toStringAsFixed(2)} kg/m²',
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 14.0),
                 child: Text(
-                  'Normal BMI weight range for the height:\n${minWeight.round()}kg - ${maxWeight.round()}kg',
+                  'Normal BMI weight range for the height:\n${widget.minWeight.round()}kg - ${widget.maxWeight.round()}kg',
                   style: TextStyle(fontSize: 14.0, color: Colors.grey),
                   textAlign: TextAlign.center,
                 ),
@@ -188,8 +187,7 @@ class ResultCard extends StatelessWidget {
 addDoubleToSF() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.remove("bmi");
-    sharedPreferences.setString("bmi", bmi.toStringAsFixed(1));
+    sharedPreferences.setString("bmi", widget.bmi.toStringAsFixed(1));
     sharedPreferences.commit();
   }
-
 }

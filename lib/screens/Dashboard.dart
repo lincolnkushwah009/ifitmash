@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fit_kit/fit_kit.dart';
@@ -460,7 +461,7 @@ class _DashboardState extends State<Dashboard> {
                                         ),
                                         Center(
                                           child: Container(
-                                            child: Text(bmi.toString(),style: TextStyle(
+                                            child: Text('${bmi.toString()}',style: TextStyle(
                                               color:Colors.white,
                                               fontSize: 40,
                                             ),),
