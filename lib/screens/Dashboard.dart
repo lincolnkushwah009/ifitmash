@@ -25,6 +25,7 @@ import 'package:ifitmash/components/round_icon_button.dart';
 import 'package:ifitmash/constants.dart';
 import 'package:ifitmash/input_page/input_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ifitmash/components/WaterCountTab.dart';
 
 
 
@@ -332,12 +333,20 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ),
                     const SizedBox(height: 40.0),
+                    Container(
+                      width: 400,
+                      height: 100,
+                      color:Color.fromRGBO(35, 77, 108,100),
+
+                      child: DemoPage(),
+                    ),
+                    SizedBox(height: 10,),
+
                     Row(
                       children: <Widget>[
                         Expanded(
                           child: Column(
                             children: <Widget>[
-
 
                               Container(
                                 decoration: new BoxDecoration(

@@ -111,8 +111,8 @@ class _NumberLoginState extends State<NumberLogin> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color(0xFFEEEEEE),
-                      Color(0xDD000000)
+                      Color(0xDD000000),
+                  Color(0xDD000000)
                     ],
                   ),
                   borderRadius: BorderRadius.only(
