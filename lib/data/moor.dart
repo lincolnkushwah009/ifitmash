@@ -17,5 +17,4 @@ class AppDatabase extends _$AppDatabase{
   Future insertTask(Task task)=>into(tasks).insert(task);
   Future updateTask(Task task)=>update(tasks).replace(task);
   Future deleteTask(Task task)=>delete(tasks).delete(task);
-
 }
