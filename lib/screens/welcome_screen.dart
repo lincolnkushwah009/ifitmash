@@ -59,18 +59,38 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
               SizedBox(
                 height: 48.0
               ),
-              RoundedButton(title: 'Login With Email',
-              color: Colors.black,
-              onpressed: (){
-                Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginWithEmail()));
-                },
+
+
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: FlatButton(
+                  splashColor: Colors.grey,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.white)
+                  ),
+                  onPressed:(){
+                    Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginWithEmail()));                } ,
+                  child: (
+                      Text("Login With Email",style: TextStyle(color: Colors.white),)
+                  ),
+                ),
               ),
-              RoundedButton(
-                title: 'Login With Number',
-                color: Colors.black,
-                onpressed: (){
-                  Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginWithNumber()));
-                },
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: FlatButton(
+                  splashColor: Colors.grey,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.white)
+                  ),
+                  onPressed:(){
+                    Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginWithNumber()));
+                  } ,
+                  child: (
+                  Text("Login With Number",style: TextStyle(color: Colors.white),)
+                  ),
+                ),
               )
             ],
           ),
