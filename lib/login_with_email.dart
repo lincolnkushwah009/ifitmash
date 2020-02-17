@@ -69,7 +69,7 @@ class _EmailLoginState extends State<EmailLogin> {
 //        contentType: ContentType.parse('application/json'),
       );
 
-      Response response = await dio.post('/user',
+      Response response = await dio.post('/emaillogin',
           data: {"input": input},
           options: options);
       print(response);
@@ -206,39 +206,28 @@ class _EmailLoginState extends State<EmailLogin> {
 
                         GestureDetector(
 
-                          onTap: (){
+                          onTap: () async {
 
-                              Navigator.push(context, new MaterialPageRoute(builder: (context) => bottomNavigationBar()));
+                            if (_formKey.currentState.validate()) {
+                              setState(() => showSpinner = true);
+                              var res = await _loginUser(
+                                  _emailController.text);
+                              setState(() => showSpinner = false);
 
+                              JsonUser user = JsonUser.fromJson(res);
+
+                              if (user != null) {
+                                Navigator.of(context).push(
+                                    new MaterialPageRoute(
+                                        builder: (context) =>
+                                            Otp(email: user.input,)));
+                                print(user);
+                              } else {
+                                Scaffold.of(context).showSnackBar(SnackBar(
+                                    content: Text("incorrect email")));
+                              }
+                            }
                           },
-
-//                        onTap: () async {
-//
-//                          if (_formKey.currentState.validate()){
-//                            setState(() => showSpinner=true);
-//                            var res = await _loginUser(
-//                                _emailController.text);
-//                            setState(() => showSpinner=false);
-//
-//                            JsonUser user = JsonUser.fromJson(res);
-//
-//                            if (user != null) {
-//                              Navigator.of(context).push(
-//                                  new MaterialPageRoute(
-//                                      builder: (context) =>
-//                                      new Otp()));
-//                              print(user);
-//                            }
-//
-//                            else {
-//                              Scaffold.of(context).showSnackBar(SnackBar(
-//                                  content: Text("incorrect email")));
-//                            }
-//                            setState(() {
-//                              showSpinner=false;
-//                            });
-//                          }
-//                        },
                           child: Container(
                             height: 45,
                             width: MediaQuery.of(context).size.width/1.2,

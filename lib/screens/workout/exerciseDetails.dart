@@ -19,6 +19,21 @@ class ExerciseDetail extends StatefulWidget {
 }
 
 class _ExerciseDetailState extends State<ExerciseDetail> {
+//  var time=reps;
+//  if(reps<7){
+//    print("low rep");
+//  time=2.25seconds;
+//  }
+//  if(reps<14)
+//  {print("moderate reps");
+//  time=1.5seconds;
+//  }
+//  if(reps>14){
+//    print("high reps");
+//    time=0.75seconds;
+//  }
+//  var a={(0.6309*_heartRate)+(0.2017*age)-(0.9036*_weight)-55.0969*time}/4.184;
+
   List<int> _selectedNumber = new List<int>.generate(100, (i) => 0);
   List<int> _changedNumber = new List<int>.generate(100, (i) => 0);
   List<int> _heartRate = new List<int>.generate(200, (i) => 0);
