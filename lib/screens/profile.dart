@@ -115,7 +115,7 @@ class _ProfileState extends State<Profile> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 200, 0),
                       child: Text(
-                        "Profle",
+                        "Profile",
                         style: TextStyle(fontSize: 40),
                       ),
                     ),

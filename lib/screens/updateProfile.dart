@@ -220,6 +220,7 @@ class _ProfileState extends State<updateProfile> {
                             ),
                           ),
                         ),
+
                         SizedBox(
                           width: 10,
                         ),
