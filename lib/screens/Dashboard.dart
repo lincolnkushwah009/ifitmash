@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fit_kit/fit_kit.dart';
 import 'package:ifitmash/calculator.dart';
 import 'package:ifitmash/components/StepCount.dart';
+import 'package:ifitmash/components/water%20Count/tracking_input.dart';
 import 'package:ifitmash/screens/Workout.dart' as prefix0;
 import 'package:ifitmash/screens/cal_in_take/BLDlist.dart';
 import 'package:ifitmash/screens/workout/exerciseDetails.dart';
@@ -334,12 +335,20 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ),
                     const SizedBox(height: 40.0),
-                    Container(
-                      width: 400,
-                      height: 100,
-                      color:Color.fromRGBO(35, 77, 108,100),
+                    InkWell(
+                      onTap: (){
+                        Navigator.push(
+                            context,
+                            new MaterialPageRoute(
+                                builder: (context) => TrackingInput()));
+                      },
+                      child: Container(
+                        width: 400,
+                        height: 100,
+                        color:Color.fromRGBO(35, 77, 108,100),
 
-                      child: DemoPage(),
+                        child: WaterCountPage(),
+                      ),
                     ),
                     SizedBox(height: 10,),
 

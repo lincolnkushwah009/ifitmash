@@ -7,16 +7,16 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 
-class DemoPage extends StatefulWidget {
+class WaterCountPage extends StatefulWidget {
   @override
-  _DemoPageState createState() => new _DemoPageState();
+  _WaterCountPageState createState() => new _WaterCountPageState();
 
-  DemoPage() {
+  WaterCountPage() {
     timeDilation = 1.0;
   }
 }
 
-class _DemoPageState extends State<DemoPage> {
+class _WaterCountPageState extends State<WaterCountPage> {
   @override
   Widget build(BuildContext context) {
     Size size = new Size(MediaQuery.of(context).size.width, 200.0);
@@ -32,6 +32,23 @@ class _DemoPageState extends State<DemoPage> {
               yOffset: 10,
             ),
           ),
+
+          Positioned(
+            bottom: 0,
+            left: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+              children: <Widget>[
+                Text("Water Count",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: Colors.white),),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(50,0,0,0),
+                  child: Text("2/10 Glasses",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
+                )
+              ],
+            ),
+          )
+
         ],
       ),
     );
