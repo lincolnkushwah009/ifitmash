@@ -66,8 +66,8 @@ class _NumberLoginState extends State<NumberLogin> {
 //        contentType: ContentType.parse('application/json'),
       );
 
-      Response response = await dio.post('/user',
-          data: {"input": input},
+      Response response = await dio.post('/login',
+          data: {"contact": input},
           options: options);
       print(response);
       print(input);
