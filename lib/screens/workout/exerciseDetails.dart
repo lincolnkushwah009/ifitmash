@@ -36,7 +36,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
 
   List<int> _selectedNumber = new List<int>.generate(100, (i) => 0);
   List<int> _changedNumber = new List<int>.generate(100, (i) => 0);
-  List<int> _heartRate = new List<int>.generate(200, (i) => 0);
+  List<int> _heartRate = new List<int>.generate(200, (i) => 77);
  List<int> _weight = new List<int>.generate(200, (i) => 0);
 
 
@@ -57,7 +57,27 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
 
 
     return new Scaffold(
+       bottomNavigationBar: Container(
+         height: 60,
+         child:   Card(
+           elevation: 5,
+           child: ListTile(
 
+             title: Text("Calorie Burned",style: TextStyle(fontSize: 25),),
+             trailing:  Row(
+               mainAxisSize: MainAxisSize.min,
+               children: <Widget>[
+                 Text(
+                   '🔥',
+                   style: TextStyle(fontSize: 25.0),
+                 ),
+                 Text("3433",style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold))
+               ],
+             )
+//           Text("2344"),
+           ),
+         )
+       ),
         body: CustomScrollView(slivers: <Widget>[
           SliverAppBar(
             backgroundColor: Colors.black,
@@ -100,7 +120,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                   Column(
                     children: <Widget>[
                       Container(
-                        height: 300,
+                        height: 250,
                         child: Form(
                           key: _formKey,
                           child: new ListView.builder(
@@ -112,40 +132,43 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                           ),
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          Container(
-                            child: FloatingActionButton(
-                              backgroundColor: Colors.black,
-                              heroTag: "btn1",
-                              onPressed: () {
-                                setState(() {
-                                  newSULength--;
-                                  selectedUnit.add(0);
-                                  selectedGrade.add(0);
-                                  selectedGrade2.add(0);
-                                });
-                              },
-                              child: new Icon(Icons.remove),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10,0,10,10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Container(
+                              child: FloatingActionButton(
+                                backgroundColor: Colors.black,
+                                heroTag: "btn1",
+                                onPressed: () {
+                                  setState(() {
+                                    newSULength--;
+                                    selectedUnit.add(0);
+                                    selectedGrade.add(0);
+                                    selectedGrade2.add(0);
+                                  });
+                                },
+                                child: new Icon(Icons.remove),
+                              ),
                             ),
-                          ),
-                          Container(
-                            child: FloatingActionButton(
-                              backgroundColor: Colors.black,
-                              heroTag: "btn2",
-                              onPressed: () {
-                                setState(() {
-                                  newSULength++;
-                                  selectedUnit.add(0);
-                                  selectedGrade.add(0);
-                                  selectedGrade2.add(0);
-                                });
-                              },
-                              child: new Icon(Icons.add),
-                            ),
-                          )
-                        ],
+                            Container(
+                              child: FloatingActionButton(
+                                backgroundColor: Colors.black,
+                                heroTag: "btn2",
+                                onPressed: () {
+                                  setState(() {
+                                    newSULength++;
+                                    selectedUnit.add(0);
+                                    selectedGrade.add(0);
+                                    selectedGrade2.add(0);
+                                  });
+                                },
+                                child: new Icon(Icons.add),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -316,8 +339,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                                 _heartRate[index] = index1;
                               });
                             },
-                            children:List<Widget>.generate(200,
-                                    (int index) {
+                            children:List<Widget>.generate(200, (int index) {
                               Container(
                                 child: Text("Heart Rate"),
                               );

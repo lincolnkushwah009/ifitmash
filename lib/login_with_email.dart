@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:ifitmash/screens/Dashboard.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -146,7 +147,9 @@ class _EmailLoginState extends State<EmailLogin> {
                         ),
                         child: InkWell(
                           onTap: () {
-                            Navigator.push(context, new MaterialPageRoute(builder: (context) => LoginWithNumber()));
+                            // Navigator.push(context, new MaterialPageRoute(builder: (context) => LoginWithNumber()));
+                            Navigator.push(context, new MaterialPageRoute(builder: (context) => Dashboard()));
+
                           },
                           child: Text('Login With Number',
                             style: TextStyle(
