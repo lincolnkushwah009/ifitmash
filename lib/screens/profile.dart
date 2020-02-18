@@ -88,28 +88,43 @@ class _ProfileState extends State<Profile> {
                   ),
                   children: [
 
-//                  Padding(
-//                    padding: const EdgeInsets.fromLTRB(0,20,10,0),
-//                    child: GestureDetector(
-//                      onTap: (){
-//                        Navigator.of(context).pushReplacementNamed('/Login');
-//                      },
-//                      child: Container(
-//                        alignment: Alignment.topRight,
-//                        height: 30,
-//                        child:Image.asset("assets/Icons/shutdown.png"),
-//                      ),
-//                    ),
-//                  ),
-//
-//                  Padding(
-//                    padding: const EdgeInsets.fromLTRB(0,0,5,0),
-//                    child: Container(
-//                      alignment: Alignment.topRight,
-//                      height: 30,
-//                      child:Text("Logout"),
-//                    ),
-//                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0,20,10,0),
+                    child: GestureDetector(
+                      onTap: ()async{
+                        SharedPreferences prefs = await SharedPreferences.getInstance();
+                        await prefs.remove('email');
+                        await Future.delayed(Duration(seconds: 2));
+                        Navigator.of(context).pushAndRemoveUntil(
+                          // the new route
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => WelcomeScreen(),
+                          ),
+
+
+
+                          // this function should return true when we're done removing routes
+                          // but because we want to remove all other screens, we make it
+                          // always return false
+                              (Route route) => false,
+                        );
+                      },
+                      child: Container(
+                        alignment: Alignment.topRight,
+                        height: 30,
+                        child:Image.asset("assets/Icons/shutdown.png"),
+                      ),
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0,0,5,0),
+                    child: Container(
+                      alignment: Alignment.topRight,
+                      height: 30,
+                      child:Text("Logout"),
+                    ),
+                  ),
 
 
                     Padding(
