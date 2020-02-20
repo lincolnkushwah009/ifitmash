@@ -94,7 +94,7 @@ class TrackingState extends State<TrackingInput> {
 
   void _incSelectedGlasses(StateSetter updateModal, int value) {
     updateModal(() {
-      selectedGlasses = (selectedGlasses + value).clamp(0, 26).toInt();
+      selectedGlasses = (selectedGlasses + value).clamp(0, 50).toInt();
       calculateMaxOunces();
     });
   }
@@ -104,7 +104,18 @@ class TrackingState extends State<TrackingInput> {
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(93, 93, 93, 1),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Text("Water Count"),
+            Text("12/29")
+          ],
+        ) ,
+
+      ),
+
       body: Container(
         ///Stack some widgets
         color: const Color.fromRGBO(93, 93, 93, 1),
@@ -120,7 +131,7 @@ class TrackingState extends State<TrackingInput> {
               artboard: "Artboard",
             ),
             Positioned(
-              bottom: 100,
+              bottom: 60,
               left: 0,
               right: 0,
               child: Row(
@@ -157,7 +168,6 @@ class TrackingState extends State<TrackingInput> {
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(93, 93, 93, 1),
               ),
-              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   Text(
@@ -229,16 +239,21 @@ class TrackingState extends State<TrackingInput> {
   Widget settingsButton() {
     return RawMaterialButton(
 
+
       constraints: BoxConstraints.tight(Size(40, 40)),
       onPressed: _showMenu,
       shape: Border(),
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
       elevation: 0.0,
-      child: FlareActor("assets/WaterArtboards.flr",
-          fit: BoxFit.contain,
-          sizeFromArtboard: true,
-          artboard: "UI Ellipse"),
+      child: Text(
+        "Set Target",
+        style: TextStyle(
+            fontWeight: FontWeight.normal,
+            color: Colors.white,
+            fontSize: 24.0),
+        textAlign: TextAlign.center,
+      ),
     );
   }
 
