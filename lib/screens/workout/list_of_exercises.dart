@@ -27,7 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static List<dynamic> notList = new List();
+  List<dynamic> notList = new List();
   bool loading = true;
   var items = List<String>();
   @override
@@ -41,11 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
   loadData() {
     loadOfferData();
   }
+
+
   void loadOfferData() async {
     var url = AppConfig.apiUrl + AppConfig.workout;
     Map<String, String> headers = {};
     Map<String, String> body = {
-      'search_value': 'ch'
+      'search_value': '650'
     };
     var data = await homeservice.getProductLoadData(url, headers, body, context);
     print(data);
@@ -64,7 +66,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   TextEditingController editingController = TextEditingController();
 
-  final exercises = ['${notList.toString()}'
+  final exercises = ['dumbles','cardio','leg press','crunches','low leg pull in','Crunch',
+    'Resisted Crunch','Inclined Crunch with Feet Attached',
+    'Crunch with Leg Curl',
+    'Sit-Up with Feet Attached',
+    'Sit-Up with Cable',
+    'Trunk Rotation',
+    'Jacknife Sit-Up',
+    'High Leg Pull-In',
+   'Low Leg Pull-In',
+    'Side Plank'
   ];
 
   void filterSearchResults(String query) {

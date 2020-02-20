@@ -17,8 +17,16 @@ class ExerciseDetail extends StatefulWidget {
   @override
   _ExerciseDetailState createState() => new _ExerciseDetailState();
 }
-
+const String sppKey = 'myBool';
 class _ExerciseDetailState extends State<ExerciseDetail> {
+  SharedPreferences sharedPreferences;
+  String userData;
+  String email;
+  String dob;
+  String height;
+  String weight;
+  String gender;
+
 
 //  var time=reps;
 //  if(reps<7){
@@ -35,6 +43,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
 //  }
 //  var a={(0.6309*_heartRate)+(0.2017*age)-(0.9036*_weight)-55.0969*time}/4.184;
 
+
   List<int> _selectedNumber = new List<int>.generate(100, (i) => 0);
   List<int> _changedNumber = new List<int>.generate(100, (i) => 0);
   List<int> _heartRate = new List<int>.generate(200, (i) => 0);
@@ -50,13 +59,49 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
   var selectedGrade = [0, 0, 0];
   var selectedGrade2 = [0, 0, 0];
   var _course = '';
+  void persist(String value) {
+    setState(() {
+      userData = value;
 
+    });
+    sharedPreferences?.setString(sppKey, value);
+  }
 
+@override
+  void initState() {
+    // TODO: implement initState
+
+  SharedPreferences.getInstance().then((SharedPreferences sp) {
+    sharedPreferences = sp;
+    userData = sharedPreferences.getString('user_name');
+    email = sharedPreferences.getString('email');
+    dob = sharedPreferences.getString('dob');
+    height = sharedPreferences.getString('height');
+    weight = sharedPreferences.getString('weight');
+    gender = sharedPreferences.getString('gender');
+    print(userData);
+    print(dob);
+    // will be null if never previously saved
+    if (userData == null) {
+      userData = "";
+      persist(userData); // set an initial value
+    }
+    setState(() {});
+  });
+  }
 
   @override
   Widget build(BuildContext context) {
 
+    var values = [
+      {'userId': 1, 'rating': 4.5},
+      {'userId': 2, 'rating': 4.0},
+      {'userId': 3, 'rating': 3.5},
+      {'userId': 4, 'rating': 3.0}
+    ];
 
+    var result = values.map((m) => m['rating']).reduce((a, b) => ((0.6309 *78)+(0.2017*22)- (0.09036*50)-55.0969)*20)/4.184;
+    print(result);
     return new Scaffold(
        bottomNavigationBar: Container(
          height: 60,
@@ -72,7 +117,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                    '🔥',
                    style: TextStyle(fontSize: 25.0),
                  ),
-                 Text(selectedUnit.toString(),style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold))
+                 Text(result.toString(),style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold))
                ],
              )
 //           Text("2344"),
@@ -338,7 +383,8 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                             onSelectedItemChanged: (int index1) {
                               setState(() {
                                 _heartRate[index] = index1;
-                                print("you selected :$_heartRate");
+                                print(_heartRate[1]);
+
                               });
                             },
                             children:List<Widget>.generate(200, (int index) {
