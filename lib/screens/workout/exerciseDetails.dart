@@ -46,7 +46,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
 
   List<int> _selectedNumber = new List<int>.generate(100, (i) => 0);
   List<int> _changedNumber = new List<int>.generate(100, (i) => 0);
-  List<int> _heartRate = new List<int>.generate(200, (i) => 77);
+  List<int> _heartRate = new List<int>.generate(200, (i) => 0);
  List<int> _weight = new List<int>.generate(200, (i) => 0);
 
 //var b=_selectedNumber+_changedNumber;
@@ -383,6 +383,8 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                             onSelectedItemChanged: (int index1) {
                               setState(() {
                                 _heartRate[index] = index1;
+                                print(_heartRate[1]);
+
                               });
                             },
                             children:List<Widget>.generate(200, (int index) {
