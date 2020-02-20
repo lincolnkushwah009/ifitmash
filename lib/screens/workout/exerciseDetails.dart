@@ -19,6 +19,7 @@ class ExerciseDetail extends StatefulWidget {
 }
 
 class _ExerciseDetailState extends State<ExerciseDetail> {
+
 //  var time=reps;
 //  if(reps<7){
 //    print("low rep");
@@ -39,7 +40,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
   List<int> _heartRate = new List<int>.generate(200, (i) => 77);
  List<int> _weight = new List<int>.generate(200, (i) => 0);
 
-
+//var b=_selectedNumber+_changedNumber;
   bool a = false;
   String _myActivity;
   String _myActivityResult;
@@ -71,7 +72,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
                    '🔥',
                    style: TextStyle(fontSize: 25.0),
                  ),
-                 Text("3433",style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold))
+                 Text(selectedUnit.toString(),style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold))
                ],
              )
 //           Text("2344"),

@@ -1,8 +1,12 @@
+import 'dart:convert';
 import 'dart:math';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter/material.dart';
 import 'exerciseDetails.dart';
-
+import 'package:ifitmash/components/home_fragment_service.dart';
+import 'package:ifitmash/components/AppConfig.dart';
+final HomeService homeservice = new HomeService();
 class ListOfExercises extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -23,28 +27,45 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  TextEditingController editingController = TextEditingController();
-
-  final exercises = ['dumbles','cardio','leg press','crunches','low leg pull in','Crunch',
-    'Resisted Crunch','Inclined Crunch with Feet Attached',
-    'Crunch with Leg Curl',
-    'Sit-Up with Feet Attached',
-    'Sit-Up with Cable',
-    'Trunk Rotation',
-    'Jacknife Sit-Up',
-    'High Leg Pull-In',
-   'Low Leg Pull-In',
-    'Side Plank'
-  ];
-
-
+  static List<dynamic> notList = new List();
+  bool loading = true;
   var items = List<String>();
-
   @override
+  @protected
+  @mustCallSuper
   void initState() {
     items.addAll(exercises);
-    super.initState();
+    SchedulerBinding.instance.addPostFrameCallback((_) => loadData());
   }
+
+  loadData() {
+    loadOfferData();
+  }
+  void loadOfferData() async {
+    var url = AppConfig.apiUrl + AppConfig.workout;
+    Map<String, String> headers = {};
+    Map<String, String> body = {
+      'search_value': 'ch'
+    };
+    var data = await homeservice.getProductLoadData(url, headers, body, context);
+    print(data);
+    Map<String, dynamic> _data = json.decode(data);
+    // notList = _data['logs'];
+    print("workout data");
+    print(notList);
+    setState(()
+    {
+      if(_data['data'] != null)
+        notList = _data['data'];
+      loading = false;
+    });
+  }
+
+
+  TextEditingController editingController = TextEditingController();
+
+  final exercises = ['${notList.toString()}'
+  ];
 
   void filterSearchResults(String query) {
     List<String> dummySearchList = List<String>();
