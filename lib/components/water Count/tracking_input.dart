@@ -37,7 +37,7 @@ class TrackingState extends State<TrackingInput> {
   @override
   void initState() {
     _flareController = AnimationControls();
-
+    print(plusWaterControls);
     super.initState();
   }
 
@@ -110,7 +110,7 @@ class TrackingState extends State<TrackingInput> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             Text("Water Count"),
-            Text("12/29")
+            Text(currentWaterCount.toString()+'/'+selectedGlasses.toString())
           ],
         ) ,
 
@@ -273,7 +273,6 @@ class TrackingState extends State<TrackingInput> {
           artboard: "UI plus"),
     );
   }
-
   Widget subWaterBtn() {
     return RawMaterialButton(
       constraints: BoxConstraints.tight(const Size(80, 80)),

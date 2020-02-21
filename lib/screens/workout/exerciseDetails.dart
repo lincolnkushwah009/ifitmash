@@ -100,7 +100,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
       {'userId': 4, 'rating': 3.0}
     ];
 
-    var result = (((0.6309 *78)+(0.2017*22)- (0.09036*50)-55.0969)*20)/4.184;
+    var result = (((0.6309 *_heartRate[2])+(0.2017*22)- (0.09036*50)-55.0969)*20)/4.184;
     print(result);
     return new Scaffold(
        bottomNavigationBar: Container(
