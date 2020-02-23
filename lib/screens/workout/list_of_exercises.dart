@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'exerciseDetails.dart';
 import 'package:ifitmash/components/home_fragment_service.dart';
 import 'package:ifitmash/components/AppConfig.dart';
+import 'package:http/http.dart' as http;
 final HomeService homeservice = new HomeService();
 class ListOfExercises extends StatelessWidget {
   // This widget is the root of your application.
@@ -28,59 +29,50 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<dynamic> notList = new List();
+  Map data;
   bool loading = true;
   var items = List<String>();
   @override
   @protected
   @mustCallSuper
   void initState() {
-    items.addAll(exercises);
+//    items.addAll(exercises);
     SchedulerBinding.instance.addPostFrameCallback((_) => loadData());
   }
 
   loadData() {
-    loadOfferData();
+    getWorkoutData();
   }
 
 
-  void loadOfferData() async {
-    var url = AppConfig.apiUrl + AppConfig.workout;
-    Map<String, String> headers = {};
-    Map<String, String> body = {
-      'search_value': '650'
-    };
-    var data = await homeservice.getProductLoadData(url, headers, body, context);
-    print(data);
-    Map<String, dynamic> _data = json.decode(data);
-    // notList = _data['logs'];
-    print("workout data");
-    print(notList);
-    setState(()
-    {
-      if(_data['data'] != null)
-        notList = _data['data'];
-      loading = false;
+  getWorkoutData() async {
+    http.Response response =
+    await http.get('https://ifitmash.club/api/searchExercise');
+    data = json.decode(response.body);
+    setState(() {
+      notList = data['data'];
     });
+    debugPrint(response.body);
   }
 
 
   TextEditingController editingController = TextEditingController();
 
-  final exercises = ['dumbles','cardio','leg press','crunches','low leg pull in','Crunch',
-    'Resisted Crunch','Inclined Crunch with Feet Attached',
-    'Crunch with Leg Curl',
-    'Sit-Up with Feet Attached',
-    'Sit-Up with Cable',
-    'Trunk Rotation',
-    'Jacknife Sit-Up',
-    'High Leg Pull-In',
-   'Low Leg Pull-In',
-    'Side Plank'
-  ];
+//  final exercises = ['dumbles','cardio','leg press','crunches','low leg pull in','Crunch',
+//    'Resisted Crunch','Inclined Crunch with Feet Attached',
+//    'Crunch with Leg Curl',
+//    'Sit-Up with Feet Attached',
+//    'Sit-Up with Cable',
+//    'Trunk Rotation',
+//    'Jacknife Sit-Up',
+//    'High Leg Pull-In',
+//   'Low Leg Pull-In',
+//    'Side Plank'
+//  ];
 
   void filterSearchResults(String query) {
     List<String> dummySearchList = List<String>();
-    dummySearchList.addAll(exercises);
+    dummySearchList.addAll(notList[data["name"]]);
     if(query.isNotEmpty) {
       List<String> dummyListData = List<String>();
       dummySearchList.forEach((item) {
@@ -95,8 +87,8 @@ class _MyHomePageState extends State<MyHomePage> {
       return;
     } else {
       setState(() {
-        items.clear();
-        items.addAll(exercises);
+        notList.clear();
+        notList.addAll(data['name']);
       });
     }
 
@@ -142,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: AnimationLimiter(
                 child: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: items.length,
+                  itemCount: notList.length,
                   itemBuilder: (context, index) {
 
 
@@ -160,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       builder: (BuildContext context) =>
                                       new ExerciseDetail()));
                             },
-                            title: Text('${items[index]}'),
+                            title: Text('${notList[index]['name']}'),
                             trailing: Icon(Icons.add_circle_outline,color: Colors.black,),
 
                           ),

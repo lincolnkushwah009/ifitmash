@@ -31,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController editingController = TextEditingController();
   getFoodData() async {
     http.Response response =
-    await http.get('https://staging.ifitmash.club/api/getFatsecretDetails');
+    await http.get('https://ifitmash.club/api/searchExercise');
     data = json.decode(response.body);
     setState(() {
       foodList = data['data'];
@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void filterSearchResults(String query) {
     List<String> dummySearchList = List<String>();
-    dummySearchList.addAll(foodList[data["foodname"]]);
+    dummySearchList.addAll(foodList[data["name"]]);
     if(query.isNotEmpty) {
       List<String> dummyListData = List<String>();
       dummySearchList.forEach((item) {
@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       setState(() {
         foodList.clear();
-        foodList.addAll(data["foodname"]);
+        foodList.addAll(data["name"]);
       });
     }
 
@@ -129,8 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   print(foodList);
                   return ListTile(
 
-                    title: Text("${foodList[index]["foodname" ]}"),
-                    subtitle: Text("Protien ${foodList[index]["protien" ]}"),
+                    title: Text("${foodList[index]["name" ]}"),
+//                    subtitle: Text("Protien ${foodList[index]["protien" ]}"),
                     onTap: (){
                       Navigator.push(
                           context,
