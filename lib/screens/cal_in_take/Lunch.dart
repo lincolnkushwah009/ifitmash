@@ -87,6 +87,24 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomSheet: Container(
+        height: 60,
+
+        child: Card(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text("Can't find what you're looking for ?"),
+                  Text("+ Add New Food")
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
 
       body: Container(
 

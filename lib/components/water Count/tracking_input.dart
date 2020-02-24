@@ -111,6 +111,7 @@ class TrackingState extends State<TrackingInput> {
           children: <Widget>[
             Text("Water Count"),
             Text(currentWaterCount.toString()+'/'+selectedGlasses.toString())
+
           ],
         ) ,
 
