@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:ifitmash/screens/cal_in_take/addFood.dart';
+
 import 'lunchdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -31,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController editingController = TextEditingController();
   getFoodData() async {
     http.Response response =
-    await http.get('https://staging.ifitmash.club/api/getFatsecretDetails');
+    await http.get('https://ifitmash.club/api/searchExercise');
     data = json.decode(response.body);
     setState(() {
       foodList = data['data'];
@@ -62,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void filterSearchResults(String query) {
     List<String> dummySearchList = List<String>();
-    dummySearchList.addAll(foodList[data["foodname"]]);
+    dummySearchList.addAll(foodList[data["name"]]);
     if(query.isNotEmpty) {
       List<String> dummyListData = List<String>();
       dummySearchList.forEach((item) {
@@ -78,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       setState(() {
         foodList.clear();
-        foodList.addAll(data["foodname"]);
+        foodList.addAll(data["name"]);
       });
     }
 
@@ -98,7 +100,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text("Can't find what you're looking for ?"),
-                  Text("+ Add New Food")
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context,new MaterialPageRoute(builder: (context)=>addFood()));
+
+                    },
+                      child: Text("+ Add New Food"))
                 ],
               ),
             ),
@@ -147,8 +154,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   print(foodList);
                   return ListTile(
 
-                    title: Text("${foodList[index]["foodname" ]}"),
-                    subtitle: Text("Protien ${foodList[index]["protien" ]}"),
+                    title: Text("${foodList[index]["name" ]}"),
+//                    subtitle: Text("Protien ${foodList[index]["protien" ]}"),
                     onTap: (){
                       Navigator.push(
                           context,

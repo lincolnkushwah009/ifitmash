@@ -19,7 +19,7 @@ import 'package:ifitmash/screens/cal_in_take/Lunch.dart';
 import 'package:ifitmash/screens/profile.dart';
 import 'package:ifitmash/components/graph.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:firebase_database/firebase_database.dart';
+//import 'package:firebase_database/firebase_database.dart';
 import 'package:ifitmash/about.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:ifitmash/components/reusable_card.dart';
@@ -41,7 +41,7 @@ class DrawerItem {
   DrawerItem(this.title, this.icon);
 }
 
-final DBRef=FirebaseDatabase.instance.reference();
+//final DBRef=FirebaseDatabase.instance.reference();
 DateTime _now = DateTime.now();
 class Dashboard extends StatefulWidget {
   final drawerItems =  [
@@ -121,13 +121,13 @@ class _DashboardState extends State<Dashboard> {
       }
       setState(() {});
     });
-    SchedulerBinding.instance.addPostFrameCallback((_) => loadData());
+//    SchedulerBinding.instance.addPostFrameCallback((_) => loadData());
   }
-  loadData() {
-//    read();
-//    readAll();
-    readData();
-  }
+//  loadData() {
+////    read();
+////    readAll();
+////    readData();
+//  }
 //  void read() async {
 //    stepData = await FitKit.read(
 //      DataType.WEIGHT,
@@ -655,8 +655,8 @@ class _DashboardState extends State<Dashboard> {
                                           child: RaisedButton(
                                             child: Text("Save"),
                                             onPressed: () {
-                                              readData();
-                                              writeData();
+//                                              readData();
+//                                              writeData();
                                               Fluttertoast.showToast(msg: 'You successfully submitted your weight',
                                                   toastLength: Toast.LENGTH_SHORT,
                                                   gravity: ToastGravity.CENTER,
@@ -710,24 +710,24 @@ class _DashboardState extends State<Dashboard> {
 
 
   }
-  void writeData(){
-    setState(() {
-      DBRef.child("1").set({
-        'user':email,
-        'weight':weight
-//        'date':DateTime.now();
-      });
-    });
-  }
-  void readData(){
-    DBRef.once().then((DataSnapshot dataSnapshot){
-      setState(() {
-        currentWeight=dataSnapshot.value;
-      });
-      print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-      print(currentWeight.elementAt(1));
-    });
-  }
+//  void writeData(){
+//    setState(() {
+//      DBRef.child("1").set({
+//        'user':email,
+//        'weight':weight
+////        'date':DateTime.now();
+//      });
+//    });
+//  }
+//  void readData(){
+//    DBRef.once().then((DataSnapshot dataSnapshot){
+//      setState(() {
+//        currentWeight=dataSnapshot.value;
+//      });
+//      print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+//      print(currentWeight.elementAt(1));
+//    });
+//  }
 
 
   void displayDialog() {
@@ -747,8 +747,6 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
   }
-
-
 
 
 }
