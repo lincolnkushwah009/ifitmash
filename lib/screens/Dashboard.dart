@@ -381,54 +381,61 @@ class _DashboardState extends State<Dashboard> {
                                 child: GestureDetector(
                                   child: FlatButton(
                                     onPressed: () {},
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: <Widget>[
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: <Widget>[
 
 
 
-                                        Padding(
-                                          padding: const EdgeInsets.fromLTRB(0,10,0,0),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(0,10,0,0),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                                            children: <Widget>[
-                                              Container(
-                                                 child: Text("STEPS",style: TextStyle(fontSize: 20,color: Colors.white)),
-                                              ),
-
-                                                Icon(
-                                                  FontAwesomeIcons.running,
-                                                  color: Colors.white,
-                                                  size: 25,
+                                              children: <Widget>[
+                                                Container(
+                                                   child: Text("STEPS",style: TextStyle(fontSize: 20,color: Colors.white)),
                                                 ),
 
-                                            ],
+                                                  Icon(
+                                                    FontAwesomeIcons.running,
+                                                    color: Colors.white,
+                                                    size: 25,
+                                                  ),
+
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        Center(
-                                          child: Container(
-                                            child: Text("7,254",style: TextStyle(
-                                              color:Colors.white,
-                                              fontSize: 40,
-                                            ),),
+                                          Center(
+                                            child: Container(
+                                              child: Text("7,254",style: TextStyle(
+                                                color:Colors.white,
+                                                fontSize: 40,
+                                              ),),
+                                            ),
                                           ),
-                                        ),
-                                        Center(
-                                          child: Container(
-                                            child: Text("3.2 Km",style: TextStyle(
-                                              color:Colors.white70,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w100
-                                            ),),
+                                          Center(
+                                            child: Container(
+                                              child: Text("3.2 Km",style: TextStyle(
+                                                color:Colors.white70,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w100
+                                              ),),
+                                            ),
                                           ),
-                                        )
+                                          RaisedButton(
+                                            onPressed: (){},
+                                            splashColor: Colors.green,
+                                            child: Text("google"),
+                                          )
 
 
 
 
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
