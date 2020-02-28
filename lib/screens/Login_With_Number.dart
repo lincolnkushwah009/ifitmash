@@ -131,26 +131,26 @@ class _NumberLoginState extends State<NumberLogin> {
                     ),
                   ),
                   Spacer(),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          bottom: 32,
-                          right: 32
-                      ),
-                      child: InkWell(
-                        onTap: (){
-                          Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginWithEmail()));
-                        },
-                        child: Text('Login With Email',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+//                  Align(
+//                    alignment: Alignment.bottomRight,
+//                    child: Padding(
+//                      padding: const EdgeInsets.only(
+//                          bottom: 32,
+//                          right: 32
+//                      ),
+//                      child: InkWell(
+//                        onTap: (){
+//                          Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginWithEmail()));
+//                        },
+//                        child: Text('Login With Email',
+//                          style: TextStyle(
+//                              color: Colors.white,
+//                              fontSize: 18
+//                          ),
+//                        ),
+//                      ),
+//                    ),
+//                  ),
                 ],
               ),
             ),

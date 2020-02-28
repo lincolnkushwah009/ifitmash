@@ -9,16 +9,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 //List<int> _selectedNumber = new List<int>.generate(100, (i) => 0);
 
 
-class ExerciseDetail extends StatefulWidget {
-  ExerciseDetail({Key key, this.title}) : super(key: key);
+class ExerciseInput extends StatefulWidget {
+  ExerciseInput({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _ExerciseDetailState createState() => new _ExerciseDetailState();
+  _ExerciseInputState createState() => new _ExerciseInputState();
 }
 const String sppKey = 'myBool';
-class _ExerciseDetailState extends State<ExerciseDetail> {
+class _ExerciseInputState extends State<ExerciseInput> {
   SharedPreferences sharedPreferences;
   String userData;
   String email;
@@ -47,7 +47,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
   List<int> _selectedNumber = new List<int>.generate(100, (i) => 0);
   List<int> _changedNumber = new List<int>.generate(100, (i) => 0);
   List<int> _heartRate = new List<int>.generate(200, (i) => 0);
- List<int> _weight = new List<int>.generate(200, (i) => 0);
+  List<int> _weight = new List<int>.generate(200, (i) => 0);
 
 //var b=_selectedNumber+_changedNumber;
   bool a = false;
@@ -67,27 +67,27 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
     sharedPreferences?.setString(sppKey, value);
   }
 
-@override
+  @override
   void initState() {
     // TODO: implement initState
 
-  SharedPreferences.getInstance().then((SharedPreferences sp) {
-    sharedPreferences = sp;
-    userData = sharedPreferences.getString('user_name');
-    email = sharedPreferences.getString('email');
-    dob = sharedPreferences.getString('dob');
-    height = sharedPreferences.getString('height');
-    weight = sharedPreferences.getString('weight');
-    gender = sharedPreferences.getString('gender');
-    print(userData);
-    print(dob);
-    // will be null if never previously saved
-    if (userData == null) {
-      userData = "";
-      persist(userData); // set an initial value
-    }
-    setState(() {});
-  });
+    SharedPreferences.getInstance().then((SharedPreferences sp) {
+      sharedPreferences = sp;
+      userData = sharedPreferences.getString('user_name');
+      email = sharedPreferences.getString('email');
+      dob = sharedPreferences.getString('dob');
+      height = sharedPreferences.getString('height');
+      weight = sharedPreferences.getString('weight');
+      gender = sharedPreferences.getString('gender');
+      print(userData);
+      print(dob);
+      // will be null if never previously saved
+      if (userData == null) {
+        userData = "";
+        persist(userData); // set an initial value
+      }
+      setState(() {});
+    });
   }
 
   @override
@@ -103,27 +103,28 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
     var result = (((0.6309 *_heartRate[2])+(0.2017*22)- (0.09036*50)-55.0969)*20)/4.184;
     print(result);
     return new Scaffold(
-       bottomNavigationBar: Container(
-         height: 60,
-         child:   Card(
-           elevation: 5,
-           child: ListTile(
+      resizeToAvoidBottomPadding: false,
+        bottomNavigationBar: Container(
+            height: 60,
+            child:   Card(
+              elevation: 5,
+              child: ListTile(
 
-             title: Text("Calorie Burned",style: TextStyle(fontSize: 25),),
-             trailing:  Row(
-               mainAxisSize: MainAxisSize.min,
-               children: <Widget>[
-                 Text(
-                   '🔥',
-                   style: TextStyle(fontSize: 25.0),
-                 ),
-                 Text(result.toString(),style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold))
-               ],
-             )
+                  title: Text("Calorie Burned",style: TextStyle(fontSize: 25),),
+                  trailing:  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text(
+                        '🔥',
+                        style: TextStyle(fontSize: 25.0),
+                      ),
+                      Text(result.toString(),style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold))
+                    ],
+                  )
 //           Text("2344"),
-           ),
-         )
-       ),
+              ),
+            )
+        ),
         body: CustomScrollView(slivers: <Widget>[
           SliverAppBar(
             backgroundColor: Colors.black,
@@ -261,158 +262,86 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
+        new  Container(
+            decoration:
+            BoxDecoration(border: Border.all(color: Colors.grey)),
+            height: 30,
+            width: 80,
+            child: TextField(
+              style: TextStyle(color: Colors.black),
+              keyboardType: TextInputType.number,
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(
+                  labelStyle: new TextStyle(color: Colors.grey),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide: new BorderSide(color: Colors.grey)),
+                  hintStyle: new TextStyle(
+                    inherit: true,
+                    fontSize: 14.0,
+                    color: Colors.grey,
 
+                  ),
+                  hintText: '1'
 
+              ),
+            ),
+          ),
 
           Container(
-            width: 110.0,
-            child: GestureDetector(
-              onTap: () {
-                showModalBottomSheet(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return Container(
-                        height: 200.0,
-                        color: Colors.white,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            CupertinoButton(
-                              child: Text("Cancel"),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                            ),
-                            Expanded(
-                              child: CupertinoPicker(
-                                  scrollController:
-                                  new FixedExtentScrollController(
-                                    initialItem: _selectedNumber[index],
-                                  ),
-                                  itemExtent: 32.0,
-                                  backgroundColor: Colors.white,
-                                  onSelectedItemChanged: (int index1) {
-                                    _changedNumber[index] = index1;
-                                  },
-                                  children: new List<Widget>.generate(200,
-                                          (int index) {
-                                        return new Center(
-                                          child: new Text('${index + 1}'),
-                                        );
-                                      })),
-                            ),
-                            CupertinoButton(
-                              child: Text("Ok"),
-                              onPressed: () {
-                                setState(() {
-                                  _selectedNumber[index] = _changedNumber[index];
-                                });
-                                Navigator.pop(context);
-                              },
-                            ),
-                          ],
-                        ),
-                      );
-                    });
-              },
-              child: Container(
-                decoration:
-                BoxDecoration(border: Border.all(color: Colors.grey)),
-                height: 30,
-                width: 80,
-                child: Text(
-                  '${_selectedNumber[index] + 1}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 18.0),
-                ),
+            decoration:
+            BoxDecoration(border: Border.all(color: Colors.grey)),
+            height: 30,
+            width: 80,
+            child: TextField(
+              style: TextStyle(color: Colors.black),
+              keyboardType: TextInputType.number,
+              textAlign: TextAlign.center,
+
+              decoration: InputDecoration(
+                  labelStyle: new TextStyle(color: Colors.grey),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide: new BorderSide(color: Colors.grey)),
+                  hintStyle: new TextStyle(
+                    inherit: true,
+                    fontSize: 14.0,
+                    color: Colors.grey,
+
+                  ),
+                  hintText: '5'
+
               ),
             ),
           ),
 
+          Container(
+            decoration:
+            BoxDecoration(border: Border.all(color: Colors.grey)),
+            height: 30,
+            width: 80,
+            child: TextField(
+           
+              style: TextStyle(color: Colors.black),
+              keyboardType: TextInputType.number,
+              textAlign: TextAlign.center,
+
+              decoration: InputDecoration(
+
+
+                  labelStyle: new TextStyle(color: Colors.grey),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide: new BorderSide(color: Colors.grey)),
+                  hintStyle: new TextStyle(
+                    inherit: true,
+                    fontSize: 14.0,
+                    color: Colors.grey,
+                  ),
+                  hintText: '75',
 
 
 
-          new Container(
-            child: new GestureDetector(
-              onTap: () {
-                showModalBottomSheet(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return Container(
-                        height: 200.0,
-                        child: CupertinoPicker(
-                            backgroundColor: Colors.white,
-                            itemExtent: 32.0,
-                            onSelectedItemChanged: (int index1) {
-                              setState(() {
-                                _weight[index] = index1;
-                              });
-                            },
-                            children:List<Widget>.generate(200,
-                                    (int index) {
-                                  return new Center(
-                                    child: new Text('${index + 1}'),
-                                  );
-                                })),
-                      );
-                    });
-              },
-              child: Container(
-                decoration:
-                BoxDecoration(border: Border.all(color: Colors.grey)),
-                height: 30,
-                width: 80,
-                child: Text('${_weight[index] + 1}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 18.0),
-                ),
               ),
             ),
-          ),
-
-
-          new Container(
-            child: new GestureDetector(
-              onTap: () {
-                showModalBottomSheet(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return Container(
-                        height: 200.0,
-                        child: CupertinoPicker(
-
-                            backgroundColor: Colors.white,
-                            itemExtent: 32.0,
-                            onSelectedItemChanged: (int index1) {
-                              setState(() {
-                                _heartRate[index] = index1;
-                                print(_heartRate[1]);
-
-                              });
-                            },
-                            children:List<Widget>.generate(200, (int index) {
-                              Container(
-                                child: Text("Heart Rate"),
-                              );
-                                  return new Center(
-                                    child: new Text('${index + 1}'),
-                                  );
-                                })),
-                      );
-                    });
-              },
-              child: Container(
-                decoration:
-                BoxDecoration(border: Border.all(color: Colors.grey)),
-                height: 30,
-                width: 80,
-                child: Text('${_heartRate[index] + 1}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 18.0),
-                ),
-              ),
-            ),
-          ),
+          )
 
 
 

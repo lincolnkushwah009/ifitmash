@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ifitmash/login_with_email.dart';
+import 'package:ifitmash/screens/Dashboard.dart';
 import 'Login_With_Number.dart';
 import '../components/rounded_button.dart';
 
@@ -57,38 +58,51 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                 ),
               ),
               SizedBox(
+                  height: 20.0
+              ),
+              InkWell(
+                onDoubleTap: (){
+                  Navigator.push(context,new MaterialPageRoute(builder: (context)=>Dashboard()));
+                },
+                  child: Center(child: Text("#powered by Ifitmash",style: TextStyle(color: Colors.white,letterSpacing: 5),))),
+
+              SizedBox(
                 height: 48.0
               ),
 
 
+
+//              Padding(
+//                padding: const EdgeInsets.all(15.0),
+//                child: FlatButton(
+//                  splashColor: Colors.grey,
+//                  shape: RoundedRectangleBorder(
+//                      borderRadius: new BorderRadius.circular(18.0),
+//                      side: BorderSide(color: Colors.white)
+//                  ),
+//                  onPressed:(){
+//                    Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginWithEmail()));                } ,
+//                  child: (
+//                      Text("Login With Email",style: TextStyle(color: Colors.white),)
+//                  ),
+//                ),
+//              ),
               Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: FlatButton(
-                  splashColor: Colors.grey,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.white)
-                  ),
-                  onPressed:(){
-                    Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginWithEmail()));                } ,
-                  child: (
-                      Text("Login With Email",style: TextStyle(color: Colors.white),)
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: FlatButton(
-                  splashColor: Colors.grey,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.white)
-                  ),
-                  onPressed:(){
-                    Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginWithNumber()));
-                  } ,
-                  child: (
-                  Text("Login With Number",style: TextStyle(color: Colors.white),)
+                child: Container(
+                  height: 60,
+                  child: FlatButton(
+                    splashColor: Colors.grey,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(30.0),
+                        side: BorderSide(color: Colors.white)
+                    ),
+                    onPressed:(){
+                      Navigator.push(context,new MaterialPageRoute(builder: (context)=>LoginWithNumber()));
+                    } ,
+                    child: (
+                    Text("Login With Number",style: TextStyle(color: Colors.white),)
+                    ),
                   ),
                 ),
               )

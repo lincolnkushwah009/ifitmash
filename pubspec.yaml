@@ -52,6 +52,7 @@ dependencies:
   moor_flutter: ^2.1.0
   provider: ^4.0.4
   flutter_slidable: ^0.5.4
+  flutter_local_notifications: ^1.2.0+3
 
 dev_dependencies:
   font_awesome_flutter: ^8.5.0

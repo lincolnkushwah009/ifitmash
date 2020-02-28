@@ -2,7 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:ifitmash/components/ExerciseInput.dart';
+import 'package:ifitmash/components/notification.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fit_kit/fit_kit.dart';
@@ -35,6 +36,7 @@ import 'package:ifitmash/components/WaterCountTab.dart';
 
 
 
+
 class DrawerItem {
   String title;
   IconData icon;
@@ -57,6 +59,8 @@ class Dashboard extends StatefulWidget {
   @override
   _DashboardState createState() => _DashboardState();
 }
+
+const String spKey = 'myBool';
 
 class _DashboardState extends State<Dashboard> {
 
@@ -196,7 +200,7 @@ class _DashboardState extends State<Dashboard> {
             child: Icon(
                 Icons.info,
                 size: 25,
-                color: Colors.black), onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => AboutApp()));},),
+                color: Colors.black), onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => MyNotification()));},),
         ],
 
       ),
@@ -387,7 +391,7 @@ class _DashboardState extends State<Dashboard> {
                                         Padding(
                                           padding: const EdgeInsets.fromLTRB(0,10,0,0),
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                                             children: <Widget>[
                                               Container(
@@ -397,7 +401,7 @@ class _DashboardState extends State<Dashboard> {
                                                 Icon(
                                                   FontAwesomeIcons.running,
                                                   color: Colors.white,
-                                                  size: 30,
+                                                  size: 25,
                                                 ),
 
                                             ],
@@ -737,7 +741,7 @@ class _DashboardState extends State<Dashboard> {
         title: new Text("Message"),
         content: new Text("Calculator Calories Burned"),
         actions: [
-         CupertinoDialogAction(child: Text("Manual"),onPressed: () {Navigator.of(context).push(ScaleRoute(page: ExerciseDetail()));}, ),
+         CupertinoDialogAction(child: Text("Manual"),onPressed: () {Navigator.of(context).push(ScaleRoute(page: ExerciseInput()));}, ),
 
 
 
