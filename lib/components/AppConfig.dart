@@ -7,6 +7,7 @@ class AppConfig{
 
 //   static final String apiUrl = 'https://800mycoke.ae/app/';
   static final String workout='searchWorkout';
+  static final String foodData='http://vt.ifitmash.club/customfoodins';
   static final String invoice="services/invoice.jsp";
   static final String termsAndConditions="services/getTermsAndCondition.jsp";
   static final String changePassword="services/changePassword.jsp";

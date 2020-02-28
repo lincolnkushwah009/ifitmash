@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ifitmash/components/AppConfig.dart';
 
 
 class addFood extends StatefulWidget {
@@ -7,6 +8,42 @@ class addFood extends StatefulWidget {
 }
 
 class _addFoodState extends State<addFood> {
+//   void sendFoodData() async {
+
+//     var url = AppConfig.apiUrl + AppConfig.foodData;
+//     Map<String, String> headers = {};
+//     Map<String, String> body = {
+//       'Calories' : AppConfig.userID,
+//       'po': inputRefNumberText.text,
+//       'deliveryDate':AppConfig.dateSelected!=null?
+//       AppConfig.dateSelected:int.parse(AppConfig.cutoff) > _currentDate2.hour ? AppConfig.defaultDDBefore:
+//       AppConfig.defaultDDAfter,
+//       'defaultDelivery':AppConfig.dateSelected!=null?
+//       'no':int.parse(AppConfig.cutoff) > _currentDate2.hour ? 'yes':
+//       'yes',
+//       'orderDistChan': (product_details[cartProductDetails.keys.elementAt(0)]['DistChan']).toString(),
+//       'orderNote' : inputOrderNotesText.text,
+// //      'refNumber' : inputRefNumberText.text,
+//       'product_details' : getJSONFromMap(),
+//       'summary' : onlinePricingDataSummary.toString()
+//     };
+//     print('print body');
+//     print(body);
+//     var data = await buyservice.placeOrder(url, headers, body, context);
+//     print(data);
+//     setState(() {
+//       cartProductDetails = {};
+//       current_cart_product_details = {};
+//       mustHaveCartProductDetails = {};
+//       updateCartIndex();
+//       BuyPageFragment.cartVisible = false;
+//       BuyPageFragment.mustHaveProducts = false;
+//       BuyPageFragment.allProducts = true;
+//       BuyPageFragment.finalConfirmation = false;
+//       _cupsandlids = false;
+//       Navigator.of(context).push(new MaterialPageRoute(builder: (context) => new ThankYouPageFragment(true)));
+//     });
+//   }
 
   void _brand() {
 

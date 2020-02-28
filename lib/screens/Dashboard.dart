@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ifitmash/components/ExerciseInput.dart';
 import 'package:ifitmash/components/notification.dart';
+import 'package:ifitmash/components/googleSign.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fit_kit/fit_kit.dart';
@@ -387,6 +388,8 @@ class _DashboardState extends State<Dashboard> {
                                         CrossAxisAlignment.start,
                                         children: <Widget>[
 
+
+
                                           Padding(
                                             padding: const EdgeInsets.fromLTRB(0,10,0,0),
                                             child: Row(
@@ -424,7 +427,9 @@ class _DashboardState extends State<Dashboard> {
                                             ),
                                           ),
                                           RaisedButton(
-                                            onPressed: (){},
+                                            onPressed: (){
+                                              Navigator.push(context, new MaterialPageRoute(builder: (context) => MyApp())); 
+                                            },
                                             splashColor: Colors.green,
                                             child: Text("google"),
                                           )
