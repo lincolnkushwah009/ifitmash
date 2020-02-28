@@ -121,7 +121,7 @@ class _ProfileState extends State<Profile> {
                                 child: new Column(
                                   children: <Widget>[
                                     new ListTile(
-                                      leading: Icon(Icons.flag,color: Colors.blue),
+                                      leading: Image.asset("assets/Icons/sexual.png",height: 20,width: 20,),
 
                                       title: Text(
                                           '${gender}',
@@ -132,7 +132,7 @@ class _ProfileState extends State<Profile> {
                                       padding: const EdgeInsets.fromLTRB(20,0,20,0),
                                       child: Divider(height: 2,),
                                     ),                                ListTile(
-                                      leading: Icon(Icons.account_balance_wallet,color: Colors.blue),
+                                      leading:  Image.asset("assets/Icons/birthday.png",height: 20,width: 20,),
 
                                       title: Text(
                                           '${dob}',
@@ -145,8 +145,7 @@ class _ProfileState extends State<Profile> {
                                       child: Divider(height: 2,),
                                     ),
                                     ListTile(
-                                      leading: Icon(Icons.history,color: Colors.blue),
-
+                                      leading:  Image.asset("assets/Icons/height.png",height: 20,width: 20,),
                                       title: Text(
                                           "${height}",
                                           style: TextStyle(
@@ -158,7 +157,7 @@ class _ProfileState extends State<Profile> {
                                       child: Divider(height: 2,),
                                     ),
                                     ListTile(
-                                      leading: Icon(Icons.location_on,color: Colors.blue),
+                                      leading: Image.asset("assets/Icons/scale.png",height: 20,width: 20,),
 
                                       title: Text(
                                           '${weight}',

@@ -104,18 +104,7 @@ class TrackingState extends State<TrackingInput> {
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Text("Water Count"),
-            Text(currentWaterCount.toString()+'/'+selectedGlasses.toString())
 
-          ],
-        ) ,
-
-      ),
 
       body: Container(
         ///Stack some widgets
@@ -123,6 +112,21 @@ class TrackingState extends State<TrackingInput> {
         child: Stack(
           fit: StackFit.expand,
           children: [
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10,25,10,0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+//              mainAxisAlignment: MainAxisAlignment.center
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text("Water Count",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.white),),
+                    Text(currentWaterCount.toString()+'/'+selectedGlasses.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25,color: Colors.white),)
+
+                  ],
+                ),
+              ),
+            ) ,
             ///this is our main artboard with iceboy and the water fill
             FlareActor(
               "assets/WaterArtboards.flr",

@@ -126,7 +126,6 @@ class _addFoodState extends State<addFood> {
               alignment: Alignment.center,
               color: Colors.white,
               child: Column(
-
                 children: <Widget>[
                   Container(
                     color: Colors.grey[500],
@@ -142,64 +141,155 @@ class _addFoodState extends State<addFood> {
                       trailing: Icon(Icons.check, size: 30) ,
                     ),
                   ),
-                  Card(
-                    child: ListTile(
-                      title:Text("Calories"),
-                      subtitle: new TextField(
-                        decoration: new InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Calories (Kcal)"
+                  Flexible(
+
+                    child: Column(
+                      children: <Widget>[
+                        Card(
+                          child: ListTile(
+                            title:Text("Calories"),
+                            subtitle: new TextField(
+                              decoration: new InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Calories (Kcal)"
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
                         ),
-                        keyboardType: TextInputType.number,
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: ListTile(
-                      title:Text("Total Protein"),
-                      subtitle: new TextField(
-                        decoration: new InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Total Proteinr (g)"
+                        Card(
+                          child: ListTile(
+                            title:Text("Total Protein"),
+                            subtitle: new TextField(
+                              decoration: new InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Total Proteinr (g)"
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
                         ),
-                        keyboardType: TextInputType.number,
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: ListTile(
-                      title:Text("Total Fat"),
-                      subtitle: new TextField(
-                        decoration: new InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Total Fat (g)"
+                        Card(
+                          child: ListTile(
+                            title:Text("Total Fat"),
+                            subtitle: new TextField(
+                              decoration: new InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Total Fat (g)"
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
                         ),
-                        keyboardType: TextInputType.number,
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: ListTile(
-                      title:Text("Total Carbohydrate"),
-                      subtitle: new TextField(
-                        decoration: new InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Total Carbohydrate (g)"
+                        Card(
+                          child: ListTile(
+                            title:Text("Total Carbohydrate"),
+                            subtitle: new TextField(
+                              decoration: new InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Total Carbohydrate (g)"
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
                         ),
-                        keyboardType: TextInputType.number,
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: ListTile(
-                      title:Text("Total Fiber"),
-                      subtitle: new TextField(
-                        decoration: new InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Total Fiber (g)"
+                        Card(
+                          child: ListTile(
+                            title:Text("Total Fiber"),
+                            subtitle: new TextField(
+                              decoration: new InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Total Fiber (g)"
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
                         ),
-                        keyboardType: TextInputType.number,
-                      ),
+                        Card(
+                          child: ListTile(
+                            title:Text("Saturated Fat"),
+                            subtitle: new TextField(
+                              decoration: new InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Saturated Fat(g)"
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: ListTile(
+                            title:Text("Monounsaturated Fat"),
+                            subtitle: new TextField(
+                              decoration: new InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Monounsaturated Fat(g)"
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: ListTile(
+                            title:Text("Polyunsaturated Fat"),
+                            subtitle: new TextField(
+                              decoration: new InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Polyunsaturated Fat(g)"
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: ListTile(
+                            title:Text("Sugar"),
+                            subtitle: new TextField(
+                              decoration: new InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Sugar(g)"
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: ListTile(
+                            title:Text("Sodium"),
+                            subtitle: new TextField(
+                              decoration: new InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Sodium(g)"
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: ListTile(
+                            title:Text("Cholesterol"),
+                            subtitle: new TextField(
+                              decoration: new InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Cholesterol(g)"
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: ListTile(
+                            title:Text("Potassium"),
+                            subtitle: new TextField(
+                              decoration: new InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Potassium(g)"
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -210,11 +300,6 @@ class _addFoodState extends State<addFood> {
       },
     );
   }
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {

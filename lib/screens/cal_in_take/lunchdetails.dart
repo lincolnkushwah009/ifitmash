@@ -132,7 +132,7 @@ class _LunchDetailState extends State<LunchDetails> {
                 height: 60,
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: <Widget>[
                   Text('Pick the Quantity of food!'),
-                  Icon(Icons.share)
+//                  Icon(Icons.share)
                 ],),
               ),
               Padding(

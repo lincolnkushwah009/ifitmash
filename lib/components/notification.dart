@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:ifitmash/components/WaterCountTab.dart';
+import 'package:ifitmash/components/water%20Count/tracking_input.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 
 
 
@@ -92,7 +94,7 @@ class _MyNotificationState extends State<MyNotification> {
       debugPrint('Notification payload: $payload');
     }
     await Navigator.push(context,
-        new MaterialPageRoute(builder: (context) => new WaterCountPage()));
+        new MaterialPageRoute(builder: (context) => TrackingInput()));
   }
 
   Future onDidReceiveLocalNotification(

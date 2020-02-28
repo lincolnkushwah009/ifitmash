@@ -387,8 +387,6 @@ class _DashboardState extends State<Dashboard> {
                                         CrossAxisAlignment.start,
                                         children: <Widget>[
 
-
-
                                           Padding(
                                             padding: const EdgeInsets.fromLTRB(0,10,0,0),
                                             child: Row(
