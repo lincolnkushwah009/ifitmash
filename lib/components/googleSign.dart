@@ -57,6 +57,7 @@ import 'dart:ffi';
 
 import 'package:fit_kit/fit_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(MyApp());
 
@@ -64,16 +65,31 @@ class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
-
+const String spKey = 'myBool';
 class _MyAppState extends State<MyApp> {
+  double _energy=0.0;
+  int _totalSteps = 0;
+   SharedPreferences sharedPreferences;
+  String stepData;
+  String calorieBurned;
+  String dob;
+  String height;
+  String weight;
+  String gender;
   String _results = 'Unknown';
 
   @override
   void initState() {
+    // SharedPreferences.getInstance().then((SharedPreferences sp) {
+    //   sharedPreferences = sp;
+    //   stepData = sharedPreferences.getString('step_count');
+    //   calorieBurned = sharedPreferences.getString('energy');
+    //   // will be null if never previously saved
+    //   setState(() {});
+    // });
     super.initState();
     readAll();
   }
-
   Future<void> readAll() async {
     String results = "";
 
@@ -86,8 +102,6 @@ class _MyAppState extends State<MyApp> {
         DateTime fromTime= new DateTime(toTime.year, toTime.month, toTime.day); 
         final results = await FitKit.read( DataType.STEP_COUNT,fromTime,toTime );
         final calories =await FitKit.read(DataType.ENERGY, fromTime, toTime);
-int _totalSteps = 0;
-double _energy=0.0;
 var stepCounts=results.forEach((result) => _totalSteps += result.value.round());
          print(_totalSteps); 
 var energyData=calories.forEach((calorie) => _energy += calorie.value.round());
@@ -132,7 +146,7 @@ print(_energy);
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Text('$_results'),
+              Text(_totalSteps.toString() + '\n'+_energy.toString()),
               FlatButton(
                 onPressed: () => readAll(),
                 child: Text("Reload"),

@@ -64,11 +64,11 @@ class Dashboard extends StatefulWidget {
 const String spKey = 'myBool';
 
 class _DashboardState extends State<Dashboard> {
-
+   double _energy=0.0;
+  int _totalSteps = 0;
 
   int _counter = 0;
-
-
+  String _results = 'Unknown';
 
   bool _buttonPressed = false;
   bool _loopActive = false;
@@ -92,6 +92,51 @@ class _DashboardState extends State<Dashboard> {
     _loopActive = false;
   }
 
+Future<void> readAll() async {
+    String results = "";
+
+    try {
+      final permissions = await FitKit.requestPermissions(DataType.values);
+      if (!permissions) {
+        results = "User declined permissions";
+      } else {
+        DateTime toTime= new DateTime.now();
+        DateTime fromTime= new DateTime(toTime.year, toTime.month, toTime.day); 
+        final results = await FitKit.read( DataType.STEP_COUNT,fromTime,toTime );
+        final calories =await FitKit.read(DataType.ENERGY, fromTime, toTime);
+var stepCounts=results.forEach((result) => _totalSteps += result.value.round());
+         print(_totalSteps); 
+var energyData=calories.forEach((calorie) => _energy += calorie.value.round());
+print(_energy);
+
+//         for (DataType type in DataType.values) {
+//           final data = await FitKit.read(
+//             type,
+//             fromTime,
+//             toTime
+//             // DateTime.now().subtract(Duration(days: 365)),  DateTime.now(), 
+              
+//           );
+
+// print(fromTime);
+// print(toTime);
+
+//           final result = "$type = ${data.forEach((result) => _totalSteps += result.value.round()) }\n\n\n";
+//           results += result;
+//           debugPrint(result);
+//           // final result = await FitKit.readLast(DataType.STEP_COUNT); 
+//         }
+      }
+    } catch (e) {
+      results = 'Failed to read all values. $e';
+    }
+
+    if (!mounted) return;
+
+    setState(() {
+      _results = results;
+    });
+  }
 
 
 
@@ -112,6 +157,7 @@ class _DashboardState extends State<Dashboard> {
   @protected
   @mustCallSuper
   void initState() {
+    readAll();
     SharedPreferences.getInstance().then((SharedPreferences sp) {
       sharedPreferences = sp;
       userData = sharedPreferences.getString('user_name');
@@ -292,7 +338,7 @@ class _DashboardState extends State<Dashboard> {
 
                                 Container(
                                   child: Text(
-                                    "480",
+                                    _energy.toString(),
                                     style: TextStyle(
                                       fontSize: 25,
                                       color: Colors.red,
@@ -411,7 +457,7 @@ class _DashboardState extends State<Dashboard> {
                                           ),
                                           Center(
                                             child: Container(
-                                              child: Text("7,254",style: TextStyle(
+                                              child: Text(_totalSteps.toString(),style: TextStyle(
                                                 color:Colors.white,
                                                 fontSize: 40,
                                               ),),
@@ -426,17 +472,6 @@ class _DashboardState extends State<Dashboard> {
                                               ),),
                                             ),
                                           ),
-                                          RaisedButton(
-                                            onPressed: (){
-                                              Navigator.push(context, new MaterialPageRoute(builder: (context) => MyApp())); 
-                                            },
-                                            splashColor: Colors.green,
-                                            child: Text("google"),
-                                          )
-
-
-
-
                                         ],
                                       ),
                                     ),
