@@ -29,10 +29,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
- List<dynamic> notList = new List();
+ List<dynamic> originalResponse = new List();
+ List<dynamic> filteredList = new List();
+
  Map data;
  bool loading = true;
  var items = List<String>();
+
  @override
  @protected
  @mustCallSuper
@@ -50,10 +53,16 @@ class _MyHomePageState extends State<MyHomePage> {
    http.Response response =
    await http.get('https://ifitmash.club/api/searchExercise');
    data = json.decode(response.body);
+
+//   for(var i=0;i<data.length;i++) {
+//     print(data[i]);
+//   }
+   print("data length is" + data['data'].length.toString());
+
    setState(() {
-     notList = data['data'];
+     originalResponse = data['data'];
    });
-   debugPrint(response.body);
+//   debugPrint(data['data']);
  }
 
 
@@ -72,26 +81,34 @@ class _MyHomePageState extends State<MyHomePage> {
 //  ];
 
  void filterSearchResults(String query) {
-   List<String> dummySearchList = List<String>();
-   dummySearchList.addAll(notList[data["name"]]);
-   if(query.isNotEmpty) {
-     List<String> dummyListData = List<String>();
-     dummySearchList.forEach((item) {
-       if(item.contains(query)) {
-         dummyListData.add(item);
-       }
-     });
-     setState(() {
-       items.clear();
-       items.addAll(dummyListData);
-     });
+
+   if(query == null || query == '') {
+     print("no data here");
      return;
-   } else {
-     setState(() {
-       notList.clear();
-       notList.addAll(data['name']);
-     });
    }
+
+   print(" filter search " + query);
+   print(" orig length is" + originalResponse.length.toString());
+
+   setState(() {
+     filteredList.clear();
+   });
+
+   List<dynamic> temp = new List();
+     for(var i=0;i<originalResponse.length; i++) {
+         if(originalResponse[i]['name'].contains(query)) {
+           temp.add(originalResponse[i]);
+           print("contains item" + query + " -- " + originalResponse[i]['name']);
+         } else {
+           print("not contains item " + query + " -- " + originalResponse[i]['name']);
+         }
+     }
+
+   print("search ended");
+     setState(() {
+       filteredList = temp;
+     });
+
 
  }
 
@@ -135,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
              child: AnimationLimiter(
                child: ListView.builder(
                  shrinkWrap: true,
-                 itemCount: notList.length,
+                 itemCount: filteredList.length,
                  itemBuilder: (context, index) {
 
 
@@ -153,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                      builder: (BuildContext context) =>
                                      new ExerciseInput()));
                            },
-                           title: Text('${notList[index]['name']}'),
+                           title: Text('${filteredList[index]['name']}'),
                            trailing: Icon(Icons.add_circle_outline,color: Colors.black,),
 
                          ),
