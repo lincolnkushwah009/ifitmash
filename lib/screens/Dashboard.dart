@@ -457,7 +457,7 @@ print(_energy);
                                           ),
                                           Center(
                                             child: Container(
-                                              child: Text(_totalSteps.toString(),style: TextStyle(
+                                              child: Text('${_totalSteps.toString()}',style: TextStyle(
                                                 color:Colors.white,
                                                 fontSize: 40,
                                               ),),
@@ -472,6 +472,8 @@ print(_energy);
                                               ),),
                                             ),
                                           ),
+                                         
+
                                         ],
                                       ),
                                     ),
