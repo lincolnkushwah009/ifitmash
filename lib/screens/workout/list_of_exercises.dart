@@ -96,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
    List<dynamic> temp = new List();
      for(var i=0;i<originalResponse.length; i++) {
+       AppConfig.id=originalResponse[i]['id'];
          if(originalResponse[i]['name'].contains(query)) {
            temp.add(originalResponse[i]);
            print("contains item" + query + " -- " + originalResponse[i]['name']);
@@ -168,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                  context,
                                  new MaterialPageRoute(
                                      builder: (BuildContext context) =>
-                                     new ExerciseInput()));
+                                     new ExerciseDetail()));
                            },
                            title: Text('${filteredList[index]['name']}'),
                            trailing: Icon(Icons.add_circle_outline,color: Colors.black,),

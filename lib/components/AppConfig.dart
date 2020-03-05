@@ -6,8 +6,9 @@ class AppConfig{
 //      "http://ec2-18-221-64-116.us-east-2.compute.amazonaws.com:9090/qualityOnlinePrice/";
 
 //   static final String apiUrl = 'https://800mycoke.ae/app/';
-  static final String workout='searchWorkout';
+  static final String workoutDetails='searchWorkout';
   static final String foodData='http://vt.ifitmash.club/customfoodins';
+
   static final String invoice="services/invoice.jsp";
   static final String termsAndConditions="services/getTermsAndCondition.jsp";
   static final String changePassword="services/changePassword.jsp";
@@ -91,4 +92,5 @@ class AppConfig{
   static var disChannel40;
   static var alternateEmail;
   static var httpStatusCodeRec;
+  static var id;
 }

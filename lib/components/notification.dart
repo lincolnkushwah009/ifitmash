@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -30,9 +32,6 @@ class _MyNotificationState extends State<MyNotification> {
     sharedPreferences?.setString(spKey, value);
   }
 
-
-
-
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
   new FlutterLocalNotificationsPlugin();
   var initializationSettingsAndroid;
@@ -42,8 +41,11 @@ class _MyNotificationState extends State<MyNotification> {
   void _showNotification() async {
     await _demoNotification();
   }
+  
 
   Future<void> _demoNotification() async {
+    var scheduledNotificationDateTime =
+        DateTime.now().add(Duration(seconds: 10));
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
         'channel_ID', 'channel name', 'channel description',
         importance: Importance.Max,
@@ -54,9 +56,9 @@ class _MyNotificationState extends State<MyNotification> {
     var platformChannelSpecifics = NotificationDetails(
         androidPlatformChannelSpecifics, iOSChannelSpecifics);
 
-    await flutterLocalNotificationsPlugin.show(0, "Hey "+'${userData}',
-        'Time to Drink Water', platformChannelSpecifics,
-        payload: 'test oayload');
+    await flutterLocalNotificationsPlugin.periodicallyShow(0, "Hey "+'${userData}',
+        'Time to Drink Water',RepeatInterval.Hourly,
+        platformChannelSpecifics);
   }
 
   @override

@@ -162,6 +162,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
+  couchdb:
+    dependency: "direct main"
+    description:
+      name: couchdb
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.0"
   crypto:
     dependency: transitive
     description:
@@ -281,6 +288,13 @@ packages:
       url: "git://github.com/yangyxd/flutter_picker.git"
     source: git
     version: "1.1.2"
+  flutter_plugin_android_lifecycle:
+    dependency: transitive
+    description:
+      name: flutter_plugin_android_lifecycle
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.6"
   flutter_slidable:
     dependency: "direct main"
     description:
@@ -377,6 +391,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.4"
+  image_picker:
+    dependency: "direct main"
+    description:
+      name: image_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.3+4"
   intl:
     dependency: transitive
     description:
@@ -482,6 +503,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1+2"
+  oauth2:
+    dependency: "direct main"
+    description:
+      name: oauth2
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.5.0"
   package_config:
     dependency: transitive
     description:

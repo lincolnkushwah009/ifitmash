@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ifitmash/components/ExerciseInput.dart';
@@ -30,14 +29,8 @@ import 'package:ifitmash/constants.dart';
 import 'package:ifitmash/input_page/input_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ifitmash/components/WaterCountTab.dart';
-
-
-
-
-
-
-
-
+import 'package:ifitmash/components/AppConfig.dart';
+import 'package:image_picker/image_picker.dart';
 class DrawerItem {
   String title;
   IconData icon;
@@ -206,7 +199,75 @@ print(_energy);
 //  void getValues()async{
 //    SharedPreferences sharedPrefs = await sharedPreferences.getInstance();
 //  }
+   Future getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
 
+    setState(() {
+      AppConfig.image = image;
+    });
+  }
+   void pickandUpdateImage() async {
+    await getImage();
+    // print(AppConfig.image);
+
+    // setState(() {
+    //   loading_state = true;
+    // });
+
+    // var stream =
+    //     new http.ByteStream(DelegatingStream.typed(AppConfig.image.openRead()));
+    // // get file length
+    // var length = await AppConfig.image.length();
+
+    // // string to uri
+    // var uri = Uri.parse(AppConfig.apiUrl + AppConfig.updateCustomerImageApi);
+
+    // // create multipart request
+    // var request = new http.MultipartRequest("POST", uri);
+
+    // // multipart that takes file
+    // var multipartFile = new http.MultipartFile('file', stream, length,
+    //     filename: (AppConfig.userID).toString() + 'profileImage');
+
+    // // add file to multipart
+    // request.files.add(multipartFile);
+
+    // // send
+    // var response = await request.send();
+    // if (response.statusCode == 200) {
+    //   setState(() {
+    //     // loading_state = false;
+    //     // AppConfig.customer_details['image'] = _image;
+    //     showDialog<void>(
+    //         context: context,
+    //         builder: (BuildContext context) {
+    //           return AlertDialog(
+    //             title: Text(
+    //               "Success",
+    //               style: TextStyle(color: Colors.white),
+    //             ),
+    //             actions: <Widget>[
+    //               FlatButton(
+    //                 child: Text('Ok'),
+    //                 onPressed: () {
+    //                   Navigator.of(context).pop();
+    //                 },
+    //               ),
+    //             ],
+    //           );
+    //         });
+    //     AppConfig.loadLocalImage = true;
+    //     print(response);
+    //   });
+    // }
+
+    // // listen for response
+    // response.stream.transform(utf8.decoder).listen((value) {
+    //   print(value);
+    // });
+
+    // setState(() {});
+  }
   void persist(String value) {
     setState(() {
       userData = value;
@@ -289,6 +350,13 @@ print(_energy);
 
                                       padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
                                       child: Center(child: RadialProgress())),
+                                      RaisedButton(
+                                        
+                                        onPressed: (){
+                                          print("tap");
+                                          pickandUpdateImage();
+                                        },
+                                        child: Icon(Icons.edit)),
                                   Container(
                                     padding: EdgeInsets.fromLTRB(35, 35, 0, 0),
                                     child: GestureDetector(
@@ -457,7 +525,7 @@ print(_energy);
                                           ),
                                           Center(
                                             child: Container(
-                                              child: Text('${_totalSteps.toString()}',style: TextStyle(
+                                              child: Text(_totalSteps.toString(),style: TextStyle(
                                                 color:Colors.white,
                                                 fontSize: 40,
                                               ),),
@@ -472,7 +540,16 @@ print(_energy);
                                               ),),
                                             ),
                                           ),
-                                         
+                                          // RaisedButton(
+                                          //   onPressed: (){
+                                          //     Navigator.push(context, new MaterialPageRoute(builder: (context) => MyApp())); 
+                                          //   },
+                                          //   splashColor: Colors.green,
+                                          //   child: Text("google"),
+                                          // )
+
+
+
 
                                         ],
                                       ),

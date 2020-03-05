@@ -1,11 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ifitmash/screens/bottomNavigationBar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-
-
+import 'package:ifitmash/components/AppConfig.dart';
+import 'package:ifitmash/components/home_fragment_service.dart';
+final HomeService homeservice = new HomeService();
 //List<int> _selectedNumber = new List<int>.generate(100, (i) => 0);
 
 
@@ -19,6 +22,8 @@ class ExerciseDetail extends StatefulWidget {
 }
 const String sppKey = 'myBool';
 class _ExerciseDetailState extends State<ExerciseDetail> {
+   List<dynamic> notList = new List();
+  bool loading = true;
   SharedPreferences sharedPreferences;
   String userData;
   String email;
@@ -69,6 +74,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
 
 @override
   void initState() {
+    SchedulerBinding.instance.addPostFrameCallback((_) => loadData());
     // TODO: implement initState
 
   SharedPreferences.getInstance().then((SharedPreferences sp) {
@@ -89,6 +95,27 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
     setState(() {});
   });
   }
+  loadData() {
+    loadOfferData();
+  }
+   void loadOfferData() async {
+    var url = AppConfig.apiUrl + AppConfig.workoutDetails;
+    Map<String, String> headers = {};
+    Map<String, String> body = {
+      'search_value': AppConfig.id
+    };
+    var data = await homeservice.getProductLoadData(url, headers, body, context);
+    print(data);
+    Map<String, dynamic> _data = json.decode(data);
+    // notList = _data['logs'];
+    print("invoice dataaaaaa");
+    setState(()
+    {
+      if(_data['primary'] != null)
+        notList = _data['primary'];
+      loading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +127,7 @@ class _ExerciseDetailState extends State<ExerciseDetail> {
       {'userId': 4, 'rating': 3.0}
     ];
 
-    var result = (((0.6309)+(0.2017*22)- (0.09036*50)-55.0969)*20)/4.184;
+    var result = (((0.6309 *_heartRate[2])+(0.2017*22)- (0.09036*50)-55.0969)*20)/4.184;
     print(result);
     return new Scaffold(
        bottomNavigationBar: Container(
