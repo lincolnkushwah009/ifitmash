@@ -1,4 +1,5 @@
 import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ifitmash/components/ExerciseInput.dart';
@@ -199,81 +200,21 @@ print(_energy);
 //  void getValues()async{
 //    SharedPreferences sharedPrefs = await sharedPreferences.getInstance();
 //  }
-   Future getImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
 
-    setState(() {
-      AppConfig.image = image;
-    });
-  }
-   void pickandUpdateImage() async {
-    await getImage();
-    // print(AppConfig.image);
-
-    // setState(() {
-    //   loading_state = true;
-    // });
-
-    // var stream =
-    //     new http.ByteStream(DelegatingStream.typed(AppConfig.image.openRead()));
-    // // get file length
-    // var length = await AppConfig.image.length();
-
-    // // string to uri
-    // var uri = Uri.parse(AppConfig.apiUrl + AppConfig.updateCustomerImageApi);
-
-    // // create multipart request
-    // var request = new http.MultipartRequest("POST", uri);
-
-    // // multipart that takes file
-    // var multipartFile = new http.MultipartFile('file', stream, length,
-    //     filename: (AppConfig.userID).toString() + 'profileImage');
-
-    // // add file to multipart
-    // request.files.add(multipartFile);
-
-    // // send
-    // var response = await request.send();
-    // if (response.statusCode == 200) {
-    //   setState(() {
-    //     // loading_state = false;
-    //     // AppConfig.customer_details['image'] = _image;
-    //     showDialog<void>(
-    //         context: context,
-    //         builder: (BuildContext context) {
-    //           return AlertDialog(
-    //             title: Text(
-    //               "Success",
-    //               style: TextStyle(color: Colors.white),
-    //             ),
-    //             actions: <Widget>[
-    //               FlatButton(
-    //                 child: Text('Ok'),
-    //                 onPressed: () {
-    //                   Navigator.of(context).pop();
-    //                 },
-    //               ),
-    //             ],
-    //           );
-    //         });
-    //     AppConfig.loadLocalImage = true;
-    //     print(response);
-    //   });
-    // }
-
-    // // listen for response
-    // response.stream.transform(utf8.decoder).listen((value) {
-    //   print(value);
-    // });
-
-    // setState(() {});
-  }
   void persist(String value) {
     setState(() {
       userData = value;
 
     });
     sharedPreferences?.setString(spKey, value);
+  }
+
+  Future getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      AppConfig.image = image;
+    });
   }
 
   final TextStyle whiteText = TextStyle(color: Colors.white);
@@ -350,13 +291,6 @@ print(_energy);
 
                                       padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
                                       child: Center(child: RadialProgress())),
-                                      RaisedButton(
-                                        
-                                        onPressed: (){
-                                          print("tap");
-                                          pickandUpdateImage();
-                                        },
-                                        child: Icon(Icons.edit)),
                                   Container(
                                     padding: EdgeInsets.fromLTRB(35, 35, 0, 0),
                                     child: GestureDetector(
@@ -369,6 +303,11 @@ print(_energy);
                                       child: Container(
                                           width: 100.0,
                                           height: 100.0,
+                                          child: AppConfig.image!=null?Image.file(AppConfig.image,
+                                          fit: BoxFit.fitWidth,
+                                          height: 114,
+                                          width: 114):new Container( width: 100.0,
+                                          height: 100.0,
                                           decoration: new BoxDecoration(
                                             shape: BoxShape.circle,
                                             image: new DecorationImage(
@@ -376,7 +315,10 @@ print(_energy);
                                               image: new AssetImage(
                                                   "assets/image/elon.png"),
                                             ),
-                                          )),
+                                          )
+                                          )
+                                          
+                                          ),
                                     ),
                                   ),
                                   Container(child: Center(child: CalBurn())),
@@ -393,7 +335,10 @@ print(_energy);
                               children: <Widget>[
 
                                 RaisedButton(
-                                  onPressed: displayDialog,
+                                  onPressed:(){
+                                    getImage();
+                                  },
+                                  //  displayDialog,
 
                                   child: Text(
                                     "Calorie Burned",
