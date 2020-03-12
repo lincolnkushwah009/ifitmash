@@ -336,9 +336,8 @@ print(_energy);
 
                                 RaisedButton(
                                   onPressed:(){
-                                    getImage();
+                                    displayDialog;
                                   },
-                                  //  displayDialog,
 
                                   child: Text(
                                     "Calorie Burned",
@@ -373,7 +372,9 @@ print(_energy);
 
                                 RaisedButton(
 
-                                  onPressed: null,
+                                  onPressed: (){
+                                    getImage();
+                                  },
 
                                   child: Text(
                                     "Calorie In Take",
