@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
  List<dynamic> originalResponse = new List();
  List<dynamic> filteredList = new List();
 
- Map data;
+ List data;
  bool loading = true;
  var items = List<String>();
 
@@ -51,16 +51,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
  getWorkoutData() async {
    http.Response response =
-   await http.get('https://ifitmash.club/api/searchExercise');
+   await http.get('http://super.ifitmash.club/admin/workout/search?search=Work');
    data = json.decode(response.body);
 
 //   for(var i=0;i<data.length;i++) {
 //     print(data[i]);
 //   }
-   print("data length is" + data['data'].length.toString());
+   print("data length is" + data.length.toString());
 
    setState(() {
-     originalResponse = data['data'];
+     originalResponse = data;
    });
 //   debugPrint(data['data']);
  }
@@ -97,11 +97,11 @@ class _MyHomePageState extends State<MyHomePage> {
    List<dynamic> temp = new List();
      for(var i=0;i<originalResponse.length; i++) {
        AppConfig.id=originalResponse[i]['id'];
-         if(originalResponse[i]['name'].contains(query)) {
+         if(originalResponse[i]['exercise'].contains(query)) {
            temp.add(originalResponse[i]);
-           print("contains item" + query + " -- " + originalResponse[i]['name']);
+           print("contains item" + query + " -- " + originalResponse[i]['exercise']);
          } else {
-           print("not contains item " + query + " -- " + originalResponse[i]['name']);
+           print("not contains item " + query + " -- " + originalResponse[i]['exercise']);
          }
      }
 
@@ -171,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                      builder: (BuildContext context) =>
                                      new ExerciseDetail()));
                            },
-                           title: Text('${filteredList[index]['name']}'),
+                           title: Text('${filteredList[index]['exercise']}'),
                            trailing: Icon(Icons.add_circle_outline,color: Colors.black,),
 
                          ),
