@@ -19,6 +19,8 @@ class ExerciseInput extends StatefulWidget {
 }
 const String sppKey = 'myBool';
 class _ExerciseInputState extends State<ExerciseInput> {
+  TextEditingController controller;
+
   SharedPreferences sharedPreferences;
   String userData;
   String email;
@@ -26,6 +28,7 @@ class _ExerciseInputState extends State<ExerciseInput> {
   String height;
   String weight;
   String gender;
+
 
 
 //  var time=reps;
@@ -43,6 +46,10 @@ class _ExerciseInputState extends State<ExerciseInput> {
 //  }
 //  var a={(0.6309*_heartRate)+(0.2017*age)-(0.9036*_weight)-55.0969*time}/4.184;
 
+
+  List<String> listReps = new List<String>.generate(100, (i) => '');
+  List<String> listWeight = new List<String>.generate(100, (i) => '');
+  List<String> listHeartRate = new List<String>.generate(100, (i) => '');
 
   List<int> _selectedNumber = new List<int>.generate(100, (i) => 0);
   List<int> _changedNumber = new List<int>.generate(100, (i) => 0);
@@ -279,11 +286,15 @@ class _ExerciseInputState extends State<ExerciseInput> {
                     inherit: true,
                     fontSize: 14.0,
                     color: Colors.grey,
-
                   ),
                   hintText: '1'
 
               ),
+              onChanged: (text) {
+                setState(() {
+                  listReps[index] = text;
+                });
+              },
             ),
           ),
 
@@ -296,7 +307,11 @@ class _ExerciseInputState extends State<ExerciseInput> {
               style: TextStyle(color: Colors.black),
               keyboardType: TextInputType.number,
               textAlign: TextAlign.center,
-
+              onChanged: (text) {
+                setState(() {
+                  listWeight[index] = text;
+                });
+              },
               decoration: InputDecoration(
                   labelStyle: new TextStyle(color: Colors.grey),
                   enabledBorder: UnderlineInputBorder(
@@ -323,10 +338,12 @@ class _ExerciseInputState extends State<ExerciseInput> {
               style: TextStyle(color: Colors.black),
               keyboardType: TextInputType.number,
               textAlign: TextAlign.center,
-
+              onChanged: (text) {
+                setState(() {
+                  listHeartRate[index] = text;
+                });
+              },
               decoration: InputDecoration(
-
-
                   labelStyle: new TextStyle(color: Colors.grey),
                   enabledBorder: UnderlineInputBorder(
                       borderSide: new BorderSide(color: Colors.grey)),
@@ -342,11 +359,6 @@ class _ExerciseInputState extends State<ExerciseInput> {
               ),
             ),
           )
-
-
-
-
-
         ].where((value) => value != null).toList(),
       ),
     );

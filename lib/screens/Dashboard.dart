@@ -336,9 +336,8 @@ print(_energy);
 
                                 RaisedButton(
                                   onPressed:(){
-                                    displayDialog;
+                                    Navigator.of(context).push(ScaleRoute(page: ExerciseInput()));
                                   },
-
                                   child: Text(
                                     "Calorie Burned",
                                     style: TextStyle(
@@ -811,7 +810,9 @@ print(_energy);
         title: new Text("Message"),
         content: new Text("Calculator Calories Burned"),
         actions: [
-         CupertinoDialogAction(child: Text("Manual"),onPressed: () {Navigator.of(context).push(ScaleRoute(page: ExerciseInput()));}, ),
+         CupertinoDialogAction(child: Text("Manual"),onPressed: () {
+           Navigator.of(context).push(ScaleRoute(page: ExerciseInput()));
+           }, ),
 
 
 
