@@ -4,6 +4,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter/material.dart';
 import '../../components/ExerciseInput.dart';
+import '../../components/ExerciseInput.dart';
 import 'exerciseDetails.dart';
 import 'package:ifitmash/components/home_fragment_service.dart';
 import 'package:ifitmash/components/AppConfig.dart';
@@ -169,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                  context,
                                  new MaterialPageRoute(
                                      builder: (BuildContext context) =>
-                                     new ExerciseDetail()));
+                                     new ExerciseInput()));
                            },
                            title: Text('${filteredList[index]['exercise']}'),
                            trailing: Icon(Icons.add_circle_outline,color: Colors.black,),

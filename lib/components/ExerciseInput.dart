@@ -3,22 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ifitmash/screens/bottomNavigationBar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:ifitmash/model/weight.dart';
+import 'package:ifitmash/Utils/database_helper.dart';
+import 'package:intl/intl.dart';
 
 
 //List<int> _selectedNumber = new List<int>.generate(100, (i) => 0);
 
 
 class ExerciseInput extends StatefulWidget {
-  ExerciseInput({Key key, this.title}) : super(key: key);
+  final Weight todo;
+  ExerciseInput({Key key, this.title,this.todo}) : super(key: key);
 
   final String title;
 
   @override
-  _ExerciseInputState createState() => new _ExerciseInputState();
+  _ExerciseInputState createState() => new _ExerciseInputState(this.todo);
 }
 const String sppKey = 'myBool';
 class _ExerciseInputState extends State<ExerciseInput> {
+  	DatabaseHelper helper = DatabaseHelper();
+	Weight todo;
+
+_ExerciseInputState(this.todo);
   TextEditingController controller;
 
   SharedPreferences sharedPreferences;
@@ -48,7 +55,9 @@ class _ExerciseInputState extends State<ExerciseInput> {
 
 
   List<String> listReps = new List<String>.generate(100, (i) => '');
+  
   List<String> listWeight = new List<String>.generate(100, (i) => '');
+  
   List<String> listHeartRate = new List<String>.generate(100, (i) => '');
 
   List<int> _selectedNumber = new List<int>.generate(100, (i) => 0);
@@ -76,6 +85,7 @@ class _ExerciseInputState extends State<ExerciseInput> {
 
   @override
   void initState() {
+    
     // TODO: implement initState
 
     SharedPreferences.getInstance().then((SharedPreferences sp) {
@@ -88,6 +98,8 @@ class _ExerciseInputState extends State<ExerciseInput> {
       gender = sharedPreferences.getString('gender');
       print(userData);
       print(dob);
+      print("listReps");
+      print(listReps);
       // will be null if never previously saved
       if (userData == null) {
         userData = "";
@@ -108,7 +120,7 @@ class _ExerciseInputState extends State<ExerciseInput> {
     ];
 
     var result = (((0.6309 *_heartRate[2])+(0.2017*22)- (0.09036*50)-55.0969)*20)/4.184;
-    print(result);
+    print(listReps);
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
         bottomNavigationBar: Container(
@@ -292,7 +304,9 @@ class _ExerciseInputState extends State<ExerciseInput> {
               ),
               onChanged: (text) {
                 setState(() {
-                  listReps[index] = text;
+                  listReps[index] = todo.weight;
+                  print("data weight");
+                  print(todo.weight);
                 });
               },
             ),
